@@ -1,0 +1,9 @@
+<tr class="fields">
+  <td class="deleteLink" ><%= link_to_remove_fields "remove", f %></td>
+  <td><%= select(:f, :unit, [["Horas", "Horas"], ["Servicio", "Servicio"],
+    ["Producto", "Producto"]])  %> </td>
+  <td class="item-quantity"><%= f.text_field :quantity, :size => 4,:value => 0, :onchange => "itemQuantityChanged(this)"  %> </td>
+  <td class="item-description"><%= f.text_area :description, :rows => 2, :cols => 30 %> </td>
+  <td class="item-price"><%= f.text_field :price, :value => 0, :size => 10 %> </td>
+  <td class="item-total"> $0</td>
+</tr>

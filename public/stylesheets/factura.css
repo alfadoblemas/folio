@@ -1,0 +1,183 @@
+body {
+    background-color: #EEEEEE;
+}
+
+/* Header Style */
+
+#header {
+    color: #ffffff;
+    background-color: #01224B;
+    height: 70px;
+    width: 100%;
+    background: url(../images/header_bg.png);
+    border-bottom: 1px solid white;
+    font-size: 1.5em;
+}
+
+#header #logo {
+    margin-left: 20px;
+    float: left;
+}
+
+#header #navBar {
+    position: relative;
+    color: #ffffff;
+    margin-left: 200px;
+    padding-top: 20px;
+    word-spacing: 10px;
+}
+
+#header a, a:link {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+#header a:active {
+    color: #C6D880;
+}
+
+/* Main Container */
+
+.container {
+    margin-top: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.container a {
+    color: #336699;
+    text-decoration: none;
+}
+
+#main {
+    background-color: #ffffff;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-left: 1px solid gray;
+    border-right:  1px solid gray;
+    border-top: 1px solid gray;
+    min-height: 400px;
+}
+
+#main a:hover {
+    text-decoration: underline;
+}
+
+
+#footer {
+    margin-top: 20px;
+    height: 40px;
+    width: 100%;
+}
+
+/* Varios */
+.fieldWithErrors {
+    display: inline;
+}
+
+
+/* Customer#index */
+
+#customersTable {
+
+}
+
+.customer {
+    margin-bottom: 20px;
+}
+
+.customerHeader {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+.customerName {
+    font-size: 16px;
+    font-weight:bold;
+    float: left;
+}
+
+.customerActions {
+    text-align: right;
+}
+
+.customer .customerDetails {
+    margin-top: -10px;
+    margin-left: 10px;
+    font-size: 13px;
+    float: left;
+}
+
+.customer .customerContacts {
+    margin-top: -19px;
+    font-size: 13px;
+
+
+}
+
+.customer .customerContacts td {
+
+    border-left: 1px solid #DDDDDD;
+    border-bottom:  1px solid #DDDDDD;
+    vertical-align: top;
+
+}
+
+#customerInvoices {
+    margin-top: 20px;
+}
+
+.editLink {
+    margin-right: 10px;
+}
+
+
+
+.addLink {
+    padding-left: 16px;
+    background:url(/images/icons/add_16.png) no-repeat transparent;
+}
+
+.viewLink {
+    margin-right: 10px;
+}
+
+.deleteLink {
+    background:url(/images/icons/close_16.png) no-repeat transparent;
+}
+
+
+
+.empty {
+    text-align:center;
+}
+
+.required {
+    padding-left: 2px;
+    border-left:#d12f19 solid;
+}
+
+#newInvoiceItems td {
+    vertical-align: top;
+}
+
+#newInvoiceItems td.deleteLink {
+    background-position: 50% 20%;
+}
+
+#newInvoiceItems td.deleteLink a {
+    display:block;
+    height:20px;
+    outline:medium none;
+    text-indent:-9999px;
+    width:20px;
+}
+
+#newInvoiceItems th {
+    padding-bottom: 0px;
+}

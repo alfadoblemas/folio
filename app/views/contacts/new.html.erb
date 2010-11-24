@@ -1,0 +1,16 @@
+<h2>Nuevo contacto para <%= @customer.name %>  </h2>
+
+<% customer_id = params[:customer_id] unless params[:customer_id].nil? %>
+
+<% form_for(@contact) do |f| %>
+  <%= f.error_messages :class => "error" %>
+
+  <%= render :partial => "new_contact", :locals => {:contact => f} %>
+
+
+  <%= f.hidden_field :customer_id, :value => customer_id %>
+  <%= f.submit "Guardar" %>
+  <%= link_to "Cancelar", customer_path(@customer) %>
+
+<% end %>
+

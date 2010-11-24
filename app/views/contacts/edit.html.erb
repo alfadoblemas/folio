@@ -1,0 +1,12 @@
+<h2>Editar contacto de <%= @customer.name %> </h2>
+
+<% form_for(@contact) do |f| %>
+  <%= f.error_messages %>
+
+ <%= render :partial => "new_contact", :locals => {:contact => f} %>
+
+<%= f.submit "Guardar" %>
+  <%= link_to "Cancelar", customer_path(@customer) %>
+
+<% end %>
+

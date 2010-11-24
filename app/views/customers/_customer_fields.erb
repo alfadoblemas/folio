@@ -1,0 +1,47 @@
+<fieldset>
+    <table>
+      <tbody>
+        <tr>
+          <td><span class="required"><%= customer.label "Nombre" %></span></td>
+          <td>: <%= customer.text_field :name  %> </td>
+        </tr>
+        <tr>
+          <td><span class="required"><%= labelUp_tag "R.U.T."  %></span></td>
+          <td>: <%= customer.text_field :rut  %> </td>
+        </tr>
+        <tr>
+          <td><span class="required"><%= customer.label "Dirección"  %></span></td>
+          <td>: <%= customer.text_field :address  %> </td>
+        </tr>
+        <tr>
+          <td><span class="required"><%= customer.label "Ciudad"  %></span></td>
+          <td>: <%= customer.text_field :city  %> </td>
+        </tr>
+        <tr>
+          <td ><span class="required"><%= customer.label "Comuna"  %></span></td>
+          <td>: <%= customer.text_field :state  %> </td>
+        </tr>
+        <tr>
+          <td><%= customer.label "País"  %></td>
+          <td>: <%= customer.text_field :country  %> </td>
+        </tr>
+        <tr>
+          <td><%= customer.label "Teléfono"  %></td>
+          <td>: <%= customer.text_field :phone  %> </td>
+        </tr>
+        <tr>
+          <td><%= customer.label "Fax"  %></td>
+          <td>: <%= customer.text_field :fax  %> </td>
+        </tr>
+        <tr>
+          <td><%= customer.label "Sitio Web"  %></td>
+          <td>: <%= customer.text_field :url  %> </td>
+        </tr>
+        <tr>
+          <td><%= customer.label "Giro"  %></td>
+          <td>: <%= customer.text_field :industry  %> </td>
+        </tr>
+      </tbody>
+    </table>
+  <div  style="text-align: right; font-style: italic"><span class="required">Campo obligatorio</span></div>
+  </fieldset>

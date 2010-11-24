@@ -1,0 +1,63 @@
+<div class="customer span-19 last">
+  <div class="customerHeader span-19">
+    <% if params[:action].eql?("index") %>
+      <div class="customerName span-5"><%= link_to "#{customer.name}", customer %></div>
+    <% elsif params[:action].eql?("show") %>
+      <div class="customerName span-5"><h3><%= customer.name %></h3></div>
+    <% end %>
+    <div class="customerActions span-18 last">
+      <span class="editLink">
+        <%= link_to "Editar", edit_customer_path(customer) %> </span>
+      <span class="addLink">
+        <%= link_to "Nuevo Contacto", new_customer_contact_path(customer) %> </span>
+      <span class="viewLink">
+        <%= link_to "Facturas", customer_invoices_path(customer) %> </span>
+      <span class="newLink">
+        <%= link_to "Nueva Factura", new_customer_invoice_path(customer) %> </span>
+    </div>
+  </div>
+  <hr/>
+  <div class="customerDetails span-5">
+    <%= customer.address %><br/>
+    <%= customer.state.titleize %>, <%= customer.city.titleize %> <br/>
+    <%= customer.country.titleize %> <br/>
+    <% unless customer.phone.empty? %>
+      <strong>Teléfono:</strong> <%= number_to_phone(customer.phone)  %><br/>
+    <% end %>
+    <% unless customer.fax.empty? %>
+      Fax: <%= customer.fax  %><br/>
+    <% end %>
+    <% unless customer.url.empty? %>
+      <%= link_to customer.url, "http://"+customer.url  %><br/>
+    <% end %>
+  </div>
+  <% if customer.contacts.size > 0 %>
+    <div class="customerContacts span-13 last">
+      <% n = 1 %>
+      <table>
+
+        <% customer.contacts.each do |contact| %>
+          <%  if (n % 2) > 0 %>
+            <tr>
+              <%= render :partial => "contact_info", :locals => {:contact => contact} %>
+            <% else %>
+              <%= render :partial => "contact_info", :locals => {:contact => contact} %>
+            </tr>
+          <% end %>
+
+          <% n+=1 %>
+        <% end %>
+      </table>
+    </div>
+  <% else %>
+  <div class="customerContactsEmpty span-13 last">
+    <div class="empty notice">
+      <p>Cliente sin contactos<br/>
+        <%= link_to "Agregue uno ahora", new_customer_contact_path(customer) %>
+      </p>
+
+    </div>
+  </div>
+  <% end %>
+
+</div>

@@ -1,0 +1,16 @@
+<h2>Clientes</h2>
+
+
+  <% if @customers.size > 0 %>
+
+    <% @customers.each do |customer| %>
+      <%= render :partial => "customer_resume", :locals =>  {:customer => customer} %>
+    <% end %>
+
+  <% else %>
+
+    <h3>Aun no crea clientes, si quiere puede <%= link_to "agregar uno ahora", new_customer_path %></h3>
+
+
+  <% end %>
+
