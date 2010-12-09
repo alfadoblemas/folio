@@ -5,22 +5,31 @@
       <tbody>
         <tr>
           <td><span class="required"><%= invoice.label "Cliente" %></span></td>
-          <td>: <%= invoice.text_field :customer_id %>  - o - <%= link_to "Agregar cliente", new_customer_path %>  </td>
+          <td>: <%= text_field_tag "", @customer.name, :size => 30 %> 
+	  <% if @customer.id.nil? %>
+	  - o - <%= link_to "Agregar cliente", new_customer_path %>
+	  <% end %>
+	  </td>
         </tr>
         <tr>
           <td><span class="required"><%= labelUp_tag "R.U.T." %></span></td>
-          <td>: <%= invoice.text_field :customer_id %> </td>
+          <td>: <%= text_field_tag "", @customer.rut %> </td>
         </tr>
         <tr>
           <td><span class="required"><%= invoice.label "Fecha" %></span></td>
-          <td>: <%= invoice.date_select :created_at , :order => [:day, :month, :year]%></td>
+          <td class="date">: <%= invoice.date_select :date , :order => [:day, :month, :year] %></td>
         </tr>
         <tr>
           <td><span class="required"><%= invoice.label "Número" %></span></td>
           <td>: <%= invoice.text_field :number %></td>
         </tr>
+        <tr>
+          <td><span class="required"><%= labelUp_tag "I.V.A." %></span></td>
+          <td>: <%= invoice.check_box :taxed, :onclick => "enableIVA()" %></td>
+        </tr>
       </tbody>
     </table>
+    <%= invoice.hidden_field :customer_id, :value => @customer.id  %>
   </div>
 </fieldset>
 </div>

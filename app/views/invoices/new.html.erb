@@ -5,45 +5,66 @@
 
   <%= render :partial => "invoice_fields", :locals => {:invoice => f} %>
 
-  <% f.fields_for :invoice_items do |builder| %>
+  <table id="newInvoiceItems">
+    <tr>
+      <th></th>
+      <th class="unitHeader">Unidad</th>
+      <th class="qtyHeader">Cantidad</th>
+      <th class="descriptionHeader">Descripción</th>
+      <th class="priceHeader">Precio</th>
+      <th class="totalHeader">Total</th>
+    </tr>
 
-    <table id="newInvoiceItems">
-      <tr>
-        <th></th>
-        <th>Unidad</th>
-        <th>Cantidad</th>
-        <th>Descripción</th>
-        <th>Precio</th>
-        <th>Total</th>
-      </tr>
+    <% f.fields_for :invoice_items do |builder| %>
+
+
+
       <%= render :partial => "invoice_item_fields", :locals => {:f => builder} %>
 
-    </table>
 
-<hr/>
 
-    <div>
-      <span class="addLink"><%= link_to_add_fields "Agregar línea", f, :invoice_items %></span>
-    </div>
-
-<div class="prepend-15 last">
-  <table>
-    <tr>
-      <td>Neto</td>
-      <td>$0.0</td>
-    </tr>
-    <tr>
-      <td>Total</td>
-      <td>$0.0</td>
-    </tr>
+    <% end %>
   </table>
-</div>
+  <hr/>
+  <div>
+    <!--<span class="addLink"><%= link_to_add_fields "Agregar línea", f, :invoice_items %></span>-->
+  </div>
+
+  <div class="prepend-13 last">
+    <table class="totals">
+      <tr>
+        <td class="netLabel">Neto</td>
+        <td><div class="readonly"><%= f.text_field :net, :value => "$ 0",
+              :size => 9, :readonly => "readonly", :class => "netPrice"  %> </div> </td>
+      </tr>
+      <tr>
+        <td class="taxLabel">IVA</td>
+        <td class="readonly"><%= f.text_field :tax,
+            :value => "$ 0", :size => 9, :class => "taxPrice" %></td>
+      </tr>
+      <tr>
+        <td class="totalLabel">Total</td>
+        <td class="readonly"><%= f.text_field :total, :value => "$ 0",
+            :size => 9, :readonly => "readonly", :class => "totalPrice"  %> </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="last">
+    <strong>Comentarios</strong> (agregue detalles extra a continuación)
+    <hr/>
+  <%= f.text_area :comment, :rows => 5, :cols => 90 %>
 
     <br/>
 
-  <% end %>
+    <p>Cuando haya terminado, guarde su factura. Luego podrá enviarla.</p>
 
+  </div>
+
+  <br/>
+
+  <%= f.hidden_field :status_id, :value => 1 %>
   <%= f.submit "Guardar" %>
-  <%= link_to "Cancelar", customers_path %>
+  <%= link_to "Cancelar", invoices_path %>
 
 <% end %>

@@ -24,8 +24,14 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
-        flash[:notice] = "Cliente creado correctamente."
-        format.html { redirect_to(@customer)}
+        if params[:referrer_invoice]
+          flash[:notice] = "Cliente creado correctamente. Puede crear su Factura"
+          format.html { redirect_to(new_customer_invoice_path(@customer))}
+        else
+          flash[:notice] = "Cliente creado correctamente"
+          format.html { redirect_to(@customer)}
+        end
+
       else
         format.html { render :action => "new"}
       end

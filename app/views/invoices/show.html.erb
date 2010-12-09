@@ -1,2 +1,90 @@
-<h1>Invoices#show</h1>
-<p>Find me in app/views/invoices/show.html.erb</p>
+<h2>Factura <%= @invoice.number %> </h2>
+<div class="span-19 last">
+
+  <div class="span-8 customer_info">
+    <% customer = @invoice.customer %>
+    <span class="customer_name"><%= link_to customer.name, customer_path(customer) %></span><br/>
+    <%= customer.address %><br/>
+    <%= customer.state.titleize %>, <%= customer.city.titleize %> <br/>
+    <%= customer.country.titleize %> <br/>
+    <% unless customer.phone.empty? %>
+      <strong>Teléfono:</strong> <%= number_to_phone(customer.phone)  %><br/>
+    <% end %>
+    <% unless customer.fax.empty? %>
+      Fax: <%= customer.fax  %><br/>
+    <% end %>
+    <% unless customer.url.empty? %>
+      <%= link_to customer.url, "http://"+customer.url  %><br/>
+    <% end %>
+
+  </div>
+  <div class="invoice_info last">
+
+    <%= @invoice.created_at.strftime("%d %b %Y") %><br/>
+    <%  unless @invoice.due.nil? %> <br/>
+      Vencimiento <%= @invoice.due.strftime("%d %b %Y") %>
+    <% end %>
+
+  </div>
+
+  <div class="span-19 prepend-top last">
+
+    <table id="newInvoiceItems">
+      <tr>
+        <th class="qtyHeader">Cantidad</th>
+        <th class="unitHeader">Unidad</th>
+        <th class="descriptionHeader">Descripción</th>
+        <th class="priceHeader">Precio</th>
+        <th class="totalHeader">Total</th>
+      </tr>
+
+      <%= render :partial => "invoice_items_show", :collection => @invoice.invoice_items ,
+        :as => :invoice_item, :spacer_template => "invoice_items_divider" %>
+
+    </table>
+
+  </div>
+
+  <hr/>
+
+  <div class="span-6 prepend-13 last">
+
+    <table class="totals">
+      <tr>
+        <td class="netLabel">Neto</td>
+        <td><div class="readonly netLabel"><%= number_to_currency(@invoice.net, :unit => "$",
+              :delimiter => ".", :precision => 0) %> </div> </td>
+      </tr>
+      <% unless @invoice.tax.nil? %>
+        <tr>
+          <td class="taxLabel">IVA</td>
+          <td class="readonly"><%= number_to_currency(@invoice.tax, :unit => "$",
+              :delimiter => ".", :precision => 0) %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td class="totalLabel">Total</td>
+        <td class="readonly totalLabel"><%= number_to_currency(@invoice.total, :unit => "$",
+            :delimiter => ".", :precision => 0) %> </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="last">
+    <h3>Comentarios</h3>
+    <hr/>
+    <%= @invoice.comment %>
+
+  </div>
+
+  <div class="span-19 prepend-top last">
+    <h3>Historial</h3>
+    <div class="span-19 history last">
+
+      <%= render :partial => "history", :collection => @invoice.histories ,
+        :as => :history, :spacer_template => "history_divider" %>
+
+    </div>
+  </div>
+
+</div>

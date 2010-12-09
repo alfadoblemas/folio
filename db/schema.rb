@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101123150817) do
+ActiveRecord::Schema.define(:version => 20101207192140) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -49,8 +49,17 @@ ActiveRecord::Schema.define(:version => 20101123150817) do
     t.string   "fax"
   end
 
+  create_table "histories", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "subject"
+    t.text     "comment"
+    t.integer  "invoice_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "invoice_items", :force => true do |t|
-    t.string   "unit"
+    t.string   "product_id"
     t.integer  "quantity"
     t.text     "description"
     t.integer  "price"
@@ -68,6 +77,25 @@ ActiveRecord::Schema.define(:version => 20101123150817) do
     t.integer  "customer_id"
     t.integer  "contact_id"
     t.integer  "company_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "taxed"
+    t.date     "due"
+    t.integer  "status_id"
+    t.integer  "history_id"
+    t.text     "comment"
+    t.integer  "currency_id"
+    t.date     "date"
+  end
+
+  create_table "products", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "statuses", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,7 @@
+<tr class="fields">
+  <td><%= link_to invoice.number, invoice_path(invoice_open.id) %> </td>
+  <td><%= invoice.created_at.strftime("%d %b %Y") %> </td>
+  <td><%= invoice.customer.name %> </td>
+  <td><%= invoice.due %> </td>
+  <td class="item-total"><%= number_to_currency(invoice.total, :unit => "$", :delimiter => ".", :precision => 0) %> </td>
+</tr>

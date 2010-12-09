@@ -2,6 +2,10 @@ body {
     background-color: #EEEEEE;
 }
 
+h2 {
+    margin-bottom: 4px;
+}
+
 /* Header Style */
 
 #header {
@@ -178,6 +182,137 @@ body {
     width:20px;
 }
 
+#newInvoiceItems td hr {
+    margin-bottom: 0px;
+}
+
 #newInvoiceItems th {
+    padding-bottom: 8px;
+    padding-top: 8px;
+    background-color: #EEEEEE;
+}
+
+.readonly input[type="text"] {
+    border:0px;
+    cursor: default;
+    text-align: right;
+}
+
+.netPrice, .netLabel {
+    font-size: 12px;
+    font-weight: bold;
+    font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;
+}
+
+.taxPrice, .taxLabel {
+    font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;
+}
+
+.totalPrice, .totalLabel {
+    font-size: 15px;
+    font-weight: bold;
+    font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;
+}
+
+.totals td {
     padding-bottom: 0px;
+    padding-top: 0px;
+    text-align: right;
+}
+
+.totalHeader {
+    text-align: right;
+    font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;
+}
+
+.item-quantity, .item-price, .item-total  {
+    font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;
+    text-align: right;
+}
+
+.customer_name a {
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.invoice_info {
+    margin-right: 10px;
+    text-align: right;
+    font-size: 14px;
+}
+
+.history {
+    background-color: #E0E0E0;
+}
+
+.status {
+    margin-left: -10px;
+    padding: 10px 0px 10px 30px;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 25px;
+    width: 100%;
+}
+
+.toolbox {
+    margin-left: -10px;
+    padding: 10px 0px 10px 30px;
+    width: 100%;
+
+}
+
+.toolbox li {
+    border-bottom: #BDBDBD;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    padding: 10px 0 10px 10px;
+    margin-left: -30px;
+    list-style: none;
+    font-size: 13px;
+}
+
+.toolbox li#send_invoice a {
+    background:url(/images/icons/email_forward_20.png) no-repeat scroll left transparent;
+}
+
+.toolbox li#edit_invoice a {
+    background:url(/images/icons/pencil_20.png) no-repeat scroll left transparent;
+}
+
+.toolbox li#print_invoice a {
+    background:url(/images/icons/printer_20.png) no-repeat scroll left transparent;
+}
+
+.toolbox li#duplicate_invoice a {
+    background:url(/images/icons/camera_add_20.png) no-repeat scroll left transparent;
+}
+
+.toolbox li#receive_payment a {
+    background:url(/images/icons/dollar_20.png) no-repeat scroll left transparent;
+}
+
+.toolbox li#delete_invoice a {
+    background:url(/images/icons/close_16.png) no-repeat scroll left transparent;
+}
+
+.toolbox li#download_invoice a {
+    background:url(/images/icons/arrow_down_16.png) no-repeat scroll left transparent;
+}
+
+.toolbox li#convert_invoice a {
+    background:url(/images/icons/star_16.png) no-repeat scroll left transparent;
+}
+
+.toolbox li a {
+    padding-left: 25px;
+}
+
+.draft {
+    background-color: #BDBDBD;
+}
+
+.open {
+    background-color: #77B8E2;
 }

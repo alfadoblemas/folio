@@ -1,2 +1,51 @@
-<h1>Invoices#index</h1>
-<p>Find me in app/views/invoices/index.html.erb</p>
+<h2>Facturas</h2>
+
+<div class="span-19 last">
+  <h3>Estado: Borrador</h3>
+
+  <table id="newInvoiceItems">
+    <tr>
+      <th class="qtyHeader">Numero</th>
+      <th class="unitHeader">Fecha</th>
+      <th class="descriptionHeader">Cliente</th>
+      <th class="priceHeader">Vencimiento</th>
+      <th class="totalHeader">Total</th>
+    </tr>
+
+    <%= render :partial => "invoice_open", :collection => @invoices_draft ,
+      :as => :invoice, :spacer_template => "invoice_items_divider" %>
+
+  </table>
+
+  <hr/>
+  <div style="text-align:right" class="last">
+    <strong>Total: <%= number_to_currency(@invoices_draft.sum(&:total),
+        :unit => "$", :delimiter => ".", :precision => 0) %></strong>
+  </div>
+
+</div>
+
+<div class="span-19 last">
+  <h3>Estado: Abierto</h3>
+
+  <table id="newInvoiceItems">
+    <tr>
+      <th class="qtyHeader">Numero</th>
+      <th class="unitHeader">Fecha</th>
+      <th class="descriptionHeader">Cliente</th>
+      <th class="priceHeader">Vencimiento</th>
+      <th class="totalHeader">Total</th>
+    </tr>
+
+    <%= render :partial => "invoice_open", :collection => @invoices_open ,
+      :as => :invoice, :spacer_template => "invoice_items_divider" %>
+
+  </table>
+
+  <hr/>
+  <div style="text-align:right" class="last">
+    <strong>Total: <%= number_to_currency(@invoices_open.sum(&:total),
+        :unit => "$", :delimiter => ".", :precision => 0) %></strong>
+  </div>
+
+</div>
