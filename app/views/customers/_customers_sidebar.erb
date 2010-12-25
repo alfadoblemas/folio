@@ -1,21 +1,32 @@
 <% if params[:action].eql?("new") %>
-  <div id="Cancel span-4 last" class="error">
+  <div class="cancel span-4 last">
     <%= link_to "Cancelar", customers_path %>
   </div>
+
+
+  <!--Customer#Show -->
 <% elsif params[:action].eql?("show") %>
   <div class="span-4 last">
-    <h2 class="deuda"><%= number_to_currency(400000) %></h2>
-  </div>
+    <div class="new newCustomer">
+      <%= link_to "Nueva Factura", new_customer_invoice_path(@customer) %>
+    </div>
+
+      <ul class="toolbox secondary">
+        <li id="add_link"><%= link_to "<strong>Agregar</strong> contacto", new_customer_contact_path(@customer) %></li>
+        <li id="edit_invoice"><%= link_to "<strong>Editar</strong> cliente", edit_customer_path(@customer) %></li>
+      </ul>
+
+    </div>
+
+
 
 <% elsif params[:action].eql?("edit") %>
-  <div id="Cancel span-4 last" class="error">
+  <div class="cancel span-4 last">
     <%= link_to "Cancelar", customer_path(@customer) %>
   </div>
 <% else %>
-  <div id="newCustomer" class="notice">
+  <div class="new newCustomer">
     <%= link_to "Nuevo Cliente", new_customer_path %>
   </div>
 <% end %>
 
-<hr />
-<h3>Tu Empresa</h3>

@@ -1,0 +1,16 @@
+<% if params[:action].eql?("new") || params[:action].eql?("edit")%>
+  <div class="cancel span-4 last">
+    <%= link_to "Cancelar", invoice_path(params[:invoice_id]) %>
+  </div>
+<% elsif params[:action].eql?("show") %>
+  <div class="span-4 last">
+    <h2 class="deuda"><%= number_to_currency(400000) %></h2>
+  </div>
+
+<% else %>
+  <div class="cancel span-4 last">
+    <%= link_to "Nuevo Cliente", new_customer_path %>
+  </div>
+<% end %>
+
+<hr />

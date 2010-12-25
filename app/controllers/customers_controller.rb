@@ -1,18 +1,36 @@
 class CustomersController < ApplicationController
+  auto_complete_for :customers, :name
+
+  def search
+    unless params[:q].nil?
+      @customers = Customer.find(:all, :conditions => ['name LIKE ?',
+          "%#{params[:q]}%"])
+    end
+
+    respond_to do |format|
+      format.xml { render :xml => @customers}
+      format.json { render :json => @customers}
+    end
+
+  end
 
   def index
-    # TODO: Falta agreagar paginación y ordenamiento
     @customers = Customer.find_index
+    @customer_alphabetical = Customer.alphabetical_group(params[:letter])
+
+    respond_to do |format|
+      format.html
+    end
   end
 
   def show
     @customer = Customer.find(params[:id])
+
   end
 
   def new
     # TODO: Falta mejorar la información de errores
     @customer = Customer.new
-    @customer.contacts.build
   end
 
   def edit
@@ -24,7 +42,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
-        if params[:referrer_invoice]
+        if params[:referrer_invoice].to_i == 1
           flash[:notice] = "Cliente creado correctamente. Puede crear su Factura"
           format.html { redirect_to(new_customer_invoice_path(@customer))}
         else

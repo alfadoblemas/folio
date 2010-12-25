@@ -11,3 +11,4 @@
 
 # Varios
 - TODO: invoice, customers => deben pertener a company
+- TODO: todos pueden tener algo vacio, las views deben chequear si esta vacio y de ser asi mostrar pagina de vacio.

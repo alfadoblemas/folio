@@ -20,9 +20,9 @@
   </div>
   <div class="invoice_info last">
 
-    <%= @invoice.created_at.strftime("%d %b %Y") %><br/>
+    <%= l  @invoice.date, :format => :short %><br/>
     <%  unless @invoice.due.nil? %> <br/>
-      Vencimiento <%= @invoice.due.strftime("%d %b %Y") %>
+      Vencimiento <%= l @invoice.due, :format => :short %>
     <% end %>
 
   </div>
@@ -76,12 +76,25 @@
     <%= @invoice.comment %>
 
   </div>
+  <br/>
+  <div class="span-19 prepend-top  history last">
+    <div class="span-10">
+      <h3>Historial y Notas</h3>
+    </div>
+    <div id="add_comment_link" class="span-8" style="text-align: right;">
+      <span class="addLink"> <%= link_to_function "Agregar Nota", "display_add_comment()" %>  </span>
+    </div>
+    <hr />
+    <div id="add_comment" style="display: none;" class="span-19 last">
+      <%= render :partial => "histories/new_history", :locals => {:invoice_id => @invoice.id} %>
+      <hr/>
+    </div>
+    <% if @invoice.histories.size < 1 %>
+      <br/>
+    <% end %>
+    <div class="span-19 last">
 
-  <div class="span-19 prepend-top last">
-    <h3>Historial</h3>
-    <div class="span-19 history last">
-
-      <%= render :partial => "history", :collection => @invoice.histories ,
+      <%= render :partial => "history", :collection => @invoice.histories.reverse! ,
         :as => :history, :spacer_template => "history_divider" %>
 
     </div>

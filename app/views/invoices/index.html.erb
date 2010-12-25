@@ -1,51 +1,62 @@
-<h2>Facturas</h2>
-
-<div class="span-19 last">
-  <h3>Estado: Borrador</h3>
-
-  <table id="newInvoiceItems">
-    <tr>
-      <th class="qtyHeader">Numero</th>
-      <th class="unitHeader">Fecha</th>
-      <th class="descriptionHeader">Cliente</th>
-      <th class="priceHeader">Vencimiento</th>
-      <th class="totalHeader">Total</th>
-    </tr>
-
-    <%= render :partial => "invoice_open", :collection => @invoices_draft ,
-      :as => :invoice, :spacer_template => "invoice_items_divider" %>
-
-  </table>
-
-  <hr/>
-  <div style="text-align:right" class="last">
-    <strong>Total: <%= number_to_currency(@invoices_draft.sum(&:total),
-        :unit => "$", :delimiter => ".", :precision => 0) %></strong>
+<div class="last">
+  <div class="span-5">
+    <h2>Facturas</h2>
   </div>
-
+  <div class="last right">
+    <% form_tag invoices_path, :method => 'get' do %>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Buscar", :name => nil %>
+    <% end %>
+  </div>
 </div>
 
-<div class="span-19 last">
-  <h3>Estado: Abierto</h3>
+<% if params[:search] && !params[:search].blank? %>
+  <div class="span-19 last prepend-top">
+    <% if @invoices.size < 1 %>
+      <h3>No se encontraron resultados</h3>
+    <% else %>
+      <h3>Resultados</h3>
 
-  <table id="newInvoiceItems">
-    <tr>
-      <th class="qtyHeader">Numero</th>
-      <th class="unitHeader">Fecha</th>
-      <th class="descriptionHeader">Cliente</th>
-      <th class="priceHeader">Vencimiento</th>
-      <th class="totalHeader">Total</th>
-    </tr>
+      <table class="invoice_list open">
+        <% status ="" %>
+        <%= render :partial => "invoices_header", :locals => {:state => status} %>
+        <%= render :partial => "invoices", :collection => @invoices ,
+          :as => :invoice, :spacer_template => "invoice_items_divider" %>
+      </table>
 
-    <%= render :partial => "invoice_open", :collection => @invoices_open ,
-      :as => :invoice, :spacer_template => "invoice_items_divider" %>
+    <%end%>
 
-  </table>
-
-  <hr/>
-  <div style="text-align:right" class="last">
-    <strong>Total: <%= number_to_currency(@invoices_open.sum(&:total),
-        :unit => "$", :delimiter => ".", :precision => 0) %></strong>
   </div>
 
-</div>
+<% else %>
+  <% if @invoices.nil? %>
+    <p>No tiene facturas</p>
+  <% else %>
+    <!-- Arreglo con tipos de facturas -->
+    <% invoices_type = [["draft", "Borrador"], ["due", "Vencidas"], ["open", "Activas"], ["close", "Pagadas este mes"]] %>
+    <% invoices_type.each do |type|   %>
+      <% status, title = type[0], type[1] %>
+      <% instance_variable_set("@invoices_type", instance_variable_get("@invoices_#{status}")) %>
+      <% unless @invoices_type.size < 1 %>
+
+        <div class="span-19 last prepend-top" id="<%= status  %>">
+          <h3><span class="<%= status %>_title "><%= title %> </span></h3>
+          <table class="invoice_list <%= status %> ">
+
+            <%= render :partial => "invoices_header", :locals => {:state => status} %>
+
+            <%= render :partial => "invoices", :locals => {:state => status},:collection => @invoices_type ,
+              :as => :invoice, :spacer_template => "invoice_items_divider" %>
+
+          </table>
+
+          <div style="text-align:right; border-top: #000 solid 2px; " class="last">
+            <strong>Total: <%= number_to_currency(@invoices_type.sum(&:total),
+                :unit => "$", :delimiter => ".", :precision => 0) %></strong>
+          </div>
+
+        </div>
+      <% end %>
+    <%  end %>
+  <% end %>
+<%end%>

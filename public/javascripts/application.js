@@ -10,7 +10,7 @@ function remove_fields(link) {
 
 function add_fields(link, association, content) {
     var new_id = new Date().getTime();
-     var id = 0;
+    var id = 0;
     $(".item-total").children().each(id++);
     var regexp = new RegExp(id+"_" + association, "g");
     //$(link).parent().before.before(content.replace(regexp, new_id));
@@ -38,7 +38,7 @@ function itemPriceChanged(element) {
     var new_total = current_quantity * $(element).toNumber({
         region: 'es-CL'
     }).val();
-     $("#invoice_invoice_items_attributes_"+id+"_total").val(new_total);
+    $("#invoice_invoice_items_attributes_"+id+"_total").val(new_total);
     
     updatePrices()
 }
@@ -50,6 +50,9 @@ function sumNetPrice() {
             region: 'es-CL'
         }).val());
     });
+    if(isNaN(sum)){
+      sum = 0;
+    }
     $(".netPrice").val(sum);
 }
 
@@ -112,3 +115,43 @@ function formatInvoicePrice() {
 function enableIVA() {
     updatePrices();
 }
+
+function display_add_comment() {
+    $("#add_comment_link").hide();
+    $("#add_comment").show("slow");
+}
+
+$().ready(function() {
+    $("input#customer_name").autocomplete("/customers/search.json",{
+        dataType: "json",
+        parse: function(data) {
+            return $.map(data, function(row){
+                
+                return {
+                    data: row.customer,
+                    id: row.customer.id,
+                    value: row.customer.name,
+                    rut: row.customer.rut
+                }
+            });
+        },
+        formatItem: function(item) {
+            return item.name
+        }
+    });
+
+    $("input#customer_name").result(function(event, data, formatted) {
+        $("input#customer_name").val(data.name);
+        $("input#customer_rut").val(data.rut);
+        $("input#invoice_customer_id").val(data.id);
+    });
+
+    $('#customer_rut').Rut({
+        on_error: function(){
+            alert('Rut incorrecto');
+            $('input#customer_rut').val("");
+        }
+    });
+
+    formatInvoicePrice();
+});

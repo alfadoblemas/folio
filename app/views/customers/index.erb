@@ -1,16 +1,30 @@
 <h2>Clientes</h2>
 
+<% if @customers.size > 0 %>
 
-  <% if @customers.size > 0 %>
+<div class="last" style="text-align: right">
+  <ul class='pagination'>
+    <li><%= link_to "Todos", customers_path %> </li>
+    <%- Customer.pagination_letters.each do |letter| -%>
+      <li><%= link_to(letter, :letter => letter) %></li>
+    <%- end -%>
+  </ul>
+</div>
 
+  <% if params[:letter].blank? %>
     <% @customers.each do |customer| %>
       <%= render :partial => "customer_resume", :locals =>  {:customer => customer} %>
     <% end %>
-
   <% else %>
-
-    <h3>Aun no crea clientes, si quiere puede <%= link_to "agregar uno ahora", new_customer_path %></h3>
-
-
+    <% @customer_alphabetical.each do |customer| %>
+      <%= render :partial => "customer_resume", :locals =>  {:customer => customer} %>
+    <% end %>
   <% end %>
+
+<% else %>
+
+  <h3>Aun no crea clientes, si quiere puede <%= link_to "agregar uno ahora", new_customer_path %></h3>
+
+
+<% end %>
 

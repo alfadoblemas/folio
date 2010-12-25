@@ -8,8 +8,9 @@ class CreateStatuses < ActiveRecord::Migration
 
 
     Status.create(:id => 1, :name => "borrador".titleize)
-    Status.create(:id => 2, :name => "abierta".titleize)
-    Status.create(:id => 3, :name => "cerrada".titleize)
+    Status.create(:id => 2, :name => "activa".titleize)
+    Status.create(:id => 3, :name => "pagada".titleize)
+    Status.create(:id => 4, :name => "anulada".titleize)
 
   end
 

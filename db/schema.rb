@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101207192140) do
+ActiveRecord::Schema.define(:version => 20101224213709) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(:version => 20101207192140) do
     t.datetime "updated_at"
   end
 
+  add_index "contacts", ["customer_id"], :name => "contacts_customer_index"
+
   create_table "customers", :force => true do |t|
     t.string   "name"
     t.string   "rut"
@@ -49,6 +51,8 @@ ActiveRecord::Schema.define(:version => 20101207192140) do
     t.string   "fax"
   end
 
+  add_index "customers", ["name"], :name => "customers_name_index"
+
   create_table "histories", :force => true do |t|
     t.integer  "user_id"
     t.string   "subject"
@@ -57,6 +61,9 @@ ActiveRecord::Schema.define(:version => 20101207192140) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "histories", ["invoice_id"], :name => "histories_invoice_index"
+  add_index "histories", ["user_id"], :name => "histories_user_index"
 
   create_table "invoice_items", :force => true do |t|
     t.string   "product_id"
@@ -68,6 +75,9 @@ ActiveRecord::Schema.define(:version => 20101207192140) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "invoice_items", ["invoice_id"], :name => "iitems_invoice_index"
+  add_index "invoice_items", ["product_id"], :name => "iitems_product_index"
 
   create_table "invoices", :force => true do |t|
     t.integer  "number"
@@ -86,7 +96,14 @@ ActiveRecord::Schema.define(:version => 20101207192140) do
     t.text     "comment"
     t.integer  "currency_id"
     t.date     "date"
+    t.date     "close_date"
   end
+
+  add_index "invoices", ["company_id"], :name => "invoices_company_index"
+  add_index "invoices", ["contact_id"], :name => "invoices_contact_index"
+  add_index "invoices", ["customer_id"], :name => "invoices_customer_index"
+  add_index "invoices", ["number"], :name => "invoices_number_index"
+  add_index "invoices", ["status_id"], :name => "invoices_status_index"
 
   create_table "products", :force => true do |t|
     t.string   "name"

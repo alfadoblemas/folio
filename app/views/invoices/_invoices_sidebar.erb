@@ -1,55 +1,94 @@
-<!-- Invoice#NEW -->
-<% if params[:action].eql?("new") %>
-  <div id="Cancel span-4 last" class="error">
+<% if params[:action].eql?("active") %>
+  <div class="cancel span-4 last">
     <%= link_to "Cancelar", invoices_path %>
+  </div>
+  <hr/>
+  <!-- Invoice#NEW -->
+<% elsif params[:action].eql?("new") %>
+  <div class="cancel span-4 last">
+    <%= link_to "Cancelar", invoices_path %>
+  </div>
+  <hr/>
+  <div class="toolbox secondary">
+
   </div>
 
   <!-- Invoice#SHOW -->
 <% elsif params[:action].eql?("show") %>
   <div class="span-4 last">
-    <div id="newCustomer" class="notice">
+    <div class="new newCustomer">
       <%= link_to "Nueva Factura", new_invoice_path %>
     </div>
 
     <% if @invoice.status_id == 1 %>
       <div class="status draft">
-      <% else %>
-        <div class="status open">
-        <% end %>
+      <% elsif @invoice.status_id == 2 %>
+        <% if @invoice.due.to_date < Date.today %>
+          <% due = true %>
+          <div class="status due">
+          <% else %>
+            <div class="status open">
+            <% end %>
+          <% elsif @invoice.status_id == 3 %>
+            <div class="status close">
+            <% end %>
 
-        <%= number_to_currency(@invoice.total, :unit => "$ ", :delimiter => ".", :precision => 0) %><br/>
-        <%= @invoice.status.name %>
+            <%= number_to_currency(@invoice.total, :unit => "$ ", :delimiter => ".", :precision => 0) %><br/>
+            <% if due %>
+              Vencida
+            <% else %>
+              <%= @invoice.status.name %>
+            <% end %>
+          </div>
+
+          <ul class="toolbox secondary">
+            <li id="send_invoice"><%= link_to "<strong>Enviar</strong> factura" %></li>
+            <li id="edit_invoice"><%= link_to "<strong>Editar</strong> factura", edit_invoice_path(@invoice) %></li>
+            <li id="print_invoice"><%= link_to "<strong>Imprimir</strong> factura" %></li>
+            <% if @invoice.status_id == 1 %>
+              <li id="convert_invoice"><%= link_to "<strong>Activar</strong> factura", active_invoice_path(@invoice) %></li>
+            <% end %>
+            <li id="duplicate_invoice"><%= link_to "<strong>Duplicar</strong> Factura" %></li>
+            <% if @invoice.status_id == 2 %>
+              <li id="receive_payment"><%= link_to "<strong>Recibir</strong> pago", close_invoice_path(@invoice) %></li>
+            <% end %>
+            <% if @invoice.status_id == 1 %>
+              <li id="delete_invoice"><%= link_to "<strong>Borrar</strong> factura", @invoice,
+                  :confirm => "Está seguro?", :method => :delete %></li>
+            <% end %>
+            <li id="download_invoice"><%= link_to "<strong>Bajar</strong> como PDF" %></li>
+          </ul>
+
+        </div>
       </div>
 
-      <ul class="toolbox secondary">
-        <li id="send_invoice"><%= link_to "<strong>Enviar</strong> factura" %></li>
-        <li id="edit_invoice"><%= link_to "<strong>Editar</strong> factura", edit_invoice_path(@invoice) %></li>
-        <li id="print_invoice"><%= link_to "<strong>Imprimir</strong> factura" %></li>
-        <% if @invoice.status_id == 1 %>
-          <li id="convert_invoice"><%= link_to "<strong>Activar</strong> factura" %></li>
-        <% end %>
-        <li id="duplicate_invoice"><%= link_to "<strong>Duplicar</strong> Factura" %></li>
-        <% if @invoice.status_id == 2 %>
-          <li id="receive_payment"><%= link_to "<strong>Recibir</strong> pago" %></li>
-        <% end %>
-        <li id="delete_invoice"><%= link_to "<strong>Borrar</strong> factura", @invoice,
-            :confirm => "Está seguro?", :method => :delete %></li>
-        <li id="download_invoice"><%= link_to "<strong>Bajar</strong> como PDF" %></li>
-      </ul>
+      <!-- Invoice#EDIT -->
+    <% elsif params[:action].eql?("edit") %>
+      <div class="cancel span-4 last">
+        <%= link_to "Cancelar", invoice_path(@invoice) %>
+      </div>
 
-    </div>
-  </div>
-
-  <!-- Invoice#EDIT -->
-<% elsif params[:action].eql?("edit") %>
-  <div id="Cancel span-4 last" class="error">
-    <%= link_to "Cancelar", invoice_path(@customer) %>
-  </div>
-
-  <!-- Invoice#INDEX -->
-<% else %>
-  <div id="newCustomer" class="notice">
-    <%= link_to "Nueva Factura", new_invoice_path %>
-  </div>
-<% end %>
+      <!-- Invoice#INDEX -->
+    <% else %>
+      <div id="newCustomer" class="new">
+        <%= link_to "Nueva Factura", new_invoice_path %>
+      </div>
+      <hr/>
+      <% unless params[:search] %>
+        <table class="invoice_resume">
+          <tr class="draft" onclick="location.href='#draft'">
+            <td><span class="draft_title">Borrador</span></td><td style="text-align: right"><%= number_to_currency(@invoices_draft.sum(&:total)) %></td>
+          </tr>
+          <tr class="due" onclick="location.href='#due'">
+            <td><span class="due_title">Vencidas</span></td><td style="text-align: right"><%= number_to_currency(@invoices_due.sum(&:total)) %></td>
+          </tr>
+          <tr  class="open" onclick="location.href='#open'">
+            <td><span class="open_title">Activas</span></td><td style="text-align: right"><%= number_to_currency(@invoices_open.sum(&:total)) %></td>
+          </tr>
+          <tr  class="close" onclick="location.href='#close'">
+            <td><span class="close_title">Pagadas</span></td><td style="text-align: right"><%= number_to_currency(@invoices_close.sum(&:total)) %></td>
+          </tr>
+        </table>
+      <%end%>
+    <% end %>
 

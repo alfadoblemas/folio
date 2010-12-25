@@ -1,7 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
+  map.root :controller => "invoices" 
+  map.customer_search 'customers/search.:format', :controller => 'customers', :action => 'search'
+  map.active_invoice 'invoices/active/:id', :controller => 'invoices', :action => 'active'
+  map.close_invoice 'invoices/close/:id', :controller => 'invoices', :action => 'close'
   map.resources :customers, :has_many => [:contacts, :invoices]
   map.resources :contacts
-  map.resources :invoices
+  map.resources :invoices, :has_many => [:histories]
+  map.resources :histories
 
   # The priority is based upon order of creation: first created -> highest priority.
 

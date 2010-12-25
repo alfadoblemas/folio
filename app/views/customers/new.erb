@@ -6,18 +6,12 @@
 
   <%= render :partial => "customer_fields", :locals => {:customer => f} %>
 
-  <% f.fields_for :contacts do |contact| %>
+  
 
-    <h4>Agregar un Contacto a este Cliente</h4>
-
-    <%= render :partial => "contacts/new_contact", :locals => {:contact => contact} %>
-
-  <% end %>
-
-  <% if request.referrer =~ /invoices/ || params[:referrer_invoice] %>
-    <%= hidden_field_tag "referrer_invoice", true %>
+  <% if params[:from_invoice].to_i == 1 %>
+    <%= hidden_field_tag "referrer_invoice", 1 %>
   <% else %>
-    <%= hidden_field_tag "referrer_invoice", false %>
+    <%= hidden_field_tag "referrer_invoice", 0 %>
   <% end %>
   <%= f.submit "Guardar" %>
   <%= link_to "Cancelar", customers_path %>
