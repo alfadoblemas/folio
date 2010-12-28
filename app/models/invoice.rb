@@ -71,6 +71,10 @@ class Invoice < ActiveRecord::Base
     sum
   end
 
+def method_name
+  
+end
+
   def due_days
     today = Time.now
     ((today - self.due.to_time)/86400).to_i

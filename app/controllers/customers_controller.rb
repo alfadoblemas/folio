@@ -17,7 +17,6 @@ class CustomersController < ApplicationController
   def index
     @customers = Customer.find_index
     @customer_alphabetical = Customer.alphabetical_group(params[:letter])
-
     respond_to do |format|
       format.html
     end
@@ -35,6 +34,7 @@ class CustomersController < ApplicationController
 
   def edit
     @customer = Customer.find(params[:id])
+    logger.debug(request.method)
   end
 
   def create

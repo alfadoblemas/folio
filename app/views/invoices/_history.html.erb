@@ -1,0 +1,20 @@
+<div class="comment">
+  <table>
+    <tr>
+      <td class="deleteLink"><%= link_to "Borrar", history,
+          :confirm => "Está seguro qué desea borrar el comentario?", :method => :delete %></td>
+      <td class="date"><%= l history.created_at, :format => :short %>
+        <% unless history.user_id.nil? %>
+          <br/>
+          por <%= history.user_id %>
+        <%end%>
+      </td>
+      <td class="text"><strong><%= history.subject %></strong></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><%= history.comment %></td>
+    </tr>
+  </table>
+</div>

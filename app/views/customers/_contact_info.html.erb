@@ -1,0 +1,12 @@
+<td>
+  <strong><%= contact.name %></strong><br/>
+  <%= mail_to contact.email %><br/>
+  <% unless contact.phone.empty? %>
+    T: <%= number_to_phone(contact.phone)  %><br/>
+  <% end %>
+  <% unless contact.mobile.empty? %>
+    M: <%= number_to_phone(contact.mobile) %><br/>
+  <% end %>
+  <span class="editLink"><strong><%= link_to "Editar", edit_contact_path(contact) %></strong></span>|
+  <span class="deletetLink"><%= link_to "Eliminar", contact, :confirm => "Está seguro?", :method => :delete %></span>
+</td>

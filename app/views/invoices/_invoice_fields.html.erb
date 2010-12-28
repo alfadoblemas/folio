@@ -1,0 +1,45 @@
+<div id="invoiceFields">
+  <fieldset>
+    <div class="span-18 last">
+      <table>
+        <tbody>
+          <tr>
+            <td><span class="required"><%= invoice.label "Cliente" %></span></td>
+
+            <td>:
+              <%= text_field_tag "", @customer.name, :autocomplete => "off", :id => "customer_name" %>
+
+            <% if @customer.id.nil? %>
+            - o - <%= link_to "Agregar cliente", :controller => "customers", :action => "new", :from_invoice => 1, :method => "post" %>
+            <% end %>
+
+            </td>
+          </tr>
+          <!--
+          <tr>
+            <td><span class="required"><%= labelUp_tag "R.U.T." %></span></td>
+            <td>: <%= text_field_tag "", @customer.rut, :id => "customer_rut", :readonly => "readonly" %> </td>
+          </tr>
+          -->
+          <tr>
+            <td><span class="required"><%= invoice.label "Fecha" %></span></td>
+            <td class="date">: <%= invoice.date_select :date , :order => [:day, :month, :year] %></td>
+          </tr>
+          <tr>
+            <td><span class="required"><%= invoice.label "Número" %></span></td>
+            <td>: <%= invoice.text_field :number %></td>
+          </tr>
+          <tr>
+            <td><span class="required"><%= labelUp_tag "I.V.A." %></span></td>
+            <td>: <%= invoice.check_box :taxed, :onclick => "enableIVA()" %></td>
+          </tr>
+          <tr>
+            <td><%= label_tag "Fecha de Pago"%></td>
+            <td>: <%= invoice.collection_select :due, Invoice.due_dates, :value, :text %></td>
+          </tr>
+        </tbody>
+      </table>
+      <%= invoice.hidden_field :customer_id, :value => @customer.id  %>
+    </div>
+  </fieldset>
+</div>
