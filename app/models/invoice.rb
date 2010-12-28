@@ -30,6 +30,10 @@ class Invoice < ActiveRecord::Base
       find(:all, :conditions => ['number = ?', "#{search}"])
     end
   end
+  
+  def self.find_draft
+    self.find(:all, :conditions => ['status_id = 1'])
+  end
 
   def self.find_due
     self.find(:all, :conditions => ['status_id = 2 and due < ?', Date.today])
@@ -41,6 +45,30 @@ class Invoice < ActiveRecord::Base
 
   def self.find_close
     self.find(:all, :conditions => ['status_id = 3 and close_date > ?', 1.month.ago ])
+  end
+  
+  def self.draft_total
+    sum = 0
+    sum = self.find_draft.sum(&:total) unless self.find_draft.size < 1
+    sum
+  end
+  
+  def self.open_total
+    sum = 0
+    sum = self.find_open.sum(&:total) unless self.find_open.size < 1
+    sum
+  end
+  
+  def self.close_total
+    sum = 0
+    sum = self.find_close.sum(&:total) unless self.find_close.size < 1
+    sum
+  end
+  
+  def self.due_total
+    sum = 0
+    sum = self.find_due.sum(&:total) unless self.find_due.size < 1
+    sum
   end
 
   def due_days

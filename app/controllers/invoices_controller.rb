@@ -52,7 +52,7 @@ class InvoicesController < ApplicationController
       @invoices = Invoice.find(:first)
 
       # borrador
-      @invoices_draft = Invoice.find(:all, :conditions => "status_id = 1")
+      @invoices_draft = Invoice.find_draft
 
       # abiertas
       @invoices_open = Invoice.find_open
