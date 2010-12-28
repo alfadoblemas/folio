@@ -1,7 +1,0 @@
-<tr class="fields">
-  <td><%= invoice_item.quantity %> </td>
-  <td><%= invoice_item.product.name %> </td>
-  <td><%= invoice_item.description %> </td>
-  <td><%= number_to_currency(invoice_item.price, :unit => "$ ", :delimiter => ".", :precision => 0) %> </td>
-  <td class="item-total"><%= number_to_currency(invoice_item.total, :unit => "$", :delimiter => ".", :precision => 0) %> </td>
-</tr>
