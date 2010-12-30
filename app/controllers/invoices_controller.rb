@@ -14,12 +14,12 @@ class InvoicesController < ApplicationController
         due_date = @invoice.date.to_date.advance(:days => due_days)
         @invoice.update_attribute(:due, due_date)
         @history.save
-        flash[:ice] = "Factura activada."
+        flash[:notice] = "Factura activada."
         format.html { redirect_to(invoice_path(@invoice)) }
       else
         @customer = Customer.find(@invoice.customer_id)
         @invoice.status_id = 2
-        flash.now[:ice] = "La factura debe tener un número"
+        flash.now[:notice] = "La factura debe tener un número"
         format.html { render :action => "edit" }
       end
     end
@@ -36,7 +36,7 @@ class InvoicesController < ApplicationController
       if @invoice.update_attribute(:status_id, 3)
         @invoice.update_attribute(:close_date, Date.today)
         @history.save
-        flash[:ice] = "Factura pagada"
+        flash[:notice] = "Factura pagada"
         format.html { redirect_to(invoice_path(@invoice)) }
       end
     end
@@ -103,7 +103,7 @@ class InvoicesController < ApplicationController
     
     respond_to do |format|
       if @invoice.save
-        flash[:ice] = "Factura creada correctamente."
+        flash[:notice] = "Factura creada correctamente."
         format.html { redirect_to(@invoice)}
       else
         @customer = @customer.nil? ? Customer.new : @customer
@@ -129,7 +129,7 @@ class InvoicesController < ApplicationController
     @invoice.destroy
 
     respond_to do |format|
-      flash[:ice] = "Factura #{@invoice.number} eliminada"
+      flash[:notice] = "Factura #{@invoice.number} eliminada"
       format.html { redirect_to(invoices_path) }
       format.xml  { head :ok }
     end

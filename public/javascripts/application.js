@@ -122,6 +122,18 @@ function display_add_comment() {
 }
 
 $().ready(function() {
+	
+	if($("input#customer_name").val() == ""){
+		$("input#customer_name").val("Escriba el nombre...");
+		var disable_input = true;
+		$("input#customer_name").focus(function(){
+			if(disable_input){
+		  		$("input#customer_name").val("")
+				disable_input = false;
+			}
+		});
+	}
+	
     $("input#customer_name").autocomplete("/customers/search.json",{
         dataType: "json",
         parse: function(data) {
