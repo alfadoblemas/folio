@@ -30,7 +30,17 @@
 
 <% else %>
   <% if @invoices.nil? %>
-    <p>No tiene facturas</p>
+    <div class="empty last">
+	
+	  	<h3>Aún no ha creado facturas.</h3>
+	<p>
+	Con Folio es más fácil facturar a sus clientes. Si comenzó su proyecto con una cotización, puede fácilmente convertirla a una factura, y también puede crearlas desde cero. Luego puede agregar notas, comentarios y recibir pagos, todo desde un sólo lugar!
+</p>
+
+	  <div id="newCustomer" class="new">
+	    <%= link_to "Nueva Factura", new_invoice_path %>	
+	  </div>
+	</div>
   <% else %>
     <!-- Arreglo con tipos de facturas -->
     <% invoices_type = [["draft", "Borrador"], ["due", "Vencidas"], ["open", "Activas"], ["close", "Pagadas este mes"]] %>

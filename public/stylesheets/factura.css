@@ -528,3 +528,27 @@ ul.pagination li:before {
 .right {
     text-align: right;
 }
+
+.empty {
+	background-color: #B2E3F6;
+	border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-color: #FFF;
+	border-size: 1px;
+	text-align: left;
+	margin-top: 20px;
+	padding: 10px 0 10px 10px;
+	font-size: 13px;
+}
+
+.empty h3 {
+	color: #004F87;
+}
+
+.empty .new {
+  margin: 0 auto 0 auto;
+}
+
+
+
+

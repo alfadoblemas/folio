@@ -23,7 +23,18 @@
 
 <% else %>
 
-  <h3>Aun no crea clientes, si quiere puede <%= link_to "agregar uno ahora", new_customer_path %></h3>
+  	<div class="empty last">
+	
+	  	<h3>Aún no ha registrado clientes.</h3>
+		<p>
+	  	  Aquí es donde agrega clientes. Registre una empresa y agregue contactos a ella.
+		  No podrá facturar o enviar cotizaciones sino tiene clientes, así que vamos a crear algunos ya!
+		</p>
+
+	  <div id="newCustomer" class="new">
+	    <%= link_to "Nuevo Cliente", new_customer_path %>	
+	  </div>
+	</div>
 
 
 <% end %>
