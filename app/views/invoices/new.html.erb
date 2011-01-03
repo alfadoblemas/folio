@@ -1,7 +1,7 @@
 <h2>Nueva Factura</h2>
 
 <% form_for @invoice do |f| %>
-  <%= f.error_messages :class => "notice" %>
+  <%= f.error_messages :class => "error" %>
 
   <%= render :partial => "invoice_fields", :locals => {:invoice => f} %>
 
@@ -27,24 +27,26 @@
   </table>
   <hr/>
   <div>
-    <!--<span class="addLink"><%= link_to_add_fields "Agregar línea", f, :invoice_items %></span>-->
-  </div>
+	<!--
+    <span class="addLink"><%= link_to_add_fields "Agregar línea", f, :invoice_items %></span>
+ 	-->
+ </div>
 
   <div class="prepend-13 last">
     <table class="totals">
       <tr>
         <td class="netLabel">Neto</td>
-        <td><div class="readonly"><%= f.text_field :net, :value => "$ 0",
+        <td><div class="readonly"><%= f.text_field :net,
               :size => 9, :readonly => "readonly", :class => "netPrice"  %> </div> </td>
       </tr>
       <tr>
         <td class="taxLabel">IVA</td>
         <td class="readonly"><%= f.text_field :tax,
-            :value => "$ 0", :size => 9, :class => "taxPrice" %></td>
+            :size => 9, :class => "taxPrice" %></td>
       </tr>
       <tr>
         <td class="totalLabel">Total</td>
-        <td class="readonly"><%= f.text_field :total, :value => "$ 0",
+        <td class="readonly"><%= f.text_field :total,
             :size => 9, :readonly => "readonly", :class => "totalPrice"  %> </td>
       </tr>
     </table>

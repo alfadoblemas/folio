@@ -51,17 +51,11 @@ class InvoicesController < ApplicationController
       # vermos si hay facturas
       @invoices = Invoice.find(:first)
 
-      # borrador
-      @invoices_draft = Invoice.find_draft
-
-      # abiertas
-      @invoices_open = Invoice.find_open
-
-      # TODO: Hay que hacer que el modulo devuelva las facturas
-      @invoices_due = Invoice.find_due
-
-      # pagadas
-      @invoices_close = Invoice.find_close
+      invoice_kinds = Invoice.kinds.map {|v| v[:kind] }
+      invoice_kinds.each do |kind|
+        result = Invoice.method("find_#{kind}")
+        instance_variable_set("@invoices_#{kind}", result.call(params[:sort],params[:direction]))
+      end
     end
     
   end

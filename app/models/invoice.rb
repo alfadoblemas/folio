@@ -30,50 +30,64 @@ class Invoice < ActiveRecord::Base
       find(:all, :conditions => ['number = ?', "#{search}"])
     end
   end
-  
-  def self.find_draft
-    self.find(:all, :conditions => ['status_id = 1'])
+
+
+  # Arreglo con Tipos de Facturas
+  @kinds = [
+    {:kind => "draft", :condition => "status_id = 1"},
+    {:kind => "due", :condition => ["status_id = 2 and due < ?", Date.today] },
+    {:kind => "open", :condition => ["status_id = 2 and due >= ?", Date.today] },
+    {:kind => "close", :condition => "status_id = 3 and close_date > #{1.month.ago.to_date}"}
+  ]
+
+  # Busqueda de Facturas x tipo
+  # para popular #index
+  # con metaprograming definimos las funciones find_due, find_open, etc
+  # El Codigo pa Lindo!!!
+  @kinds.each do |v|
+    method_name = ("find_#{v[:kind]}").to_sym
+    self.class.send(:define_method, method_name) do |*optional|
+      unless optional.first.blank? && optional.second.blank?
+        sort = optional.first
+        direction = optional.second
+        self.find(:all, :conditions => v[:condition], :order => ["#{sort} #{direction}"] )
+      else
+        self.find(:all, :conditions => v[:condition] )
+      end
+    end
   end
 
-  def self.find_due
-    self.find(:all, :conditions => ['status_id = 2 and due < ?', Date.today])
+  def customer_name
+    self.customer.name
   end
 
-  def self.find_open
-    self.find(:all, :conditions => ['status_id = 2 and due >= ?', Date.today])
-  end
-
-  def self.find_close
-    self.find(:all, :conditions => ['status_id = 3 and close_date > ?', 1.month.ago ])
-  end
-  
   def self.draft_total
     sum = 0
     sum = self.find_draft.sum(&:total) unless self.find_draft.size < 1
     sum
   end
-  
+
   def self.open_total
     sum = 0
     sum = self.find_open.sum(&:total) unless self.find_open.size < 1
     sum
   end
-  
+
   def self.close_total
     sum = 0
     sum = self.find_close.sum(&:total) unless self.find_close.size < 1
     sum
   end
-  
+
   def self.due_total
     sum = 0
     sum = self.find_due.sum(&:total) unless self.find_due.size < 1
     sum
   end
 
-def method_name
-  
-end
+  def method_name
+
+  end
 
   def due_days
     today = Time.now
@@ -88,6 +102,10 @@ end
     dates << Duedate.new(120, "120 días")
     dates << Duedate.new(0, "Contado")
     dates
+  end
+  
+  def self.kinds
+    @kinds
   end
 
 end

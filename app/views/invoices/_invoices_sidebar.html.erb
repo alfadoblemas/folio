@@ -43,7 +43,9 @@
 
           <ul class="toolbox secondary">
             <li id="send_invoice"><%= link_to "<strong>Enviar</strong> factura" %></li>
-            <li id="edit_invoice"><%= link_to "<strong>Editar</strong> factura", edit_invoice_path(@invoice) %></li>
+			<% unless @invoice.status_id == 3 %>
+            	<li id="edit_invoice"><%= link_to "<strong>Editar</strong> factura",	edit_invoice_path(@invoice) %></li>
+			<% end%>
             <li id="print_invoice"><%= link_to "<strong>Imprimir</strong> factura" %></li>
             <% if @invoice.status_id == 1 %>
               <li id="convert_invoice"><%= link_to "<strong>Activar</strong> factura", active_invoice_path(@invoice) %></li>

@@ -2,7 +2,7 @@
 <div>
   <h3>Facturas</h3>
   <% if @customer.invoices.size < 1 %>
-    <div class="error">
+    <div class="empty">
       Cliente no tiene facturas
     </div>
   <% else %>

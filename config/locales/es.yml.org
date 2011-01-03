@@ -1,0 +1,68 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+es:
+  date:
+    month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto,
+    Septiembre, Octubre, Noviembre, Diciembre]
+    abbr_month_names: [~, Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic]
+
+    formats:
+      short: "%b %d, %Y"
+
+  time:
+    formats:
+      short: "%b %d, %Y" 
+  
+  number:
+    currency:
+      format:
+        unit: "$"
+        precision: 0
+        separator: ","
+        delimiter: "."
+        format: "%u&nbsp;%n"
+
+  activerecord:
+    errors:
+      format: "%{attribute} %{message}"
+      template:
+        body: "Hay problemas con los siguientes campos:"
+        header:
+          one: "1 error ha impedido que este %{model} se guarde"
+          other: "%{count} errores han impedido que este %{model} se guarde"
+      
+      format: "%{attribute} %{message}"
+    
+      messages:
+        taken: " ya existe."
+        blank: " debe tener un valor."
+        too_short: " no tiene todos los dígitos."
+        greater_than: " es menor a lo requerido."
+
+    models:
+      customer: "cliente"
+      invoice: "factura"
+      contact: "contacto"
+      
+
+    attributes:
+      customer:
+        rut: "El campo RUT"
+        name: "El nombre del cliente"
+        address: "El campo dirección"
+        city: "El campo ciudad"
+
+      contact:
+        first_name: "El nombre del contacto"
+        last_name: "El apellido del contacto"
+        email: "El campo email"
+
+      invoice:
+        customer_id: "El campo cliente"
+        net: "El monto neto"
+        total: "El total"
+
+      invoice_item:
+        quantity: "Cantidad"
+

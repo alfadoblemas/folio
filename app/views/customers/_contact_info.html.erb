@@ -1,6 +1,6 @@
 <td>
   <strong><%= contact.name %></strong><br/>
-  <%= mail_to contact.email %><br/>
+  <%= mail_to contact.email.downcase %><br/>
   <% unless contact.phone.empty? %>
     T: <%= number_to_phone(contact.phone)  %><br/>
   <% end %>

@@ -1,6 +1,6 @@
 <tr class="fields">
-  <!--<td class="deleteLink" ><%= link_to_remove_fields "remove", f %></td>-->
-  <td></td>
+  <!--<td class="deleteLink" ><%= link_to_remove_fields "remove", f %>-->
+	<td></td>
   <td><%= f.collection_select(:product_id, Product.all, :id, :name) %> </td>
   <td><%= f.text_field :quantity, :size => 4, :onchange => "itemQuantityChanged(this)",
       :class => "item-quantity"%></td>

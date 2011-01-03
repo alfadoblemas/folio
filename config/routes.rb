@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
 
 
   map.resources :customers, :has_many => [:contacts, :invoices]
-  map.resources :contacts
+  map.resources :contacts, :except => [:index]
   map.resources :invoices, :has_many => [:histories]
   map.resources :histories
   map.resources :users

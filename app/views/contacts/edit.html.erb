@@ -1,7 +1,7 @@
 <h2>Editar contacto de <%= @customer.name %> </h2>
 
 <% form_for(@contact) do |f| %>
-  <%= f.error_messages %>
+  <%= f.error_messages :class => "notice" %>
 
  <%= render :partial => "new_contact", :locals => {:contact => f} %>
 

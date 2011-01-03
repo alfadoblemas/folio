@@ -1,13 +1,13 @@
 <tr>
-  <th class="qtyHeader">Número</th>
-  <th class="unitHeader">Fecha</th>
+  <th class="qtyHeader"><%= sortable "number", "Número"%></th>
+  <th class="unitHeader"><%= sortable "date", "Fecha" %></th>
   <th class="descriptionHeader">Cliente</th>
   <% if state == "due" %>
-    <th class="priceHeader">Atrasada</th>
+    <th class="priceHeader"><%= sortable "due", "Atrasada" %></th>
   <% elsif state == "close" %>
     <th class="priceHeader">Pagada</th>
   <% else %>
-    <th class="priceHeader">Vence</th>
+    <th class="priceHeader"><%= sortable "due", "Vence" %></th>
   <% end %>
   <th class="totalHeader">Total</th>
 </tr>

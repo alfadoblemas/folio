@@ -12,7 +12,8 @@ class Customer < ActiveRecord::Base
 # Validations
   validates_presence_of :name, :rut, :address, :city
   validates_uniqueness_of :rut
-  
+  validates_format_of :phone, :with => /^[\(\)0-9\- \+\.]{6,20}$/, :if => Proc.new {|customer| !customer.phone.blank?}
+  validates_format_of :fax, :with => /^[\(\)0-9\- \+\.]{6,20}$/, :if => Proc.new {|customer| !customer.fax.blank?}
 
 # Extras
   accepts_nested_attributes_for :contacts

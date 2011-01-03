@@ -69,5 +69,16 @@ class CustomersController < ApplicationController
 
     end
   end
+  
+  def destroy
+    @customer = Customer.find(params[:id])
+    @customer.destroy
+
+    respond_to do |format|
+      flash[:notice] = "Cliente #{@customer.name} eliminado"
+      format.html { redirect_to(customers_path) }
+      format.xml  { head :ok }
+    end
+  end
 
 end

@@ -60,6 +60,7 @@ class ContactsController < ApplicationController
   # PUT /contacts/1.xml
   def update
     @contact = Contact.find(params[:id])
+    @customer = Customer.find(@contact.customer_id)
 
     respond_to do |format|
       if @contact.update_attributes(params[:contact])
