@@ -3,25 +3,25 @@
     <tbody>
       <tr>
         <td><span class="required"><%= label_tag "Nombre"  %></span></td>
-        <td>: <%= contact.text_field :first_name  %> </td>
+        <td><%= contact.text_field :first_name, :class => "input_large"  %> </td>
       </tr>
       <tr>
         <td><span class="required"><%= label_tag "Apellido"  %></span></td>
-        <td>: <%= contact.text_field :last_name  %> </td>
+        <td><%= contact.text_field :last_name, :class => "input_large"  %> </td>
       </tr>
       <tr>
         <td><span class="required"><%= label_tag "E-Mail"%></span></td>
-        <td>: <%= contact.text_field :email  %> </td>
+        <td><%= contact.text_field :email, :class => "input_large"  %> </td>
       </tr>
       <tr>
         <td><%= label_tag "Teléfono"  %></td>
-        <td>: <%= contact.text_field :phone  %> </td>
+        <td><%= contact.text_field :phone, :class => "input_large"  %> </td>
       </tr>
       <tr>
         <td><%= label_tag "Celular"  %></td>
-        <td>: <%= contact.text_field :mobile  %> </td>
+        <td><%= contact.text_field :mobile, :class => "input_large"  %> </td>
       </tr>
     </tbody>
   </table>
-  <div  style="text-align: right; font-style: italic"><span class="required">Campo obligatorio</span></div>
+  <div  style="text-align: right; font-style: italic;"><span class="required">Campo obligatorio</span></div>
 </fieldset>

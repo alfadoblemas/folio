@@ -22,6 +22,10 @@ textarea {
   resize: none;
 }
 
+input {
+	padding: 5px;
+}
+
 /* Header Style */
 
 #header {
@@ -587,4 +591,13 @@ ul.pagination li:before {
 
 .totalHeader {
   width: 100px;
+}
+
+.input_large {
+	size: 16px;
+	width: 250px;
+}
+
+fieldset {
+	background: #EEEEEE;
 }
