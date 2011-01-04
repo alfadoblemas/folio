@@ -134,6 +134,17 @@ $().ready(function() {
 		});
 	}
 	
+	if($("input#search").val() == ""){
+		$("input#search").val("Número de factura...");
+		var disable_input = true;
+		$("input#search").focus(function(){
+			if(disable_input){
+		  		$("input#search").val("")
+				disable_input = false;
+			}
+		});
+	}
+	
     $("input#customer_name_invoice").autocomplete("/customers/search.json",{
         dataType: "json",
         parse: function(data) {

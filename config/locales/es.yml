@@ -306,7 +306,7 @@
         customer_id: "El campo cliente"
         net: "El monto neto"
         total: "El total"
-        subject: "El campo título"
+        subject: "El campo asunto"
 
       invoice_item:
         quantity: "Cantidad"

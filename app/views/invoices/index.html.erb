@@ -13,7 +13,7 @@
 <% if params[:search] && !params[:search].blank? %>
   <div class="span-19 last prepend-top">
     <% if @invoices.size < 1 %>
-      <h3>No se encontraron resultados</h3>
+      <h3>No se encontraron resultados. <%= link_to " Volver...", invoices_path() %></h3>
     <% else %>
       <h3>Resultados</h3>
 
