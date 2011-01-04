@@ -574,11 +574,15 @@ ul.pagination li:before {
 }
 
 .descriptionHeader {
-  width: 200px;
+  width: 130px;
+}
+
+.titleHeader {
+	width: 150px;
 }
 
 .qtyHeader {
-  width: 100px;
+  width: 60px;
 }
 
 .unitHeader {
@@ -600,4 +604,9 @@ ul.pagination li:before {
 
 fieldset {
 	background: #EEEEEE;
+}
+
+.invoice_title {
+	margin-top: -10px;
+	margin-bottom: 20px;
 }

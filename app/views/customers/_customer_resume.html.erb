@@ -1,7 +1,7 @@
 <div class="customer span-19 last">
   <div class="customerHeader span-19">
     <% if params[:action].eql?("index") %>
-      <div class="customerName span-18 last"><h3><%= link_to "#{customer.name}", customer %></h3></div>
+      <div class="customerName span-9 last"><h3><%= link_to "#{customer.name}", customer %></h3></div>
     <% elsif params[:action].eql?("show") %>
       <div class="customerName span-18 last"><h2><%= customer.name %></h2></div>
     <% end %>
@@ -10,8 +10,6 @@
         <%= link_to "Editar", edit_customer_path(customer) %> </span>
       <span class="addLink">
         <%= link_to "Nuevo Contacto", new_customer_contact_path(customer) %> </span>
-      <span class="viewLink">
-        <%= link_to "Facturas", customer_invoices_path(customer) %> </span>
       <span class="newLink">
         <%= link_to "Nueva Factura", new_customer_invoice_path(customer) %> </span>
     </div>

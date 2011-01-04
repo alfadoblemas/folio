@@ -14,6 +14,10 @@
 
          </td>
        </tr>
+	   <tr>
+         <td><span class="required"><%= invoice.label "Título" %></span></td>
+         <td class="date"><%= invoice.text_field :subject, :class => "input_large" %></td>
+       </tr>
        <tr>
          <td><span class="required"><%= invoice.label "Fecha" %></span></td>
          <td class="date"><%= invoice.date_select :date , :order => [:day, :month, :year] %></td>

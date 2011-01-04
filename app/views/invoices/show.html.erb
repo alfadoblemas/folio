@@ -1,4 +1,7 @@
 <h2>Factura <%= @invoice.number %> </h2>
+<div class="span-8 last">
+  <h3 class="invoice_title"><%= @invoice.subject %></h3>
+</div>
 <div class="span-19 last">
 
   <div class="span-8 customer_info">
@@ -20,9 +23,9 @@
   </div>
   <div class="invoice_info last">
 
-    <%= l  @invoice.date, :format => :short %><br/>
+    <%= l  @invoice.date, :format => :long %><br/>
     <%  unless @invoice.due.nil? %> <br/>
-      Vencimiento <%= l @invoice.due, :format => :short %>
+      Vence <%= l @invoice.due, :format => :long %>
     <% end %>
 
   </div>

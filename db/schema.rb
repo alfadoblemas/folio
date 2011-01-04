@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101224213709) do
+ActiveRecord::Schema.define(:version => 20110104140021) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(:version => 20101224213709) do
     t.integer  "currency_id"
     t.date     "date"
     t.date     "close_date"
+    t.string   "subject"
   end
 
   add_index "invoices", ["company_id"], :name => "invoices_company_index"
@@ -113,6 +114,17 @@ ActiveRecord::Schema.define(:version => 20101224213709) do
 
   create_table "statuses", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "username"
+    t.string   "email"
+    t.string   "crypted_password"
+    t.string   "password_salt"
+    t.string   "pesistence_token"
+    t.integer  "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -13,7 +13,7 @@ class Invoice < ActiveRecord::Base
   accepts_nested_attributes_for :histories, :allow_destroy => true
 
   # Validations
-  validates_presence_of :net, :tax, :total, :customer_id
+  validates_presence_of :net, :tax, :total, :customer_id, :subject
 
   validates_numericality_of :tax, :only_integer => true
   #validates_numericality_of :number, :only_integer => true

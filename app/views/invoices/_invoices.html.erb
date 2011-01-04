@@ -2,11 +2,21 @@
   <% if params[:controller] == "customers" %>
     <td><%= invoice.status.name unless invoice.status.nil? %></td>
   <% end %>
-  <td><%= invoice.number.nil? ? "Sin número" : invoice.number  %> </td>
+  <td><%= invoice.number.nil? ? "S/N" : invoice.number  %> </td>
   <td><%= l invoice.date, :format => :short %> </td>
   <% unless params[:controller] == "customers" %>
-    <td><%= invoice.customer.name %> </td>
+    <% if invoice.customer.name.size > 25 %>
+      <td title="<%= invoice.customer.name %>"><%= invoice.customer.name[0,24]+"..."  %></td>
+    <% else %>
+	  <td><%= invoice.customer.name %></td>
+	<% end %>
   <% end %>
+    <% subject = invoice.subject.nil? ? "" : invoice.subject %>
+	<% if subject.size > 25 %>
+    <td title="<%= subject %>"><%= subject[0,23]+"..."  %></td>
+  <% else %>
+	  <td><%= subject %></td>
+	<% end %>
 
   <% #state |= nil unless !state.nil? %>
   <% if(defined? state) then %>

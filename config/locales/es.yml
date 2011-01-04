@@ -231,7 +231,7 @@
       # When no format has been given, it uses default.
       # You can provide other formats here if you like!
       default: "%d/%m/%Y"
-      short: "%d de %b, %Y"
+      short: "%d/%b/%Y"
       long: "%d de %B de %Y"
 
     day_names: [Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado]
@@ -306,6 +306,7 @@
         customer_id: "El campo cliente"
         net: "El monto neto"
         total: "El total"
+        subject: "El campo título"
 
       invoice_item:
         quantity: "Cantidad"
