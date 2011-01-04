@@ -121,6 +121,11 @@ function display_add_comment() {
     $("#add_comment").show("slow");
 }
 
+function display_add_customer_details() {
+	$("#add_customer_details_link").hide();
+    $("#customer_optional").show("slow");
+}
+
 $().ready(function() {
 	
 	if($("input#customer_name_invoice").val() == ""){

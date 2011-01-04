@@ -610,3 +610,8 @@ fieldset {
 	margin-top: -10px;
 	margin-bottom: 20px;
 }
+
+#customer_optional {
+	display: none;
+	margin-top: -15px;
+}
