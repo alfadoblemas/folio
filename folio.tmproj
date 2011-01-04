@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/views/invoices/new.html.erb</string>
+	<string>public/stylesheets/factura.css</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,24 +21,69 @@
 	<integer>114</integer>
 	<key>metaData</key>
 	<dict>
-		<key>app/views/invoices/new.html.erb</key>
+		<key>app/controllers/customers_controller.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>94</integer>
+				<integer>3</integer>
 				<key>line</key>
-				<integer>29</integer>
+				<integer>83</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>1</integer>
+			<integer>9</integer>
+		</dict>
+		<key>app/models/customer.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>5</integer>
+				<key>line</key>
+				<integer>24</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>app/views/customers/_customer_resume.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>96</integer>
+				<key>line</key>
+				<integer>3</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>15</integer>
+		</dict>
+		<key>public/stylesheets/factura.css</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>19</integer>
+				<key>line</key>
+				<integer>5</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>app/views/invoices/new.html.erb</string>
+		<string>app/models/customer.rb</string>
+		<string>public/stylesheets/factura.css</string>
+		<string>app/controllers/customers_controller.rb</string>
+		<string>app/views/customers/_customer_resume.html.erb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
