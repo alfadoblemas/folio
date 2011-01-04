@@ -307,6 +307,7 @@
         net: "El monto neto"
         total: "El total"
         subject: "El campo asunto"
+        number: "El número de factura"
 
       invoice_item:
         quantity: "Cantidad"

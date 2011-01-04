@@ -14,6 +14,7 @@ class Invoice < ActiveRecord::Base
 
   # Validations
   validates_presence_of :net, :tax, :total, :customer_id, :subject
+  validates_uniqueness_of :number
 
   validates_numericality_of :tax, :only_integer => true
   #validates_numericality_of :number, :only_integer => true
