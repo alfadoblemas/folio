@@ -5,7 +5,7 @@ class InvoicesController < ApplicationController
     due_days = ((@invoice.due.to_time - @invoice.date.to_time)/3600/24).to_i
 
     @history = History.new(:subject => "Activación", :comment => "Factura activada",
-      :invoice_id => @invoice.id)
+                           :invoice_id => @invoice.id)
 
     respond_to do |format|
       if @invoice.number
@@ -30,7 +30,7 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.find(params[:id])
 
     @history = History.new(:subject => "Pagada", :comment => "Factura pagada",
-      :invoice_id => @invoice.id)
+                           :invoice_id => @invoice.id)
 
     respond_to do |format|
       if @invoice.update_attribute(:status_id, 3)
@@ -57,19 +57,37 @@ class InvoicesController < ApplicationController
         instance_variable_set("@invoices_#{kind}", result.call(params[:sort],params[:direction]))
       end
     end
-    
+
   end
 
   def new
-    @invoice = Invoice.new
-    @invoice.invoice_items.build
+
+    if params[:id] && params[:duplicate]
+      @invoice_new = Invoice.find(params[:id])
+      @invoice_new.date = Date.today
+      @invoice_new.number = ""
+      @invoice_new.status_id = 1
+      @invoice = @invoice_new.clone()
+
+      @invoice_new.invoice_items.each_with_index do |line, index|
+        @invoice.invoice_items[index]=line.clone()
+      end
+
+    else
+      @invoice = Invoice.new
+      @invoice.invoice_items.build
+    end
+
     @products = Product.find(:all).map { |product| [product.name, product.id.to_i] }
-    if !params[:customer_id].nil?
+
+    if @invoice.customer_id
+      @customer = Customer.find(@invoice.customer_id)
+    elsif !params[:customer_id].nil?
       @customer = Customer.find(params[:customer_id])
     else
       @customer = Customer.new
     end
-    @product_selected = [1]
+
   end
 
 
@@ -86,7 +104,6 @@ class InvoicesController < ApplicationController
     @products = Product.find(:all).map { |product| [product.name, product.id.to_i] }
 
     @invoice.due = @invoice.date.to_date.advance(:days => due_date)
-    
 
     params[:invoice][:invoice_items_attributes].each_key do |key|
       unless params[:invoice][:invoice_items_attributes][key].blank?
@@ -94,7 +111,6 @@ class InvoicesController < ApplicationController
       end
     end
 
-    
     respond_to do |format|
       if @invoice.save
         flash[:notice] = "Factura creada correctamente."
@@ -132,7 +148,7 @@ class InvoicesController < ApplicationController
   def update
     unformat_prices(params)
     due_date = params[:invoice][:due].to_i
-    
+
     @invoice = Invoice.find(params[:id])
 
     if @invoice.status_id == 2
@@ -142,7 +158,7 @@ class InvoicesController < ApplicationController
     @customer = Customer.find(@invoice.customer_id)
 
     respond_to do |format|
-      if @invoice.update_attributes(params[:invoice]) 
+      if @invoice.update_attributes(params[:invoice])
         due_date = @invoice.date.to_date.advance(:days => due_date)
         @invoice.update_attribute(:due, due_date)
         format.html { redirect_to(invoice_path(@invoice), :ice => 'Factura actualizada.') }
@@ -155,27 +171,27 @@ class InvoicesController < ApplicationController
   end
 
   protected
-  def currency_to_number(price)
-    price.scan(/\d+/).join.to_i
-  end
-
-  def unformat_prices(params)
-    params[:invoice][:tax] = currency_to_number(params[:invoice][:tax])
-    params[:invoice][:total] = currency_to_number(params[:invoice][:total])
-    params[:invoice][:net] = currency_to_number(params[:invoice][:net])
-
-    params[:invoice][:invoice_items_attributes].each_key do |key|
-      params[:invoice][:invoice_items_attributes][key][:price] = currency_to_number(params[:invoice][:invoice_items_attributes][key][:price])
-      params[:invoice][:invoice_items_attributes][key][:total] = currency_to_number(params[:invoice][:invoice_items_attributes][key][:total])
-      params[:invoice][:invoice_items_attributes][key][:product_id] = params[:invoice][:invoice_items_attributes][key][:product_id].to_i
+    def currency_to_number(price)
+      price.scan(/\d+/).join.to_i
     end
-    params
-  end
+
+    def unformat_prices(params)
+      params[:invoice][:tax] = currency_to_number(params[:invoice][:tax])
+      params[:invoice][:total] = currency_to_number(params[:invoice][:total])
+      params[:invoice][:net] = currency_to_number(params[:invoice][:net])
+
+      params[:invoice][:invoice_items_attributes].each_key do |key|
+        params[:invoice][:invoice_items_attributes][key][:price] = currency_to_number(params[:invoice][:invoice_items_attributes][key][:price])
+        params[:invoice][:invoice_items_attributes][key][:total] = currency_to_number(params[:invoice][:invoice_items_attributes][key][:total])
+        params[:invoice][:invoice_items_attributes][key][:product_id] = params[:invoice][:invoice_items_attributes][key][:product_id].to_i
+      end
+      params
+    end
 
 
-  def get_customer_info(params)
-    
-  end
+    def get_customer_info(params)
+
+    end
 
 
 end

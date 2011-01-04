@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>public/stylesheets/factura.css</string>
+	<string>app/controllers/invoices_controller.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,56 +21,42 @@
 	<integer>114</integer>
 	<key>metaData</key>
 	<dict>
-		<key>app/controllers/customers_controller.rb</key>
+		<key>app/controllers/invoices_controller.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>3</integer>
+				<integer>6</integer>
 				<key>line</key>
-				<integer>83</integer>
+				<integer>66</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>9</integer>
+			<integer>51</integer>
 		</dict>
-		<key>app/models/customer.rb</key>
+		<key>app/views/invoices/_invoices.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>5</integer>
+				<integer>77</integer>
 				<key>line</key>
-				<integer>24</integer>
+				<integer>8</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>app/views/customers/_customer_resume.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>96</integer>
-				<key>line</key>
-				<integer>3</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>15</integer>
-		</dict>
-		<key>public/stylesheets/factura.css</key>
+		<key>app/views/invoices/show.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>19</integer>
 				<key>line</key>
-				<integer>5</integer>
+				<integer>1</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -80,14 +66,13 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>app/models/customer.rb</string>
-		<string>public/stylesheets/factura.css</string>
-		<string>app/controllers/customers_controller.rb</string>
-		<string>app/views/customers/_customer_resume.html.erb</string>
+		<string>app/views/invoices/show.html.erb</string>
+		<string>app/views/invoices/_invoices.html.erb</string>
+		<string>app/controllers/invoices_controller.rb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{425, 98}, {739, 666}}</string>
+	<string>{{-172, 915}, {753, 959}}</string>
 </dict>
 </plist>

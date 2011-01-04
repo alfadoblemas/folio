@@ -50,7 +50,7 @@
             <% if @invoice.status_id == 1 %>
               <li id="convert_invoice"><%= link_to "<strong>Activar</strong> factura", active_invoice_path(@invoice) %></li>
             <% end %>
-            <li id="duplicate_invoice"><%= link_to "<strong>Duplicar</strong> Factura" %></li>
+            <li id="duplicate_invoice"><%= link_to "<strong>Duplicar</strong> Factura", new_invoice_path(:id => @invoice.id, :duplicate => true) %></li>
             <% if @invoice.status_id == 2 %>
               <li id="receive_payment"><%= link_to "<strong>Recibir</strong> pago", close_invoice_path(@invoice) %></li>
             <% end %>

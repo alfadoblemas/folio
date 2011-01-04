@@ -23,11 +23,11 @@
          <td class="date"><%= invoice.date_select :date , :order => [:day, :month, :year] %></td>
        </tr>
        <tr>
-         <td><span class="required"><%= invoice.label "Número" %></span></td>
+         <td><span><%= invoice.label "Número" %></span></td>
          <td><%= invoice.text_field :number, :class => "input_large" %></td>
        </tr>
        <tr>
-         <td><span class="required"><%= labelUp_tag "I.V.A." %></span></td>
+         <td><span><%= labelUp_tag "I.V.A." %></span></td>
          <td><%= invoice.check_box :taxed, :onclick => "enableIVA()" %></td>
        </tr>
        <tr>
