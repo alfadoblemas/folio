@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => "invoices" 
   map.customer_search 'customers/search.:format', :controller => 'customers', :action => 'search'
   map.active_invoice 'invoices/active/:id', :controller => 'invoices', :action => 'active'
+  map.deactive_invoice 'invoices/deactive/:id', :controller => 'invoices', :action => 'deactive'
   map.close_invoice 'invoices/close/:id', :controller => 'invoices', :action => 'close'
 
 

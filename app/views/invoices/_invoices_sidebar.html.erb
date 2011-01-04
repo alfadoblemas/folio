@@ -49,6 +49,8 @@
             <li id="print_invoice"><%= link_to "<strong>Imprimir</strong> factura" %></li>
             <% if @invoice.status_id == 1 %>
               <li id="convert_invoice"><%= link_to "<strong>Activar</strong> factura", active_invoice_path(@invoice) %></li>
+			<% elsif @invoice.status_id == 2 %>
+			  <li id="convert_invoice"><%= link_to "<strong>Desactivar</strong> factura", deactive_invoice_path(@invoice) %></li>
             <% end %>
             <li id="duplicate_invoice"><%= link_to "<strong>Duplicar</strong> Factura", new_invoice_path(:id => @invoice.id, :duplicate => true) %></li>
             <% if @invoice.status_id == 2 %>

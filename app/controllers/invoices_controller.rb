@@ -2,26 +2,48 @@ class InvoicesController < ApplicationController
 
   def active
     @invoice = Invoice.find(params[:id])
-    due_days = ((@invoice.due.to_time - @invoice.date.to_time)/3600/24).to_i
+    unless @invoice.status_id == 2
+      due_days = ((@invoice.due.to_time - @invoice.date.to_time)/3600/24).to_i
 
-    @history = History.new(:subject => "Activación", :comment => "Factura activada",
+      @history = History.new(:subject => "Activación", :comment => "Factura activada",
+                             :invoice_id => @invoice.id)
+
+      respond_to do |format|
+        if @invoice.number
+          @invoice.update_attribute(:status_id, 2)
+          @invoice.update_attribute(:date, Date.today)
+          due_date = @invoice.date.to_date.advance(:days => due_days)
+          @invoice.update_attribute(:due, due_date)
+          @history.save
+          flash[:notice] = "Factura activada."
+          format.html { redirect_to(invoice_path(@invoice)) }
+        else
+          @customer = Customer.find(@invoice.customer_id)
+          @invoice.status_id = 2
+          flash.now[:notice] = "La factura debe tener un número"
+          format.html { render :action => "edit" }
+        end
+      end
+    else
+      respond_to do |format|
+        flash[:notice] = "La Factura ya está activa"
+        format.html { redirect_to(invoice_path(@invoice)) }
+      end 
+    end
+  end
+
+  def deactive
+    @invoice = Invoice.find(params[:id])
+    @history = History.new(:subject => "Borrador", :comment => "La factura cambio estado a borrador",
                            :invoice_id => @invoice.id)
 
     respond_to do |format|
-      if @invoice.number
-        @invoice.update_attribute(:status_id, 2)
-        @invoice.update_attribute(:date, Date.today)
-        due_date = @invoice.date.to_date.advance(:days => due_days)
-        @invoice.update_attribute(:due, due_date)
+      if @invoice.update_attribute(:status_id, 1)
         @history.save
-        flash[:notice] = "Factura activada."
-        format.html { redirect_to(invoice_path(@invoice)) }
-      else
-        @customer = Customer.find(@invoice.customer_id)
-        @invoice.status_id = 2
-        flash.now[:notice] = "La factura debe tener un número"
-        format.html { render :action => "edit" }
+        flash[:notice] = "Factura actualizada"
+        format.html { redirect_to(invoice_path(@invoice))}
       end
+
     end
   end
 
