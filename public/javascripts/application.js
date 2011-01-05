@@ -20,27 +20,41 @@ function add_fields(link, association, content) {
 
 function itemQuantityChanged(element){
 
-    var regexp = /\d+/;
-    id= element.id.match(regexp);
-    var currentPrice = $("#invoice_invoice_items_attributes_"+id+"_price").toNumber({
-        region: 'es-CL'
-    }).val();
-    var newPrice = currentPrice * element.value;
-    $("#invoice_invoice_items_attributes_"+id+"_total").val(newPrice);
-    updatePrices();
+    // var regexp = /\d+/;
+    //     id = element.id.match(regexp);
+    //     var currentPrice = $("#invoice_invoice_items_attributes_"+id+"_price").toNumber({
+    //         region: 'es-CL'
+    //     }).val();
+    //     var newPrice = currentPrice * element.value;
+    //     $("#invoice_invoice_items_attributes_"+id+"_total").val(newPrice);
+    //     updatePrices();
+     
+	var current_price = $(element).parent().next().next().children().toNumber({
+		region: 'es-CL'
+	}).val();
+	var new_price = current_price * $(element).val();
+	$(element).parent().next().next().next().children().val(new_price);
+	updatePrices();
+
 }
 
 function itemPriceChanged(element) {
 
-    var regexp = /\d+/;
-    id= element.id.match(regexp);
-    var current_quantity = $("#invoice_invoice_items_attributes_"+id+"_quantity").val();
-    var new_total = current_quantity * $(element).toNumber({
-        region: 'es-CL'
-    }).val();
-    $("#invoice_invoice_items_attributes_"+id+"_total").val(new_total);
+    // var regexp = /\d+/;
+    //    id= element.id.match(regexp);
+    //    var current_quantity = $("#invoice_invoice_items_attributes_"+id+"_quantity").val();
+    //    var new_total = current_quantity * $(element).toNumber({
+    //        region: 'es-CL'
+    //    }).val();
+    //    $("#invoice_invoice_items_attributes_"+id+"_total").val(new_total);
     
-    updatePrices()
+	var current_quantity = $(element).parent().prev().prev().children().val();
+	var new_total = current_quantity * $(element).toNumber({
+		region: 'es-CL'
+	}).val();
+	$(element).parent().next().children().val(new_total);
+    updatePrices();
+
 }
 
 function sumNetPrice() {
