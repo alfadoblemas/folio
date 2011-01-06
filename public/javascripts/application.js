@@ -2,10 +2,9 @@
 // This file is automatically included by javascript_include_tag :defaults
 function remove_fields(link) {
     $(link).prev("input[type=hidden]").val("1");
-    $(link).parent().siblings(".item-total").children().val(0);
+    $(link).parent().parent().find(".item-total").val(0);
     $(link).closest(".fields").hide();
-    sumNetPrice();
-    formatInvoicePrice();
+    updatePrices();
 }
 
 function add_fields(link, association, content) {
