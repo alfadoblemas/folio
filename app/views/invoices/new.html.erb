@@ -27,7 +27,8 @@
   </table>
   <hr/>
   <div>
-    <span class="addLink"><%= link_to_add_fields "Agregar línea", f, :invoice_items %></span>
+	<%= hidden_field_tag "invoice_items_index", @invoice.invoice_items.size %>
+    <span class="addLink"><%= link_to_add_fields "Agregar línea" ,f, :invoice_items %></span>
  </div>
 
   <div class="prepend-13 last">

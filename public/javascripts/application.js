@@ -8,25 +8,16 @@ function remove_fields(link) {
 }
 
 function add_fields(link, association, content) {
+	var index = parseInt($("#invoice_items_index").val());
+	var new_index = index + 1;
+	$("#invoice_items_index").val(new_index);
     var new_id = new Date().getTime();
-    var id = 0;
-    $(".item-total").children().each(id++);
-    var regexp = new RegExp(id+"_" + association, "g");
-    //$(link).parent().before.before(content.replace(regexp, new_id));
-    $('#newInvoiceItems').append(content)
+	var regexp = new RegExp("_replaceme_", "g");
+    $('#newInvoiceItems').append(content.replace(regexp, index));
 }
 
 
 function itemQuantityChanged(element){
-
-    // var regexp = /\d+/;
-    //     id = element.id.match(regexp);
-    //     var currentPrice = $("#invoice_invoice_items_attributes_"+id+"_price").toNumber({
-    //         region: 'es-CL'
-    //     }).val();
-    //     var newPrice = currentPrice * element.value;
-    //     $("#invoice_invoice_items_attributes_"+id+"_total").val(newPrice);
-    //     updatePrices();
      
 	var current_price = $(element).parent().next().next().children().toNumber({
 		region: 'es-CL'
@@ -38,14 +29,6 @@ function itemQuantityChanged(element){
 }
 
 function itemPriceChanged(element) {
-
-    // var regexp = /\d+/;
-    //    id= element.id.match(regexp);
-    //    var current_quantity = $("#invoice_invoice_items_attributes_"+id+"_quantity").val();
-    //    var new_total = current_quantity * $(element).toNumber({
-    //        region: 'es-CL'
-    //    }).val();
-    //    $("#invoice_invoice_items_attributes_"+id+"_total").val(new_total);
     
 	var current_quantity = $(element).parent().prev().prev().children().val();
 	var new_total = current_quantity * $(element).toNumber({
