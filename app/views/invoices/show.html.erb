@@ -50,30 +50,30 @@
 
   <hr/>
 
-  <div class="span-6 prepend-13 last">
+  <div class="span-14 last prepend-12">
 
-    <table class="totals">
+    <table class="totals" style="width: 50%;">
       <tr>
-        <td class="netLabel">Neto</td>
-        <td><div class="readonly netLabel"><%= number_to_currency(@invoice.net, :unit => "$",
+        <td class="netLabel label">Neto</td>
+        <td><div class="readonly title"><%= number_to_currency(@invoice.net, :unit => "$",
               :delimiter => ".", :precision => 0) %> </div> </td>
       </tr>
       <% unless @invoice.tax.nil? %>
         <tr>
-          <td class="taxLabel">IVA</td>
+          <td class="taxLabel title">IVA</td>
           <td class="readonly"><%= number_to_currency(@invoice.tax, :unit => "$",
               :delimiter => ".", :precision => 0) %></td>
         </tr>
       <% end %>
       <tr>
-        <td class="totalLabel">Total</td>
+        <td class="totalLabel tile">Total</td>
         <td class="readonly totalLabel"><%= number_to_currency(@invoice.total, :unit => "$",
             :delimiter => ".", :precision => 0) %> </td>
       </tr>
     </table>
   </div>
 
-  <div class="last">
+  <div class="span-19 prepend-top last">
     <h3>Comentarios</h3>
     <hr/>
     <%= textarea_display(@invoice.comment) %>

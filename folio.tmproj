@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>public/javascripts/application.js</string>
+	<string>db/migrate/20110107191126_alter_invoice_item_product_id.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,28 +21,70 @@
 	<integer>114</integer>
 	<key>metaData</key>
 	<dict>
-		<key>app/views/invoices/edit.html.erb</key>
+		<key>app/controllers/invoices_controller.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>93</integer>
+				<integer>84</integer>
 				<key>line</key>
-				<integer>29</integer>
+				<integer>124</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>122</integer>
+		</dict>
+		<key>app/views/invoices/_invoice_item_fields.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>30</integer>
+				<key>line</key>
+				<integer>2</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>public/javascripts/application.js</key>
+		<key>app/views/invoices/edit.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>29</integer>
+				<integer>40</integer>
 				<key>line</key>
-				<integer>4</integer>
+				<integer>10</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>app/views/invoices/new.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>7</integer>
+				<key>line</key>
+				<integer>28</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>db/migrate/20110107191126_alter_invoice_item_product_id.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>6</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -52,12 +94,15 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
+		<string>app/views/invoices/new.html.erb</string>
 		<string>app/views/invoices/edit.html.erb</string>
-		<string>public/javascripts/application.js</string>
+		<string>app/views/invoices/_invoice_item_fields.html.erb</string>
+		<string>db/migrate/20110107191126_alter_invoice_item_product_id.rb</string>
+		<string>app/controllers/invoices_controller.rb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{228, 84}, {852, 684}}</string>
+	<string>{{-236, 1184}, {852, 684}}</string>
 </dict>
 </plist>

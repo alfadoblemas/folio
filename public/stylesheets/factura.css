@@ -29,13 +29,13 @@ input {
 /* Header Style */
 
 #header {
-color: #ffffff;
+  color: #ffffff;
   background-color: #01224B;
   height: 70px;
-width: 100%;
-background: url(../images/header_bg.png);
-border-bottom: 1px solid white;
-font-size: 1.5em;
+  width: 100%;
+  background: url(../images/header_bg.png);
+  border-bottom: 1px solid white;
+  font-size: 1.5em;
 }
 
 #header #logo {
@@ -93,9 +93,10 @@ text-decoration: underline;
 
 
 #footer {
-margin-top: 20px;
-height: 40px;
-width: 100%;
+  background-color: #29455A;
+  margin-top: 20px;
+  min-height: 100px;
+  width: 100%;
 }
 
 /* Varios */
@@ -207,15 +208,15 @@ vertical-align: top;
 }
 
 #newInvoiceItems td.deleteLink {
-background-position: 50% 20%;
+background-position: 10% 20%;
 }
 
 td.deleteLink a {
   display:block;
-  height:20px;
+  height:16px;
   outline:medium none;
   text-indent:-9999px;
-  width:20px;
+  width:16px;
 }
 
 #newInvoiceItems td hr {
@@ -228,10 +229,14 @@ padding-top: 8px;
 background-color: #EEEEEE;
   }
 
+
+
 .readonly input[type="text"] {
   border:0px;
   cursor: default;
   text-align: right;
+  width: 150px;
+  padding: 0px;
 }
 
 .netPrice, .netLabel {
@@ -254,6 +259,14 @@ background-color: #EEEEEE;
   padding-bottom: 0px;
   padding-top: 0px;
   text-align: right;
+}
+
+.readonly {
+	width: 150px;
+}
+
+.totals .label td {
+	width: 100px;
 }
 
 .totalHeader {
@@ -444,7 +457,7 @@ background:url(/images/icons/star_16.png) no-repeat scroll left transparent;
 }
 
 .invoice_list td.deleteLink {
-  background-position: 50% 20%;
+  background-position: 0% 0%;
 }
 
 .invoice_list td.deleteLink a {

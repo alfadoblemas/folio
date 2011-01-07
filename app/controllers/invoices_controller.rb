@@ -100,7 +100,7 @@ class InvoicesController < ApplicationController
       @invoice.invoice_items.build
     end
 
-    @products = Product.find(:all).map { |product| [product.name, product.id.to_i] }
+
 
     if @invoice.customer_id
       @customer = Customer.find(@invoice.customer_id)
@@ -123,7 +123,6 @@ class InvoicesController < ApplicationController
 
     @invoice = Invoice.new(params[:invoice])
     @customer = Customer.find(@invoice.customer_id) unless @invoice.customer_id.nil?
-    @products = Product.find(:all).map { |product| [product.name, product.id.to_i] }
 
     @invoice.due = @invoice.date.to_date.advance(:days => due_date)
 
