@@ -230,6 +230,10 @@ background-color: #EEEEEE;
   }
 
 
+.fields td textarea {
+	height: 75px;
+	width: 250px;
+}
 
 .readonly input[type="text"] {
   border:0px;
