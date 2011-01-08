@@ -87,7 +87,7 @@ class InvoicesController < ApplicationController
     if params[:id] && params[:duplicate]
       @invoice_new = Invoice.find(params[:id])
       @invoice_new.date = Date.today
-      @invoice_new.number = ""
+      @invoice_new.number = nil
       @invoice_new.status_id = 1
       @invoice = @invoice_new.clone()
 

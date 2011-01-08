@@ -9,6 +9,6 @@ class InvoiceItem < ActiveRecord::Base
   validates_numericality_of :product_id, :only_integer => true
   validates_numericality_of :price, :only_integer => true
   validates_numericality_of :quantity, :only_integer => true
-  validates_numericality_of :total, :only_integer => true
+  validates_numericality_of :total, :only_integer => true, :greater_than => 0
 
 end

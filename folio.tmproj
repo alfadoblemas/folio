@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>db/migrate/20110107191126_alter_invoice_item_product_id.rb</string>
+	<string>public/stylesheets/factura.css</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -18,7 +18,7 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>114</integer>
+	<integer>208</integer>
 	<key>metaData</key>
 	<dict>
 		<key>app/controllers/invoices_controller.rb</key>
@@ -35,28 +35,28 @@
 			<key>firstVisibleLine</key>
 			<integer>122</integer>
 		</dict>
-		<key>app/views/invoices/_invoice_item_fields.html.erb</key>
+		<key>app/views/invoices/_invoice_form.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>30</integer>
+				<integer>27</integer>
 				<key>line</key>
-				<integer>2</integer>
+				<integer>37</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>27</integer>
 		</dict>
 		<key>app/views/invoices/edit.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>40</integer>
+				<integer>76</integer>
 				<key>line</key>
-				<integer>10</integer>
+				<integer>2</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -68,41 +68,103 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>7</integer>
+				<integer>76</integer>
 				<key>line</key>
-				<integer>28</integer>
+				<integer>2</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>2</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>76</integer>
+				<key>line</key>
+				<integer>2</integer>
+			</dict>
 		</dict>
-		<key>db/migrate/20110107191126_alter_invoice_item_product_id.rb</key>
+		<key>app/views/invoices/show.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>14</integer>
+				<key>line</key>
+				<integer>52</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>48</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>37</integer>
+				<key>line</key>
+				<integer>52</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>14</integer>
+				<key>line</key>
+				<integer>52</integer>
+			</dict>
+		</dict>
+		<key>app/views/layouts/application.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>6</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
+			<integer>10</integer>
+		</dict>
+		<key>public/stylesheets/factura.css</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>11</integer>
+				<key>line</key>
+				<integer>234</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
 			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>211</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>app/views/invoices/new.html.erb</string>
+		<string>app/views/invoices/_invoice_form.html.erb</string>
 		<string>app/views/invoices/edit.html.erb</string>
-		<string>app/views/invoices/_invoice_item_fields.html.erb</string>
-		<string>db/migrate/20110107191126_alter_invoice_item_product_id.rb</string>
+		<string>app/views/invoices/show.html.erb</string>
+		<string>public/stylesheets/factura.css</string>
+		<string>app/views/layouts/application.html.erb</string>
 		<string>app/controllers/invoices_controller.rb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{-236, 1184}, {852, 684}}</string>
+	<string>{{50, 951}, {997, 838}}</string>
 </dict>
 </plist>

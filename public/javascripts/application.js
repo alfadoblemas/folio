@@ -18,23 +18,26 @@ function add_fields(link, association, content) {
 
 
 function itemQuantityChanged(element){
-     
-	var current_price = $(element).parent().next().next().children().toNumber({
+    
+	var current_price = $(element).closest(".fields").find(".item-price").toNumber({
 		region: 'es-CL'
 	}).val();
 	var new_price = current_price * $(element).val();
-	$(element).parent().next().next().next().children().val(new_price);
+	$(element).closest(".fields").find(".item-total").val(new_price);
 	updatePrices();
 
 }
 
 function itemPriceChanged(element) {
     
-	var current_quantity = $(element).parent().prev().prev().children().val();
+	var current_quantity = $(element).closest(".fields").find(".item-quantity").val();
 	var new_total = current_quantity * $(element).toNumber({
 		region: 'es-CL'
 	}).val();
-	$(element).parent().next().children().val(new_total);
+	if(isNaN(new_total)){
+      new_total = 0;
+    }
+	$(element).closest(".fields").find(".item-total").val(new_total);
     updatePrices();
 
 }
@@ -42,13 +45,17 @@ function itemPriceChanged(element) {
 function sumNetPrice() {
     var sum = 0;
     $(".item-total").each(function() {
-        sum += parseInt($(this).toNumber({
+		value = parseInt($(this).toNumber({
             region: 'es-CL'
         }).val());
-    });
-    if(isNaN(sum)){
-      sum = 0;
-    }
+
+ 		if(isNaN(value)){
+			sum += 0;
+		}
+		else {
+			sum += value;
+		}
+	});
     $(".netPrice").val(sum);
 }
 
