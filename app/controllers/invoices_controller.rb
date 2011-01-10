@@ -28,7 +28,7 @@ class InvoicesController < ApplicationController
       respond_to do |format|
         flash[:notice] = "La Factura ya está activa"
         format.html { redirect_to(invoice_path(@invoice)) }
-      end 
+      end
     end
   end
 
@@ -74,12 +74,24 @@ class InvoicesController < ApplicationController
       @invoices = Invoice.find(:first)
 
       invoice_kinds = Invoice.kinds.map {|v| v[:kind] }
-      invoice_kinds.each do |kind|
-        result = Invoice.method("find_#{kind}")
-        instance_variable_set("@invoices_#{kind}", result.call(params[:sort],params[:direction]))
+      if params[:sort]
+        
+       invoice_kinds.each do |kind|
+          result = Invoice.method("find_#{kind}")
+          instance_variable_set("@invoices_#{kind}", result.call(params[:page], params[:per_page]))
+        end
+        
+        result = Invoice.method("find_#{params[:kind]}")
+        instance_variable_set("@invoices_#{params[:kind]}", result.call(params[:sort], params[:direction],
+                                                                 params[:page], params[:per_page]))
+      
+      else
+        invoice_kinds.each do |kind|
+          result = Invoice.method("find_#{kind}")
+          instance_variable_set("@invoices_#{kind}", result.call(params[:page], params[:per_page]))
+        end
       end
     end
-
   end
 
   def new

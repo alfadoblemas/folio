@@ -17,11 +17,16 @@ module ApplicationHelper
     link_to_function(name, h("add_fields(this,\"#{association}\", \"#{escape_javascript(fields)}\")"))
   end
   
-  def sortable(column, title = nil)
+  def sortable(column, title = nil, state = nil)
     title ||= column.titleize
     css_class = (column == params[:sort]) ? "current #{params[:direction]}" : nil
     direction = (column == params[:sort] && params[:direction] == "asc") ? "desc" : "asc"
-    link_to title, {:sort => column, :direction => direction}, {:class => css_class}
+    if state == params[:kind]
+      link_to title, {:sort => column, :direction => direction, :kind => state, :anchor => state},
+      {:class => css_class}
+    else
+      link_to title, {:sort => column, :direction => direction, :kind => state, :anchor => state }
+    end
   end
   
   def textarea_display(text)

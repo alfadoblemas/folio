@@ -48,12 +48,12 @@ class Invoice < ActiveRecord::Base
   @kinds.each do |v|
     method_name = ("find_#{v[:kind]}").to_sym
     self.class.send(:define_method, method_name) do |*optional|
-      unless optional.first.blank? && optional.second.blank?
-        sort = optional.first
-        direction = optional.second
-        self.find(:all, :conditions => v[:condition], :order => ["#{sort} #{direction}"] )
+      sort, direction, page, per_page = optional
+      unless optional.first.blank?
+        self.paginate(:all, :conditions => v[:condition], :order => ["#{sort} #{direction}"], 
+        :page => page, :per_page => per_page)
       else
-        self.find(:all, :conditions => v[:condition] )
+        self.paginate(:all, :conditions => v[:condition], :page => page, :per_page => per_page )
       end
     end
   end
@@ -107,6 +107,10 @@ class Invoice < ActiveRecord::Base
   
   def self.kinds
     @kinds
+  end
+  
+  def self.per_page
+    5
   end
 
 end
