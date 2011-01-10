@@ -110,7 +110,7 @@ class Invoice < ActiveRecord::Base
   end
   
   def self.per_page
-    5
+    100
   end
 
 end
