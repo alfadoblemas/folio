@@ -3,7 +3,7 @@ class InvoicesController < ApplicationController
   def active
     @invoice = Invoice.find(params[:id])
     unless @invoice.status_id == 2
-      due_days = ((@invoice.due.to_time - @invoice.date.to_time)/3600/24).to_i
+      # due_days = ((@invoice.due.to_time - @invoice.date.to_time)/3600/24).to_i
 
       @history = History.new(:subject => "Activación", :comment => "Factura activada",
                              :invoice_id => @invoice.id)
@@ -11,9 +11,9 @@ class InvoicesController < ApplicationController
       respond_to do |format|
         if @invoice.number
           @invoice.update_attribute(:status_id, 2)
-          @invoice.update_attribute(:date, Date.today)
-          due_date = @invoice.date.to_date.advance(:days => due_days)
-          @invoice.update_attribute(:due, due_date)
+          # @invoice.update_attribute(:date, Date.today)
+          # due_date = @invoice.date.to_date.advance(:days => due_days)
+          # @invoice.update_attribute(:due, due_date)
           @history.save
           flash[:notice] = "Factura activada."
           format.html { redirect_to(invoice_path(@invoice)) }
@@ -75,17 +75,15 @@ class InvoicesController < ApplicationController
 
       invoice_kinds = Invoice.kinds.map {|v| v[:kind] }
       if params[:sort]
-        
        invoice_kinds.each do |kind|
           result = Invoice.method("find_#{kind}")
           instance_variable_set("@invoices_#{kind}", result.call(params[:page], params[:per_page]))
         end
-        
         result = Invoice.method("find_#{params[:kind]}")
         instance_variable_set("@invoices_#{params[:kind]}", result.call(params[:sort], params[:direction],
                                                                  params[:page], params[:per_page]))
-      
       else
+        
         invoice_kinds.each do |kind|
           result = Invoice.method("find_#{kind}")
           instance_variable_set("@invoices_#{kind}", result.call(params[:page], params[:per_page]))

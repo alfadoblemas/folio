@@ -51,6 +51,10 @@
 
         <div class="span-19 last prepend-top" id="<%= status  %>">
           <h3><span class="<%= status %>_title "><%= title %> </span></h3>
+		  <div class="paginate last">
+		    <%= will_paginate @invoices_type, :next_label => "Siguiente »", 
+									:previous_label => "« Anterior", :params => {:anchor => status} %>
+		  </div>
           <table class="invoice_list <%= status %> ">
 
             <%= render :partial => "invoices_header", :locals => {:state => status} %>

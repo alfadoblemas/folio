@@ -231,7 +231,7 @@
       # When no format has been given, it uses default.
       # You can provide other formats here if you like!
       default: "%d/%m/%Y"
-      short: "%d/%b/%Y"
+      short: "%d/%m/%Y"
       long: "%d de %B de %Y"
 
     day_names: [Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado]
