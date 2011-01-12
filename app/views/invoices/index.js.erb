@@ -1,0 +1,1 @@
+$("#reload_<%= @status %>").html("<%= escape_javascript( render :partial => 'invoices', :locals => {:status => @status}) %>");

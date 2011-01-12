@@ -68,8 +68,18 @@ class InvoicesController < ApplicationController
 
     if params[:search] && !params[:search].blank?
       @invoices = Invoice.search(params[:search])
-    elsif
-
+    
+    elsif params[:status]
+      @status = params[:status]
+      result = Invoice.method("find_#{@status}")
+      if params[:sort]
+        @invoices = result.call(params[:sort], params[:direction], params[:page], params[:per_page])
+      else
+        @invoices = result.call(params[:page], params[:per_page])
+      end
+      
+    else
+          
       # vermos si hay facturas
       @invoices = Invoice.find(:first)
 

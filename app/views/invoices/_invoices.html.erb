@@ -1,3 +1,25 @@
+<div class="paginate last">
+    <%= will_paginate @invoices, :next_label => "Siguiente »", 
+		:previous_label => "« Anterior", :params => {:status => @status} %>
+</div>
+<table class="invoice_list <%= @status %> ">
+<tr>
+  <th class="qtyHeader"><%= sortable "number", "Número", status %></th>
+  <th class="unitHeader"><%= sortable "date", "Fecha", status %></th>
+  <th class="descriptionHeader">Cliente</th>
+  <th class="titleHeader">Asunto</th>
+  <% if status == "due" %>
+    <th class="priceHeader"><%= sortable "due", "Atrasada", status %></th>
+  <% elsif status == "close" %>
+    <th class="priceHeader">Pagada</th>
+  <% else %>
+    <th class="priceHeader"><%= sortable "due", "Vence", status %></th>
+  <% end %>
+  <th class="totalHeader">Total</th>
+</tr>
+
+<% invoices.each do |invoice| %>
+
 <tr class="fields" onclick="location.href='/invoices/<%= invoice.id %>'" >
   <% if params[:controller] == "customers" %>
     <td><%= invoice.status.name unless invoice.status.nil? %></td>
@@ -18,11 +40,11 @@
 	  <td><%= subject %></td>
 	<% end %>
 
-  <% #state |= nil unless !state.nil? %>
-  <% if(defined? state) then %>
-    <% if state == "due" %>
+  <% #status |= nil unless !status.nil? %>
+  <% if(defined? status) then %>
+    <% if status == "due" %>
       <td><%= invoice.due_days.to_s+" días" %> </td>
-    <% elsif state == "close" %>
+    <% elsif status == "close" %>
       <td><%= l invoice.close_date, :format => :short %> </td>
     <% else %>
     <td><%= l invoice.due, :format => :short unless invoice.due.nil? %> </td>
@@ -33,3 +55,9 @@
 
   <td class="item-total"><%= number_to_currency(invoice.total, :unit => "$", :delimiter => ".", :precision => 0) %> </td>
 </tr>
+<% end %>
+</table>
+<div style="text-align:right; border-top: #000 solid 2px; " class="last">
+    <strong>Total: <%= number_to_currency(@invoices.sum(&:total),
+        :unit => "$", :delimiter => ".", :precision => 0) %></strong>
+</div>
