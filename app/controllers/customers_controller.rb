@@ -21,6 +21,7 @@ class CustomersController < ApplicationController
       format.html
     end
   end
+  
 
   def show
     @customer = Customer.find(params[:id])

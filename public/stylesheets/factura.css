@@ -547,22 +547,22 @@ background:url(/images/icons/star_16.png) no-repeat scroll left transparent;
   width: 600px;
 }
 
-ul.pagination {
+ul.customernav {
   list-style: none;
   color: lightgray;
 
 }
 
-ul.pagination strong {
+ul.customernav strong {
   color: black;
 }
 
-ul.pagination li {
+ul.customernav li {
   display: inline;
   font-size: 1.1em;
 }
 
-ul.pagination li:before {
+ul.customernav li:before {
   content: '| ';
 }
 

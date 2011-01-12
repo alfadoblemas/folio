@@ -3,7 +3,7 @@
 <% if @customers.size > 0 %>
 
 <div class="last" style="text-align: right">
-  <ul class='pagination'>
+  <ul class='customernav'>
     <li><%= link_to "Todos", customers_path %> </li>
     <%- Customer.pagination_letters.each do |letter| -%>
       <li><%= link_to(letter, :letter => letter) %></li>
