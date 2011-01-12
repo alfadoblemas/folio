@@ -42,15 +42,15 @@
   <td><%= invoice.number.nil? ? "S/N" : invoice.number  %> </td>
   <td><%= l invoice.date, :format => :short %> </td>
   <% unless params[:controller] == "customers" %>
-    <% if invoice.customer.name.size > 25 %>
-      <td title="<%= invoice.customer.name %>"><%= invoice.customer.name[0,17]+"..."  %></td>
+    <% if invoice.customer.name.size > 20 %>
+      <td title="<%= invoice.customer.name %>"><%= invoice.customer.name[0,15]+"..."  %></td>
     <% else %>
 	  <td><%= invoice.customer.name %></td>
 	<% end %>
   <% end %>
     <% subject = invoice.subject.nil? ? "" : invoice.subject %>
-	<% if subject.size > 25 %>
-    <td title="<%= subject %>"><%= subject[0,23]+"..."  %></td>
+	<% if subject.size > 20 %>
+    <td title="<%= subject %>"><%= subject[0,15]+"..."  %></td>
   <% else %>
 	  <td><%= subject %></td>
 	<% end %>
