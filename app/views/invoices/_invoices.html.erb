@@ -6,9 +6,21 @@
 <% end %>
 <table class="invoice_list <%= status %> ">
 <tr>
+	<% if params[:controller] == "customers" %>
+	<th class="qtyHeader"><%= sortable "status_id", "Estado", status %></th>
+	<% else %>
   <th class="qtyHeader"><%= sortable "number", "Número", status %></th>
-  <th class="unitHeader"><%= sortable "date", "Fecha", status %></th>
-  <th class="descriptionHeader">Cliente</th>
+   <% end %>
+   <% if params[:controller] == "customers" %>
+		<th class="unitHeader"><%= sortable "number", "Número", status %></th>
+	<%else%>
+  		<th class="unitHeader"><%= sortable "date", "Fecha", status %></th>
+	<% end %>
+	<% if params[:controller] == "customers" %>
+		<th class="descriptionHeader">Fecha</th>
+	<% else %>
+  		<th class="descriptionHeader">Cliente</th>
+	<% end %>
   <th class="titleHeader">Asunto</th>
   <% if status == "due" %>
     <th class="priceHeader"><%= sortable "due", "Atrasada", status %></th>
