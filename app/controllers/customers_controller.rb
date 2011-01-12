@@ -25,7 +25,7 @@ class CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
     @invoices = Invoice.paginate(:conditions => "customer_id = #{@customer.id}", :page => params[:page],
-                                  :order => 'date desc')
+                                  :per_page => 10, :order => 'date desc')
 
   end
 
