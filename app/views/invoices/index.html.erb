@@ -50,7 +50,7 @@
       <% unless @invoices.size < 1 %>
 
         <div class="span-19 last prepend-top" id="<%= @status  %>">
-          <h3><span class="<%= @status %>_title "><%= title %> </span></h3>
+          <h3><span class="<%= @status %>_title "><%= title %></span></h3>
 		
 			<div id="reload_<%= @status %>">
             <%= render :partial => "invoices", :locals => {:status => @status, :invoices => @invoices} %>		
