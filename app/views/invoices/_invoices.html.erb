@@ -1,9 +1,9 @@
-<% unless params[:controller] == "customers" %>
+
 <div class="paginate last">
     <%= will_paginate invoices, :next_label => "Siguiente »", 
 		:previous_label => "« Anterior", :params => {:status => @status} %>
 </div>
-<% end %>
+
 <table class="invoice_list <%= status %> ">
 <tr>
 	<% if params[:controller] == "customers" %>
@@ -69,6 +69,16 @@
   <% end %>
 
   <td class="item-total"><%= number_to_currency(invoice.total, :unit => "$", :delimiter => ".", :precision => 0) %> </td>
+</tr>
+<tr>
+  <td style="padding-right: 0px; padding-left: 0px"><hr/></td>
+  <td style="padding-right: 0px; padding-left: 0px"><hr/></td>
+  <td style="padding-right: 0px; padding-left: 0px"><hr/></td>
+  <td style="padding-right: 0px; padding-left: 0px"><hr/></td>
+  <td style="padding-right: 0px; padding-left: 0px"><hr/></td>
+  <% unless params[:action] == "show" && params[:controller] == "invoices" %>
+	  <td style="padding-right: 0px; padding-left: 0px"><hr/></td>
+  <% end%>
 </tr>
 <% end %>
 </table>

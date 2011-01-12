@@ -1,15 +1,15 @@
 <%= render :partial => "customer_resume", :locals =>  {:customer => @customer} %>
 <div>
   <h3>Facturas</h3>
-  <% if @customer.invoices.size < 1 %>
+  <% if @invoices.size < 1 %>
     <div class="empty">
       Cliente no tiene facturas
     </div>
   <% else %>
-	<% @invoices = @customer.invoices %>
 	
-     <!-- //TODO: Modifcar el draf por algo a doc -->	
-     <%= render :partial => "invoices/invoices", :locals => {:status => "draft", :invoices => @customer.invoices } %>
-
+     <!-- //TODO: Modifcar el draf por algo a doc -->
+	<div id="reload_draft">
+     <%= render :partial => "invoices/invoices", :locals => {:status => "draft", :invoices => @invoices } %>
+	</div>
   <% end %>
 </div>

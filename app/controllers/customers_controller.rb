@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
   def search
     unless params[:q].nil?
       @customers = Customer.find(:all, :conditions => ['name LIKE ?',
-          "%#{params[:q]}%"])
+                                                       "%#{params[:q]}%"])
     end
 
     respond_to do |format|
@@ -24,6 +24,8 @@ class CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    @invoices = Invoice.paginate(:conditions => "customer_id = #{@customer.id}", :page => params[:page],
+                                  :order => 'date desc')
 
   end
 
@@ -69,7 +71,7 @@ class CustomersController < ApplicationController
 
     end
   end
-  
+
   def destroy
     @customer = Customer.find(params[:id])
     @customer.destroy
