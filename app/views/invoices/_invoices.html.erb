@@ -1,8 +1,10 @@
+<% unless params[:controller] == "customers" %>
 <div class="paginate last">
-    <%= will_paginate @invoices, :next_label => "Siguiente »", 
+    <%= will_paginate invoices, :next_label => "Siguiente »", 
 		:previous_label => "« Anterior", :params => {:status => @status} %>
 </div>
-<table class="invoice_list <%= @status %> ">
+<% end %>
+<table class="invoice_list <%= status %> ">
 <tr>
   <th class="qtyHeader"><%= sortable "number", "Número", status %></th>
   <th class="unitHeader"><%= sortable "date", "Fecha", status %></th>
@@ -17,6 +19,7 @@
   <% end %>
   <th class="totalHeader">Total</th>
 </tr>
+
 
 <% invoices.each do |invoice| %>
 
@@ -58,6 +61,7 @@
 <% end %>
 </table>
 <div style="text-align:right; border-top: #000 solid 2px; " class="last">
-    <strong>Total: <%= number_to_currency(@invoices.sum(&:total),
+	
+   <strong>Total: <%= number_to_currency(invoices.to_a.sum(&:total),
         :unit => "$", :delimiter => ".", :precision => 0) %></strong>
 </div>

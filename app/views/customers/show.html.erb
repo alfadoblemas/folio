@@ -6,24 +6,10 @@
       Cliente no tiene facturas
     </div>
   <% else %>
-
-    <table class="invoice_list draft">
-      <tr>
-        <th class="qtyHeader">Estado</th>
-        <th class="qtyHeader">Numero</th>
-        <th class="unitHeader">Emitida</th>
-        <th class="titleHeader">Asunto</th>
-        <th class="priceHeader">Vence</th>
-        <th class="totalHeader">Total</th>
-      </tr>
-      <%= render :partial => "invoices/invoices", :collection => @customer.invoices ,
-        :as => :invoice, :spacer_template => "invoices/invoice_items_divider" %>
-    </table>
-
-    <div style="text-align:right; border-top: #000 solid 2px; padding-right: 10px; " class="last">
-      <strong><%= number_to_currency(@customer.invoices.to_a.sum(&:total)) %>
-      </strong>
-    </div>
+	<% @invoices = @customer.invoices %>
+	
+     <!-- //TODO: Modifcar el draf por algo a doc -->	
+     <%= render :partial => "invoices/invoices", :locals => {:status => "draft", :invoices => @customer.invoices } %>
 
   <% end %>
 </div>
