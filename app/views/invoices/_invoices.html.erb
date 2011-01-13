@@ -6,20 +6,23 @@
 
 <table class="invoice_list <%= status %> ">
 <tr>
-	<% if params[:controller] == "customers" %>
+	<% if params[:controller] == "customers" || params[:action] == "search" %>
 	<th class="qtyHeader"><%= sortable "status_id", "Estado", status %></th>
 	<% else %>
   <th class="qtyHeader"><%= sortable "number", "Número", status %></th>
    <% end %>
-   <% if params[:controller] == "customers" %>
+   <% if params[:controller] == "customers" || params[:action] == "search"%>
 		<th class="unitHeader"><%= sortable "number", "Número", status %></th>
 	<%else%>
-  		<th class="unitHeader"><%= sortable "date", "Fecha", status %></th>
+  		<th class="unitHeader"><%= sortable "date", "Emitida", status %></th>
 	<% end %>
-	<% if params[:controller] == "customers" %>
-		<th class="descriptionHeader">Fecha</th>
+	<% if params[:controller] == "customers" || params[:action] == "search" %>
+		<th class="descriptionHeader"><%= sortable "date", "Emitida", status %></th>
 	<% else %>
   		<th class="descriptionHeader">Cliente</th>
+	<% end %>
+	<% if params[:controller] == "invoices" && params[:action] == "search" %>
+	  <th class="descriptionHeader">Cliente</th>
 	<% end %>
   <th class="titleHeader">Asunto</th>
   <% if status == "due" %>
@@ -36,7 +39,7 @@
 <% invoices.each do |invoice| %>
 
 <tr class="fields" onclick="location.href='/invoices/<%= invoice.id %>'" >
-  <% if params[:controller] == "customers" %>
+  <% if params[:controller] == "customers" || params[:action] == "search" %>
     <td><%= invoice.status.name unless invoice.status.nil? %></td>
   <% end %>
   <td><%= invoice.number.nil? ? "S/N" : invoice.number  %> </td>
@@ -76,9 +79,12 @@
   <td style="padding-right: 0px; padding-left: 0px"><hr/></td>
   <td style="padding-right: 0px; padding-left: 0px"><hr/></td>
   <td style="padding-right: 0px; padding-left: 0px"><hr/></td>
+  <% if params[:controller] == "invoices" && params[:action] == "search" %>
+	<td style="padding-right: 0px; padding-left: 0px"><hr/></td>
+  <% end %>
   <% unless params[:action] == "show" && params[:controller] == "invoices" %>
 	  <td style="padding-right: 0px; padding-left: 0px"><hr/></td>
-  <% end%>
+  <% end %>
 </tr>
 <% end %>
 </table>

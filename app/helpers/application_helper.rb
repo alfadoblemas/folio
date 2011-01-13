@@ -22,10 +22,10 @@ module ApplicationHelper
     css_class = (column == params[:sort]) ? "current #{params[:direction]}" : nil
     direction = (column == params[:sort] && params[:direction] == "asc") ? "desc" : "asc"
     if state == params[:kind]
-      link_to title, {:sort => column, :direction => direction, :kind => state, :anchor => state},
+      link_to title, params.merge(:sort => column, :direction => direction, :kind => state, :anchor => state),
       {:class => css_class}
     else
-      link_to title, {:sort => column, :direction => direction, :kind => state, :anchor => state }
+      link_to title, params.merge(:sort => column, :direction => direction, :kind => state, :anchor => state )
     end
   end
   

@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.active_invoice 'invoices/active/:id', :controller => 'invoices', :action => 'active'
   map.deactive_invoice 'invoices/deactive/:id', :controller => 'invoices', :action => 'deactive'
   map.close_invoice 'invoices/close/:id', :controller => 'invoices', :action => 'close'
+  map.search_invoice 'invoices/search', :controller => 'invoices', :action => 'search'
 
 
   map.resources :customers, :has_many => [:contacts, :invoices]

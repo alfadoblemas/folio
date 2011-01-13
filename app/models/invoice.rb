@@ -26,12 +26,6 @@ class Invoice < ActiveRecord::Base
     customer.name if customer
   end
 
-  def self.search(search)
-    if search
-      find(:all, :conditions => ['number = ?', "#{search}"])
-    end
-  end
-
 
   # Arreglo con Tipos de Facturas
   @kinds = [
@@ -99,5 +93,11 @@ class Invoice < ActiveRecord::Base
   def self.per_page
     5
   end
+  
+  scope_procedure :due_invoice, lambda { status_id_equals(2).due_lte(Date.today) }
+  scope_procedure :open_invoice, lambda { status_id_equals(2) }
+  scope_procedure :close_invoice, lambda { status_id_equals(3) }
+  scope_procedure :draft_invoice, lambda { status_id_equals(1) }
 
+  
 end

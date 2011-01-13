@@ -1,5 +1,15 @@
 class InvoicesController < ApplicationController
 
+  def search
+      @search = Invoice.search(params[:search])
+      if params[:sort]
+         @invoices = @search.paginate(:page => params[:page], :per_page => 10 , :order => "#{params[:sort]} #{params[:direction]}")
+      else
+        @invoices = @search.paginate(:page => params[:page], :per_page => 10 )
+      end
+  end
+
+
   def active
     @invoice = Invoice.find(params[:id])
     unless @invoice.status_id == 2
@@ -65,11 +75,10 @@ class InvoicesController < ApplicationController
   end
 
   def index
-
-    if params[:search] && !params[:search].blank?
-      @invoices = Invoice.search(params[:search])
     
-    elsif params[:status]
+    @search = Invoice.search(params[:search])
+    
+    if params[:status]
       @status = params[:status]
       result = Invoice.method("find_#{@status}")
       if params[:sort]
@@ -82,6 +91,7 @@ class InvoicesController < ApplicationController
           
       # vermos si hay facturas
       @invoices = Invoice.find(:first)
+      
 
       invoice_kinds = Invoice.kinds.map {|v| v[:kind] }
       if params[:sort]

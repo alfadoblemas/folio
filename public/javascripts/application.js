@@ -129,6 +129,19 @@ function display_add_customer_details() {
     $("#customer_optional").show("slow");
 }
 
+function display_invoice_filter() {
+	$("#invoice_filter").hide().show();
+	$("#number_search").hide()
+	$("#show_filter").html("<a onclick='hide_invoice_filter(); return false;' href='#'>Ocultar Búsqueda</a>")
+}
+
+function hide_invoice_filter() {
+	$("#invoice_filter").hide();
+	$("#show_filter").html("<a onclick='display_invoice_filter(); return false;' href='#'>Búsqueda Avanzada</a>");
+	$("#number_search").show();
+}
+
+
 $().ready(function() {
 	
 	if($("input#customer_name_invoice").val() == ""){
@@ -142,18 +155,18 @@ $().ready(function() {
 		});
 	}
 	
-	if($("input#search").val() == ""){
-		$("input#search").val("Número de factura...");
-		var disable_input = true;
-		$("input#search").focus(function(){
-			if(disable_input){
-		  		$("input#search").val("")
-				disable_input = false;
+	if($("input#search_number_equals").val() == ""){
+				$("input#search_number_equals").val("Número de factura...");
+				var disable_input = true;
+				$("input#search_number_equals").focus(function(){
+					if(disable_input){
+				  		$("input#search_number_equals").val("")
+						disable_input = false;
+					}
+				});
 			}
-		});
-	}
 	
-    $("input#customer_name_invoice").autocomplete("/customers/search.json",{
+    $("input#customer_name_invoice, input#search_customer_name_like").autocomplete("/customers/search.json",{
         dataType: "json",
         parse: function(data) {
             return $.map(data, function(row){
@@ -171,8 +184,8 @@ $().ready(function() {
         }
     });
 
-    $("input#customer_name_invoice").result(function(event, data, formatted) {
-        $("input#customer_name_invoice").val(data.name);
+    $("input#customer_name_invoice, input#search_customer_name_like").result(function(event, data, formatted) {
+        $("#"+this.id).val(data.name);
         $("input#invoice_customer_id").val(data.id);
     });
 
