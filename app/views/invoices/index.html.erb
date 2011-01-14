@@ -33,7 +33,7 @@
     <% invoices_type.each do |type|   %>
       <% @status, title = type[0], type[1] %>
       <% instance_variable_set("@invoices", instance_variable_get("@invoices_#{@status}")) %>
-      <% unless @invoices.size < 1 %>
+      <% unless @invoices.to_a.size < 1 %>
 
         <div class="span-19 last prepend-top" id="<%= @status  %>">
           <h3><span class="<%= @status %>_title "><%= title %></span></h3>

@@ -1,12 +1,12 @@
 class InvoicesController < ApplicationController
 
   def search
-      @search = Invoice.search(params[:search])
-      if params[:sort]
-         @invoices = @search.paginate(:page => params[:page], :per_page => 10 , :order => "#{params[:sort]} #{params[:direction]}")
-      else
-        @invoices = @search.paginate(:page => params[:page], :per_page => 10 )
-      end
+    @search = Invoice.search(params[:search])
+    if params[:sort]
+      @invoices = @search.paginate(:page => params[:page], :per_page => 10 , :order => "#{params[:sort]} #{params[:direction]}")
+    else
+      @invoices = @search.paginate(:page => params[:page], :per_page => 10 )
+    end
   end
 
 
@@ -21,6 +21,7 @@ class InvoicesController < ApplicationController
       respond_to do |format|
         if @invoice.number
           @invoice.update_attribute(:status_id, 2)
+          # TODO: Revisar la actualización de la fecha
           # @invoice.update_attribute(:date, Date.today)
           # due_date = @invoice.date.to_date.advance(:days => due_days)
           # @invoice.update_attribute(:due, due_date)
@@ -75,42 +76,24 @@ class InvoicesController < ApplicationController
   end
 
   def index
-    
+
     @search = Invoice.search(params[:search])
-    
+    # vermos si hay facturas
+    @invoices = Invoice.find(:first)
+
+    invoice_index()
+
     if params[:status]
       @status = params[:status]
-      result = Invoice.method("find_#{@status}")
+      result = Invoice.method("find_#{@status}")   
       if params[:sort]
         @invoices = result.call(params[:sort], params[:direction], params[:page], params[:per_page])
       else
         @invoices = result.call(params[:page], params[:per_page])
       end
-      
-    else
-          
-      # vermos si hay facturas
-      @invoices = Invoice.find(:first)
-      
-
-      invoice_kinds = Invoice.kinds.map {|v| v[:kind] }
-      if params[:sort]
-       invoice_kinds.each do |kind|
-          result = Invoice.method("find_#{kind}")
-          instance_variable_set("@invoices_#{kind}", result.call(params[:page], params[:per_page]))
-        end
-        result = Invoice.method("find_#{params[:kind]}")
-        instance_variable_set("@invoices_#{params[:kind]}", result.call(params[:sort], params[:direction],
-                                                                 params[:page], params[:per_page]))
-      else
-        
-        invoice_kinds.each do |kind|
-          result = Invoice.method("find_#{kind}")
-          instance_variable_set("@invoices_#{kind}", result.call(params[:page], params[:per_page]))
-        end
-      end
     end
   end
+
 
   def new
 
@@ -129,8 +112,6 @@ class InvoicesController < ApplicationController
       @invoice = Invoice.new
       @invoice.invoice_items.build
     end
-
-
 
     if @invoice.customer_id
       @customer = Customer.find(@invoice.customer_id)
@@ -240,8 +221,12 @@ class InvoicesController < ApplicationController
     end
 
 
-    def get_customer_info(params)
-
+    def invoice_index
+      invoice_kinds = Invoice.kinds.map {|v| v[:kind] }
+      invoice_kinds.each do |kind|
+        result = Invoice.method("find_#{kind}")
+        instance_variable_set("@invoices_#{kind}", result.call(params[:page], params[:per_page]))
+      end
     end
 
 

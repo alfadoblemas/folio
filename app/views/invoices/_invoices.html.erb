@@ -90,6 +90,6 @@
 </table>
 <div style="text-align:right; border-top: #000 solid 2px; " class="last">
 	
-   <strong>Total: <%= number_to_currency(invoices.to_a.sum(&:total),
+   <strong>Total: <%= number_to_currency(@invoices.to_a.sum(&:total),
         :unit => "$", :delimiter => ".", :precision => 0) %></strong>
 </div>

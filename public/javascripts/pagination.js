@@ -3,4 +3,10 @@ $(function() {
 		$.get(this.href, null, null, "script");
 		return false;
 	});
+	
+	$(".sortLink").live("click", function() {
+		$.get(this.href, null, null, "script")
+		return false;
+	} );
+	
 });
