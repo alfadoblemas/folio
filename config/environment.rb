@@ -47,7 +47,7 @@ Rails::Initializer.run do |config|
   config.i18n.default_locale = :es
 
   # Mostrar páginas de error siempre
-  config.action_controller.consider_all_requests_local = false
+  #config.action_controller.consider_all_requests_local = false
   
 end
 
