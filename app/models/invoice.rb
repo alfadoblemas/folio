@@ -46,11 +46,11 @@ class Invoice < ActiveRecord::Base
       unless optional.size < 3
         sort, direction, page, per_page = optional
         self.paginate(:all, :conditions => v[:condition], :order => ["#{sort} #{direction}"], 
-        :page => page, :per_page => per_page)
+        :page => page, :per_page => per_page, :include => [:status, :customer] )
       else
         page, per_page = optional
         self.paginate(:all, :conditions => v[:condition], :order => ["number asc"],
-         :page => page, :per_page => per_page )
+         :page => page, :per_page => per_page, :include => [:status, :customer] )
       end
     end
   end
@@ -68,6 +68,24 @@ class Invoice < ActiveRecord::Base
 
   def customer_name
     self.customer.name
+  end
+  
+  def status_id
+    status_id = read_attribute(:status_id)
+    due = read_attribute(:due)
+    if status_id == 2 and due < Date.today
+      5
+    else
+      status_id
+    end
+  end
+  
+  def state
+    if self.status_id == 5
+      "due"
+    else
+      self.status.state
+    end
   end
 
 
@@ -91,11 +109,11 @@ class Invoice < ActiveRecord::Base
   end
   
   def self.per_page
-    5
+    10
   end
   
-  scope_procedure :due_invoice, lambda { status_id_equals(2).due_lte(Date.today) }
-  scope_procedure :open_invoice, lambda { status_id_equals(2) }
+  scope_procedure :due_invoice, lambda { status_id_equals(2).due_lt(Date.today) }
+  scope_procedure :open_invoice, lambda { status_id_equals(2).due_gte(Date.today) }
   scope_procedure :close_invoice, lambda { status_id_equals(3) }
   scope_procedure :draft_invoice, lambda { status_id_equals(1) }
 

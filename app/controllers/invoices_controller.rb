@@ -1,12 +1,22 @@
 class InvoicesController < ApplicationController
 
   def search
-    @search = Invoice.search(params[:search])
-    if params[:sort]
-      @invoices = @search.paginate(:page => params[:page], :per_page => 10 , :order => "#{params[:sort]} #{params[:direction]}")
+    
+    if params[:status]
+      state = params[:status]
+      params[:search]["#{state}_invoice".to_sym] = true
+      @search = Invoice.search(params[:search])
+      params[:search].delete("#{state}_invoice")
     else
-      @invoices = @search.paginate(:page => params[:page], :per_page => 10 )
+      @search = Invoice.search(params[:search])
     end
+    
+    if params[:sort]
+      @invoices = @search.paginate(:page => params[:page], :order => "#{params[:sort]} #{params[:direction]}")
+    else
+      @invoices = @search.paginate(:page => params[:page])
+    end
+    render :template => "invoices/index"
   end
 
 
@@ -76,10 +86,8 @@ class InvoicesController < ApplicationController
   end
 
   def index
-
     @search = Invoice.search(params[:search])
     # vermos si hay facturas
-    @invoices = Invoice.find(:first)
 
     invoice_index()
 
@@ -87,10 +95,15 @@ class InvoicesController < ApplicationController
       @status = params[:status]
       result = Invoice.method("find_#{@status}")   
       if params[:sort]
-        @invoices = result.call(params[:sort], params[:direction], params[:page], params[:per_page])
+        @invoices = result.call(params[:sort], params[:direction], params[:page], params[:per_page] )
       else
-        @invoices = result.call(params[:page], params[:per_page])
+        @invoices = result.call(params[:page] )
       end
+    elsif params[:sort] && params[:status].blank?
+      @invoices = Invoice.paginate(:page => params[:page], :order => "#{params[:sort]} #{params[:direction]}")
+    else
+      # TODO: Ver como solo buscamos las facturas pagadas de hace 30 días
+      @invoices = Invoice.paginate(:page => params[:page], :include => [:status, :customer] )
     end
   end
 

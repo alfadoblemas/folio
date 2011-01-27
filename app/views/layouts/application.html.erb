@@ -40,9 +40,11 @@
         <%= yield :layout %>
       </div>
 
-      <div id="sidebar" class="span-4 last">
-        <%= render "#{params[:controller]}_sidebar" %>
-      </div>
+	 <% unless @no_sidebar %>
+      	<div id="sidebar" class="span-4 last">
+        	<%= render "#{params[:controller]}_sidebar" %>
+      	</div>
+	 <% end %>
 
     </div>
 

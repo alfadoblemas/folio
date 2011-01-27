@@ -12,8 +12,8 @@
     </div>
 
       <ul class="toolbox secondary">
+		<li id="edit_invoice"><%= link_to "<strong>Editar</strong> cliente", edit_customer_path(@customer) %></li>
         <li id="add_link"><%= link_to "<strong>Agregar</strong> contacto", new_customer_contact_path(@customer) %></li>
-        <li id="edit_invoice"><%= link_to "<strong>Editar</strong> cliente", edit_customer_path(@customer) %></li>
 		<% if @customer.invoices.size == 0 %>
 		<li id="delete_invoice"><%= link_to "<strong>Borrar</strong> cliente", @customer,
               :confirm => "Está seguro?", :method => :delete %></li>

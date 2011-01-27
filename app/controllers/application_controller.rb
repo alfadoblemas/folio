@@ -7,4 +7,28 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+
+  # Declaramos las funciones a usar para cada error
+  rescue_from Exception,                            :with => :render_error
+  rescue_from ActiveRecord::RecordNotFound,         :with => :render_not_found
+  rescue_from ActionController::RoutingError,       :with => :render_not_found
+  rescue_from ActionController::UnknownController,  :with => :render_not_found
+  rescue_from ActionController::UnknownAction,      :with => :render_not_found
+
+
+  private
+
+    # Funciones para mostrar páginas de errores
+    def render_not_found(exception)
+      log_error(exception)
+      @no_sidebar = true
+      render :template => "/shared/error/404.html.erb", :status => 404
+    end
+
+    def render_error(exception)
+      log_error(exception)
+      @no_sidebar = true
+      render :template => "/shared/error/500.html.erb", :status => 500
+    end
+
 end

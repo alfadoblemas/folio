@@ -28,21 +28,20 @@
 	  </div>
 	</div>
   <% else %>
-    <!-- Arreglo con tipos de facturas -->
-    <% invoices_type = [["draft", "Borrador"], ["due", "Vencidas"], ["open", "Activas"], ["close", "Pagadas este mes"]] %>
-    <% invoices_type.each do |type|   %>
-      <% @status, title = type[0], type[1] %>
-      <% instance_variable_set("@invoices", instance_variable_get("@invoices_#{@status}")) %>
-      <% unless @invoices.to_a.size < 1 %>
-
-        <div class="span-19 last prepend-top" id="<%= @status  %>">
-          <h3><span class="<%= @status %>_title "><%= title %></span></h3>
 		
+        <div class="span-19 last prepend-top">
+			<div class="last">
+					<%= link_to "Todas ", invoices_path %> |
+					<%= invoice_state_link ("due", "Vencidas", 5)%> |
+					<%= invoice_state_link "draft", "Borrador ", 1 %> |
+					<%= invoice_state_link "open", "Activas ", 2 %> |
+					<%= invoice_state_link "close", "Pagadas ", 3 %>
+					<br/>
+			 </div>
 			<div id="reload_<%= @status %>">
             <%= render :partial => "invoices", :locals => {:status => @status, :invoices => @invoices} %>		
-		</div>
+	     	</div>
 
         </div>
-      <% end %>
-    <%  end %>
+   
   <% end %>

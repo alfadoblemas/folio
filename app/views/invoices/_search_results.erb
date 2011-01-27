@@ -1,20 +1,8 @@
-<div class="last">
 
- <div class="paginate last right">
-	<% if invoices.total_pages > 1 %>
-    	<%= will_paginate invoices, :next_label => "Siguiente »", 
-			:previous_label => "« Anterior", :params => {:status => @status} %>
-		
-	<% else %>
-		<br/>
-	<% end %>
- </div>
-
- 
-
+<div class="paginate last">
+    <%= will_paginate invoices, :next_label => "Siguiente »", 
+		:previous_label => "« Anterior", :params => {:status => @status} %>
 </div>
- 
-
 
 
 <table class="invoice_list draft">
@@ -31,12 +19,7 @@
 	
 	<td style="width:15%;">
 		<strong><%= link_to "NUM-"+invoice.number.to_s, invoice_path(invoice.id) %></strong><br/>
-		<span class="<%= invoice.state %>_result">
-		<% if invoice.status_id == 5 %>
-			<%= "vencida" %>
-		<% else %>
-			<%= invoice.status.name.downcase %></span>
-		<% end %>
+		<span class="<%= invoice.status.state %>_result"><%= invoice.status.name.downcase %></span>
 	</td>
 	<td>
 		<strong><h4><%= invoice.customer.name %></h4></strong><br/>
@@ -53,7 +36,7 @@
 		<% else %>
 		  <span class="draft_result">Vence: </span><%= l invoice.due, :format => :short %>
 		<% end %>
-		<br/>
+		</br>
 	</td>
 	<td class="item-total">
 		<%= number_to_currency(invoice.total, :unit => "$", :delimiter => ".", :precision => 0) %>

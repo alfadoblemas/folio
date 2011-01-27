@@ -20,25 +20,10 @@
       <%= link_to "Nueva Factura", new_invoice_path %>
     </div>
 
-    <% if @invoice.status_id == 1 %>
-      <div class="status draft">
-      <% elsif @invoice.status_id == 2 %>
-        <% if @invoice.due.to_date < Date.today %>
-          <% due = true %>
-          <div class="status due">
-          <% else %>
-            <div class="status open">
-            <% end %>
-          <% elsif @invoice.status_id == 3 %>
-            <div class="status close">
-            <% end %>
-
+    
+      <div class="status <%= @invoice.status.state%> ">
             <%= number_to_currency(@invoice.total, :unit => "$ ", :delimiter => ".", :precision => 0) %><br/>
-            <% if due %>
-              Vencida
-            <% else %>
               <%= @invoice.status.name %>
-            <% end %>
           </div>
 
           <ul class="toolbox secondary">
@@ -78,7 +63,6 @@
         <%= link_to "Nueva Factura", new_invoice_path %>
       </div>
       <hr/>
-      <% unless params[:search] %>
         <table class="invoice_resume">
           <tr class="draft" onclick="location.href='#draft'">
             <td><span class="draft_title">Borrador</span></td><td style="text-align: right"><%= number_to_currency(Invoice.draft_total) %></td>
@@ -93,5 +77,5 @@
             <td><span class="close_title">Pagadas</span></td><td style="text-align: right"><%= number_to_currency(Invoice.close_total) %></td>
           </tr>
         </table>
-      <%end%>
+      
     <% end %>

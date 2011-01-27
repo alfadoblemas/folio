@@ -30,6 +30,10 @@ module ApplicationHelper
     end
   end
   
+  def invoice_state_link(state, title = nil, status_id = nil)
+    params[:status] == state ? "#{title} " : (link_to "#{title} ", invoices_path(params.merge(:status => state)))
+  end
+  
   def textarea_display(text)
     text.gsub(/\n/, "<br />")
   end
