@@ -103,7 +103,7 @@ class InvoicesController < ApplicationController
       @invoices = Invoice.paginate(:page => params[:page], :order => "#{params[:sort]} #{params[:direction]}")
     else
       # TODO: Ver como solo buscamos las facturas pagadas de hace 30 días
-      @invoices = Invoice.paginate(:page => params[:page], :include => [:status, :customer] )
+      @invoices = Invoice.paginate(:page => params[:page], :include => [:status, :customer], :order => "date ASC" )
     end
   end
 
