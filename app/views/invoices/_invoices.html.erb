@@ -67,3 +67,7 @@
 </tr>
 <% end %>
 </table>
+<div class="paginate last right">
+    	<%= will_paginate invoices, :next_label => "Siguiente »", 
+			:previous_label => "« Anterior", :params => {:status => @status} %>
+ </div>
