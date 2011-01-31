@@ -31,7 +31,7 @@
 		
         <div class="span-19 last prepend-top">
 			<div class="last">
-					<%= link_to "Todas ", invoices_path %> |
+					<%= invoice_state_link  nil, "Todas" %> |
 					<%= invoice_state_link ("due", "Vencidas", 5)%> |
 					<%= invoice_state_link "draft", "Borrador ", 1 %> |
 					<%= invoice_state_link "open", "Activas ", 2 %> |
