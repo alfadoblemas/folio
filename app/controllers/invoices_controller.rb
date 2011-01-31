@@ -1,8 +1,7 @@
 class InvoicesController < ApplicationController
 
   def search
-    
-    @original_search = params[:search]
+
     
     if params[:status]
       state = params[:status]

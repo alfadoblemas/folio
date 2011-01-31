@@ -8,12 +8,9 @@
 	  <%= f.text_field :number_equals %>
 	<% end %>
 	</div>
-    <span id="show_filter" class="searchLink"> <%= link_to_function "Búsqueda Avanzada", "display_invoice_filter()" %>  </span>
   </div>
 </div>
-<div id="invoice_filter" class="span-19 last" style="display: none;">
-	<%= render :partial => "search", :locals => {:search => @search} %>
-</div>
+
 
   <% if @invoices.nil? %>
     <div class="empty last">

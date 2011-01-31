@@ -1,7 +1,6 @@
-<fieldset>
+
 	<!-- Busqueda directa x Numero de Factura -->
 	<% form_for @search, :url => {:action => "search" } do |f| -%>
-	<table class="search">
 		<!-- <tr>
 					<td><%= f.label "Estado" %></td>
 					<td>
@@ -13,19 +12,11 @@
 						</ul>
 					</td>
 				</tr> -->
-	  	<tr>
-			<td><%= f.label :customer_name_like, "Cliente" %></td>
-	  		<td><%= f.text_field :customer_name_like %></td>
-		</tr>
-		<tr>
-	  		<td><%= f.label :date_gte, "Desde" %></td>
-	  		<td><%= f.date_select :date_gte, :default => {:year => Date.today.year - 1}, :discard_day => true %></td>
-		</tr>
-		<tr>
-	  		<td><%= f.label :date_lte, "Hasta"%></td>
-	  		<td><%= f.date_select :date_lte, :default => {:month => Date.today.month + 1}, :discard_day => true %></td>
-		</tr>
-	</table>
-	<%= f.submit "Buscar" %>
+	 	<%= f.label :customer_name_like, "Cliente" %><br/>
+	 	<%= f.text_field :customer_name_like %> <br/>
+	 	<%= f.label :date_gte, "Desde" %><br/>
+	 	<%= f.date_select :date_gte, :default => {:year => Date.today.year - 1}, :discard_day => true %> <br/>
+	 	<%= f.label :date_lte, "Hasta"%><br/>
+	 	<%= f.date_select :date_lte, :default => {:month => Date.today.month + 1}, :discard_day => true %> <br/>
+    	<%= f.submit "Buscar" %>
 	<% end -%>
-</fieldset>
