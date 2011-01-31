@@ -6,7 +6,7 @@
       Cliente no tiene facturas
     </div>
   <% else %>
-	
+
      <!-- //TODO: Modifcar el draf por algo a doc -->
 	<div id="reload_draft">
      <%= render :partial => "invoices/invoices", :locals => {:status => "draft", :invoices => @invoices } %>

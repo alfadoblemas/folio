@@ -31,9 +31,12 @@
 		<strong><%= link_to "NUM-"+invoice.number.to_s, invoice_path(invoice.id) %></strong><br/>
 		<span class="<%= invoice.state %>_result">
 		<% if invoice.status_id == 5 %>
-			<%= "vencida" %>
+			<%= "vencida" %></span>
 		<% else %>
 			<%= invoice.status.name.downcase %></span>
+		<% end %>
+		<% unless invoice.taxed? %>
+		 <br/><span class="draft_result">excenta</span>
 		<% end %>
 	</td>
 	<td>

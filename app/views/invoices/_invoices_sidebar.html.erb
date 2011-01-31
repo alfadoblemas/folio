@@ -78,8 +78,16 @@
           </tr>
         </table>
 		<hr/>
+		
+		<h4>Búsqueda Rápida</h4>
 		<br/>
-		<h3>Filtrar Facturas</h3>
-		<%= render :partial => "search", :locals => {:search => @search} %>
+			<div id="number_search">
+				<% form_for @search, :url => {:action => "search" } do |f| -%>
+	  				<%= f.text_field :number_equals, :style =>"width: 150px" %>
+					<%= f.submit "Buscar" %> <%= link_to "Cancelar", invoices_path() %>
+				<% end %>
+			</div>
+		<br/>
+		<br/>
       
     <% end %>

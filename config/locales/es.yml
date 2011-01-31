@@ -232,6 +232,7 @@
       # You can provide other formats here if you like!
       default: "%d/%m/%Y"
       short: "%d %b %Y"
+      shorter: "%B de %Y"
       long: "%d de %B de %Y"
 
     day_names: [Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado]

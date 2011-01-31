@@ -24,13 +24,13 @@ class CustomersController < ApplicationController
   
 
   def show
-    @customer = Customer.find(params[:id])
+    @customer = Customer.find(params[:id], :include => [:invoices])
     if params[:sort]
       @invoices = Invoice.paginate(:conditions => "customer_id = #{@customer.id}", :page => params[:page],
-                                  :per_page => 10, :order => ["#{params[:sort]} #{params[:direction]}" ] )
+                                  :per_page => 5, :order => ["#{params[:sort]} #{params[:direction]}" ] )
     else
       @invoices = Invoice.paginate(:conditions => "customer_id = #{@customer.id}", :page => params[:page],
-                                  :per_page => 10, :order => 'date desc')
+                                  :per_page => 5, :order => 'date desc')
     end
                               
   

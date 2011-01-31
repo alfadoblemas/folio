@@ -131,14 +131,12 @@ function display_add_customer_details() {
 
 function display_invoice_filter() {
 	$("#invoice_filter").hide().show();
-	$("#number_search").hide()
 	$("#show_filter").html("<a onclick='hide_invoice_filter(); return false;' href='#'>Ocultar Búsqueda</a>")
 }
 
 function hide_invoice_filter() {
 	$("#invoice_filter").hide();
 	$("#show_filter").html("<a onclick='display_invoice_filter(); return false;' href='#'>Búsqueda Avanzada</a>");
-	$("#number_search").show();
 }
 
 

@@ -1,14 +1,37 @@
 <div class="last">
-  <div class="span-5">
-    <h2>Facturas</h2>
+	<div class="last right" style="margin-top: -10px;">		
+		<div>
+			<span id="show_filter" class="searchLink"> <%= link_to_function "Búsqueda Avanzada", "display_invoice_filter()" %>  </span>
+		</div>
+  	</div>
+
+	<% if params[:action] == "search" %>
+		<% if @invoices.size < 1 %>
+		  <h2> Sin Resultados </h2>
+		  <stron><%= link_to "Volver...", invoices_path() %></strong>
+		<% else %>
+		 <% if !params[:search][:number_equals].blank? %>
+			<h2>Resultados</h2>
+			<%= link_to "Volver...", invoices_path() %> 
+		<% else %>
+			<div class="span-10">
+				<h2>Resultados</h2>
+				<p>Las siguientes son las facturas emitidas
+				<% unless params[:search][:customer_name_like].blank? %> a <strong><%= params[:search][:customer_name_like] %></strong>, <% end %> entre <strong><%= l params[:search][:date_gte].to_date, :format => :shorter %></strong> y <strong><%= l params[:search][:date_lte].to_date, :format => :shorter %>.</strong>
+				<%= link_to " Eliminar Filtro", invoices_path() %> </p>
+			</div>
+		<% end %>
+		
+		<% end %>
+	<% else%>
+		<div class="span-10">
+    	<h2>Todas las Facturas</h2>
   </div>
-  <div class="last right">
-	<div id="number_search">
-	<% form_for @search, :url => {:action => "search" } do |f| -%>
-	  <%= f.text_field :number_equals %>
-	<% end %>
-	</div>
-  </div>
+  <% end %>
+
+</div>
+<div id="invoice_filter" class="span-19 last" style="display: none;">
+	<%= render :partial => "search", :locals => {:search => @search} %>
 </div>
 
 
