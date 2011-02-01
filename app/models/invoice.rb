@@ -50,6 +50,12 @@ class Invoice < ActiveRecord::Base
       sum
     end
   end
+  
+  def self.close_index_total
+    sum = 0
+    sum = close_index.to_a.sum(&:total) unless close_index.to_a.size < 1
+    sum
+  end
 
   def customer_name
     self.customer.name
