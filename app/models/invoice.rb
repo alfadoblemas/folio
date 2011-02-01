@@ -38,21 +38,14 @@ class Invoice < ActiveRecord::Base
 
 
   # Arreglo con Tipos de Facturas
-  @kinds = [
-    { :kind => "draft" },
-    { :kind => "due" },
-    { :kind => "open" },
-    { :kind => "close_index" },
-    { :kind => "close" },
-    { :kind => "cancel" }
-  ]
+  @statuses = Status.find(:all, :select => [:state]).map {|s| {:status => s.state} }
 
   # Metaprocreamos metodos de totales
-  @kinds.each do |v|
-    method_name = ("#{v[:kind]}_total").to_sym
+  @statuses.each do |v|
+    method_name = ("#{v[:status]}_total").to_sym
     self.class.send(:define_method, method_name) do
       sum = 0
-      invoices = self.send("#{v[:kind]}").to_a
+      invoices = self.send("#{v[:status]}").to_a
       sum = invoices.sum(&:total) unless invoices.size < 1
       sum
     end
@@ -96,8 +89,8 @@ class Invoice < ActiveRecord::Base
     dates
   end
   
-  def self.kinds
-    @kinds
+  def self.statuses
+    @statuses
   end
   
   def self.per_page

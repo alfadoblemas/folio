@@ -155,11 +155,11 @@ $().ready(function() {
 	
 	if($("input#search_number_equals").val() == ""){
 				$("input#search_number_equals").val("Número de factura...");
-				var disable_input = true;
+				
 				$("input#search_number_equals").focus(function(){
 					if(disable_input){
 				  		$("input#search_number_equals").val("")
-						disable_input = false;
+						
 					}
 				});
 			}
