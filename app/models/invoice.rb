@@ -26,44 +26,34 @@ class Invoice < ActiveRecord::Base
     customer.name if customer
   end
 
+  def self.find_by_status(status, page , order = "number asc", per_page = 10, company_id = nil)
+    order = order.blank? ? "date desc" : order
+    self.send("#{status}").paginate(
+      :page => page,
+      :per_page => per_page, :order => ["#{order}"],
+      :include => [:status]
+    )
+    
+  end
+
 
   # Arreglo con Tipos de Facturas
   @kinds = [
-    {:kind => "draft", :condition => "status_id = 1"},
-    {:kind => "due", :condition => ["status_id = 2 and due < ?", Date.today] },
-    {:kind => "open", :condition => ["status_id = 2 and due >= ?", Date.today] },
-    {:kind => "close_index", :condition => "status_id = 3 and close_date > #{1.month.ago.to_date}"},
-    {:kind => "close", :condition => "status_id = 3"},
-    {:kind => "cancel", :condition => "status_id = 4"}
+    { :kind => "draft" },
+    { :kind => "due" },
+    { :kind => "open" },
+    { :kind => "close_index" },
+    { :kind => "close" },
+    { :kind => "cancel" }
   ]
 
-  # Busqueda de Facturas x tipo
-  # para popular #index
-  # con metaprograming definimos las funciones find_due, find_open, etc
-  # El Codigo pa Lindo!!!
-  @kinds.each do |v|
-    method_name = ("find_#{v[:kind]}").to_sym
-    self.class.send(:define_method, method_name) do |*optional|
-      
-      unless optional.size < 3
-        sort, direction, page, per_page = optional
-        self.paginate(:all, :conditions => v[:condition], :order => ["#{sort} #{direction}"], 
-        :page => page, :per_page => per_page, :include => [:status, :customer] )
-      else
-        page, per_page = optional
-        self.paginate(:all, :conditions => v[:condition], :order => ["number asc"],
-         :page => page, :per_page => per_page, :include => [:status, :customer] )
-      end
-    end
-  end
-
-  # Buscamos los totales de Facturas
+  # Metaprocreamos metodos de totales
   @kinds.each do |v|
     method_name = ("#{v[:kind]}_total").to_sym
-    self.class.send(:define_method, method_name) do 
+    self.class.send(:define_method, method_name) do
       sum = 0
-      result = self.find(:all, :conditions => v[:condition])
-      sum = result.sum(&:total) unless result.size < 1
+      invoices = self.send("#{v[:kind]}").to_a
+      sum = invoices.sum(&:total) unless invoices.size < 1
       sum
     end
   end
@@ -71,7 +61,7 @@ class Invoice < ActiveRecord::Base
   def customer_name
     self.customer.name
   end
-  
+
   def status_id
     status_id = read_attribute(:status_id)
     due = read_attribute(:due)
@@ -81,7 +71,7 @@ class Invoice < ActiveRecord::Base
       status_id
     end
   end
-  
+
   def state
     if self.status_id == 5
       "due"
@@ -114,11 +104,14 @@ class Invoice < ActiveRecord::Base
     10
   end
   
-  scope_procedure :due_invoice, lambda { status_id_equals(2).due_lt(Date.today) }
-  scope_procedure :open_invoice, lambda { status_id_equals(2).due_gte(Date.today) }
-  scope_procedure :close_invoice, lambda { status_id_equals(3) }
-  scope_procedure :draft_invoice, lambda { status_id_equals(1) }
-  scope_procedure :cancel_invoice, lambda { status_id_equals(4) }
+  # Estado de Facturas
+  scope_procedure :due, lambda { status_id_equals(2).due_lt(Date.today) }
+  scope_procedure :open, lambda { status_id_equals(2).due_gte(Date.today) }
+  scope_procedure :close, lambda { status_id_equals(3) }
+  scope_procedure :close_index, lambda { status_id_equals(3).close_date_gte(1.month.ago.to_date) }
+  scope_procedure :draft, lambda { status_id_equals(1) }
+  scope_procedure :cancel, lambda { status_id_equals(4) }
+  scope_procedure :all, lambda { number_gte(0) }
 
   
 end

@@ -25,34 +25,14 @@ class CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id], :include => [:invoices])
-
-    # TODO: Refactor FAT Model
-    if params[:status]
-      @status = params[:status]
-      if params[:sort]
-        @invoices = @customer.invoices.send("#{@status}_invoice").paginate(
-          :page => params[:page],
-          :per_page => 5, :order => ["#{params[:sort]} #{params[:direction]}" ],
-          :include => [:status] 
-        )
-      else
-        @invoices = @customer.invoices.send("#{@status}_invoice").paginate(:page => params[:page],
-                                                                           :per_page => 5, :order => 'date desc', :include => [:status])
-      end
-
-    elsif params[:sort]
-      @invoices = @customer.invoices.paginate(:page => params[:page],
-                                              :per_page => 5, :order => ["#{params[:sort]} #{params[:direction]}" ],
-                                              :include => [:status] )
-    else
-      @invoices = @customer.invoices.paginate(:page => params[:page],
-                                              :per_page => 5, :order => 'date desc', :include => [:status])
-    end
+    @status = params[:status].blank? ? "all" : params[:status]
+    order = "#{params[:sort]} #{params[:direction]}"
+    @invoices = @customer.invoices.find_by_status(@status, params[:page], order)
   end
 
 
+
   def new
-    # TODO: Falta mejorar la información de errores
     @customer = Customer.new
   end
 

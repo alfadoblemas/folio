@@ -1,22 +1,10 @@
 class InvoicesController < ApplicationController
 
   def search
-
-    
-    if params[:status]
-      state = params[:status]
-      params[:search]["#{state}_invoice".to_sym] = true
-      @search = Invoice.search(params[:search])
-      params[:search].delete("#{state}_invoice")
-    else
-      @search = Invoice.search(params[:search])
-    end
-    
-    if params[:sort]
-      @invoices = @search.paginate(:page => params[:page], :order => "#{params[:sort]} #{params[:direction]}")
-    else
-      @invoices = @search.paginate(:page => params[:page])
-    end
+    @search = Invoice.search(params[:search])
+    @status = params[:status].blank? ? "all" : params[:status]
+    order = "#{params[:sort]} #{params[:direction]}"
+    @invoices = @search.find_by_status(@status, params[:page], order, params[:per_page])
     render :template => "invoices/index"
   end
 
@@ -75,7 +63,6 @@ class InvoicesController < ApplicationController
 
     @history = History.new(:subject => "Pagada", :comment => "Factura pagada",
                            :invoice_id => @invoice.id)
-
     respond_to do |format|
       if @invoice.update_attribute(:status_id, 3)
         @invoice.update_attribute(:close_date, Date.today)
@@ -86,31 +73,18 @@ class InvoicesController < ApplicationController
     end
   end
 
+
+
   def index
     @search = Invoice.search(params[:search])
-    # vermos si hay facturas
-
-    invoice_index()
-
-    if params[:status]
-      @status = params[:status]
-      result = Invoice.method("find_#{@status}")   
-      if params[:sort]
-        @invoices = result.call(params[:sort], params[:direction], params[:page], params[:per_page] )
-      else
-        @invoices = result.call(params[:page] )
-      end
-    elsif params[:sort] && params[:status].blank?
-      @invoices = Invoice.paginate(:page => params[:page], :order => "#{params[:sort]} #{params[:direction]}")
-    else
-      # TODO: Ver como solo buscamos las facturas pagadas de hace 30 días
-      @invoices = Invoice.paginate(:page => params[:page], :include => [:status, :customer], :order => "status_id asc" )
-    end
+    @status = params[:status].blank? ? "all" : params[:status]
+    order = "#{params[:sort]} #{params[:direction]}"
+    @invoices = Invoice.find_by_status(@status, params[:page], order)
   end
 
 
-  def new
-    
+
+  def new    
     if params[:id] && params[:duplicate]
       @invoice_new = Invoice.find(params[:id])
       @invoice_new.date = Date.today
