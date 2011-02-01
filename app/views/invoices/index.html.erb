@@ -55,7 +55,11 @@
 					<%= invoice_state_link ("due", "Vencidas", 5)%> |
 					<%= invoice_state_link "draft", "Borrador ", 1 %> |
 					<%= invoice_state_link "open", "Activas ", 2 %> |
-					<%= invoice_state_link "close", "Pagadas ", 3 %>
+					<% if params[:action] == "search" %>
+						<%= invoice_state_link "close", "Pagadas ", 3 %>
+					<% else %>
+						<%= invoice_state_link "close_index", "Pagadas ", 3 %>
+					<% end %>
 					<br/>
 			 </div>
 			<div id="reload_<%= @status %>">

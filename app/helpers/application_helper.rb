@@ -21,20 +21,14 @@ module ApplicationHelper
     title ||= column.titleize
     css_class = (column == params[:sort]) ? "current #{params[:direction]} sortLink" : "sortLink"
     direction = (column == params[:sort] && params[:direction] == "asc") ? "desc" : "asc"
-    if state == params[:status]
-      link_to title, params.merge(:sort => column, :direction => direction, :status => state, :anchor => state),
-      {:class => css_class}
-    else
-      link_to title,  params.merge(:sort => column, :direction => direction, :status => state, :anchor => state ),
-      {:class => "sortLink"}
-    end
+    link_to title, params.merge(:sort => column, :direction => direction), {:class => css_class}
   end
   
   def invoice_state_link(state, title = nil, status_id = nil)
     if params[:action] == "search"
-      params[:status] == state ? "#{title} " : (link_to "#{title} ", search_invoice_path(params.merge(:status => state)))
+      params[:status] == state ? "#{title} " : (link_to "#{title} ", params.merge(:status => state))
     else
-      params[:status] == state ? "#{title} " : (link_to "#{title} ", invoices_path(params.merge(:status => state)))
+      params[:status] == state ? "#{title} " : (link_to "#{title} ", params.merge(:status => state))
     end
   end
   

@@ -32,7 +32,8 @@ class Invoice < ActiveRecord::Base
     {:kind => "draft", :condition => "status_id = 1"},
     {:kind => "due", :condition => ["status_id = 2 and due < ?", Date.today] },
     {:kind => "open", :condition => ["status_id = 2 and due >= ?", Date.today] },
-    {:kind => "close", :condition => "status_id = 3 and close_date > #{1.month.ago.to_date}"}
+    {:kind => "close_index", :condition => "status_id = 3 and close_date > #{1.month.ago.to_date}"},
+    {:kind => "close", :condition => "status_id = 3"}
   ]
 
   # Busqueda de Facturas x tipo
@@ -116,6 +117,7 @@ class Invoice < ActiveRecord::Base
   scope_procedure :open_invoice, lambda { status_id_equals(2).due_gte(Date.today) }
   scope_procedure :close_invoice, lambda { status_id_equals(3) }
   scope_procedure :draft_invoice, lambda { status_id_equals(1) }
+  scope_procedure :cancel_invoice, lambda { status_id_equals(4) }
 
   
 end

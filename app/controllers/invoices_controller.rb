@@ -54,15 +54,15 @@ class InvoicesController < ApplicationController
     end
   end
 
-  def deactive
+  def cancel
     @invoice = Invoice.find(params[:id])
-    @history = History.new(:subject => "Borrador", :comment => "La factura cambio estado a borrador",
+    @history = History.new(:subject => "Anulación", :comment => "La factura fue anulada",
                            :invoice_id => @invoice.id)
 
     respond_to do |format|
-      if @invoice.update_attribute(:status_id, 1)
+      if @invoice.update_attribute(:status_id, 4)
         @history.save
-        flash[:notice] = "Factura actualizada"
+        flash[:notice] = "Factura Anulada"
         format.html { redirect_to(invoice_path(@invoice))}
       end
 
@@ -104,7 +104,7 @@ class InvoicesController < ApplicationController
       @invoices = Invoice.paginate(:page => params[:page], :order => "#{params[:sort]} #{params[:direction]}")
     else
       # TODO: Ver como solo buscamos las facturas pagadas de hace 30 días
-      @invoices = Invoice.paginate(:page => params[:page], :include => [:status, :customer], :order => "date ASC" )
+      @invoices = Invoice.paginate(:page => params[:page], :include => [:status, :customer], :order => "status_id asc" )
     end
   end
 

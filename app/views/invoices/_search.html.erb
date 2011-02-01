@@ -2,21 +2,21 @@
 <!-- Busqueda directa x Numero de Factura -->
 <% form_for @search, :url => {:action => "search" } do |f| -%>
   <table class="search">
-  	<!-- <tr>
-	  <td><%= f.label "Estado" %></td>
-	  <td>
-	  <ul>
-	  <li><%= f.check_box(:draft_invoice)%><%= f.label "Borrador" %></li>
-	  <li><%= f.check_box(:open_invoice)%><%= f.label "Activas" %></li>
-	  <li><%= f.check_box(:due_invoice)%><%= f.label "Vencidas" %></li>
-	  <li><%= f.check_box(:close_invoice)%><%= f.label "Pagadas" %></li>
-	  </ul>
-	  </td>
-	  </tr> -->
 	  <tr>
 	  	<td><%= f.label :customer_name_like, "Cliente" %></td>
 	  	<td><%= f.text_field :customer_name_like %></td>
 	  </tr>
+  	<!-- <tr>
+  	  <td><%= f.label "Estado" %></td>
+  	  <td>
+  	  <ul>
+  	  <li><%= f.check_box(:draft_invoice)%><%= f.label "Borrador" %></li>
+  	  <li><%= f.check_box(:open_invoice)%><%= f.label "Activas" %></li>
+  	  <li><%= f.check_box(:due_invoice)%><%= f.label "Vencidas" %></li>
+  	  <li><%= f.check_box(:close_invoice)%><%= f.label "Pagadas" %></li>
+  	  </ul>
+  	  </td>
+  	  </tr>  -->
 	  <tr>
 	  	<td><%= f.label :date_gte, "Desde" %></td>
 	  	<td><%= f.date_select :date_gte, :default => {:year => Date.today.year - 1}, :discard_day => true %></td>

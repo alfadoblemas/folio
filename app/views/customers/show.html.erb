@@ -1,13 +1,23 @@
 <%= render :partial => "customer_resume", :locals =>  {:customer => @customer} %>
 <div>
   <h3>Facturas</h3>
-  <% if @invoices.size < 1 %>
+  <% if !@customer.invoices.first %>
     <div class="empty">
       Cliente no tiene facturas
     </div>
   <% else %>
 
      <!-- //TODO: Modifcar el draf por algo a doc -->
+		<div class="last">
+				<%= invoice_state_link  nil, "Todas" %> |
+				<%= invoice_state_link ("due", "Vencidas", 5)%> |
+				<%= invoice_state_link "draft", "Borrador ", 1 %> |
+				<%= invoice_state_link "open", "Activas ", 2 %> |				
+				<%= invoice_state_link "close", "Pagadas ", 3 %> |
+				<%= invoice_state_link "cancel", "Anuladas ", 4 %>
+				
+				<br/>
+		 </div>
 	<div id="reload_draft">
      <%= render :partial => "invoices/invoices", :locals => {:status => "draft", :invoices => @invoices } %>
 	</div>
