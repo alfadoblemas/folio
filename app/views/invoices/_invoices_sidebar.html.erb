@@ -42,7 +42,8 @@
             <% if @invoice.status_id == 1 %>
               <li id="convert_invoice"><%= link_to "<strong>Activar</strong> factura", active_invoice_path(@invoice) %></li>
 			<% elsif @invoice.status_id == 2 || @invoice.status_id == 5 %>
-			  <li id="delete_invoice"><%= link_to "<strong>Anular</strong> factura", cancel_invoice_path(@invoice) %></li>
+			  <li id="delete_invoice"><%= link_to "<strong>Anular</strong> factura", cancel_invoice_path(@invoice), 
+			:confirm => "Está seguro que desea Anular la factura?" %></li>
             <% end %>
             <li id="duplicate_invoice"><%= link_to "<strong>Duplicar</strong> Factura", new_invoice_path(:id => @invoice.id, :duplicate => true) %></li>
             <% if @invoice.status_id == 2 %>

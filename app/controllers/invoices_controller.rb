@@ -110,7 +110,7 @@ class InvoicesController < ApplicationController
 
 
   def new
-
+    
     if params[:id] && params[:duplicate]
       @invoice_new = Invoice.find(params[:id])
       @invoice_new.date = Date.today
@@ -164,6 +164,7 @@ class InvoicesController < ApplicationController
       else
         @customer = @customer.nil? ? Customer.new : @customer
         @invoice.due = due_date
+        @search = Invoice.search(params[:search])
         format.html { render :action => "new"}
       end
     end

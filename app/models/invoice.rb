@@ -33,7 +33,8 @@ class Invoice < ActiveRecord::Base
     {:kind => "due", :condition => ["status_id = 2 and due < ?", Date.today] },
     {:kind => "open", :condition => ["status_id = 2 and due >= ?", Date.today] },
     {:kind => "close_index", :condition => "status_id = 3 and close_date > #{1.month.ago.to_date}"},
-    {:kind => "close", :condition => "status_id = 3"}
+    {:kind => "close", :condition => "status_id = 3"},
+    {:kind => "cancel", :condition => "status_id = 4"}
   ]
 
   # Busqueda de Facturas x tipo
