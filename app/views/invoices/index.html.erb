@@ -15,10 +15,9 @@
 			<%= link_to "Volver...", invoices_path() %> 
 		<% else %>
 			<div class="span-10">
-				<h2>Resultados</h2>
-				<p>Las siguientes son las facturas emitidas
-				<% unless params[:search][:customer_name_like].blank? %> a <strong><%= params[:search][:customer_name_like] %></strong>, <% end %> entre <strong><%= l params[:search][:date_gte].to_date, :format => :shorter %></strong> y <strong><%= l params[:search][:date_lte].to_date, :format => :shorter %>.</strong>
-				<%= link_to " Eliminar Filtro", invoices_path() %> </p>
+				<h2><%= @invoices.size %> Resultados</h2>
+				<p>
+				<%= link_to " Volver", invoices_path() %> </p>
 			</div>
 		<% end %>
 		

@@ -70,27 +70,48 @@
       <div id="newCustomer" class="new">
         <%= link_to "Nueva Factura", new_invoice_path %>
       </div>
-      <hr/>
+	<br/>
+	<div>
+		<h4>Totales</h4>
+		<br/><hr/>
         <table class="invoice_resume">
           <tr class="draft">
-            <td><span class="draft_title">Borrador</span></td><td style="text-align: right"><%= number_to_currency(Invoice.draft_total) %></td>
+            <td><span class="draft_title">Borrador</span></td><td style="text-align: right"><%= number_to_currency(Invoice.draft_total(params[:search])) %></td>
           </tr>
           <tr class="due">
-            <td><span class="due_title">Vencidas</span></td><td style="text-align: right"><%= number_to_currency(Invoice.due_total) %></td>
+            <td><span class="due_title">Vencidas</span></td><td style="text-align: right"><%= number_to_currency(Invoice.due_total(params[:search])) %></td>
           </tr>
           <tr  class="open">
-            <td><span class="open_title">Activas</span></td><td style="text-align: right"><%= number_to_currency(Invoice.open_total) %></td>
+            <td><span class="open_title">Activas</span></td><td style="text-align: right"><%= number_to_currency(Invoice.open_total(params[:search])) %></td>
           </tr>
 		  <!-- Todo:: Solo por documentacion
           <tr  class="close" onclick="location.href=location.href+'?status=close_index'">-->
 	      <tr  class="close">
-            <td><span class="close_title">Pagadas</span></td><td style="text-align: right"><%= number_to_currency(Invoice.close_index_total) %></td>
+            <td><span class="close_title">Pagadas</span></td><td style="text-align: right"><%= number_to_currency(Invoice.close_index_total(params[:search])) %></td>
           </tr>
         </table>
+		</div>
+		<br/>
+		<div id="filter">
+		<h4>Filtrar Facturas</h4>
+		<br/>
 		<hr/>
-		
+			<% form_for @search, :url => {:action => "search" } do |f| -%>
+  				<%= f.select :date_gte, Invoice.date_filter,{:prompt => "Emitida ...", 
+					:include_blank => true}, {:style => "width: 160px"} %>
+				<br/>
+				<%= f.check_box(:taxed)%><%= f.label "Afecta" %>
+				<%= f.check_box(:untaxed)%><%= f.label "Excenta" %>
+				<br/><br/>
+				<%= f.submit "Buscar" %> <%= link_to "Cancelar", invoices_path() %>
+			<% end %>
+			<br/>
+	  </div>
+	  <br/>
+		<div>
 		<h4>Búsqueda Rápida</h4>
 		<br/>
+		<hr/>
 			<div id="number_search">
 				<% form_for @search, :url => {:action => "search" } do |f| -%>
 	  				<%= f.text_field :number_equals, :style =>"width: 150px" %>
@@ -99,5 +120,6 @@
 			</div>
 		<br/>
 		<br/>
+		</div>
       
     <% end %>

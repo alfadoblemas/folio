@@ -33,7 +33,7 @@ class Invoice < ActiveRecord::Base
       :per_page => per_page, :order => ["#{order}"],
       :include => [:status]
     )
-    
+
   end
 
 
@@ -43,18 +43,37 @@ class Invoice < ActiveRecord::Base
   # Metaprocreamos metodos de totales
   @statuses.each do |v|
     method_name = ("#{v[:status]}_total").to_sym
-    self.class.send(:define_method, method_name) do
+    self.class.send(:define_method, method_name) do |*query|
+      query = *query
+      if query.nil?
+        sum = 0
+        invoices = self.send("#{v[:status]}").to_a
+        sum = invoices.sum(&:total) unless invoices.size < 1
+        sum
+      elsif
+        sum = 0
+        query.delete("status")
+        result = self.send("#{v[:status]}").search(query)
+        invoices = result.all
+        sum = invoices.sum(&:total) unless invoices.size < 1
+        sum
+      end
+    end
+  end
+
+  def self.close_index_total(query = nil)
+    if query.nil?
       sum = 0
-      invoices = self.send("#{v[:status]}").to_a
+      sum = close_index.to_a.sum(&:total) unless close_index.to_a.size < 1
+      sum
+    elsif
+      sum = 0
+      query.delete("status")
+      result = close.search(query)
+      invoices = result.all
       sum = invoices.sum(&:total) unless invoices.size < 1
       sum
     end
-  end
-  
-  def self.close_index_total
-    sum = 0
-    sum = close_index.to_a.sum(&:total) unless close_index.to_a.size < 1
-    sum
   end
 
   def customer_name
@@ -95,6 +114,15 @@ class Invoice < ActiveRecord::Base
     dates
   end
   
+  def self.date_filter
+    dates = Array.new
+    dates = [
+      ["1 Mes", 1.month.ago.to_date ],
+      ["2 Meses", 2.month.ago.to_date ],
+      ["6 Meses", 6.month.ago.to_date ]
+      ]
+  end
+  
   def self.statuses
     @statuses
   end
@@ -110,7 +138,8 @@ class Invoice < ActiveRecord::Base
   scope_procedure :close_index, lambda { status_id_equals(3).close_date_gte(1.month.ago.to_date) }
   scope_procedure :draft, lambda { status_id_equals(1) }
   scope_procedure :cancel, lambda { status_id_equals(4) }
-  scope_procedure :all, lambda { number_gte(0) }
+  scope_procedure :all_invoices, lambda { number_gte(0) }
+  scope_procedure :untaxed, lambda { taxed_equals(false) }
 
   
 end

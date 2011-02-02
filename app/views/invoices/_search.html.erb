@@ -6,7 +6,13 @@
 	  	<td><%= f.label :customer_name_like, "Cliente" %></td>
 	  	<td><%= f.text_field :customer_name_like %></td>
 	  </tr>
-  
+  	  <tr>
+		<td></td>
+		<td>
+			<%= f.check_box(:taxed)%><%= f.label "Afecta" %>
+			<%= f.check_box(:untaxed)%><%= f.label "Excenta" %>
+		</td>
+	  </tr>
 	  <tr>
 	  	<td><%= f.label :date_gte, "Desde" %></td>
 	  	<td><%= f.date_select :date_gte, :default => {:year => Date.today.year - 1}, :discard_day => true %></td>
