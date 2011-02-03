@@ -45,13 +45,12 @@ class Invoice < ActiveRecord::Base
     method_name = ("#{v[:status]}_total").to_sym
     self.class.send(:define_method, method_name) do |*query|
       query = *query
+      sum = 0
       if query.nil?
-        sum = 0
         invoices = self.send("#{v[:status]}").to_a
         sum = invoices.sum(&:total) unless invoices.size < 1
         sum
       elsif
-        sum = 0
         query.delete("status")
         result = self.send("#{v[:status]}").search(query)
         invoices = result.all
@@ -62,12 +61,11 @@ class Invoice < ActiveRecord::Base
   end
 
   def self.close_index_total(query = nil)
+    sum = 0
     if query.nil?
-      sum = 0
       sum = close_index.to_a.sum(&:total) unless close_index.to_a.size < 1
       sum
     elsif
-      sum = 0
       query.delete("status")
       result = close.search(query)
       invoices = result.all

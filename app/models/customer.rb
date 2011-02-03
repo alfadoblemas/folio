@@ -21,7 +21,7 @@ class Customer < ActiveRecord::Base
 # Funciones
 
   def self.find_index
-    self.find(:all, :order => "name")
+    self.find(:all, :order => "name", :include => [:contacts])
   end
 
 end
