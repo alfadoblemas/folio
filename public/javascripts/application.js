@@ -157,10 +157,7 @@ $().ready(function() {
 				$("input#search_number_equals").val("Número de factura...");
 				
 				$("input#search_number_equals").focus(function(){
-					if(disable_input){
 				  		$("input#search_number_equals").val("")
-						
-					}
 				});
 			}
 	
