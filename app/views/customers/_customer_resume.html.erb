@@ -2,7 +2,7 @@
   <div class="customerHeader span-19">
     <% if params[:action].eql?("index") %>
 	  <br/>
-      <div class="customerName span-9 last"><h3><%= link_to "#{customer.name}", customer %></h3></div>
+      <div class="customerName span-9 last"><%= link_to "#{customer.name}", customer %></div>
     <% elsif params[:action].eql?("show") %>
       <div class="customerName span-18 last"><h2><%= customer.name %></h2></div>
     <% end %>
