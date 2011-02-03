@@ -15,7 +15,7 @@
 			<%= link_to "Volver...", invoices_path() %> 
 		<% else %>
 			<div class="span-10">
-				<h2><%= @invoices.size %> Resultados</h2>
+				<h2><%= @invoices.total_entries %> Resultados</h2>
 				<p>
 				<%= link_to " Volver", invoices_path() %> </p>
 			</div>
