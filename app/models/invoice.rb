@@ -50,7 +50,7 @@ class Invoice < ActiveRecord::Base
         invoices = self.send("#{v[:status]}").to_a
         sum = invoices.sum(&:total) unless invoices.size < 1
         sum
-      elsif
+      else
         query.delete("status")
         result = self.send("#{v[:status]}").search(query)
         invoices = result.all
@@ -65,7 +65,7 @@ class Invoice < ActiveRecord::Base
     if query.nil?
       sum = close_index.to_a.sum(&:total) unless close_index.to_a.size < 1
       sum
-    elsif
+    else
       query.delete("status")
       result = close.search(query)
       invoices = result.all
