@@ -31,7 +31,7 @@ class Invoice < ActiveRecord::Base
     self.send("#{status}").paginate(
       :page => page,
       :per_page => per_page, :order => ["#{order}"],
-      :include => [:status]
+      :include => [:status, :customer]
     )
 
   end
@@ -57,6 +57,21 @@ class Invoice < ActiveRecord::Base
         sum = invoices.sum(&:total) unless invoices.size < 1
         sum
       end
+    end
+  end
+  
+  def self.iva_total(query = nil)
+    sum = 0
+    if query.nil?
+      invoices = all_invoices.to_a
+      sum = invoices.sum(&:tax) unless invoices.size < 1
+      sum
+    else
+      query.delete("status")
+      result = all_invoices.search(query)
+      invoices = result.all
+      sum = invoices.sum(&:tax) unless invoices.size < 1
+      sum
     end
   end
 
@@ -115,7 +130,7 @@ class Invoice < ActiveRecord::Base
   def self.date_filter
     dates = Array.new
     dates = [
-      ["1 Mes", 1.month.ago.to_date ],
+      ["Este mes", 1.month.ago.to_date ],
       ["2 Meses", 2.month.ago.to_date ],
       ["6 Meses", 6.month.ago.to_date ]
       ]

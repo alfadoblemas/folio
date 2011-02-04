@@ -1,7 +1,16 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  name: MyString
-
-two:
-  name: MyString
+--- 
+products_001: 
+  name: Horas
+  created_at: 2010-12-30 16:02:05
+  updated_at: 2010-12-30 16:02:05
+  id: "1"
+products_002: 
+  name: Servicio
+  created_at: 2010-12-30 16:02:05
+  updated_at: 2010-12-30 16:02:05
+  id: "2"
+products_003: 
+  name: Producto
+  created_at: 2010-12-30 16:02:05
+  updated_at: 2010-12-30 16:02:05
+  id: "3"

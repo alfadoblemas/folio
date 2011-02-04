@@ -1,21 +1,1818 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+--- 
+invoices_072: 
+  comment: ""
+  tax: "3061"
+  number: "1174"
+  taxed: "1"
+  created_at: 2011-02-01 20:56:08
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-01 20:56:19
+  contact_id: 
+  total: "19169"
+  subject: CONTRATO SOPORTE
+  date: "2011-01-31"
+  id: "74"
+  company_id: 
+  net: "16108"
+  status_id: "2"
+  customer_id: "17"
+  due: "2011-03-02"
+  history_id: 
+invoices_008: 
+  comment: ""
+  tax: "377094"
+  number: "1148"
+  taxed: "1"
+  created_at: 2011-01-05 20:45:56
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-01 17:34:48
+  contact_id: 
+  total: "2361797"
+  subject: 90.286.000-2
+  date: "2011-01-17"
+  id: "9"
+  company_id: 
+  net: "1984703"
+  status_id: "2"
+  customer_id: "1"
+  due: "2011-02-16"
+  history_id: 
+invoices_030: 
+  comment: ""
+  tax: "100514"
+  number: "1102"
+  taxed: "1"
+  created_at: 2011-01-11 19:19:56
+  currency_id: 
+  close_date: "2011-01-21"
+  updated_at: 2011-01-21 15:33:09
+  contact_id: 
+  total: "629534"
+  subject: "1102"
+  date: "2010-12-20"
+  id: "32"
+  company_id: 
+  net: "529020"
+  status_id: "3"
+  customer_id: "22"
+  due: "2011-01-19"
+  history_id: 
+invoices_029: 
+  comment: ""
+  tax: "43077"
+  number: "1103"
+  taxed: "1"
+  created_at: 2011-01-11 19:16:57
+  currency_id: 
+  close_date: "2011-01-21"
+  updated_at: 2011-01-21 15:33:20
+  contact_id: 
+  total: "269800"
+  subject: SERVICIO DE INGENIERIA
+  date: "2010-12-20"
+  id: "31"
+  company_id: 
+  net: "226723"
+  status_id: "3"
+  customer_id: "21"
+  due: "2011-01-19"
+  history_id: 
+invoices_051: 
+  comment: ""
+  tax: "8158"
+  number: "1156"
+  taxed: "1"
+  created_at: 2011-01-25 20:13:50
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-25 20:13:53
+  contact_id: 
+  total: "51096"
+  subject: SERVICIOS
+  date: "2011-01-25"
+  id: "53"
+  company_id: 
+  net: "42938"
+  status_id: "2"
+  customer_id: "41"
+  due: "2011-02-24"
+  history_id: 
+invoices_073: 
+  comment: |-
+    Envio de factura por mail a francisco_celis@prodinsa.cl
+    pago por deposito bancario
+  tax: "23831"
+  number: "1166"
+  taxed: "1"
+  created_at: 2011-02-01 21:03:00
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-01 21:03:05
+  contact_id: 
+  total: "149257"
+  subject: SERVICIO DE SOPORTE
+  date: "2011-01-31"
+  id: "75"
+  company_id: 
+  net: "125426"
+  status_id: "2"
+  customer_id: "29"
+  due: "2011-03-02"
+  history_id: 
+invoices_031: 
+  comment: ""
+  tax: "50529"
+  number: "1101"
+  taxed: "1"
+  created_at: 2011-01-11 19:25:51
+  currency_id: 
+  close_date: "2011-01-21"
+  updated_at: 2011-01-21 15:32:58
+  contact_id: 
+  total: "316470"
+  subject: SERVICIO DE INGENIERIA
+  date: "2010-12-20"
+  id: "33"
+  company_id: 
+  net: "265941"
+  status_id: "3"
+  customer_id: "22"
+  due: "2011-01-19"
+  history_id: 
+invoices_052: 
+  comment: Envio de factura por mano y pago por vale vista banco santander
+  tax: "366532"
+  number: "1081"
+  taxed: "1"
+  created_at: 2011-01-26 18:40:43
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-26 18:40:56
+  contact_id: 
+  total: "2295649"
+  subject: CONTRATO SOPORTE
+  date: "2010-12-02"
+  id: "54"
+  company_id: 
+  net: "1929117"
+  status_id: "2"
+  customer_id: "1"
+  due: "2011-01-01"
+  history_id: 
+invoices_010: 
+  comment: |
+    Factura se envia por mail a Lucia Alcazar lucia.alcazar@mi-muesli.com
+    pago por transferencia
 
-one:
-  number: 1
-  taxed: 
-  tax: 1
-  net: 1
-  total: 1
-  customer_id: 1
-  contact_id: 1
-  company_id: 1
+  tax: "4655"
+  number: "1145"
+  taxed: "1"
+  created_at: 2011-01-06 17:50:53
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-06 17:50:58
+  contact_id: 
+  total: "29155"
+  subject: SRVICIO MENSUAL DE CORREO ZIMBRA
+  date: "2011-01-06"
+  id: "11"
+  company_id: 
+  net: "24500"
+  status_id: "2"
+  customer_id: "28"
+  due: "2011-02-05"
+  history_id: 
+invoices_074: 
+  comment: |-
+    envio de factura por mail mario.rojas@mercurio.cl
+    pago por transferencia electronica
+  tax: "147268"
+  number: "1164"
+  taxed: "1"
+  created_at: 2011-02-01 21:10:58
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-01 21:11:14
+  contact_id: 
+  total: "922362"
+  subject: SERVICIOS
+  date: "2011-01-31"
+  id: "76"
+  company_id: 
+  net: "775094"
+  status_id: "2"
+  customer_id: "39"
+  due: "2011-03-02"
+  history_id: 
+invoices_053: 
+  comment: ""
+  tax: "203629"
+  number: "1082"
+  taxed: "1"
+  created_at: 2011-01-26 19:39:39
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-26 19:39:44
+  contact_id: 
+  total: "1275360"
+  subject: CONTRATO SOPORTE
+  date: "2011-01-26"
+  id: "55"
+  company_id: 
+  net: "1071731"
+  status_id: "2"
+  customer_id: "1"
+  due: "2011-02-25"
+  history_id: 
+invoices_011: 
+  comment: |-
+    Se envia factura por mail a Sylvia Toro storo@blc.cl
+    Pago de factura por deposito bancario
+  tax: "40850"
+  number: "1144"
+  taxed: "1"
+  created_at: 2011-01-06 17:56:21
+  currency_id: 
+  close_date: "2011-01-24"
+  updated_at: 2011-01-24 14:49:35
+  contact_id: 
+  total: "255850"
+  subject: SERVICIO MENSUAL DE CORREO
+  date: "2011-01-06"
+  id: "12"
+  company_id: 
+  net: "215000"
+  status_id: "3"
+  customer_id: "4"
+  due: "2011-02-05"
+  history_id: 
+invoices_009: 
+  comment: |-
+    Envio de Factura por mail a Rodrigo Rosas rrosas@audioamericas.cl
+    pago por transferencia en cuenta corriente IT Linux
+  tax: "9880"
+  number: "1143"
+  taxed: "1"
+  created_at: 2011-01-05 20:55:40
+  currency_id: 
+  close_date: "2011-01-06"
+  updated_at: 2011-01-06 17:51:21
+  contact_id: 
+  total: "61880"
+  subject: SERVICIO MENSUAL DE CORREO
+  date: "2011-01-05"
+  id: "10"
+  company_id: 
+  net: "52000"
+  status_id: "3"
+  customer_id: "27"
+  due: "2011-02-04"
+  history_id: 
+invoices_032: 
+  comment: ""
+  tax: "112246"
+  number: "1100"
+  taxed: "1"
+  created_at: 2011-01-11 20:43:25
+  currency_id: 
+  close_date: "2011-01-21"
+  updated_at: 2011-01-21 15:32:37
+  contact_id: 
+  total: "703015"
+  subject: SERVICIOS DE INGENIERIA
+  date: "2010-12-20"
+  id: "34"
+  company_id: 
+  net: "590769"
+  status_id: "3"
+  customer_id: "22"
+  due: "2011-01-19"
+  history_id: 
+invoices_075: 
+  comment: |-
+    Envio de factura a abastecimiento@ucsc.cl
+    pago por deposito bancario
+  tax: "36726"
+  number: "1163"
+  taxed: "1"
+  created_at: 2011-02-02 16:02:23
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-02 16:02:27
+  contact_id: 
+  total: "230019"
+  subject: SOPORTE
+  date: "2011-01-31"
+  id: "77"
+  company_id: 
+  net: "193293"
+  status_id: "2"
+  customer_id: "37"
+  due: "2011-03-02"
+  history_id: 
+invoices_012: 
+  comment: |-
+    Envio de factura por mail Amador Soto amador.soto@serviciomedico.cl
+    pago por deposito bancario
+  tax: "8152"
+  number: "1122"
+  taxed: "1"
+  created_at: 2011-01-06 18:39:35
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-07 22:50:00
+  contact_id: 
+  total: "51057"
+  subject: SERVICIO DE SOPORTE
+  date: "2011-01-06"
+  id: "13"
+  company_id: 
+  net: "42905"
+  status_id: "2"
+  customer_id: "11"
+  due: "2011-02-05"
+  history_id: 
+invoices_033: 
+  comment: ""
+  tax: "31321"
+  number: "1099"
+  taxed: "1"
+  created_at: 2011-01-11 20:45:27
+  currency_id: 
+  close_date: "2011-01-21"
+  updated_at: 2011-01-21 15:31:39
+  contact_id: 
+  total: "196167"
+  subject: SERVICIOS DE INGENIERIA
+  date: "2010-12-20"
+  id: "35"
+  company_id: 
+  net: "164846"
+  status_id: "3"
+  customer_id: "22"
+  due: "2011-01-19"
+  history_id: 
+invoices_054: 
+  comment: "factura se entrega por mano, pago con cheque "
+  tax: "48871"
+  number: "1085"
+  taxed: "1"
+  created_at: 2011-01-26 19:54:53
+  currency_id: 
+  close_date: "2011-01-26"
+  updated_at: 2011-01-26 19:55:16
+  contact_id: 
+  total: "306086"
+  subject: SOPORTE
+  date: "2010-12-02"
+  id: "56"
+  company_id: 
+  net: "257215"
+  status_id: "3"
+  customer_id: "8"
+  due: "2011-01-01"
+  history_id: 
+invoices_076: 
+  comment: "Envio de factura por mail a Dinko Kurte a dkurte@ballerina.cl\r\n\
+    pago por transferencia electr\xC3\xB3nica."
+  tax: "40806"
+  number: "1162"
+  taxed: "1"
+  created_at: 2011-02-02 16:11:17
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-02 16:11:20
+  contact_id: 
+  total: "255576"
+  subject: CONTRATO SOPORTE
+  date: "2011-01-31"
+  id: "78"
+  company_id: 
+  net: "214770"
+  status_id: "2"
+  customer_id: "35"
+  due: "2011-03-02"
+  history_id: 
+invoices_013: 
+  comment: |
+    Envio de factura por mail a Diego Moreno a diego.moreno@enjoy.cl y a oficinadepartes@enjoy.cl
+    Pago de factura por transferencia
 
-two:
-  number: 1
-  taxed: 
-  tax: 1
-  net: 1
-  total: 1
-  customer_id: 1
-  contact_id: 1
-  company_id: 1
+  tax: "6196"
+  number: "1121"
+  taxed: "1"
+  created_at: 2011-01-06 18:46:04
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-06 18:46:08
+  contact_id: 
+  total: "38804"
+  subject: "1121"
+  date: "2011-01-06"
+  id: "14"
+  company_id: 
+  net: "32608"
+  status_id: "2"
+  customer_id: "12"
+  due: "2011-02-05"
+  history_id: 
+invoices_034: 
+  comment: |-
+    Factura se envia por mano a la direccion de Conaf
+    Pago por transferencia electronica
+  tax: "89635"
+  number: "1098"
+  taxed: "1"
+  created_at: 2011-01-12 16:22:37
+  currency_id: 
+  close_date: "2011-01-19"
+  updated_at: 2011-01-19 18:08:01
+  contact_id: 
+  total: "561399"
+  subject: SERVICIOS
+  date: "2010-12-14"
+  id: "36"
+  company_id: 
+  net: "471764"
+  status_id: "3"
+  customer_id: "23"
+  due: "2011-01-13"
+  history_id: 
+invoices_055: 
+  comment: "envio de factura por mail a Grace Bucarey grace.bucarey@forus.cl\r\n\
+    pago por transferencia electr\xC3\xB3nica"
+  tax: "27123"
+  number: "1086"
+  taxed: "1"
+  created_at: 2011-01-26 20:00:43
+  currency_id: 
+  close_date: "2011-01-26"
+  updated_at: 2011-01-26 20:00:55
+  contact_id: 
+  total: "169873"
+  subject: CONTRATO SOPORTE
+  date: "2010-12-02"
+  id: "57"
+  company_id: 
+  net: "142750"
+  status_id: "3"
+  customer_id: "30"
+  due: "2011-01-01"
+  history_id: 
+invoices_077: 
+  comment: ""
+  tax: "40806"
+  number: "1161"
+  taxed: "1"
+  created_at: 2011-02-02 16:13:28
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-02 16:13:31
+  contact_id: 
+  total: "255576"
+  subject: CONTRATO SOPORTE
+  date: "2011-01-31"
+  id: "79"
+  company_id: 
+  net: "214770"
+  status_id: "2"
+  customer_id: "10"
+  due: "2011-03-02"
+  history_id: 
+invoices_014: 
+  comment: |-
+    envio de factura por mail Diego Moreno diego.moreno@enjoy.cl y a oficinadepartes@enjoy.cl
+    pago de factura por transferencia
+  tax: "9783"
+  number: "1119"
+  taxed: "1"
+  created_at: 2011-01-06 18:51:23
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-06 18:51:28
+  contact_id: 
+  total: "61270"
+  subject: SERVICIO DE SOPORTE
+  date: "2011-01-06"
+  id: "15"
+  company_id: 
+  net: "51487"
+  status_id: "2"
+  customer_id: "14"
+  due: "2011-02-05"
+  history_id: 
+invoices_035: 
+  comment: |-
+    Envio de factura por mail a Marjorie Martin mmartin@socofar.cl
+    pago por deposito bancario
+  tax: "244346"
+  number: "1097"
+  taxed: "1"
+  created_at: 2011-01-12 20:30:10
+  currency_id: 
+  close_date: "2011-01-21"
+  updated_at: 2011-01-21 15:31:57
+  contact_id: 
+  total: "1530380"
+  subject: SERVICIOS
+  date: "2010-12-13"
+  id: "37"
+  company_id: 
+  net: "1286034"
+  status_id: "3"
+  customer_id: "24"
+  due: "2011-01-12"
+  history_id: 
+invoices_056: 
+  comment: |-
+    Envio de factura a Marjorie Martin mmartin@socofar.cl
+    pago por deposito bancario
+  tax: "24330"
+  number: "1087"
+  taxed: "1"
+  created_at: 2011-01-26 20:07:37
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-26 20:07:45
+  contact_id: 
+  total: "152383"
+  subject: SERVICIOS
+  date: "2010-12-06"
+  id: "58"
+  company_id: 
+  net: "128053"
+  status_id: "2"
+  customer_id: "24"
+  due: "2011-01-05"
+  history_id: 
+invoices_078: 
+  comment: ""
+  tax: "160179"
+  number: "1177"
+  taxed: "1"
+  created_at: 2011-02-02 16:17:52
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-02 16:17:56
+  contact_id: 
+  total: "1003224"
+  subject: SERVICIOS
+  date: "2011-01-31"
+  id: "80"
+  company_id: 
+  net: "843045"
+  status_id: "2"
+  customer_id: "42"
+  due: "2011-03-02"
+  history_id: 
+invoices_015: 
+  comment: "Env\xC3\xADo de factura por mail Diego Moreno diego.moreno@enjoy.cl y a oficinadepartes@enjoy.cl\r\n\
+    pago de factura por transferencia"
+  tax: "6114"
+  number: "1118"
+  taxed: "1"
+  created_at: 2011-01-06 18:53:35
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-06 18:53:38
+  contact_id: 
+  total: "38293"
+  subject: SERVICIO DE SOPORTE
+  date: "2011-01-06"
+  id: "16"
+  company_id: 
+  net: "32179"
+  status_id: "2"
+  customer_id: "15"
+  due: "2011-02-05"
+  history_id: 
+invoices_036: 
+  comment: |-
+    envio de factura por mail a cbarreau@banmedica.cl
+    pago por deposito bancario
+  tax: "406632"
+  number: "1096"
+  taxed: "1"
+  created_at: 2011-01-12 20:39:41
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-12 20:39:54
+  contact_id: 
+  total: "2546799"
+  subject: LICENCIA
+  date: "2010-12-09"
+  id: "38"
+  company_id: 
+  net: "2140167"
+  status_id: "2"
+  customer_id: "25"
+  due: "2011-01-08"
+  history_id: 
+invoices_057: 
+  comment: ""
+  tax: "8558517"
+  number: "1088"
+  taxed: "1"
+  created_at: 2011-01-26 20:34:56
+  currency_id: 
+  close_date: "2011-01-26"
+  updated_at: 2011-01-26 20:35:00
+  contact_id: 
+  total: "53603345"
+  subject: LICENCIAS
+  date: "2010-12-06"
+  id: "59"
+  company_id: 
+  net: "45044828"
+  status_id: "3"
+  customer_id: "24"
+  due: "2011-01-05"
+  history_id: 
+invoices_080: 
+  comment: ""
+  tax: "367269"
+  number: "1180"
+  taxed: "1"
+  created_at: 2011-02-02 18:04:57
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-02 18:04:59
+  contact_id: 
+  total: "2300262"
+  subject: CONTRATO SOPORTE
+  date: "2011-02-01"
+  id: "82"
+  company_id: 
+  net: "1932993"
+  status_id: "2"
+  customer_id: "1"
+  due: "2011-03-03"
+  history_id: 
+invoices_079: 
+  comment: "envio de factura por mail a Roberto Riveros rriveros@lyd.cl\r\n\
+    pago con cheque, hay que retirar en direcci\xC3\xB3n"
+  tax: "8161"
+  number: "1179"
+  taxed: "1"
+  created_at: 2011-02-02 16:23:34
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-02 16:23:37
+  contact_id: 
+  total: "51115"
+  subject: HORAS HOMBRE
+  date: "2011-01-31"
+  id: "81"
+  company_id: 
+  net: "42954"
+  status_id: "2"
+  customer_id: "43"
+  due: "2011-03-02"
+  history_id: 
+invoices_016: 
+  comment: "env\xC3\xADo de factura por mail Diego Moreno diego.moreno@enjoy.cl y a oficinadepartes@enjoy.cl\r\n\
+    pago de factura por transferencia\r\n"
+  tax: "9171"
+  number: "1117"
+  taxed: "1"
+  created_at: 2011-01-06 18:55:49
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-06 18:55:53
+  contact_id: 
+  total: "57440"
+  subject: SERVICIO DE SOPORTE
+  date: "2011-01-06"
+  id: "17"
+  company_id: 
+  net: "48269"
+  status_id: "2"
+  customer_id: "16"
+  due: "2011-02-05"
+  history_id: 
+invoices_037: 
+  comment: |-
+    envio de factura por mail
+    factura se paga por tranferencia
+  tax: "40557"
+  number: "1095"
+  taxed: "1"
+  created_at: 2011-01-12 20:50:55
+  currency_id: 
+  close_date: "2011-01-12"
+  updated_at: 2011-01-12 20:51:29
+  contact_id: 
+  total: "254017"
+  subject: SERVICIOS DE INGENIERIA
+  date: "2010-12-09"
+  id: "39"
+  company_id: 
+  net: "213460"
+  status_id: "3"
+  customer_id: "26"
+  due: "2011-01-08"
+  history_id: 
+invoices_058: 
+  comment: |-
+    Envio de factura por mail a Francisco Celis francisco_celis@prodinsa.cl
+    pago por deposito bancario
+  tax: "23780"
+  number: "1089"
+  taxed: "1"
+  created_at: 2011-01-26 20:50:24
+  currency_id: 
+  close_date: "2011-01-26"
+  updated_at: 2011-01-26 20:50:40
+  contact_id: 
+  total: "148937"
+  subject: CONTRATO SOPORTE
+  date: "2010-12-06"
+  id: "60"
+  company_id: 
+  net: "125157"
+  status_id: "3"
+  customer_id: "29"
+  due: "2011-01-05"
+  history_id: 
+invoices_081: 
+  comment: ""
+  tax: "204038"
+  number: "1181"
+  taxed: "1"
+  created_at: 2011-02-02 18:08:12
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-02 18:08:14
+  contact_id: 
+  total: "1277923"
+  subject: CONTRATO SOPORTE
+  date: "2011-02-01"
+  id: "83"
+  company_id: 
+  net: "1073885"
+  status_id: "2"
+  customer_id: "1"
+  due: "2011-03-03"
+  history_id: 
+invoices_017: 
+  comment: "env\xC3\xADo de factura por mail Diego Moreno diego.moreno@enjoy.cl y a oficinadepartes@enjoy.cl\r\n\
+    pago de factura por transferencia\r\n"
+  tax: "3057"
+  number: "1115"
+  taxed: "1"
+  created_at: 2011-01-06 18:58:27
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-06 18:58:29
+  contact_id: 
+  total: "19146"
+  subject: SERVICIO DE SOPORTE
+  date: "2011-01-06"
+  id: "18"
+  company_id: 
+  net: "16089"
+  status_id: "2"
+  customer_id: "17"
+  due: "2011-02-05"
+  history_id: 
+invoices_038: 
+  comment: |-
+    Envio de factura por mail a Sylvia Toro storo@blc.cl
+    pago por deposito bancario
+  tax: "40375"
+  number: "1093"
+  taxed: "1"
+  created_at: 2011-01-12 21:07:52
+  currency_id: 
+  close_date: "2011-01-12"
+  updated_at: 2011-01-12 21:08:02
+  contact_id: 
+  total: "252875"
+  subject: SERVICIO MENSUAL DE CORREO
+  date: "2010-12-12"
+  id: "40"
+  company_id: 
+  net: "212500"
+  status_id: "3"
+  customer_id: "4"
+  due: "2011-01-11"
+  history_id: 
+invoices_060: 
+  comment: |
+    Envio de factura por mail a mrodriguez@bazuca.com
+    pago por transferencia electronica
+
+  tax: "37503"
+  number: "1160"
+  taxed: "1"
+  created_at: 2011-02-01 15:02:06
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-01 15:02:10
+  contact_id: 
+  total: "234888"
+  subject: SERVICIOS
+  date: "2011-01-31"
+  id: "62"
+  company_id: 
+  net: "197385"
+  status_id: "2"
+  customer_id: "5"
+  due: "2011-03-02"
+  history_id: 
+invoices_059: 
+  comment: |-
+    Envio de factura a upc@mercurio.cl
+    pago por transferencia bancaria
+  tax: "149429"
+  number: "1157"
+  taxed: "1"
+  created_at: 2011-01-28 14:14:08
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-28 14:14:10
+  contact_id: 
+  total: "935900"
+  subject: LICENCIA
+  date: "2011-01-28"
+  id: "61"
+  company_id: 
+  net: "786471"
+  status_id: "2"
+  customer_id: "39"
+  due: "2011-02-27"
+  history_id: 
+invoices_082: 
+  comment: ""
+  tax: "26933"
+  number: "1182"
+  taxed: "1"
+  created_at: 2011-02-02 18:10:33
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-02 18:10:36
+  contact_id: 
+  total: "168686"
+  subject: "CONTRATO DE SOPORTE "
+  date: "2011-02-01"
+  id: "84"
+  company_id: 
+  net: "141753"
+  status_id: "2"
+  customer_id: "30"
+  due: "2011-03-03"
+  history_id: 
+invoices_018: 
+  comment: |
+    envio de factura por mail Diego Moreno diego.moreno@enjoy.cl y a oficinadepartes@enjoy.cl
+    pago de factura por transferencia
+
+  tax: "8560"
+  number: "1114"
+  taxed: "1"
+  created_at: 2011-01-06 19:00:36
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-06 19:00:56
+  contact_id: 
+  total: "53611"
+  subject: SERVICIO DE SOPORTE
+  date: "2011-01-06"
+  id: "19"
+  company_id: 
+  net: "45051"
+  status_id: "2"
+  customer_id: "18"
+  due: "2011-02-05"
+  history_id: 
+invoices_040: 
+  comment: "envio de factura  Lucia Alcazar aalcazar@mimuesli.cl\r\n\
+    pago por tranferencia "
+  tax: "9310"
+  number: "1091"
+  taxed: "1"
+  created_at: 2011-01-12 21:19:23
+  currency_id: 
+  close_date: "2011-01-19"
+  updated_at: 2011-01-19 14:30:11
+  contact_id: 
+  total: "58310"
+  subject: SERVICIO MENSUAL DE CORREO
+  date: "2010-12-07"
+  id: "42"
+  company_id: 
+  net: "49000"
+  status_id: "3"
+  customer_id: "28"
+  due: "2011-01-06"
+  history_id: 
+invoices_039: 
+  comment: |-
+    Envio de factura por mail a Rodrigo Rosas a rrosas@audioamericas.cl
+    pago por transferencia electronica
+  tax: "9500"
+  number: "1092"
+  taxed: "1"
+  created_at: 2011-01-12 21:12:46
+  currency_id: 
+  close_date: "2011-01-12"
+  updated_at: 2011-01-12 21:12:51
+  contact_id: 
+  total: "59500"
+  subject: SERVICIO
+  date: "2010-12-07"
+  id: "41"
+  company_id: 
+  net: "50000"
+  status_id: "3"
+  customer_id: "27"
+  due: "2011-01-06"
+  history_id: 
+invoices_061: 
+  comment: |-
+    Ir a dejar factura a oficina de partes del Poder Judicial
+    Pago por transferencia electronica
+  tax: "204032"
+  number: "1165"
+  taxed: "1"
+  created_at: 2011-02-01 15:04:59
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-01 15:05:01
+  contact_id: 
+  total: "1277882"
+  subject: SERVICIOS
+  date: "2011-01-31"
+  id: "63"
+  company_id: 
+  net: "1073850"
+  status_id: "2"
+  customer_id: "9"
+  due: "2011-03-02"
+  history_id: 
+invoices_083: 
+  comment: ""
+  tax: "40808"
+  number: "1183"
+  taxed: "1"
+  created_at: 2011-02-02 18:13:09
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-02 18:13:12
+  contact_id: 
+  total: "255585"
+  subject: CONTRATO SOPORTE
+  date: "2011-02-01"
+  id: "85"
+  company_id: 
+  net: "214777"
+  status_id: "2"
+  customer_id: "31"
+  due: "2011-03-03"
+  history_id: 
+invoices_020: 
+  comment: "factura se env\xC3\xADa por mano a Hu\xC3\xA9rfanos 1409 4to piso\r\n\
+    pago por transferencia"
+  tax: "203775"
+  number: "1112"
+  taxed: "1"
+  created_at: 2011-01-06 19:31:35
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-06 19:31:39
+  contact_id: 
+  total: "1276276"
+  subject: SERVICIO DE INGENIERIA
+  date: "2011-01-06"
+  id: "21"
+  company_id: 
+  net: "1072501"
+  status_id: "2"
+  customer_id: "9"
+  due: "2011-02-05"
+  history_id: 
+invoices_019: 
+  comment: |
+    envio de factura por mail Diego Moreno diego.moreno@enjoy.cl y a oficinadepartes@enjoy.cl
+    pago de factura por transferencia
+
+  tax: "6725"
+  number: "1113"
+  taxed: "1"
+  created_at: 2011-01-06 19:09:38
+  currency_id: 
+  close_date: "2011-01-24"
+  updated_at: 2011-01-24 13:51:32
+  contact_id: 
+  total: "42122"
+  subject: "SERVICIO DE SOPORTE "
+  date: "2011-01-06"
+  id: "20"
+  company_id: 
+  net: "35397"
+  status_id: "3"
+  customer_id: "19"
+  due: "2011-02-05"
+  history_id: 
+invoices_041: 
+  comment: |-
+    envio de factura por mail 
+    pago por transferencia bancaria
+  tax: "8145"
+  number: "1090"
+  taxed: "1"
+  created_at: 2011-01-13 20:56:10
+  currency_id: 
+  close_date: "2011-01-13"
+  updated_at: 2011-01-13 20:56:39
+  contact_id: 
+  total: "51015"
+  subject: SERVICIOS DE INGENIERIA
+  date: "2011-01-13"
+  id: "43"
+  company_id: 
+  net: "42870"
+  status_id: "3"
+  customer_id: "36"
+  due: "2011-02-12"
+  history_id: 
+invoices_062: 
+  comment: |-
+    Envio de factura por mail a Grace Bucarey a gbucarey@forus.cl
+    pago por deposito bancario
+  tax: "16323"
+  number: "1178"
+  taxed: "1"
+  created_at: 2011-02-01 20:06:01
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-01 20:06:06
+  contact_id: 
+  total: "102231"
+  subject: SERVICIO
+  date: "2011-01-31"
+  id: "64"
+  company_id: 
+  net: "85908"
+  status_id: "2"
+  customer_id: "30"
+  due: "2011-03-02"
+  history_id: 
+invoices_084: 
+  comment: ""
+  tax: "48920"
+  number: "1184"
+  taxed: "1"
+  created_at: 2011-02-02 18:14:26
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-02 18:14:29
+  contact_id: 
+  total: "306395"
+  subject: CONTRATO SOPORTE
+  date: "2011-02-01"
+  id: "86"
+  company_id: 
+  net: "257475"
+  status_id: "2"
+  customer_id: "8"
+  due: "2011-03-03"
+  history_id: 
+invoices_042: 
+  comment: ""
+  tax: "3213216"
+  number: "1150"
+  taxed: "1"
+  created_at: 2011-01-17 20:31:45
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-17 20:31:51
+  contact_id: 
+  total: "20124879"
+  subject: LICENCIA
+  date: "2011-01-17"
+  id: "44"
+  company_id: 
+  net: "16911663"
+  status_id: "2"
+  customer_id: "24"
+  due: "2011-02-16"
+  history_id: 
+invoices_063: 
+  comment: |-
+    Envio de Factura por mano
+    Pago por transferencia electronica
+  tax: "89774"
+  number: "1175"
+  taxed: "1"
+  created_at: 2011-02-01 20:12:24
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-01 20:12:27
+  contact_id: 
+  total: "562268"
+  subject: SERVICIO
+  date: "2011-01-31"
+  id: "65"
+  company_id: 
+  net: "472494"
+  status_id: "2"
+  customer_id: "23"
+  due: "2011-03-02"
+  history_id: 
+invoices_021: 
+  comment: |-
+    Envio de factura por mail a Claudio Cocca claudio.cocca@its.cl
+    pago de factura por deposito bancario
+  tax: "40752"
+  number: "1111"
+  taxed: "1"
+  created_at: 2011-01-06 19:42:26
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-06 19:42:34
+  contact_id: 
+  total: "255238"
+  subject: SERVICIO DE SOPORTE
+  date: "2011-01-06"
+  id: "22"
+  company_id: 
+  net: "214486"
+  status_id: "2"
+  customer_id: "20"
+  due: "2011-02-05"
+  history_id: 
+invoices_085: 
+  comment: ""
+  tax: "4081"
+  number: "1185"
+  taxed: "1"
+  created_at: 2011-02-02 20:27:10
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-02 20:27:14
+  contact_id: 
+  total: "25559"
+  subject: HORAS HOMBRE
+  date: "2011-02-02"
+  id: "87"
+  company_id: 
+  net: "21478"
+  status_id: "2"
+  customer_id: "44"
+  due: "2011-03-04"
+  history_id: 
+invoices_064: 
+  comment: |-
+    Envio de factura por mail a Corina Farfan cfarfan@13.cl
+    Pago por transferencia o retiro de cheque si es que es mas de un millon de pesos
+  tax: "91814"
+  number: "1176"
+  taxed: "1"
+  created_at: 2011-02-01 20:17:16
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-01 20:17:18
+  contact_id: 
+  total: "575047"
+  subject: SERVICIOS
+  date: "2011-01-31"
+  id: "66"
+  company_id: 
+  net: "483233"
+  status_id: "2"
+  customer_id: "7"
+  due: "2011-03-02"
+  history_id: 
+invoices_001: 
+  comment: |
+    Las facturas se reciben en Isidora Goyenechea 3000 Las Condes
+    se pagan con vale vista del Banco Santander
+    
+
+  tax: "203834"
+  number: "1149"
+  taxed: "1"
+  created_at: 2011-01-03 14:04:08
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-02 17:54:14
+  contact_id: 
+  total: "1276646"
+  subject: SERVICIO DE SOPORTE
+  date: "2011-01-17"
+  id: "1"
+  company_id: 
+  net: "1072812"
+  status_id: "2"
+  customer_id: "1"
+  due: "2011-02-16"
+  history_id: 
+invoices_022: 
+  comment: |-
+    envio de facturas a Beatriz Maggi beatriz.maggi@banchile.cl
+    pago por transferencia bancaria
+  tax: "33345"
+  number: "1110"
+  taxed: "1"
+  created_at: 2011-01-06 20:09:54
+  currency_id: 
+  close_date: "2011-01-21"
+  updated_at: 2011-01-21 15:34:19
+  contact_id: 
+  total: "208847"
+  subject: SERVICIO DE INGENIERIA
+  date: "2011-01-06"
+  id: "23"
+  company_id: 
+  net: "175502"
+  status_id: "3"
+  customer_id: "21"
+  due: "2011-02-05"
+  history_id: 
+invoices_043: 
+  comment: "Factura correspondiente a Cotizaci\xC3\xB3n realizada por Pbruna.\r\n\
+    Los datos est\xC3\xA1n en el CRM, aunque ser\xC3\xADa bueno poder adjuntar aqu\xC3\xAD o quiz\xC3\xA1s deba hacer un m\xC3\xB3dulo de cotizaciones.\r\n\
+    El precio lo puse en UF del d\xC3\xADa en que se emiti\xC3\xB3 creo la factura.\r\n\
+    Factura enviada por correo a Mariana Pinto a mpinto@unab.cl\r\n\
+    Pago por tranferencia"
+  tax: "163149"
+  number: "1153"
+  taxed: "1"
+  created_at: 2011-01-18 01:36:30
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-19 20:29:56
+  contact_id: 
+  total: "1021829"
+  subject: "Instaci\xC3\xB3n S.O. RHEL "
+  date: "2011-01-18"
+  id: "45"
+  company_id: 
+  net: "858680"
+  status_id: "2"
+  customer_id: "37"
+  due: "2011-02-17"
+  history_id: 
+invoices_086: 
+  comment: ""
+  tax: "39615"
+  number: "1186"
+  taxed: "1"
+  created_at: 2011-02-03 16:03:15
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-03 16:03:18
+  contact_id: 
+  total: "248115"
+  subject: SERVICIO CORREO MENSUAL
+  date: "2011-02-02"
+  id: "88"
+  company_id: 
+  net: "208500"
+  status_id: "2"
+  customer_id: "4"
+  due: "2011-03-04"
+  history_id: 
+invoices_002: 
+  comment: ""
+  tax: "8145"
+  number: "1140"
+  taxed: "1"
+  created_at: 2011-01-03 14:13:27
+  currency_id: 
+  close_date: "2011-01-03"
+  updated_at: 2011-01-03 14:23:29
+  contact_id: 
+  total: "51015"
+  subject: 
+  date: "2011-01-03"
+  id: "2"
+  company_id: 
+  net: "42870"
+  status_id: "3"
+  customer_id: "2"
+  due: "2011-02-02"
+  history_id: 
+invoices_023: 
+  comment: ""
+  tax: "77806"
+  number: "1109"
+  taxed: "1"
+  created_at: 2011-01-06 20:27:37
+  currency_id: 
+  close_date: "2011-01-21"
+  updated_at: 2011-01-21 15:34:12
+  contact_id: 
+  total: "487310"
+  subject: SERVICIO DE INGENIERIA
+  date: "2011-01-06"
+  id: "24"
+  company_id: 
+  net: "409504"
+  status_id: "3"
+  customer_id: "21"
+  due: "2011-02-05"
+  history_id: 
+invoices_044: 
+  comment: Factura enviada a Pablo Inostroza pinostroza@pehuenche.cl
+  tax: "20391"
+  number: "1151"
+  taxed: "1"
+  created_at: 2011-01-18 15:41:23
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-18 15:41:25
+  contact_id: 
+  total: "127714"
+  subject: SERVICIOS
+  date: "2011-01-18"
+  id: "46"
+  company_id: 
+  net: "107323"
+  status_id: "2"
+  customer_id: "38"
+  due: "2011-02-17"
+  history_id: 
+invoices_065: 
+  comment: ""
+  tax: "102016"
+  number: "1167"
+  taxed: "1"
+  created_at: 2011-02-01 20:24:52
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-01 20:24:55
+  contact_id: 
+  total: "638941"
+  subject: SERVICIOS
+  date: "2011-01-31"
+  id: "67"
+  company_id: 
+  net: "536925"
+  status_id: "2"
+  customer_id: "7"
+  due: "2011-03-02"
+  history_id: 
+invoices_003: 
+  comment: ""
+  tax: "8152"
+  number: "1142"
+  taxed: "1"
+  created_at: 2011-01-03 17:25:59
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-04 20:17:40
+  contact_id: 
+  total: "51059"
+  subject: 
+  date: "2011-01-04"
+  id: "3"
+  company_id: 
+  net: "42907"
+  status_id: "2"
+  customer_id: "3"
+  due: "2011-02-03"
+  history_id: 
+invoices_024: 
+  comment: ""
+  tax: "36676"
+  number: "1108"
+  taxed: "1"
+  created_at: 2011-01-06 20:31:02
+  currency_id: 
+  close_date: "2011-01-21"
+  updated_at: 2011-01-21 15:34:06
+  contact_id: 
+  total: "229707"
+  subject: SERVICIO DE INGENIERIA
+  date: "2011-01-06"
+  id: "25"
+  company_id: 
+  net: "193031"
+  status_id: "3"
+  customer_id: "21"
+  due: "2011-02-05"
+  history_id: 
+invoices_045: 
+  comment: Envio de factura por mano Patricio  Bruna
+  tax: "395933"
+  number: "1152"
+  taxed: "1"
+  created_at: 2011-01-18 18:59:40
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-18 19:02:12
+  contact_id: 
+  total: "2479793"
+  subject: SERVICIOS
+  date: "2011-01-18"
+  id: "47"
+  company_id: 
+  net: "2083860"
+  status_id: "2"
+  customer_id: "39"
+  due: "2011-02-17"
+  history_id: 
+invoices_066: 
+  comment: |-
+    envio de facturas a Diego Moreno diego_moreno@enjoy.cl
+    pago por transferencia elctronica
+  tax: "12854"
+  number: "1168"
+  taxed: "1"
+  created_at: 2011-02-01 20:27:54
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-01 20:28:11
+  contact_id: 
+  total: "80506"
+  subject: CONTRATO SOPORTE
+  date: "2011-01-31"
+  id: "68"
+  company_id: 
+  net: "67652"
+  status_id: "2"
+  customer_id: "19"
+  due: "2011-03-02"
+  history_id: 
+invoices_067: 
+  comment: ""
+  tax: "11548"
+  number: "1169"
+  taxed: "1"
+  created_at: 2011-02-01 20:31:23
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-01 20:31:25
+  contact_id: 
+  total: "72328"
+  subject: CONTRATO SOPORTE
+  date: "2011-01-31"
+  id: "69"
+  company_id: 
+  net: "60780"
+  status_id: "2"
+  customer_id: "13"
+  due: "2011-03-02"
+  history_id: 
+invoices_004: 
+  comment: ""
+  tax: "358771"
+  number: "1136"
+  taxed: "1"
+  created_at: 2011-01-04 14:51:31
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-04 14:52:08
+  contact_id: 
+  total: "2247042"
+  subject: 
+  date: "2011-01-04"
+  id: "4"
+  company_id: 
+  net: "1888271"
+  status_id: "2"
+  customer_id: "33"
+  due: "2011-02-03"
+  history_id: 
+invoices_025: 
+  comment: ""
+  tax: "85577"
+  number: "1107"
+  taxed: "1"
+  created_at: 2011-01-07 20:55:50
+  currency_id: 
+  close_date: "2011-01-21"
+  updated_at: 2011-01-21 15:33:59
+  contact_id: 
+  total: "535983"
+  subject: SERVICIO DE INGENIERIA
+  date: "2011-01-07"
+  id: "26"
+  company_id: 
+  net: "450406"
+  status_id: "3"
+  customer_id: "22"
+  due: "2011-02-06"
+  history_id: 
+invoices_046: 
+  comment: ""
+  tax: "40789"
+  number: 
+  taxed: "1"
+  created_at: 2011-01-19 16:44:25
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-19 16:44:25
+  contact_id: 
+  total: "255469"
+  subject: "Reinstalaci\xC3\xB3n MV SLES11"
+  date: "2011-01-19"
+  id: "48"
+  company_id: 
+  net: "214680"
+  status_id: "1"
+  customer_id: "33"
+  due: "2011-02-18"
+  history_id: 
+invoices_068: 
+  comment: ""
+  tax: "6203"
+  number: "1170"
+  taxed: "1"
+  created_at: 2011-02-01 20:32:49
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-01 20:32:51
+  contact_id: 
+  total: "38848"
+  subject: CONTRATO SOPORTE
+  date: "2011-01-31"
+  id: "70"
+  company_id: 
+  net: "32645"
+  status_id: "2"
+  customer_id: "12"
+  due: "2011-03-02"
+  history_id: 
+invoices_005: 
+  comment: "Se envia factura al correo de maguayo@montserrat.cl\r\n\
+    Contacto cobranza:Cristian Mu\xC3\xB1oz, telefono 4133214\r\n\
+    Retiro de cheque con cuarta copia y RUT de 16 a 17.30 hrs\r\n\
+    esta empresa solo paga con cheque\r\n"
+  tax: "101770"
+  number: "1141"
+  taxed: "1"
+  created_at: 2011-01-04 18:33:46
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-04 18:52:08
+  contact_id: 
+  total: "637403"
+  subject: " Instalacion de mailcleaner"
+  date: "2011-01-04"
+  id: "5"
+  company_id: 
+  net: "535633"
+  status_id: "2"
+  customer_id: "34"
+  due: "2011-02-03"
+  history_id: 
+invoices_026: 
+  comment: ""
+  tax: "107094"
+  number: "1106"
+  taxed: "1"
+  created_at: 2011-01-11 19:04:45
+  currency_id: 
+  close_date: "2011-01-21"
+  updated_at: 2011-01-21 15:33:40
+  contact_id: 
+  total: "670746"
+  subject: SERVICIO DE INGENIERIA
+  date: "2010-12-20"
+  id: "28"
+  company_id: 
+  net: "563652"
+  status_id: "3"
+  customer_id: "21"
+  due: "2011-01-19"
+  history_id: 
+invoices_047: 
+  comment: |-
+    Envio de factura por mail
+    Pago por transferencia electronica
+  tax: "0"
+  number: "29"
+  taxed: "0"
+  created_at: 2011-01-24 13:57:28
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-24 13:57:40
+  contact_id: 
+  total: "85855"
+  subject: Asesoria Informatica
+  date: "2011-01-24"
+  id: "49"
+  company_id: 
+  net: "85855"
+  status_id: "2"
+  customer_id: "11"
+  due: "2011-02-23"
+  history_id: 
+invoices_070: 
+  comment: ""
+  tax: "9181"
+  number: "1172"
+  taxed: "1"
+  created_at: 2011-02-01 20:42:06
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-01 20:42:08
+  contact_id: 
+  total: "57504"
+  subject: CONTRATO SOPORTE
+  date: "2011-01-31"
+  id: "72"
+  company_id: 
+  net: "48323"
+  status_id: "2"
+  customer_id: "16"
+  due: "2011-03-02"
+  history_id: 
+invoices_069: 
+  comment: ""
+  tax: "9794"
+  number: "1171"
+  taxed: "1"
+  created_at: 2011-02-01 20:40:44
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-01 20:40:48
+  contact_id: 
+  total: "61339"
+  subject: CONTRATO SOPORTE
+  date: "2011-01-31"
+  id: "71"
+  company_id: 
+  net: "51545"
+  status_id: "2"
+  customer_id: "14"
+  due: "2011-03-02"
+  history_id: 
+invoices_006: 
+  comment: "Env\xC3\xADo de Factura a Rosa Araya al correo aaraya@ballerina.cl\r\n\
+    llamar dia jueves de 15.30 a 18.00 hrs. para consultar pagos\r\n\
+    pago por transferencia \r\n\
+    tel\xC3\xA9fono contacto:9253000"
+  tax: "40764"
+  number: "1124"
+  taxed: "1"
+  created_at: 2011-01-04 21:10:38
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-04 21:10:45
+  contact_id: 
+  total: "255312"
+  subject: SERVICIO DE SOPORTE
+  date: "2011-01-04"
+  id: "7"
+  company_id: 
+  net: "214548"
+  status_id: "2"
+  customer_id: "35"
+  due: "2011-02-03"
+  history_id: 
+invoices_027: 
+  comment: ""
+  tax: "249885"
+  number: "1105"
+  taxed: "1"
+  created_at: 2011-01-11 19:08:19
+  currency_id: 
+  close_date: "2011-01-21"
+  updated_at: 2011-01-21 15:33:34
+  contact_id: 
+  total: "1565068"
+  subject: SERVICIO DE INGENIERIA
+  date: "2010-12-20"
+  id: "29"
+  company_id: 
+  net: "1315183"
+  status_id: "3"
+  customer_id: "22"
+  due: "2011-01-19"
+  history_id: 
+invoices_048: 
+  comment: |
+    Enviar factura por mano Grajales 2550 piso 3
+    
+    
+    
+
+  tax: "163162"
+  number: "1154"
+  taxed: "1"
+  created_at: 2011-01-24 20:22:21
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-01 17:46:47
+  contact_id: 
+  total: "1021910"
+  subject: SERVICIOS
+  date: "2011-01-24"
+  id: "50"
+  company_id: 
+  net: "858748"
+  status_id: "2"
+  customer_id: "40"
+  due: "2011-02-23"
+  history_id: 
+invoices_071: 
+  comment: ""
+  tax: "8569"
+  number: "1173"
+  taxed: "1"
+  created_at: 2011-02-01 20:53:46
+  currency_id: 
+  close_date: 
+  updated_at: 2011-02-01 20:53:48
+  contact_id: 
+  total: "53671"
+  subject: CONTRATO SOPORTE
+  date: "2011-01-31"
+  id: "73"
+  company_id: 
+  net: "45102"
+  status_id: "2"
+  customer_id: "18"
+  due: "2011-03-02"
+  history_id: 
+invoices_007: 
+  comment: "Env\xC3\xADo de Factura a Denisse Abarzua al correo dabarzua@radisson.cl\r\n\
+    confirmar pago al 9231332\r\n\
+    deposito Vale Vista Banco de Chile\r\n\
+    nomina de pago los d\xC3\xADas jueves"
+  tax: "40765"
+  number: "1123"
+  taxed: "1"
+  created_at: 2011-01-04 21:15:27
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-06 18:15:26
+  contact_id: 
+  total: "255320"
+  subject: SERVICIO DE SOPORTE
+  date: "2011-01-06"
+  id: "8"
+  company_id: 
+  net: "214555"
+  status_id: "2"
+  customer_id: "10"
+  due: "2011-02-05"
+  history_id: 
+invoices_028: 
+  comment: ""
+  tax: "39846"
+  number: "1104"
+  taxed: "1"
+  created_at: 2011-01-11 19:11:56
+  currency_id: 
+  close_date: "2011-01-21"
+  updated_at: 2011-01-21 15:33:27
+  contact_id: 
+  total: "249564"
+  subject: SERVICIO DE INGENIERIA
+  date: "2010-12-20"
+  id: "30"
+  company_id: 
+  net: "209718"
+  status_id: "3"
+  customer_id: "22"
+  due: "2011-01-19"
+  history_id: 
+invoices_050: 
+  comment: ""
+  tax: "40726"
+  number: "1083"
+  taxed: "1"
+  created_at: 2011-01-25 15:29:09
+  currency_id: 
+  close_date: "2011-01-25"
+  updated_at: 2011-01-25 15:29:15
+  contact_id: 
+  total: "255072"
+  subject: SERVICIO
+  date: "2010-12-02"
+  id: "52"
+  company_id: 
+  net: "214346"
+  status_id: "3"
+  customer_id: "31"
+  due: "2011-01-01"
+  history_id: 
+invoices_049: 
+  comment: |-
+    Envio de Factura por correo a ecastro@arrigoni.cl
+    pago por transferencia bancaria
+  tax: "8159"
+  number: "1155"
+  taxed: "1"
+  created_at: 2011-01-25 14:49:53
+  currency_id: 
+  close_date: 
+  updated_at: 2011-01-25 14:50:09
+  contact_id: 
+  total: "51103"
+  subject: SERVICIOS
+  date: "2011-01-25"
+  id: "51"
+  company_id: 
+  net: "42944"
+  status_id: "2"
+  customer_id: "3"
+  due: "2011-02-24"
+  history_id: 

@@ -1,7 +1,31 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  name: MyString
-
-two:
-  name: MyString
+--- 
+statuses_003: 
+  name: Pagada
+  created_at: 2010-12-30 16:02:06
+  updated_at: 2011-01-27 15:58:43
+  id: "3"
+  state: close
+statuses_004: 
+  name: Anulada
+  created_at: 2010-12-30 16:02:06
+  updated_at: 2011-01-27 15:58:43
+  id: "4"
+  state: cancel
+statuses_005: 
+  name: Vencida
+  created_at: 2011-01-27 15:43:40
+  updated_at: 2011-01-27 15:58:44
+  id: "5"
+  state: due
+statuses_001: 
+  name: Borrador
+  created_at: 2010-12-30 16:02:06
+  updated_at: 2011-01-27 15:58:34
+  id: "1"
+  state: draft
+statuses_002: 
+  name: Activa
+  created_at: 2010-12-30 16:02:06
+  updated_at: 2011-01-27 15:58:43
+  id: "2"
+  state: open

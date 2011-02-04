@@ -46,7 +46,7 @@
 			:confirm => "Está seguro que desea Anular la factura?" %></li>
             <% end %>
             <li id="duplicate_invoice"><%= link_to "<strong>Duplicar</strong> Factura", new_invoice_path(:id => @invoice.id, :duplicate => true) %></li>
-            <% if @invoice.status_id == 2 %>
+            <% if @invoice.status_id == 2 || @invoice.status_id == 5 %>
               <li id="receive_payment"><%= link_to "<strong>Recibir</strong> pago", close_invoice_path(@invoice) %></li>
             <% end %>
             <% if @invoice.status_id == 1 %>
@@ -86,9 +86,15 @@
           </tr>
 		  <!-- Todo:: Solo por documentacion
           <tr  class="close" onclick="location.href=location.href+'?status=close_index'">-->
-	      <tr  class="close">
-            <td><span class="close_title">Pagadas</span></td><td style="text-align: right"><%= number_to_currency(Invoice.close_index_total(params[:search])) %></td>
-          </tr>
+	      <tr  class="close">	
+            <td><span class="close_title">
+		  <% if params[:action] == "index" %>
+				Pagadas ultimo 30 dias
+		   <% else %>
+				Pagadas
+		   <% end %>
+				</span></td><td style="text-align: right"><%= number_to_currency(Invoice.close_index_total(params[:search])) %></td>
+			</tr>
         </table>
 		</div>
 		<br/>
@@ -97,7 +103,7 @@
 		<br/>
 		<hr/>
 			<% form_for @search, :url => {:action => "search" } do |f| -%>
-  				<%= f.select :date_gte, Invoice.date_filter,{:prompt => "Emitida ...", 
+  				<%= f.select :date_gte, Invoice.date_filter,{:prompt => "Emitida hace...", 
 					:include_blank => true}, {:style => "width: 160px"} %>
 				<br/>
 				<%= f.check_box(:taxed)%><%= f.label "Afecta" %>

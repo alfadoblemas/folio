@@ -1,17 +1,313 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+--- 
+contacts_025: 
+  created_at: 2011-01-03 18:32:33
+  updated_at: 2011-01-03 20:34:52
+  id: "25"
+  mobile: ""
+  phone: ""
+  last_name: ALCAZAR C.
+  customer_id: "28"
+  email: lucia.alcazar@gmail.com
+  first_name: LUCIA
+contacts_014: 
+  created_at: 2011-01-03 18:00:41
+  updated_at: 2011-01-03 18:00:41
+  id: "14"
+  mobile: ""
+  phone: ""
+  last_name: MORENO
+  customer_id: "16"
+  email: DIEGO.MORENO@ENJOY.CL
+  first_name: DIEGO
+contacts_003: 
+  created_at: 2011-01-03 17:30:34
+  updated_at: 2011-01-03 17:30:34
+  id: "3"
+  mobile: ""
+  phone: ""
+  last_name: TORO
+  customer_id: "4"
+  email: STORO@BLC.CL
+  first_name: SYLVIA
+contacts_026: 
+  created_at: 2011-01-03 18:34:24
+  updated_at: 2011-01-03 18:34:24
+  id: "26"
+  mobile: ""
+  phone: ""
+  last_name: NAVARRETE
+  customer_id: "29"
+  email: CRISTIAN_NAVARRETE@PRODINSA.CL
+  first_name: CRISTIAN
+contacts_015: 
+  created_at: 2011-01-03 18:02:06
+  updated_at: 2011-01-03 18:02:06
+  id: "15"
+  mobile: ""
+  phone: ""
+  last_name: MORENO
+  customer_id: "17"
+  email: DIEGO.MORENO@ENJOY.CL
+  first_name: DIEGO
+contacts_004: 
+  created_at: 2011-01-03 17:32:29
+  updated_at: 2011-01-03 17:32:29
+  id: "4"
+  mobile: ""
+  phone: ""
+  last_name: ORELLANA
+  customer_id: "5"
+  email: JORGE@BAZUCA.COM
+  first_name: "JORGE "
+contacts_027: 
+  created_at: 2011-01-03 18:43:48
+  updated_at: 2011-01-03 18:43:48
+  id: "27"
+  mobile: ""
+  phone: ""
+  last_name: CORTES S.
+  customer_id: "30"
+  email: RICHARD.CORTES@FORUS.CL
+  first_name: RICHARD
+contacts_016: 
+  created_at: 2011-01-03 18:04:38
+  updated_at: 2011-01-03 18:04:38
+  id: "16"
+  mobile: ""
+  phone: ""
+  last_name: MORENO
+  customer_id: "18"
+  email: DIEGO.MORENO@ENJOY.CL
+  first_name: DIEGO
+contacts_005: 
+  created_at: 2011-01-03 17:39:30
+  updated_at: 2011-01-03 17:39:30
+  id: "5"
+  mobile: ""
+  phone: ""
+  last_name: COLOMA
+  customer_id: "6"
+  email: MCOLOMA@UCSC.CL
+  first_name: MAURICIO
+contacts_028: 
+  created_at: 2011-01-03 18:49:45
+  updated_at: 2011-01-03 18:49:45
+  id: "28"
+  mobile: ""
+  phone: ""
+  last_name: VILLARROEL
+  customer_id: "31"
+  email: MANUEL.VILLARROEL@PENTZKE.CL
+  first_name: MANUEL
+contacts_017: 
+  created_at: 2011-01-03 18:06:02
+  updated_at: 2011-01-03 18:06:02
+  id: "17"
+  mobile: ""
+  phone: ""
+  last_name: MORENO
+  customer_id: "19"
+  email: DIEGO.MORENO@ENJOY.CL
+  first_name: DIEGO
+contacts_006: 
+  created_at: 2011-01-03 17:42:16
+  updated_at: 2011-01-03 17:42:16
+  id: "6"
+  mobile: ""
+  phone: ""
+  last_name: MAYA
+  customer_id: "8"
+  email: emaya@chiledeportes.gob.cl
+  first_name: EDSON
+contacts_029: 
+  created_at: 2011-01-03 19:05:10
+  updated_at: 2011-01-03 19:05:10
+  id: "29"
+  mobile: ""
+  phone: ""
+  last_name: VALDIVIA
+  customer_id: "32"
+  email: MARCO.VALDIVIA@GOBANTES.CL
+  first_name: MARCO
+contacts_018: 
+  created_at: 2011-01-03 18:08:09
+  updated_at: 2011-01-03 18:08:09
+  id: "18"
+  mobile: ""
+  phone: ""
+  last_name: COCCA S.
+  customer_id: "20"
+  email: CLAUDIO.COCCA@ITS.CL
+  first_name: CLAUDIO
+contacts_007: 
+  created_at: 2011-01-03 17:44:34
+  updated_at: 2011-01-03 17:44:34
+  id: "7"
+  mobile: ""
+  phone: ""
+  last_name: GARCIA
+  customer_id: "9"
+  email: AGARCIA@PODERJUDICIAL.CL
+  first_name: "AGUSTIN "
+contacts_030: 
+  created_at: 2011-01-04 14:48:45
+  updated_at: 2011-01-04 14:48:45
+  id: "30"
+  mobile: ""
+  phone: ""
+  last_name: MONTENEGRO
+  customer_id: "33"
+  email: jmontenegro@cruzverde.cl
+  first_name: JUAN
+contacts_019: 
+  created_at: 2011-01-03 18:13:02
+  updated_at: 2011-01-03 18:13:02
+  id: "19"
+  mobile: ""
+  phone: ""
+  last_name: MAGGI
+  customer_id: "21"
+  email: BEATRIZ.MAGGI@BANCHILE.CL
+  first_name: BEATRIZ
+contacts_008: 
+  created_at: 2011-01-03 17:49:14
+  updated_at: 2011-01-03 17:49:14
+  id: "8"
+  mobile: ""
+  phone: ""
+  last_name: MONTECINOS
+  customer_id: "10"
+  email: RMONTECINOS@RADISSON.CL
+  first_name: RODRIGO
+contacts_031: 
+  created_at: 2011-01-18 01:37:59
+  updated_at: 2011-01-18 01:37:59
+  id: "31"
+  mobile: ""
+  phone: (+56-2) 661 5628
+  last_name: Peralta
+  customer_id: "37"
+  email: aperalta@unab.cl
+  first_name: "Andr\xC3\xA9s"
+contacts_020: 
+  created_at: 2011-01-03 18:14:20
+  updated_at: 2011-01-03 18:14:20
+  id: "20"
+  mobile: ""
+  phone: ""
+  last_name: MAGGI
+  customer_id: "22"
+  email: BEATRIZ.MAGGI@BANCHILE.CL
+  first_name: "BEATRIZ "
+contacts_009: 
+  created_at: 2011-01-03 17:54:06
+  updated_at: 2011-01-03 17:54:06
+  id: "9"
+  mobile: ""
+  phone: ""
+  last_name: !binary |
+    WUHDkUVa
 
-one:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
-  phone: MyString
-  mobile: MyString
-  customer_id: 1
-
-two:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
-  phone: MyString
-  mobile: MyString
-  customer_id: 1
+  customer_id: "11"
+  email: ALEXIS.YANEZ@SERVICIOMEDICO.CL
+  first_name: "ALEXIS "
+contacts_021: 
+  created_at: 2011-01-03 18:16:36
+  updated_at: 2011-01-03 18:16:48
+  id: "21"
+  mobile: ""
+  phone: ""
+  last_name: BURGOS
+  customer_id: "23"
+  email: RENE.BURGOS@CONAF.CL
+  first_name: RENE
+contacts_010: 
+  created_at: 2011-01-03 17:55:56
+  updated_at: 2011-01-03 17:55:56
+  id: "10"
+  mobile: ""
+  phone: ""
+  last_name: MORENO
+  customer_id: "12"
+  email: DIEGO.MORENO@ENJOY.CL
+  first_name: DIEGO
+contacts_022: 
+  created_at: 2011-01-03 18:22:03
+  updated_at: 2011-01-03 18:22:03
+  id: "22"
+  mobile: ""
+  phone: ""
+  last_name: MORAGA
+  customer_id: "24"
+  email: EMORAGA@SOCOFAR.CL
+  first_name: EDUARDO
+contacts_011: 
+  created_at: 2011-01-03 17:57:17
+  updated_at: 2011-01-03 17:57:17
+  id: "11"
+  mobile: ""
+  phone: ""
+  last_name: MORENO
+  customer_id: "13"
+  email: DIEGO.MORENO@ENJOY.CL
+  first_name: DIEGO
+contacts_023: 
+  created_at: 2011-01-03 18:26:10
+  updated_at: 2011-01-03 18:26:10
+  id: "23"
+  mobile: ""
+  phone: ""
+  last_name: BURAGLIA
+  customer_id: "26"
+  email: CBURAGLIA@INMOTION.CL
+  first_name: CAMILO
+contacts_012: 
+  created_at: 2011-01-03 17:58:33
+  updated_at: 2011-01-03 17:58:33
+  id: "12"
+  mobile: ""
+  phone: ""
+  last_name: MORENO
+  customer_id: "14"
+  email: DIEGO.MORENO@ENJOY.CL
+  first_name: DIEGO
+contacts_001: 
+  created_at: 2011-01-03 14:11:07
+  updated_at: 2011-01-04 00:43:45
+  id: "1"
+  mobile: ""
+  phone: +562 6208886
+  last_name: Caneo
+  customer_id: "2"
+  email: pcaneo@bbosch.cl
+  first_name: Paula
+contacts_024: 
+  created_at: 2011-01-03 18:28:39
+  updated_at: 2011-01-03 18:28:39
+  id: "24"
+  mobile: ""
+  phone: ""
+  last_name: SALAS
+  customer_id: "27"
+  email: RSALAS@AUDIOAMERICAS.CL
+  first_name: RAUL
+contacts_013: 
+  created_at: 2011-01-03 17:59:33
+  updated_at: 2011-01-03 17:59:33
+  id: "13"
+  mobile: ""
+  phone: ""
+  last_name: MORENO
+  customer_id: "15"
+  email: DIEGO.MORENO@ENJOY.CL
+  first_name: DIEGO
+contacts_002: 
+  created_at: 2011-01-03 17:23:04
+  updated_at: 2011-01-03 17:23:04
+  id: "2"
+  mobile: ""
+  phone: +56 2 4850125
+  last_name: Barrera O.
+  customer_id: "3"
+  email: cbarrera@arrigoni.cl
+  first_name: Cesar

@@ -1,17 +1,617 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  name: MyString
-  rut: MyString
-  address: MyText
-  city: MyString
-  industry: MyString
-  state: MyString
-
-two:
-  name: MyString
-  rut: MyString
-  address: MyText
-  city: MyString
-  industry: MyString
-  state: MyString
+--- 
+customers_036: 
+  city: SANTIAGO
+  address: MALAGA 888 OFICINA 33
+  name: VOZ MOVIL SPA
+  created_at: 2011-01-13 20:50:24
+  country: ""
+  updated_at: 2011-01-13 20:50:24
+  url: ""
+  id: "36"
+  rut: 76.082.931-5
+  fax: ""
+  phone: ""
+  state: LAS CONDES
+  industry: ""
+customers_025: 
+  city: SANTIAGO
+  address: AVDA PROVIDENCIA 1979 PISO 4
+  name: CENTRO DE SERVICIOS COMPARTIDOS BANMEDICA S.A.
+  created_at: 2011-01-03 18:23:08
+  country: CHILE
+  updated_at: 2011-01-03 18:23:08
+  url: ""
+  id: "25"
+  rut: 76.045.622-5
+  fax: ""
+  phone: ""
+  state: PROVIDENCIA
+  industry: ""
+customers_014: 
+  city: TEMUCO
+  address: MIGUEL ANSORENA 23
+  name: KUDEN S.A.
+  created_at: 2011-01-03 17:58:14
+  country: CHILE
+  updated_at: 2011-01-03 17:58:14
+  url: ""
+  id: "14"
+  rut: 96.725.460-6
+  fax: ""
+  phone: ""
+  state: PUCON
+  industry: ""
+customers_003: 
+  city: Santiago
+  address: Avda. Americo Vespucio 1881
+  name: Arrigoni Metalurgica S.A.
+  created_at: 2011-01-03 17:22:00
+  country: Chile
+  updated_at: 2011-01-03 17:22:00
+  url: ""
+  id: "3"
+  rut: 80.893.200-8
+  fax: ""
+  phone: ""
+  state: Quilicura
+  industry: Metalurgica
+customers_037: 
+  city: Santiago
+  address: Av. Republica 237
+  name: UNIVERSIDAD NACIONAL ANDRES BELLO
+  created_at: 2011-01-18 01:32:53
+  country: Chile
+  updated_at: 2011-01-18 01:32:53
+  url: www.unab.cl
+  id: "37"
+  rut: 71.540.100-2
+  fax: ""
+  phone: (56-2) 661 8000
+  state: Santiago
+  industry: ""
+customers_026: 
+  city: SANTIAGO
+  address: APOQUINDO 4499 1101
+  name: IN MOTION SUPPORT S.A.
+  created_at: 2011-01-03 18:24:51
+  country: CHILE
+  updated_at: 2011-01-03 18:24:51
+  url: ""
+  id: "26"
+  rut: 76.014.621-8
+  fax: ""
+  phone: ""
+  state: LAS CONDES
+  industry: ""
+customers_015: 
+  city: PUERTO VARAS
+  address: MIRADOR 104
+  name: PLAZA CASINO SOCIEDAD ANONIMA
+  created_at: 2011-01-03 17:59:17
+  country: CHILE
+  updated_at: 2011-01-03 17:59:17
+  url: ""
+  id: "15"
+  rut: 96.904.770-5
+  fax: ""
+  phone: ""
+  state: PUERTO VARAS
+  industry: ""
+customers_004: 
+  city: SANTIAGO
+  address: ISIDORA GOYENECHEA 3120 PISO 3
+  name: "Barros Letelier y Compa\xC3\xB1ia Limitada"
+  created_at: 2011-01-03 17:29:31
+  country: CHILE
+  updated_at: 2011-01-03 17:29:31
+  url: ""
+  id: "4"
+  rut: 79.862.520-9
+  fax: ""
+  phone: ""
+  state: LAS CONDES
+  industry: ""
+customers_038: 
+  city: SANTIAGO
+  address: OB.ARTURO ESPINOZA CAMPOS 2878
+  name: CONSTRUCTORA PEHUENCHE LTDA
+  created_at: 2011-01-18 15:27:46
+  country: ""
+  updated_at: 2011-01-18 15:27:46
+  url: ""
+  id: "38"
+  rut: 78.418.680-6
+  fax: ""
+  phone: ""
+  state: MACUL
+  industry: ""
+customers_027: 
+  city: SANTIAGO
+  address: "AV.ELIODORO YA\xC3\x91EZ 2214"
+  name: AUDIO AMERICAS LIMITADA
+  created_at: 2011-01-03 18:28:00
+  country: CHILE
+  updated_at: 2011-01-03 18:28:00
+  url: ""
+  id: "27"
+  rut: 77.860.450-7
+  fax: ""
+  phone: ""
+  state: PROVIDENCIA
+  industry: ""
+customers_016: 
+  city: ANTOFAGASTA
+  address: SUCRE 220 507
+  name: OPERACIONES EL ESCORIAL S.A.
+  created_at: 2011-01-03 18:00:23
+  country: CHILE
+  updated_at: 2011-01-03 18:00:23
+  url: ""
+  id: "16"
+  rut: 99.597.870-9
+  fax: ""
+  phone: ""
+  state: ANTOFAGASTA
+  industry: ""
+customers_005: 
+  city: SANTIAGO
+  address: AV. SANTA MARIA 0182 PISO 2
+  name: BAZUCA.COM CHILE S.A.
+  created_at: 2011-01-03 17:31:30
+  country: CHILE
+  updated_at: 2011-01-03 17:31:30
+  url: ""
+  id: "5"
+  rut: 77.384.780-0
+  fax: ""
+  phone: ""
+  state: PROVIDENCIA
+  industry: ""
+customers_039: 
+  city: SANTIAGO
+  address: AV. SANTA MARIA 5542
+  name: EMPRESA EL MERCURIO SAP
+  created_at: 2011-01-18 18:55:10
+  country: ""
+  updated_at: 2011-01-18 18:55:10
+  url: ""
+  id: "39"
+  rut: 90.193.000-7
+  fax: ""
+  phone: ""
+  state: VITACURA
+  industry: ""
+customers_028: 
+  city: "VI\xC3\x91A DEL MAR"
+  address: CANCHA 166
+  name: MI MUESLI.COM SPA.
+  created_at: 2011-01-03 18:30:57
+  country: CHILE
+  updated_at: 2011-01-03 18:30:57
+  url: ""
+  id: "28"
+  rut: 76.102.007-2
+  fax: ""
+  phone: ""
+  state: "VI\xC3\x91A DEL MAR"
+  industry: ""
+customers_017: 
+  city: SANTA CRUZ
+  address: PLAZA DE ARMAS 276
+  name: CASINO DE COLCHAGUA SOCIEDAD ANONIMA
+  created_at: 2011-01-03 18:01:45
+  country: CHILE
+  updated_at: 2011-01-03 18:01:45
+  url: ""
+  id: "17"
+  rut: 99.598.660-4
+  fax: ""
+  phone: ""
+  state: SANTA CRUZ
+  industry: ""
+customers_006: 
+  city: CONCEPCION
+  address: CAUPOLICAN 491
+  name: UNIVERSIDAD CATOLICA DE LA SANTISIMA CONCEPCION
+  created_at: 2011-01-03 17:34:06
+  country: ""
+  updated_at: 2011-01-03 17:34:06
+  url: ""
+  id: "6"
+  rut: 71.915.800-5
+  fax: ""
+  phone: ""
+  state: CONCEPCION
+  industry: ""
+customers_040: 
+  city: SANTIAGO
+  address: AV.KENNEDY 5454 OF 1501
+  name: DESARROLLO DE LA EDUCACION SUPERIOR S.A
+  created_at: 2011-01-24 19:47:02
+  country: ""
+  updated_at: 2011-01-24 19:47:02
+  url: ""
+  id: "40"
+  rut: 99.522.670-7
+  fax: ""
+  phone: ""
+  state: VITACURA
+  industry: ""
+customers_029: 
+  city: SANTIAGO
+  address: EL MILAGRO 455
+  name: PRODUCTOS DE ACERO S.A. PRODINSA
+  created_at: 2011-01-03 18:33:32
+  country: CHILE
+  updated_at: 2011-01-03 18:33:32
+  url: ""
+  id: "29"
+  rut: 92.698.000-9
+  fax: ""
+  phone: ""
+  state: MAIPU
+  industry: ""
+customers_018: 
+  city: COQUIMBO
+  address: "AV.PE\xC3\x91UELAS NORTE 56"
+  name: CAMPOS DEL NORTE SOCIEDAD ANONIMA
+  created_at: 2011-01-03 18:04:13
+  country: CHILE
+  updated_at: 2011-01-03 18:04:13
+  url: ""
+  id: "18"
+  rut: 79.981.570-2
+  fax: ""
+  phone: ""
+  state: COQUIMBO
+  industry: ""
+customers_007: 
+  city: SANTIAGO
+  address: INES MATE URREJOLA 0848
+  name: CANAL 13 SPA.
+  created_at: 2011-01-03 17:40:25
+  country: CHILE
+  updated_at: 2011-01-03 17:40:25
+  url: ""
+  id: "7"
+  rut: 76.115.132-0
+  fax: ""
+  phone: ""
+  state: PROVIDENCIA
+  industry: ""
+customers_041: 
+  city: SANTIAGO
+  address: HUERFANOS 626 PISO 9
+  name: SUPER INTENDENCIA DE QUIEBRAS
+  created_at: 2011-01-25 20:09:07
+  country: ""
+  updated_at: 2011-01-25 20:09:07
+  url: ""
+  id: "41"
+  rut: 61.005.000-K
+  fax: ""
+  phone: ""
+  state: SANTIAGO
+  industry: ""
+customers_030: 
+  city: SANTIAGO
+  address: AVDA.DEPARTAMENTAL 01053
+  name: FORUS S.A.
+  created_at: 2011-01-03 18:43:04
+  country: CHILE
+  updated_at: 2011-01-03 18:43:04
+  url: ""
+  id: "30"
+  rut: 86.963.200-7
+  fax: ""
+  phone: ""
+  state: LA FLORIDA
+  industry: ""
+customers_019: 
+  city: SANTIAGO
+  address: AV PDTE RIESCO 5711 1501
+  name: ENJOY GESTION LIMITADA
+  created_at: 2011-01-03 18:05:44
+  country: CHILE
+  updated_at: 2011-01-03 18:05:44
+  url: ""
+  id: "19"
+  rut: 96.976.920-4
+  fax: ""
+  phone: ""
+  state: LAS CONDES
+  industry: ""
+customers_008: 
+  city: SANTIAGO
+  address: FIDEL OTEIZA 1956 OFICINA CENTRAL
+  name: INSTITUTO NACIONAL DE DEPORTES DE CHILE
+  created_at: 2011-01-03 17:41:35
+  country: CHILE
+  updated_at: 2011-01-03 17:41:35
+  url: ""
+  id: "8"
+  rut: 61.107.000-4
+  fax: ""
+  phone: ""
+  state: PROVIDENCIA
+  industry: ""
+customers_042: 
+  city: SANTIAGO
+  address: "CAMINO MELIPILLA 8920 "
+  name: CINTAC S.A.I.C
+  created_at: 2011-02-02 16:15:37
+  country: ""
+  updated_at: 2011-02-02 16:15:37
+  url: ""
+  id: "42"
+  rut: 96.705.210-8
+  fax: ""
+  phone: ""
+  state: MAIPU
+  industry: ""
+customers_031: 
+  city: SANTIAGO
+  address: LIB. B. OHIGGINS 310
+  name: CONSERVERA PENTZKE S.A.
+  created_at: 2011-01-03 18:47:19
+  country: CHILE
+  updated_at: 2011-01-03 18:47:19
+  url: ""
+  id: "31"
+  rut: 92.279.000-0
+  fax: ""
+  phone: ""
+  state: SAN FELIPE
+  industry: ""
+customers_020: 
+  city: SANTIAGO
+  address: FIDEL OTEIZA 1921 202
+  name: INFORMATICA TELECOMUNICACIONES Y SISTEMAS S.A.
+  created_at: 2011-01-03 18:07:23
+  country: CHILE
+  updated_at: 2011-01-03 18:07:23
+  url: ""
+  id: "20"
+  rut: 96.691.780-6
+  fax: ""
+  phone: ""
+  state: PROVIDENCIA
+  industry: ""
+customers_009: 
+  city: SANTIAGO
+  address: HUERFANOS 1409
+  name: CORPORACION ADMINISTRATIVA DEL PODER JUDICIAL
+  created_at: 2011-01-03 17:43:54
+  country: ""
+  updated_at: 2011-01-03 17:43:54
+  url: ""
+  id: "9"
+  rut: 60.301.001-9
+  fax: ""
+  phone: ""
+  state: SANTIAGO
+  industry: ""
+customers_043: 
+  city: SANTIAGO
+  address: ALCANTARA 498
+  name: FUNDACION LIBERTAD Y DESARROLLO
+  created_at: 2011-02-02 16:19:17
+  country: ""
+  updated_at: 2011-02-02 16:19:17
+  url: ""
+  id: "43"
+  rut: 71.819.700-7
+  fax: ""
+  phone: ""
+  state: LAS CONDES
+  industry: ""
+customers_032: 
+  city: SANTIAGO
+  address: AV MATTA 1195
+  name: ELECTRICIDAD GOBANTES S.A.
+  created_at: 2011-01-03 19:04:21
+  country: CHILE
+  updated_at: 2011-01-03 19:04:21
+  url: ""
+  id: "32"
+  rut: 80.409.800-3
+  fax: ""
+  phone: ""
+  state: SANTIAGO
+  industry: ""
+customers_021: 
+  city: SANTIAGO
+  address: AGUSTINAS 975 PISO 2
+  name: BANCHILE ADMINISTRADORA GENERAL DE FONDOS S.A.
+  created_at: 2011-01-03 18:11:50
+  country: CHILE
+  updated_at: 2011-01-03 18:11:50
+  url: ""
+  id: "21"
+  rut: 96.767.630-6
+  fax: ""
+  phone: ""
+  state: SANTIAGO
+  industry: ""
+customers_010: 
+  city: SANTIAGO
+  address: AV. VITACURA 2610
+  name: ROYAL SANTIAGO HOTEL S.A.
+  created_at: 2011-01-03 17:48:31
+  country: CHILE
+  updated_at: 2011-01-03 17:48:31
+  url: ""
+  id: "10"
+  rut: 99.544.140-3
+  fax: ""
+  phone: ""
+  state: VITACURA
+  industry: ""
+customers_044: 
+  city: SANTIAGO
+  address: PEREZ VALENZUELA 1620
+  name: GESTION REGIONAL DE MEDIOS S.A
+  created_at: 2011-02-02 20:24:08
+  country: ""
+  updated_at: 2011-02-02 20:24:08
+  url: ""
+  id: "44"
+  rut: 76.047.103-8
+  fax: ""
+  phone: ""
+  state: PROVIDENCIA
+  industry: ""
+customers_033: 
+  city: SANTIAGO
+  address: LORD COCHRANE 326
+  name: FARMACIAS CRUZ VERDE S.A.
+  created_at: 2011-01-04 14:47:27
+  country: CHILE
+  updated_at: 2011-01-04 14:47:27
+  url: ""
+  id: "33"
+  rut: 89.807.200-2
+  fax: ""
+  phone: ""
+  state: SANTIAGO
+  industry: ""
+customers_022: 
+  city: SANTIAGO
+  address: AGUSTINAS 975 209
+  name: BANCHILE CORREDORES DE BOLSA S.A.
+  created_at: 2011-01-03 18:13:59
+  country: CHILE
+  updated_at: 2011-01-03 18:13:59
+  url: ""
+  id: "22"
+  rut: 96.571.220-8
+  fax: ""
+  phone: ""
+  state: SANTIAGO
+  industry: ""
+customers_011: 
+  city: SANTIAGO
+  address: QUEBEC 424
+  name: SERVICIO MEDICO DE LA CAMARA CHILENA DE LA CONSTRUCCION
+  created_at: 2011-01-03 17:53:10
+  country: CHILE
+  updated_at: 2011-01-03 17:53:10
+  url: ""
+  id: "11"
+  rut: 70.016.010-6
+  fax: ""
+  phone: ""
+  state: PROVIDENCIA
+  industry: ""
+customers_034: 
+  city: SANTIAGO
+  address: E.FREI M. 4475
+  name: SUPERMERCADOS MONTSERRAT S.A.C.
+  created_at: 2011-01-04 15:56:37
+  country: CHILE
+  updated_at: 2011-01-04 15:56:37
+  url: ""
+  id: "34"
+  rut: 93.307.000-K
+  fax: ""
+  phone: ""
+  state: CONCHALI
+  industry: ""
+customers_023: 
+  city: SANTIAGO
+  address: AV. BULNES 285 301
+  name: CORPORACION NACIONAL FORESTAL
+  created_at: 2011-01-03 18:15:42
+  country: CHILE
+  updated_at: 2011-01-03 18:15:42
+  url: ""
+  id: "23"
+  rut: 61.313.000-4
+  fax: ""
+  phone: ""
+  state: SANTIAGO
+  industry: ""
+customers_012: 
+  city: "VI\xC3\x91A DEL MAR"
+  address: AVDA. SAN MARTIN 199
+  name: MASTERLINE S.A.
+  created_at: 2011-01-03 17:55:01
+  country: CHILE
+  updated_at: 2011-01-03 17:55:01
+  url: ""
+  id: "12"
+  rut: 79.646.620-0
+  fax: ""
+  phone: ""
+  state: "VI\xC3\x91A DEL MAR"
+  industry: ""
+customers_001: 
+  city: Santiago
+  address: Isidora Goyenechea 3000 Piso 18 al 20
+  name: BRITISH AMERICAN TOBACCO CHILE OPERACIONES S.A.
+  created_at: 2011-01-03 13:57:46
+  country: ""
+  updated_at: 2011-02-02 17:56:23
+  url: ""
+  id: "1"
+  rut: 90.286.000-2
+  fax: ""
+  phone: ""
+  state: Las Condes
+  industry: ""
+customers_035: 
+  city: SANTIAGO
+  address: A ESCOBAR W 190
+  name: LABORATORIO BALLERINA
+  created_at: 2011-01-04 21:00:21
+  country: CHILE
+  updated_at: 2011-01-04 21:00:21
+  url: ""
+  id: "35"
+  rut: 92.405.000-4
+  fax: ""
+  phone: "9253000"
+  state: CERRILLOS
+  industry: ""
+customers_024: 
+  city: VALPARAISO
+  address: BLANCO 951
+  name: DIFARMA S.A.
+  created_at: 2011-01-03 18:21:11
+  country: CHILE
+  updated_at: 2011-01-03 18:21:11
+  url: ""
+  id: "24"
+  rut: 89.741.200-4
+  fax: ""
+  phone: ""
+  state: VALPARAISO
+  industry: ""
+customers_013: 
+  city: "VI\xC3\x91A DEL MAR"
+  address: SAN MARTIN 199
+  name: "ANTONIO MARTINEZ Y COMPA\xC3\x91IA"
+  created_at: 2011-01-03 17:56:53
+  country: CHILE
+  updated_at: 2011-01-03 17:56:53
+  url: ""
+  id: "13"
+  rut: 77.438.400-6
+  fax: ""
+  phone: ""
+  state: "VI\xC3\x91A DEL MAR"
+  industry: ""
+customers_002: 
+  city: Santiago
+  address: Av. Americo Vespucio 2150
+  name: BBOSCH S.A.
+  created_at: 2011-01-03 14:10:20
+  country: Chile
+  updated_at: 2011-01-04 00:43:56
+  url: ""
+  id: "2"
+  rut: 84.716.400-K
+  fax: ""
+  phone: ""
+  state: Quilicura
+  industry: ""

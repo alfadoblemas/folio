@@ -1,17 +1,1157 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+--- 
+invoice_items_086: 
+  price: "208500"
+  created_at: 2011-02-03 16:03:15
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-02-03 16:03:15
+  invoice_id: "88"
+  total: "208500"
+  id: "88"
+  description: |-
+    Servicio de correo mensual Hosting
+    cuota enero 2011 
+    Contacto Sra Sylvia Toro
+invoice_items_001: 
+  price: "1072812"
+  created_at: 2011-01-03 14:04:08
+  quantity: "1"
+  product_id: "1"
+  updated_at: 2011-01-05 20:25:28
+  invoice_id: "1"
+  total: "1072812"
+  id: "1"
+  description: |-
+    Contrato de Soporte Base de datos MySQL
+    Cuota Enero 2011.
+    Contacto: Marco Ondiz
+invoice_items_044: 
+  price: "107323"
+  created_at: 2011-01-18 15:41:23
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-18 15:41:23
+  invoice_id: "46"
+  total: "107323"
+  id: "46"
+  description: |-
+    Asesoria Externa para reparar funcion anomala en servidor de correo,5 horas.
+    orden de compra 083364 del 13-01.2011
+    Contacto Pablo Inostroza
+invoice_items_065: 
+  price: "536925"
+  created_at: 2011-02-01 20:24:52
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-02-01 20:24:52
+  invoice_id: "67"
+  total: "536925"
+  id: "67"
+  description: |-
+    Servicio de Ingenieria
+    Servicio Balanceadores y caches servidores web.
+    Cuota enero 2011 UF25
+    Contacto Sr. Rodrigo Novoa
+invoice_items_002: 
+  price: "42870"
+  created_at: 2011-01-03 14:13:27
+  quantity: "1"
+  product_id: "1"
+  updated_at: 2011-01-03 14:22:51
+  invoice_id: "2"
+  total: "42870"
+  id: "2"
+  description: |-
+    Servicio de Asistencia Remota para Solucionar problemas Servidor Linux.
+    Contacto : Sr. Patricio Baeza
+invoice_items_023: 
+  price: "409504"
+  created_at: 2011-01-06 20:27:37
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-06 20:27:37
+  invoice_id: "24"
+  total: "409504"
+  id: "24"
+  description: "Desarrollo hito 1 Proyecto Renovacion Tecnologica\r\n\
+    hito n\xC2\xBA1 implementacion plataforma de contingencia para servicio indicadores\r\n\
+    propuesta 11201011SC\r\n\
+    contra aceptacion banchile\r\n\
+    usd 869,40 t/c 471,02 del 21-12-2010\r\n\
+    Contacto Beatriz Maggi"
+invoice_items_066: 
+  price: "67652"
+  created_at: 2011-02-01 20:27:54
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-02-01 20:27:54
+  invoice_id: "68"
+  total: "67652"
+  id: "68"
+  description: |-
+    Servicio de soporte 7x24 
+    Servidores Linux y Aplicaciones Asociadas.
+    cuota enero 2011 uf3,15
+    orden de compra 4500227361
+    contacto Sr. Diego Moreno
+invoice_items_003: 
+  price: "42907"
+  created_at: 2011-01-03 17:25:59
+  quantity: "1"
+  product_id: "1"
+  updated_at: 2011-01-03 17:25:59
+  invoice_id: "3"
+  total: "42907"
+  id: "3"
+  description: |-
+    Servicio de Reparacion Servidor IT LINUX
+    Orden de Compra 203833 del 28/1272010.
+    Contacto : Sr. Cesar Barrera O.
+invoice_items_024: 
+  price: "193031"
+  created_at: 2011-01-06 20:31:03
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-06 20:31:03
+  invoice_id: "25"
+  total: "193031"
+  id: "25"
+  description: "Desarrollo hito 1 Proyecto Renovacion Ambiente\r\n\
+    hito n\xC2\xBA1 instalacion servidores linux umbreakable\r\n\
+    5.4 con tunning para oracle 11g.\r\n\
+    contra aceptacion banchile\r\n\
+    UF 9,00 t/c 21.447,95 del 20-12-2010\r\n\
+    Contacto Beatriz Maggi"
+invoice_items_045: 
+  price: "2083860"
+  created_at: 2011-01-18 18:59:40
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-18 18:59:40
+  invoice_id: "47"
+  total: "2083860"
+  id: "47"
+  description: "Implementacion de plataforma Web para CMS Wordpress \r\n\
+    cuota 1-2 USD 4.250\r\n\
+    Orden de compra n\xC2\xBA 4900108931 del 15-09-2010\r\n\
+    T/C 490.32 del 18-01-2011\r\n\
+    Contacto Sr Robinson Abarca \r\n\
+    \r\n\
+    \r\n"
+invoice_items_067: 
+  price: "60780"
+  created_at: 2011-02-01 20:31:23
+  quantity: "1"
+  product_id: "1"
+  updated_at: 2011-02-01 20:31:23
+  invoice_id: "69"
+  total: "60780"
+  id: "69"
+  description: "Servicio de soporte 7x24\r\n\
+    Servidores Linux y Aplicaciones Asociadas.\r\n\
+    cuota enero 2011 uf 2,83\r\n\
+    orden de compra 4500217742\r\n\
+    contacto Sr. Diego Moreno "
+invoice_items_004: 
+  price: "1888271"
+  created_at: 2011-01-04 14:51:31
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-04 14:51:31
+  invoice_id: "4"
+  total: "1888271"
+  id: "4"
+  description: |-
+    Servicios de Instalacion y Configuracion Servidor IBM 64 bits, Creacion imagen POS grom y doble pantalla.
+    Orden de Compra 27759 del 17-12-2010.
+    Contacto: Juan Montenegro y Gonzalo Pincheira
+invoice_items_025: 
+  price: "450406"
+  created_at: 2011-01-07 20:55:50
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-07 20:55:50
+  invoice_id: "26"
+  total: "450406"
+  id: "26"
+  description: |-
+    Servicios de Ingenieria
+    Desarrollo hito 1 proyecto renovacion ambiente Lab.Desa
+    hito 1 Instalacion de servidores Linux umbreakable 5.4 con Tunning para Oracle 11g.
+    contraaceptacion Banchile
+    Contacto Beatrz Maggi
+invoice_items_046: 
+  price: "214680"
+  created_at: 2011-01-19 16:44:25
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-19 16:44:25
+  invoice_id: "48"
+  total: "214680"
+  id: "48"
+  description: "Reinstalaci\xC3\xB3n de M\xC3\xA1quina Virtual SLES11 y configuraci\xC3\xB3n de SLPOS."
+invoice_items_070: 
+  price: "48323"
+  created_at: 2011-02-01 20:42:06
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-02-01 20:42:06
+  invoice_id: "72"
+  total: "48323"
+  id: "72"
+  description: "Servicio de soporte 7x24\r\n\
+    Servidores Linux y Aplicaciones Asociadas.\r\n\
+    cuota enero 2011 uf2,25\r\n\
+    orden de compra 4500203919\r\n\
+    contacto Sr. Diego Moreno "
+invoice_items_068: 
+  price: "32645"
+  created_at: 2011-02-01 20:32:49
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-02-01 20:32:49
+  invoice_id: "70"
+  total: "32645"
+  id: "70"
+  description: "Servicio de soporte 7x24\r\n\
+    Servidores Linux y Aplicaciones Asociadas.\r\n\
+    cuota enero 2011 uf \r\n\
+    orden de compra 4500215869\r\n\
+    contacto Sr. Diego Moreno "
+invoice_items_005: 
+  price: "535633"
+  created_at: 2011-01-04 18:33:46
+  quantity: "1"
+  product_id: "1"
+  updated_at: 2011-01-04 18:52:00
+  invoice_id: "5"
+  total: "535633"
+  id: "5"
+  description: "Servicio de Instalaci\xC3\xB3n de mailcleaner y soporte 60 d\xC3\xADas\r\n\
+    orden de compra n\xC2\xBA 2010/2603 del 18-11-2010\r\n\
+    T/C 21.425,34 del 18-11-2010\r\n\
+    Contacto: Juan Ramos"
+invoice_items_026: 
+  price: "563652"
+  created_at: 2011-01-11 19:04:45
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-11 19:04:45
+  invoice_id: "28"
+  total: "563652"
+  id: "28"
+  description: "Desarrollo hito 1 Proyecto Renovacion Tecnologica\r\n\
+    Hito n\xC2\xBA1 Plataforma de virtualizacion\r\n\
+    Propuesta 11201011SC2 \r\n\
+    contra aceptacion banchile\r\n\
+    contacto Beatriz Maggi"
+invoice_items_047: 
+  price: "85855"
+  created_at: 2011-01-24 13:57:28
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-24 13:57:28
+  invoice_id: "49"
+  total: "85855"
+  id: "49"
+  description: "Asesor\xC3\xADa Inform\xC3\xA1tica \r\n\
+    Asesoria en Configuracion Servidor Zimbra\r\n\
+    Orden de Compra 9088 del 12-01-2011\r\n\
+    T/C UF 21.463,86 del 12-01-2011\r\n\
+    Contacto: Alexis Ya\xC3\xB1ez"
+invoice_items_071: 
+  price: "45102"
+  created_at: 2011-02-01 20:53:46
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-02-01 20:53:46
+  invoice_id: "73"
+  total: "45102"
+  id: "73"
+  description: "Servicio de soporte 7x24\r\n\
+    Servidores Linux y Aplicaciones Asociadas.\r\n\
+    cuota enero 2011 uf 2,10\r\n\
+    orden de compra 4500203930\r\n\
+    contacto Sr. Diego Moreno "
+invoice_items_069: 
+  price: "51545"
+  created_at: 2011-02-01 20:40:44
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-02-01 20:40:44
+  invoice_id: "71"
+  total: "51545"
+  id: "71"
+  description: "Servicio de soporte 7x24\r\n\
+    Servidores Linux y Aplicaciones Asociadas.\r\n\
+    cuota enero 2011 uf 2,40\r\n\
+    orden de compra 4500204939\r\n\
+    contacto Sr. Diego Moreno "
+invoice_items_006: 
+  price: "214548"
+  created_at: 2011-01-04 21:10:38
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-04 21:10:38
+  invoice_id: "7"
+  total: "214548"
+  id: "7"
+  description: |-
+    Servicio de soporte y administracion mensual Servidor Zimbra y Sistema Operativo Linux.
+    Cuota 1-12 diciembre 2010
+    Contacto Sr. Chiristian Meza
+invoice_items_027: 
+  price: "1315183"
+  created_at: 2011-01-11 19:08:19
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-11 19:08:19
+  invoice_id: "29"
+  total: "1315183"
+  id: "29"
+  description: "Desarrollo hito 1 Proyecto Renovacion Tecnologica\r\n\
+    Hito n\xC2\xBA1 plataforma de virtualizacion\r\n\
+    propuesta n\xC2\xBA 11201011SC2\r\n\
+    contra aceptaci\xC3\xB3n banchile\r\n\
+    Contacto Beatrz Maggi\r\n\
+    \r\n"
+invoice_items_050: 
+  price: "214346"
+  created_at: 2011-01-25 15:29:09
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-25 15:29:09
+  invoice_id: "52"
+  total: "214346"
+  id: "52"
+  description: |-
+    Contrato Administracion,mantencion y soporte reactivo de primer nivel
+    7x4 para servidores Linux
+    cuota 10-12 diciembre 2010 uf10
+    contacto Manuel Villarroel
+invoice_items_048: 
+  price: "858748"
+  created_at: 2011-01-24 20:22:21
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-24 20:22:21
+  invoice_id: "50"
+  total: "858748"
+  id: "50"
+  description: "Instalacion de Servidor Red Hat\r\n\
+    Enterprise Linux v4 y v5\r\n\
+    fecha de realizaci\xC3\xB3n 18-01-2011\r\n\
+    total 40 UF \r\n\
+    T/C 21.468,70 del 19-01-2011\r\n\
+    Contacto: Sr. Andres Peralta\r\n\
+    \r\n"
+invoice_items_072: 
+  price: "16108"
+  created_at: 2011-02-01 20:56:08
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-02-01 20:56:08
+  invoice_id: "74"
+  total: "16108"
+  id: "74"
+  description: "Servicio de soporte 7x24\r\n\
+    Servidores Linux y Aplicaciones Asociadas.\r\n\
+    cuota enero 2011 uf 0,75\r\n\
+    orden de compra 4500204956\r\n\
+    contacto Sr. Diego Moreno "
+invoice_items_007: 
+  price: "214555"
+  created_at: 2011-01-04 21:15:27
+  quantity: "1"
+  product_id: "1"
+  updated_at: 2011-01-04 21:22:12
+  invoice_id: "8"
+  total: "214555"
+  id: "8"
+  description: |-
+    Servicio de soporte Linux
+    Cuota: 12-12 Diciembre 2010
+    Contacto: Sr.Rodrigo Montecinos
+invoice_items_030: 
+  price: "529020"
+  created_at: 2011-01-11 19:19:56
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-11 19:19:56
+  invoice_id: "32"
+  total: "529020"
+  id: "32"
+  description: "Desarrollo hito 1 Proyecto Renovacion tecnologica\r\n\
+    hito n\xC2\xBA1 implementacion Plataforma\r\n\
+    SMTP de contingencia\r\n\
+    propuesta n\xC2\xBA 20101510SC\r\n\
+    Contacto Beatriz Maggi"
+invoice_items_028: 
+  price: "209718"
+  created_at: 2011-01-11 19:11:56
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-11 19:11:56
+  invoice_id: "30"
+  total: "209718"
+  id: "30"
+  description: "Desarrollo hito 1 Proyecto Renovacion Tecnologica\r\n\
+    hito n\xC2\xBA1 Instalacion y Configuracion Red Hat Interprise Linux\r\n\
+    Contingencia para RAW Decives Base de Datos Oracle\r\n\
+    propuesta 2011111RAW\r\n\
+    contra aceptacion banchile\r\n\
+    Contacto Beatriz Maggi"
+invoice_items_051: 
+  price: "42938"
+  created_at: 2011-01-25 20:13:50
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-25 20:13:50
+  invoice_id: "53"
+  total: "42938"
+  id: "53"
+  description: "Servicios de soporte remoto conexion ssh para renovacion de certificados digitales de servidor zimbra\r\n\
+    orden de compra n\xC2\xBA 1567-16-SE11 del 24-1-2011\r\n\
+    Cto Ximena Guzman"
+invoice_items_049: 
+  price: "42944"
+  created_at: 2011-01-25 14:49:53
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-25 14:49:53
+  invoice_id: "51"
+  total: "42944"
+  id: "51"
+  description: |-
+    Servicio de mantecion preventiva servidor
+    Orden de compra 324106 del 24-01-2011
+    contacto Cesar Barrera
+invoice_items_073: 
+  price: "125426"
+  created_at: 2011-02-01 21:03:00
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-02-01 21:03:00
+  invoice_id: "75"
+  total: "125426"
+  id: "75"
+  description: |-
+    Servicio de Soporte Reactivo para servidores Linux
+    orden de compra 4400005942 del 24-11-2010
+    cuota diciembre 2010 uf 5,84
+    contacto Cristian Navarrete
+invoice_items_029: 
+  price: "226723"
+  created_at: 2011-01-11 19:16:57
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-11 19:16:57
+  invoice_id: "31"
+  total: "226723"
+  id: "31"
+  description: "Desarrollo hito 1 Renovacion Tecnologica \r\n\
+    hito n1 Implementacion Plataforma SMTP de Contingencia\r\n\
+    propuesta n\xC2\xBA 20101510SC\r\n\
+    Contacto Beatrz Maggi"
+invoice_items_052: 
+  price: "1929117"
+  created_at: 2011-01-26 18:40:43
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-26 18:40:43
+  invoice_id: "54"
+  total: "1929117"
+  id: "54"
+  description: |-
+    Contrato servicio de soporte linux 7x24
+    cuota diciembre 2010
+    uf90 $21.434,63 al 01-12-2010
+    contacto Marco Ondiz
+invoice_items_010: 
+  price: "24500"
+  created_at: 2011-01-06 17:50:53
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-06 17:50:53
+  invoice_id: "11"
+  total: "24500"
+  id: "11"
+  description: |-
+    Servicio mensual de correo zimbra en hosting y cuota de espacio en disco adicional por usuario.
+    cuota diciembre 2010
+    contacto: Lucia Alcazar
+invoice_items_008: 
+  price: "1984703"
+  created_at: 2011-01-05 20:45:56
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-05 20:45:56
+  invoice_id: "9"
+  total: "1984703"
+  id: "9"
+  description: |-
+    Contrato de servicio de soporte Linux 7x24.
+    cuota enero 2011
+    contacto Marco Ondiz
+invoice_items_031: 
+  price: "265941"
+  created_at: 2011-01-11 19:25:51
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-11 19:25:51
+  invoice_id: "33"
+  total: "265941"
+  id: "33"
+  description: "Desarrollo hito 1 renovacion tecnologica \r\n\
+    hito n\xC2\xBA1 plataforma de vistualizacion\r\n\
+    propuesta n\xC2\xBA 102010122SC\r\n\
+    contra acepatacion banchile\r\n\
+    Contacto Beatriz Maggi"
+invoice_items_074: 
+  price: "775094"
+  created_at: 2011-02-01 21:10:58
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-02-01 21:10:58
+  invoice_id: "76"
+  total: "775094"
+  id: "76"
+  description: |-
+    Servicio Red Hat Interprise Linux Server 
+    Orden de Compra 4500015879 del l17-01-2011
+    T/C 485,04 del 20-01-2011
+    Contacto Sra Pamela Henriquez
+invoice_items_011: 
+  price: "215000"
+  created_at: 2011-01-06 17:56:21
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-06 17:56:21
+  invoice_id: "12"
+  total: "215000"
+  id: "12"
+  description: |-
+    Servicio mensual de correo Hosting
+    cuota diciembre 2010
+    Contacto Sylvia Toro
+invoice_items_009: 
+  price: "52000"
+  created_at: 2011-01-05 20:55:40
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-05 20:55:40
+  invoice_id: "10"
+  total: "52000"
+  id: "10"
+  description: |-
+    Servicio mensual de correo Zimbra en Hosting y cuota de espacio en disco adicional por usuario.
+    cuota diciembre 2010
+    Contacto Raul Salas
+invoice_items_032: 
+  price: "590769"
+  created_at: 2011-01-11 20:43:25
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-11 20:43:25
+  invoice_id: "34"
+  total: "590769"
+  id: "34"
+  description: "Desarrollo Hito 1 proyecto renovacion tecnologica\r\n\
+    hito n\xC2\xBA1 plataforma de vistualizacion \r\n\
+    propuesta n\xC2\xBA 102010122SC\r\n\
+    contra aceptacion banchile\r\n\
+    cto:Beatriz Maggi"
+invoice_items_053: 
+  price: "1071731"
+  created_at: 2011-01-26 19:39:39
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-26 19:39:39
+  invoice_id: "55"
+  total: "1071731"
+  id: "55"
+  description: |-
+    Contrato de soporte Base de Datos MySQL 
+    cuota diciembre 2010
+    uf50 21.434,63 del 01-12-2010
+    contacto Marco Ondiz
+invoice_items_075: 
+  price: "193293"
+  created_at: 2011-02-02 16:02:23
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-02-02 16:02:23
+  invoice_id: "77"
+  total: "193293"
+  id: "77"
+  description: |-
+    Servicio de Soporte reactivo de Servidores Lionux y aplicaciones asociadas Zimbra, mailcleaner, PHP y MSQL en modalidad 5x8 de lunes a viernes
+    cuota enero 2011 uf9contacto Mauricio Coloma
+invoice_items_033: 
+  price: "164846"
+  created_at: 2011-01-11 20:45:27
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-11 20:45:27
+  invoice_id: "35"
+  total: "164846"
+  id: "35"
+  description: "Desarrollo hito 1 Renovacion tecnologica\r\n\
+    hiton\xC2\xBA1 20101129SC\r\n\
+    contra acepatacion Banchile\r\n\
+    Contacto Beatriz Maggi"
+invoice_items_054: 
+  price: "257215"
+  created_at: 2011-01-26 19:54:53
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-26 19:54:53
+  invoice_id: "56"
+  total: "257215"
+  id: "56"
+  description: |-
+    Servicio de Soporte Linux 
+    cuota noviembre 2010
+    Contacto Edson Maya
+invoice_items_076: 
+  price: "214770"
+  created_at: 2011-02-02 16:11:17
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-02-02 16:11:17
+  invoice_id: "78"
+  total: "214770"
+  id: "78"
+  description: |-
+    Servicio de Soporte y Administracion mensual servidor zimbra y sistema operativo Linux
+    cuota 2-12 enero 2011
+    contacto Chiristian Meza
+invoice_items_012: 
+  price: "42905"
+  created_at: 2011-01-06 18:39:35
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-06 18:39:35
+  invoice_id: "13"
+  total: "42905"
+  id: "13"
+  description: "Servicio de soporte en Servidor Zimbra por problemas de spam\r\n\
+    orden de compra 9032 del 9-12-2010\r\n\
+    Contacto Alexis Ya\xC3\xB1ez"
+invoice_items_055: 
+  price: "142750"
+  created_at: 2011-01-26 20:00:43
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-26 20:00:43
+  invoice_id: "57"
+  total: "142750"
+  id: "57"
+  description: |-
+    Servicio de soporte reactivo servidores linux
+    cuota 2-12 diciembre 2010
+    contacto Richard Cortes
+invoice_items_077: 
+  price: "214770"
+  created_at: 2011-02-02 16:13:28
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-02-02 16:13:28
+  invoice_id: "79"
+  total: "214770"
+  id: "79"
+  description: |-
+    Contrato Servcio de Soporte Linux
+    cuota 01-12 enero 2011
+    contacto Rodrigo Montecinos
+invoice_items_013: 
+  price: "32608"
+  created_at: 2011-01-06 18:46:04
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-06 18:46:04
+  invoice_id: "14"
+  total: "32608"
+  id: "14"
+  description: |-
+    sERVICIO DE SOPORTE 7X24 SERVIDORES LINUX Y APLICACIONES ASOCIADAS 
+    CIOTA DICIEMBRE 2010 UF 1,52
+    CONTACTO DIEGO MORENO
+invoice_items_034: 
+  price: "471764"
+  created_at: 2011-01-12 16:22:37
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-12 16:22:37
+  invoice_id: "36"
+  total: "471764"
+  id: "36"
+  description: "Servicio de soporte para licenciamiento Zimbra y mantencion para los servidores Zimbra por 1 a\xC3\xB1o\r\n\
+    Cuota 11-12 Diciembre 2010\r\n\
+    Orden de Compra 633-98-SE10 del 27-01-2010\r\n\
+    contacto Rene Burgos"
+invoice_items_014: 
+  price: "51487"
+  created_at: 2011-01-06 18:51:23
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-06 18:51:23
+  invoice_id: "15"
+  total: "51487"
+  id: "15"
+  description: |-
+    Servicio de soporte 7x24 servidores linux y aplicaciones asociadas
+    cuota diciembre 2010 uf 2,40
+    contacto Diego Moreno
+invoice_items_035: 
+  price: "1286034"
+  created_at: 2011-01-12 20:30:10
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-12 20:30:10
+  invoice_id: "37"
+  total: "1286034"
+  id: "37"
+  description: |-
+    Instalacion de Servidores Red Hat Enterprise Linux en diferentes versiones fisicos y virtuales
+    orden de compra 1620 del 01-12-2010
+    contacto Eduardo Moraga
+invoice_items_056: 
+  price: "128053"
+  created_at: 2011-01-26 20:07:37
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-26 20:07:37
+  invoice_id: "58"
+  total: "128053"
+  id: "58"
+  description: |-
+    Regularizacion puntos de montale S.O Linux RedHat
+    Orden de Compra 1542 del 28.09-2010
+    contacto eduardo Moraga
+invoice_items_080: 
+  price: "1932993"
+  created_at: 2011-02-02 18:04:57
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-02-02 18:04:57
+  invoice_id: "82"
+  total: "1932993"
+  id: "82"
+  description: |
+    Contrato Servicio de Soporte Linux 7x24
+    cuota febrero 2011
+    UF90 21.477,70 del 01-02-2011
+    contacto Marco Ondiz
 
-one:
-  unit: MyString
-  quantity: 1
-  description: MyText
-  price: 1
-  total: 1
-  invoice_id: 1
+invoice_items_078: 
+  price: "843045"
+  created_at: 2011-02-02 16:17:52
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-02-02 16:17:52
+  invoice_id: "80"
+  total: "843045"
+  id: "80"
+  description: "Instalaci\xC3\xB3n de Servidores Red Hat y configuraci\xC3\xB3n DNS\r\n\
+    Contacto Mauricio Vidal"
+invoice_items_015: 
+  price: "32179"
+  created_at: 2011-01-06 18:53:35
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-06 18:53:35
+  invoice_id: "16"
+  total: "32179"
+  id: "16"
+  description: |-
+    Servicio de soporte 7x24 servidores linux y aplicaciones asociadas
+    cuota diciembre 2010 uf 1.50
+    contacto Diego Moreno
+invoice_items_036: 
+  price: "2140167"
+  created_at: 2011-01-12 20:39:41
+  quantity: "1"
+  product_id: "3"
+  updated_at: 2011-01-12 20:39:41
+  invoice_id: "38"
+  total: "2140167"
+  id: "38"
+  description: "MCT0982RN Red Hat Enterprise Linux\r\n\
+    Advanced Platform Standard(unlimited sockets)por 1 a\xC3\xB1o\r\n\
+    orden de compra RED HAT 2010-12-01\r\n\
+    contacto Cristian Barreau"
+invoice_items_057: 
+  price: "45044828"
+  created_at: 2011-01-26 20:34:56
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-26 20:34:56
+  invoice_id: "59"
+  total: "45044828"
+  id: "59"
+  description: |-
+    -Licencia Red hat linux advance plataform satndard
+    -licencia redhat interprise as a virtual guest standard,desarrollo y test
+    -Red Hat interprise linux standard Produccion y Contingencia
+    orden de compra 1598 del 19-11-2010
+    contacto eduardo Moraga
+invoice_items_081: 
+  price: "1073885"
+  created_at: 2011-02-02 18:08:12
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-02-02 18:08:12
+  invoice_id: "83"
+  total: "1073885"
+  id: "83"
+  description: |-
+    Contrato de Soporte Base de datos MySQL
+    cuota febreo 2011
+    UF50 21.477.70 del 01-02-2011
+    Contacto Sr.Marco Ondiz
+invoice_items_079: 
+  price: "42954"
+  created_at: 2011-02-02 16:23:34
+  quantity: "1"
+  product_id: "1"
+  updated_at: 2011-02-02 16:23:34
+  invoice_id: "81"
+  total: "42954"
+  id: "81"
+  description: |-
+    Servicio de soporte remoto para personalizacion de reglas de bloqueo de correos 
+    trabajos realizados el 20-01-2011
+    1 HH UF2+iva
+    contacto Roberto Riveros
+invoice_items_016: 
+  price: "48269"
+  created_at: 2011-01-06 18:55:49
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-06 18:55:49
+  invoice_id: "17"
+  total: "48269"
+  id: "17"
+  description: |-
+    Servicio de soporte 7x24 servidores linux y aplicaciones asociadas
+    cuota diciembre 2010 uf 2.25
+    contacto Diego Moreno
+invoice_items_037: 
+  price: "213460"
+  created_at: 2011-01-12 20:50:55
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-12 20:50:55
+  invoice_id: "39"
+  total: "213460"
+  id: "39"
+  description: |-
+    Instalacion de Servidor Red Hat Interprise Linux 5 Virtual contunning para Oracle 11g
+    valor 10 UF
+    orden de compra 10-00007
+    contacto Camilo Buraglia
+invoice_items_060: 
+  price: "197385"
+  created_at: 2011-02-01 15:02:06
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-02-01 15:02:06
+  invoice_id: "62"
+  total: "197385"
+  id: "62"
+  description: |-
+    Servicio de Soporte reactivo 5x8 para Servidores de correo Zimbra
+    cuota 1-12 Ene 2011
+    Contacto Jorge Orellana
+invoice_items_058: 
+  price: "125157"
+  created_at: 2011-01-26 20:50:24
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-26 20:50:24
+  invoice_id: "60"
+  total: "125157"
+  id: "60"
+  description: |-
+    Servicio de Soporte reactivo para servidores linux
+    orden de compra 4400005942 del 24-11-2010
+    cuota noviembre 2010 uf 5.84
+    contacto Cristian Navarrete
+invoice_items_082: 
+  price: "141753"
+  created_at: 2011-02-02 18:10:33
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-02-02 18:10:33
+  invoice_id: "84"
+  total: "141753"
+  id: "84"
+  description: |-
+    Servicio de Soporte Reactivo Servidores Linux
+    cuota 4-12 febrero 2011
+    Contacto Richard Cortes S.
+invoice_items_017: 
+  price: "16089"
+  created_at: 2011-01-06 18:58:27
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-06 18:58:27
+  invoice_id: "18"
+  total: "16089"
+  id: "18"
+  description: |-
+    Servicio de soporte 7x24 servidores linux y aplicaciones asociadas
+    cuota diciembre 2010 uf 0,75
+    contacto Diego Moreno
+invoice_items_040: 
+  price: "49000"
+  created_at: 2011-01-12 21:19:23
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-12 21:19:23
+  invoice_id: "42"
+  total: "49000"
+  id: "42"
+  description: |
+    servicio mensula de correo Zimbra Hosting y cuota de espacio en disco adicional por usuario
+    cuota octubre y noviembre
+    contacto Lucia Alcazar
 
-two:
-  unit: MyString
-  quantity: 1
-  description: MyText
-  price: 1
-  total: 1
-  invoice_id: 1
+invoice_items_038: 
+  price: "212500"
+  created_at: 2011-01-12 21:07:52
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-12 21:07:52
+  invoice_id: "40"
+  total: "212500"
+  id: "40"
+  description: |-
+    Sevicio mensual de correo hosting
+    cuota noviembre 2010
+    Srta Sylvia Toro
+invoice_items_061: 
+  price: "1073850"
+  created_at: 2011-02-01 15:04:59
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-02-01 15:04:59
+  invoice_id: "63"
+  total: "1073850"
+  id: "63"
+  description: |-
+    Servicio de Ingenieria 
+    Contrato de Instalacion, Configuracion y Mantenimiento de servidores Proxy para el Poder Judicial
+    Cuota 9-12 enero 2011
+    Contacto agustin Garcia
+invoice_items_059: 
+  price: "786471"
+  created_at: 2011-01-28 14:14:08
+  quantity: "1"
+  product_id: "3"
+  updated_at: 2011-01-28 14:14:08
+  invoice_id: "61"
+  total: "786471"
+  id: "61"
+  description: |-
+    Suscripcion Red Hat Interprise Linux Server
+    OC 4500015879 del 17-01-2011
+    Contacto Pamela Henriquez
+invoice_items_083: 
+  price: "214777"
+  created_at: 2011-02-02 18:13:09
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-02-02 18:13:09
+  invoice_id: "85"
+  total: "214777"
+  id: "85"
+  description: |-
+    Contrato Administracion, mantencion y soporte reactivo de primer nivel 7x4 para servidores Linux
+    cuota 12-12 Febrero 2011 uf10
+    Contacto Manuel Villarroel
+invoice_items_018: 
+  price: "45051"
+  created_at: 2011-01-06 19:00:36
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-06 19:00:36
+  invoice_id: "19"
+  total: "45051"
+  id: "19"
+  description: |-
+    Servicio de soporte 7x24 servidores linux y aplicaciones asociadas
+    cuota diciembre 2010 uf 2.10
+    contacto Diego Moreno
+invoice_items_041: 
+  price: "42870"
+  created_at: 2011-01-13 20:56:10
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-13 20:56:10
+  invoice_id: "43"
+  total: "42870"
+  id: "43"
+  description: |-
+    Servicio de asistencia remota para creacion de script de firewall
+    contacto Cristian Segura
+invoice_items_039: 
+  price: "50000"
+  created_at: 2011-01-12 21:12:46
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-12 21:12:46
+  invoice_id: "41"
+  total: "50000"
+  id: "41"
+  description: |-
+    Servicio mensual de correo Zimbra Hosting y cuota de espacio en disco adicional por usuario
+    cuota noviembre 2010
+    contacto Raul Salas
+invoice_items_062: 
+  price: "85908"
+  created_at: 2011-02-01 20:06:01
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-02-01 20:06:01
+  invoice_id: "64"
+  total: "85908"
+  id: "64"
+  description: |-
+    Servicio de soporte presencial para habilitar estructura de clusters en maquinas virtuales.
+    Trabajos realizados el 11-01-2011
+    en horario inhabil 2 hh UF+iva
+    Contacto: Richard Cortes
+invoice_items_020: 
+  price: "1072501"
+  created_at: 2011-01-06 19:31:35
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-06 19:31:35
+  invoice_id: "21"
+  total: "1072501"
+  id: "21"
+  description: "Servicio de Ingenieria\r\n\
+    Contrato de instalacion, configuracion y mantenimiento de servidores Proxy para el Poder judicial\r\n\
+    cuota 8-12 diciembre 2010\r\n\
+    contacto Agust\xC3\xADn Garcia"
+invoice_items_084: 
+  price: "257475"
+  created_at: 2011-02-02 18:14:26
+  quantity: "1"
+  product_id: "1"
+  updated_at: 2011-02-02 18:14:26
+  invoice_id: "86"
+  total: "257475"
+  id: "86"
+  description: |-
+    Servicio de soporte Linux
+    cuota diciembre 2010
+    contacto Edson Maya
+invoice_items_063: 
+  price: "472494"
+  created_at: 2011-02-01 20:12:24
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-02-01 20:12:24
+  invoice_id: "65"
+  total: "472494"
+  id: "65"
+  description: "Servicio de soporte para licenciamiento Zimbra y mantencion para los servidores Zimbra por 1 a\xC3\xB1o.\r\n\
+    cuota 12-12 enero 2011\r\n\
+    orden de compra 633-98-SE10 21-01-2010\r\n\
+    Contacto Rene Burgos"
+invoice_items_021: 
+  price: "214486"
+  created_at: 2011-01-06 19:42:26
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-06 19:42:26
+  invoice_id: "22"
+  total: "214486"
+  id: "22"
+  description: |-
+    servicio de asistencia presencial y remota para correccion reglas de Firewall y problemas en servidor zimbra open source
+    trabajos realizados entre el 15 y 20 de dic 2010
+    contacto Claudio Cocca
+invoice_items_019: 
+  price: "35397"
+  created_at: 2011-01-06 19:09:38
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-06 19:09:38
+  invoice_id: "20"
+  total: "35397"
+  id: "20"
+  description: |
+    Servicio de soporte 7x24 servidores linux y aplicaciones asociadas
+    cuota diciembre 2010 uf 1.65
+    contacto Diego Moreno
+
+invoice_items_042: 
+  price: "16911663"
+  created_at: 2011-01-17 20:31:45
+  quantity: "1"
+  product_id: "3"
+  updated_at: 2011-01-17 20:31:45
+  invoice_id: "44"
+  total: "16911663"
+  id: "44"
+  description: "Red hat Interprise Linux Advanced Plataform standard (unlimited sockets) 5 a\xC3\xB1os.\r\n\
+    -Red Hat Interprise Linux Standard (Up to 2 sockets) 5 a\xC3\xB1os\r\n\
+    O/C 1634 del 10-12-2010\r\n\
+    T/C 493.27 del 13.01-2011\r\n\
+    Contacto: Gonzalo Pincheira"
+invoice_items_085: 
+  price: "21478"
+  created_at: 2011-02-02 20:27:10
+  quantity: "1"
+  product_id: "1"
+  updated_at: 2011-02-02 20:27:10
+  invoice_id: "87"
+  total: "21478"
+  id: "87"
+  description: |-
+    Servicio de Asistencia presencial para resolver problemas de funcionamiento Servidor Linux.
+    UF1+iva 21.478,39
+    contacto Carlos Bruna
+invoice_items_022: 
+  price: "175502"
+  created_at: 2011-01-06 20:09:54
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-01-06 20:09:54
+  invoice_id: "23"
+  total: "175502"
+  id: "23"
+  description: "Desarrollo hito 1 Proyecto Renovaci\xC3\xB3n Tecnol\xC3\xB3gica\r\n\
+    hito n\xC2\xBA1 implementacion plataforma de contingencia para servicio indicadores\r\n\
+    propuesta 11201011SC\r\n\
+    contra aceptaci\xC3\xB3n banchile\r\n\
+    usd 772,60 t/c 471,02 del 21-12-2010\r\n\
+    Contacto Beatriz Maggi"
+invoice_items_043: 
+  price: "214670"
+  created_at: 2011-01-18 01:36:30
+  quantity: "4"
+  product_id: "2"
+  updated_at: 2011-01-18 01:36:30
+  invoice_id: "45"
+  total: "858680"
+  id: "45"
+  description: "Instalaci\xC3\xB3n de S.O R.H. en 4 Servidores"
+invoice_items_064: 
+  price: "483233"
+  created_at: 2011-02-01 20:17:16
+  quantity: "1"
+  product_id: "2"
+  updated_at: 2011-02-01 20:17:16
+  invoice_id: "66"
+  total: "483233"
+  id: "66"
+  description: |-
+    Servicio de Ingenieria
+    Contrato de Soporte reactivo de Servidores Linux Y Aplicaciones Open Source
+    cuota 4-4 Diciembre 2010 y Enero -Febrero 2011
+    Contacto Sr. Rodrigo Novoa
