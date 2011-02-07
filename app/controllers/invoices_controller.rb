@@ -1,16 +1,10 @@
 class InvoicesController < ApplicationController
 
   def search
-    if params[:search][:taxed].to_i == params[:search][:untaxed].to_i 
-      params[:search].delete(:taxed)
-      params[:search].delete(:untaxed)
-    elsif params[:search][:taxed].to_i == 1
-      params[:search].delete(:untaxed)
-    end
     @search = Invoice.search(params[:search])
     @status = params[:status].blank? ? "all_invoices" : params[:status]
     order = "#{params[:sort]} #{params[:direction]}"
-    @invoices = @search.find_by_status(@status, params[:page], order, params[:per_page])
+    @invoices = @search.find_by_status(@status, params[:page], order, params[:per_page], nil, false)
     render :template => "invoices/index"
   end
 

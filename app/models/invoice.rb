@@ -26,12 +26,18 @@ class Invoice < ActiveRecord::Base
     customer.name if customer
   end
 
-  def self.find_by_status(status, page , order = "number asc", per_page = 10, company_id = nil)
+  def self.find_by_status(status, page , order = "number asc", per_page = 10, company_id = nil, eager = true)
+    include_models = Array.new
+    unless eager
+      include_models = [:status]
+    else
+      include_models = [:status, :customer]
+    end
     order = order.blank? ? "date desc" : order
     self.send("#{status}").paginate(
       :page => page,
       :per_page => per_page, :order => ["#{order}"],
-      :include => [:status, :customer]
+      :include => include_models
     )
 
   end
@@ -87,10 +93,6 @@ class Invoice < ActiveRecord::Base
       sum = invoices.sum(&:total) unless invoices.size < 1
       sum
     end
-  end
-
-  def customer_name
-    self.customer.name
   end
 
   def status_id

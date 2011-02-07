@@ -89,7 +89,7 @@
 	      <tr  class="close">	
             <td><span class="close_title">
 		  <% if params[:action] == "index" %>
-				Pagadas ultimo 30 dias
+				Pagadas
 		   <% else %>
 				Pagadas
 		   <% end %>
@@ -106,8 +106,7 @@
   				<%= f.select :date_gte, Invoice.date_filter,{:prompt => "Emitida hace...", 
 					:include_blank => true}, {:style => "width: 160px"} %>
 				<br/>
-				<%= f.check_box(:taxed)%><%= f.label "Afecta" %>
-				<%= f.check_box(:untaxed)%><%= f.label "Excenta" %>
+				<%= f.check_box(:taxed, :checked => true)%><%= f.label "Afecta" %>
 				<br/><br/>
 				<%= f.submit "Buscar" %> <%= link_to "Cancelar", invoices_path() %>
 			<% end %>

@@ -9,17 +9,16 @@
   	  <tr>
 		<td></td>
 		<td>
-			<%= f.check_box(:taxed)%><%= f.label "Afecta" %>
-			<%= f.check_box(:untaxed)%><%= f.label "Excenta" %>
+			<%= f.check_box(:taxed, :checked => true)%><%= f.label "Afecta" %>
 		</td>
 	  </tr>
 	  <tr>
 	  	<td><%= f.label :date_gte, "Desde" %></td>
-	  	<td><%= f.date_select :date_gte, :default => {:year => Date.today.year - 1}, :discard_day => true %></td>
+	  	<td><%= f.date_select :date_gte, :default => { :day => 1} %></td>
 	  </tr>
 	  <tr>
 	  	<td><%= f.label :date_lte, "Hasta"%></td>
-	  	<td><%= f.date_select :date_lte, :default => {:month => Date.today.month + 1}, :discard_day => true %></td>
+	  	<td><%= f.date_select :date_lte, :default => {:month => Date.today.month + 1, :day => 30 } %></td>
 	  </tr>
   </table>
   <%= f.submit "Buscar" %>
