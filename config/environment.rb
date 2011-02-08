@@ -48,8 +48,7 @@ Rails::Initializer.run do |config|
 
   # Mostrar páginas de error siempre
   #config.action_controller.consider_all_requests_local = false
-  ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS.
-      merge!(:default => '%d/%m/%Y')
+  ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS.merge!(:default => '%d/%m/%Y')
   
 end
 
