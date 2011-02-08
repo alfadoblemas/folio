@@ -14,10 +14,25 @@
 			<h2>Resultados</h2>
 			<%= link_to "Volver...", invoices_path() %> 
 		<% else %>
-			<div class="span-10">
-				<h2><%= @invoices.total_entries %> Resultados</h2>
-				<p>
-				<%= link_to " Volver", invoices_path() %> </p>
+			<div class="span-19">
+				<h2><%= @invoices.total_entries %> Facturas</h2>
+				<div id="search_tags">
+					emitidas
+					<% if params[:search][:taxed].to_i == 0%>
+						<span class="tag">exentas</span>
+					<% end %>
+					<% unless params[:search][:customer_name_like].blank? %>
+						a <span class="tag"><%= params[:search][:customer_name_like] %></span>
+					<% end %>
+					<% if @date_start %>
+						desde el <span class="tag"><%= l @date_start, :format => :short %></span>
+					<%end%>
+					<% if @date_end %>
+					  hasta el <span class="tag"><%= l @date_end, :format => :short %></span>
+					<% end %>
+					
+					<%= link_to "... Volver", invoices_path() %>
+				</div>
 			</div>
 		<% end %>
 		

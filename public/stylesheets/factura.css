@@ -682,3 +682,11 @@ fieldset {
 
 .paginate {
 }
+
+#search_tags {
+	margin-top: -20px;
+}
+
+#search_tags .tag {
+	background-color: #FCFFCD;
+}

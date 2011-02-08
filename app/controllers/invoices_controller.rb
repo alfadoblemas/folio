@@ -1,6 +1,14 @@
 class InvoicesController < ApplicationController
 
   def search
+
+    if !params[:search]["date_gte"].blank?
+      @date_start = params[:search]["date_gte"].to_date
+    elsif
+      @date_end = "#{params[:search]['date_lte(1i)']}/#{params[:search]['date_lte(2i)']}/#{params[:search]['date_lte(3i)']}".to_date
+      @date_start = "#{params[:search]['date_gte(1i)']}/#{params[:search]['date_gte(2i)']}/#{params[:search]['date_gte(3i)']}".to_date
+    end
+
     @search = Invoice.search(params[:search])
     @status = params[:status].blank? ? "all_invoices" : params[:status]
     order = "#{params[:sort]} #{params[:direction]}"
@@ -84,7 +92,7 @@ class InvoicesController < ApplicationController
 
 
 
-  def new    
+  def new
     if params[:id] && params[:duplicate]
       @invoice_new = Invoice.find(params[:id])
       @invoice_new.date = Date.today
