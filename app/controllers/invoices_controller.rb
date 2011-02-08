@@ -2,13 +2,9 @@ class InvoicesController < ApplicationController
 
   def search
 
-    if !params[:search]["date_gte"].blank?
-      @date_start = params[:search]["date_gte"].to_date
-    elsif
-      @date_end = "#{params[:search]['date_lte(1i)']}/#{params[:search]['date_lte(2i)']}/#{params[:search]['date_lte(3i)']}".to_date
-      @date_start = "#{params[:search]['date_gte(1i)']}/#{params[:search]['date_gte(2i)']}/#{params[:search]['date_gte(3i)']}".to_date
-    end
-
+    @date_start = params[:search]["date_gte"].blank? ? "" : localize_date(params[:search]["date_gte"])
+    @date_end = params[:search]["date_lte"].blank? ? "" : localize_date(params[:search]["date_lte"])
+    params[:search][:date_lte], params[:search][:date_gte] = @date_end, @date_start
     @search = Invoice.search(params[:search])
     @status = params[:status].blank? ? "all_invoices" : params[:status]
     order = "#{params[:sort]} #{params[:direction]}"
@@ -217,7 +213,11 @@ class InvoicesController < ApplicationController
       params
     end
 
-
+    def localize_date(date)
+      tmp = date.split(/\/|-/)
+      date = "#{tmp[2]}-#{tmp[1]}-#{tmp[0]}"
+      date
+    end
     def invoice_index
       invoice_kinds = Invoice.kinds.map {|v| v[:kind] }
       invoice_kinds.each do |kind|

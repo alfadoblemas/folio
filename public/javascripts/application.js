@@ -142,6 +142,9 @@ function hide_invoice_filter() {
 
 $().ready(function() {
 	
+	$.datepicker.setDefaults($.datepicker.regional['es']);
+	$( ".datepicker" ).datepicker();
+	
 	if($("input#customer_name_invoice").val() == ""){
 		$("input#customer_name_invoice").val("Escriba el nombre...");
 		var disable_input = true;

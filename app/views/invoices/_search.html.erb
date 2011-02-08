@@ -13,12 +13,12 @@
 		</td>
 	  </tr>
 	  <tr>
-	  	<td><%= f.label :date_gte, "Desde" %></td>
-	  	<td><%= f.date_select :date_gte, :default => { :day => 1} %></td>
+		<td><%= f.label :date_gte, "Desde" %></td>
+		<td><%= f.text_field :date_gte, :class => "datepicker" %>
 	  </tr>
 	  <tr>
-	  	<td><%= f.label :date_lte, "Hasta"%></td>
-	  	<td><%= f.date_select :date_lte, :default => {:month => Date.today.month + 1, :day => 30 } %></td>
+	  	<td><%= f.label :date_lte, "Hasta" %></td>
+		<td><%= f.text_field :date_lte, :class => "datepicker" %>
 	  </tr>
   </table>
   <%= f.submit "Buscar" %>
