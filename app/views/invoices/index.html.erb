@@ -24,11 +24,11 @@
 					<% unless params[:search][:customer_name_like].blank? %>
 						a <span class="tag"><%= params[:search][:customer_name_like] %></span>
 					<% end %>
-					<% unless @date_start.blank? %>
-						desde el <span class="tag"><%= l @date_start.to_date, :format => :short %></span>
+					<% unless @date_gte.blank? %>
+						desde el <span class="tag"><%= l @date_gte.to_date, :format => :short %></span>
 					<%end%>
-					<% unless @date_end.blank? %>
-					  hasta el <span class="tag"><%= l @date_end.to_date, :format => :short %></span>
+					<% unless @date_lte.blank? %>
+					  hasta el <span class="tag"><%= l @date_lte.to_date, :format => :short %></span>
 					<% end %>
 					
 					<%= link_to "... Volver", invoices_path() %>

@@ -2,9 +2,11 @@ class InvoicesController < ApplicationController
 
   def search
 
-    @date_start = params[:search]["date_gte"].blank? ? "" : localize_date(params[:search]["date_gte"])
-    @date_end = params[:search]["date_lte"].blank? ? "" : localize_date(params[:search]["date_lte"])
-    params[:search][:date_lte], params[:search][:date_gte] = @date_end, @date_start
+    %w(date_gte date_lte).each do |date|
+      instance_variable_set("@#{date}", (params[:search][date].blank? ? "" : localize_date(params[:search][date])))
+      params[:search][date] = instance_variable_get("@#{date}")
+    end
+    
     @search = Invoice.search(params[:search])
     @status = params[:status].blank? ? "all_invoices" : params[:status]
     order = "#{params[:sort]} #{params[:direction]}"
@@ -201,14 +203,14 @@ class InvoicesController < ApplicationController
     end
 
     def unformat_prices(params)
-      params[:invoice][:tax] = currency_to_number(params[:invoice][:tax])
-      params[:invoice][:total] = currency_to_number(params[:invoice][:total])
-      params[:invoice][:net] = currency_to_number(params[:invoice][:net])
-
+      %w(tax total net).each do |number|
+        params[:invoice][number.to_sym] = currency_to_number(params[:invoice][number.to_sym])
+      end
+      
       params[:invoice][:invoice_items_attributes].each_key do |key|
-        params[:invoice][:invoice_items_attributes][key][:price] = currency_to_number(params[:invoice][:invoice_items_attributes][key][:price])
-        params[:invoice][:invoice_items_attributes][key][:total] = currency_to_number(params[:invoice][:invoice_items_attributes][key][:total])
-        params[:invoice][:invoice_items_attributes][key][:product_id] = params[:invoice][:invoice_items_attributes][key][:product_id].to_i
+        %w(price total product_id).each do |number|
+          params[:invoice][:invoice_items_attributes][key][number.to_sym] = currency_to_number(params[:invoice][:invoice_items_attributes][key][number.to_sym])
+        end
       end
       params
     end
@@ -218,6 +220,7 @@ class InvoicesController < ApplicationController
       date = "#{tmp[2]}-#{tmp[1]}-#{tmp[0]}"
       date
     end
+    
     def invoice_index
       invoice_kinds = Invoice.kinds.map {|v| v[:kind] }
       invoice_kinds.each do |kind|
