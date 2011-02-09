@@ -188,7 +188,8 @@ class InvoicesController < ApplicationController
       if @invoice.update_attributes(params[:invoice])
         due_date = @invoice.date.to_date.advance(:days => due_date)
         @invoice.update_attribute(:due, due_date)
-        format.html { redirect_to(invoice_path(@invoice), :ice => 'Factura actualizada.') }
+        @search = Invoice.search(params[:search])
+        format.html { redirect_to(invoice_path(@invoice), flash[:notice] => 'Factura actualizada.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

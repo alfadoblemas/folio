@@ -14,7 +14,9 @@ class Invoice < ActiveRecord::Base
 
   # Validations
   validates_presence_of :net, :tax, :total, :customer_id, :subject
-  validates_uniqueness_of :number, :scope => [:tax, :company_id]
+  validates_uniqueness_of :number, :scope => [:taxed]
+  # Este de abajo va cuando se use la empresa
+  #validates_uniqueness_of :number, :scope => [:tax, :company_id]
 
   validates_numericality_of :tax, :only_integer => true
   #validates_numericality_of :number, :only_integer => true
