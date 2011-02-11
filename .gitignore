@@ -8,3 +8,4 @@ db/*.sqlite3
 .DS_Store
 ../
 .redcar
+rails_best_practices_output.html
