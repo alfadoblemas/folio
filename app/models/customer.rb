@@ -23,5 +23,9 @@ class Customer < ActiveRecord::Base
   def self.find_index
     self.find(:all, :order => "name", :include => [:contacts])
   end
+  
+  def self.find_show(id)
+    find(id, :include => [:invoices])
+  end
 
 end

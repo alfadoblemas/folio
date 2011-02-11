@@ -1,4 +1,9 @@
 class ContactsController < ApplicationController
+  
+  before_filter :find_contact, :only => [:show, :edit, :update, :destroy]
+  before_filter :contact_customer, :only => [:edit, :destroy]
+  
+  
   # GET /contacts
   # GET /contacts.xml
   def index
@@ -13,8 +18,6 @@ class ContactsController < ApplicationController
   # GET /contacts/1
   # GET /contacts/1.xml
   def show
-    @contact = Contact.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @contact }
@@ -35,14 +38,12 @@ class ContactsController < ApplicationController
 
   # GET /contacts/1/edit
   def edit
-    @contact = Contact.find(params[:id])
-    @customer = @contact.customer
+
   end
 
   # POST /contacts
   # POST /contacts.xml
   def create
-
     @contact = Contact.new(params[:contact])
     @customer = Customer.find(@contact.customer_id)
 
@@ -59,7 +60,6 @@ class ContactsController < ApplicationController
   # PUT /contacts/1
   # PUT /contacts/1.xml
   def update
-    @contact = Contact.find(params[:id])
     @customer = Customer.find(@contact.customer_id)
 
     respond_to do |format|
@@ -76,8 +76,7 @@ class ContactsController < ApplicationController
   # DELETE /contacts/1
   # DELETE /contacts/1.xml
   def destroy
-    @contact = Contact.find(params[:id])
-    @customer = @contact.customer
+
     @contact.destroy
 
     respond_to do |format|
@@ -85,4 +84,15 @@ class ContactsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  protected
+  
+  def contact_customer
+    @customer = @contact.customer
+  end
+  
+  def find_contact
+    @contact = Contact.find(params[:id])
+  end
+  
 end

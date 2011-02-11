@@ -309,6 +309,7 @@
         total: "El total"
         subject: "El campo asunto"
         number: "El número de factura"
+        date: "La fecha"
 
       invoice_item:
         quantity: "Cantidad"

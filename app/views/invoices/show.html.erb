@@ -24,7 +24,7 @@
   <div class="invoice_info last">
 
     <%= l  @invoice.date, :format => :long %><br/>
-    <%  unless @invoice.due.nil? %> <br/>
+    <% if @invoice.due? %> <br/>
       Vence <%= l @invoice.due, :format => :long %>
     <% end %>
 
@@ -58,13 +58,11 @@
         <td><div class="readonly title"><%= number_to_currency(@invoice.net, :unit => "$",
               :delimiter => ".", :precision => 0) %> </div> </td>
       </tr>
-      <% unless @invoice.tax.nil? %>
         <tr>
           <td class="taxLabel title">IVA</td>
           <td class="readonly"><%= number_to_currency(@invoice.tax, :unit => "$",
               :delimiter => ".", :precision => 0) %></td>
         </tr>
-      <% end %>
       <tr>
         <td class="totalLabel tile">Total</td>
         <td class="readonly totalLabel"><%= number_to_currency(@invoice.total, :unit => "$",

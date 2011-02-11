@@ -3,7 +3,7 @@
  <div class="paginate last right">
 	<% if invoices.total_pages > 1 %>
     	<%= will_paginate invoices, :next_label => "Siguiente »", 
-			:previous_label => "« Anterior", :params => {:status => @status} %>
+			:previous_label => "« Anterior", :params => {:status => status} %>
 		
 	<% else %>
 		<br/>
@@ -33,14 +33,14 @@
 		<% if invoice.status_id == 5 %>
 			<%= "vencida" %></span>
 		<% else %>
-			<%= invoice.status.name.downcase %></span>
+			<%= invoice.status_name.downcase %></span>
 		<% end %>
 		<% unless invoice.taxed? %>
 		 <br/><span class="draft_result">excenta</span>
 		<% end %>
 	</td>
 	<td>
-		<strong><h4><%= invoice.customer.name %></h4></strong><br/>
+		<strong><h4><%= invoice.customer_name %></h4></strong><br/>
 		<% if invoice.subject %>
 		  <%= invoice.subject %><br/>
 		<% end %>
@@ -70,5 +70,5 @@
 </table>
 <div class="paginate last right">
     	<%= will_paginate invoices, :next_label => "Siguiente »", 
-			:previous_label => "« Anterior", :params => {:status => @status} %>
+			:previous_label => "« Anterior", :params => {:status => status} %>
  </div>

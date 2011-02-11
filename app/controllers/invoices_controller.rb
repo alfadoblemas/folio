@@ -1,12 +1,14 @@
 class InvoicesController < ApplicationController
 
-  def search
+  before_filter :find_invoice, :only => [ :active, :cancel, :close, :show, :edit, :destroy ]
+  before_filter :sanitize_params, :only => [ :create, :update ]
 
+  def search
     %w(date_gte date_lte).each do |date|
       instance_variable_set("@#{date}", (params[:search][date].blank? ? "" : localize_date(params[:search][date])))
       params[:search][date] = instance_variable_get("@#{date}")
     end
-    
+
     @search = Invoice.search(params[:search])
     @status = params[:status].blank? ? "all_invoices" : params[:status]
     order = "#{params[:sort]} #{params[:direction]}"
@@ -16,63 +18,31 @@ class InvoicesController < ApplicationController
 
 
   def active
-    @invoice = Invoice.find(params[:id])
-    unless @invoice.status_id == 2
-      # due_days = ((@invoice.due.to_time - @invoice.date.to_time)/3600/24).to_i
-
-      @history = History.new(:subject => "Activación", :comment => "Factura activada",
-                             :invoice_id => @invoice.id)
-
-      respond_to do |format|
-        if @invoice.number
-          @invoice.update_attribute(:status_id, 2)
-          # TODO: Revisar la actualización de la fecha
-          # @invoice.update_attribute(:date, Date.today)
-          # due_date = @invoice.date.to_date.advance(:days => due_days)
-          # @invoice.update_attribute(:due, due_date)
-          @history.save
-          flash[:notice] = "Factura activada."
-          format.html { redirect_to(invoice_path(@invoice)) }
-        else
-          @customer = Customer.find(@invoice.customer_id)
-          @invoice.status_id = 2
-          flash.now[:notice] = "La factura debe tener un número"
-          format.html { render :action => "edit" }
-        end
-      end
-    else
-      respond_to do |format|
-        flash[:notice] = "La Factura ya está activa"
+    respond_to do |format|
+      if @invoice.number
+        @invoice.active!
+        flash[:notice] = "Factura activada."
         format.html { redirect_to(invoice_path(@invoice)) }
+      else
+        @customer = Customer.find(@invoice.customer_id)
+        flash.now[:notice] = "La factura debe tener un número"
+        format.html { render :action => "edit" }
       end
     end
   end
 
+
   def cancel
-    @invoice = Invoice.find(params[:id])
-    @history = History.new(:subject => "Anulación", :comment => "La factura fue anulada",
-                           :invoice_id => @invoice.id)
-
     respond_to do |format|
-      if @invoice.update_attribute(:status_id, 4)
-        @history.save
-        flash[:notice] = "Factura Anulada"
-        format.html { redirect_to(invoice_path(@invoice))}
-      end
-
+      @invoice.cancel!
+      flash[:notice] = "Factura Anulada"
+      format.html { redirect_to(invoice_path(@invoice))}
     end
   end
 
   def close
-
-    @invoice = Invoice.find(params[:id])
-
-    @history = History.new(:subject => "Pagada", :comment => "Factura pagada",
-                           :invoice_id => @invoice.id)
     respond_to do |format|
-      if @invoice.update_attribute(:status_id, 3)
-        @invoice.update_attribute(:close_date, Date.today)
-        @history.save
+      if @invoice.close!
         flash[:notice] = "Factura pagada"
         format.html { redirect_to(invoice_path(@invoice)) }
       end
@@ -91,17 +61,11 @@ class InvoicesController < ApplicationController
 
 
   def new
+    @products = Product.all
+
+    # If a duplicate invoice request
     if params[:id] && params[:duplicate]
-      @invoice_new = Invoice.find(params[:id])
-      @invoice_new.date = Date.today
-      @invoice_new.number = nil
-      @invoice_new.status_id = 1
-      @invoice = @invoice_new.clone()
-
-      @invoice_new.invoice_items.each_with_index do |line, index|
-        @invoice.invoice_items[index]=line.clone()
-      end
-
+      @invoice = Invoice.duplicate(params[:id])
     else
       @invoice = Invoice.new
       @invoice.invoice_items.build
@@ -109,7 +73,7 @@ class InvoicesController < ApplicationController
 
     if @invoice.customer_id
       @customer = Customer.find(@invoice.customer_id)
-    elsif !params[:customer_id].nil?
+    elsif params[:customer_id]
       @customer = Customer.find(params[:customer_id])
     else
       @customer = Customer.new
@@ -119,18 +83,10 @@ class InvoicesController < ApplicationController
 
 
   def create
-
-    # En caso que no se guarde, guardamos los días para renderizar la form.
-    due_date = params[:invoice][:due].to_i
-
-    # Convertimos precios a numeros
-    unformat_prices(params)
-
     @invoice = Invoice.new(params[:invoice])
-    @customer = Customer.find(@invoice.customer_id) unless @invoice.customer_id.nil?
+    @customer = Customer.find(@invoice.customer_id) unless @invoice.customer_id.blank?
 
-    @invoice.due = @invoice.date.to_date.advance(:days => due_date)
-
+    #TODO: No me acuerdo que hace
     params[:invoice][:invoice_items_attributes].each_key do |key|
       unless params[:invoice][:invoice_items_attributes][key].blank?
         params[:invoice][:invoice_items_attributes].delete(key)
@@ -142,8 +98,9 @@ class InvoicesController < ApplicationController
         flash[:notice] = "Factura creada correctamente."
         format.html { redirect_to(@invoice)}
       else
-        @customer = @customer.nil? ? Customer.new : @customer
-        @invoice.due = due_date
+        @customer = Customer.new unless defined?(@customer)
+        @invoice.due = params[:due_date]
+        @products = Product.all
         @search = Invoice.search(params[:search])
         format.html { render :action => "new"}
       end
@@ -151,18 +108,16 @@ class InvoicesController < ApplicationController
   end
 
   def show
-    @invoice = Invoice.find(params[:id])
   end
 
   def edit
-    @invoice = Invoice.find(params[:id])
     due_days = ((@invoice.due.to_time - @invoice.date.to_time)/3600/24).to_i
     @invoice.due = due_days
     @customer = Customer.find(@invoice.customer_id)
+    @products = Product.all
   end
 
   def destroy
-    @invoice = Invoice.find(params[:id])
     @invoice.destroy
 
     respond_to do |format|
@@ -172,26 +127,17 @@ class InvoicesController < ApplicationController
     end
   end
 
-  def update
-    unformat_prices(params)
-    due_date = params[:invoice][:due].to_i
-
+  def update    
     @invoice = Invoice.find(params[:id])
-
-    if @invoice.status_id == 2
-      params[:invoice][:status_id] = 2
-    end
-
     @customer = Customer.find(@invoice.customer_id)
 
     respond_to do |format|
       if @invoice.update_attributes(params[:invoice])
-        due_date = @invoice.date.to_date.advance(:days => due_date)
-        @invoice.update_attribute(:due, due_date)
-        @search = Invoice.search(params[:search])
-        format.html { redirect_to(invoice_path(@invoice), flash[:notice] => 'Factura actualizada.') }
+        flash[:notice] = 'Factura actualizada.'
+        format.html { redirect_to(invoice_path(@invoice)) }
         format.xml  { head :ok }
       else
+        @products = Product.all
         format.html { render :action => "edit" }
         format.xml  { render :xml => @invoice.errors, :status => :unprocessable_entity }
       end
@@ -199,6 +145,22 @@ class InvoicesController < ApplicationController
   end
 
   protected
+
+    def find_invoice
+      @invoice = Invoice.find(params[:id])
+    end
+
+    def sanitize_params
+      # En caso que no se guarde, guardamos los días para renderizar la form.
+      params[:due_date] = params[:invoice][:due].to_i
+      date = localize_date(params[:invoice][:date]).to_date rescue ""
+      params[:invoice][:date] = date
+      params[:invoice][:due] = date.to_date.advance(:days => params[:due_date]) unless date.blank?
+
+      # Convertimos precios a numeros
+      unformat_prices(params)
+    end
+
     def currency_to_number(price)
       price.scan(/\d+/).join.to_i
     end
@@ -207,7 +169,7 @@ class InvoicesController < ApplicationController
       %w(tax total net).each do |number|
         params[:invoice][number.to_sym] = currency_to_number(params[:invoice][number.to_sym])
       end
-      
+
       params[:invoice][:invoice_items_attributes].each_key do |key|
         %w(price total product_id).each do |number|
           params[:invoice][:invoice_items_attributes][key][number.to_sym] = currency_to_number(params[:invoice][:invoice_items_attributes][key][number.to_sym])
@@ -221,14 +183,5 @@ class InvoicesController < ApplicationController
       date = "#{tmp[2]}-#{tmp[1]}-#{tmp[0]}"
       date
     end
-    
-    def invoice_index
-      invoice_kinds = Invoice.kinds.map {|v| v[:kind] }
-      invoice_kinds.each do |kind|
-        result = Invoice.method("find_#{kind}")
-        instance_variable_set("@invoices_#{kind}", result.call(params[:page], params[:per_page]))
-      end
-    end
-
 
 end

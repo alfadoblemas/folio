@@ -1,6 +1,6 @@
 <fieldset>
 <!-- Busqueda directa x Numero de Factura -->
-<% form_for @search, :url => {:action => "search" } do |f| -%>
+<% form_for search, :url => {:action => "search" } do |f| -%>
   <table class="search">
 	  <tr>
 	  	<td><%= f.label :customer_name_like, "Cliente" %></td>

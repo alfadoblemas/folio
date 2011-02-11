@@ -5,3 +5,15 @@
 #   
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
+
+# Products
+%w( horas servicio producto ).each_with_index do |name, index|
+  id = index + 1
+  Product.create!(:id, :name => name.titleize)
+end
+
+# Status
+%w( borrador activa paga anulada vencida ).each_with_index do |name, index|
+  id = index + 1
+  Status.create!(:id, :name => name.titleize)
+end

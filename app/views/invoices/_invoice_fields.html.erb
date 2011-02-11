@@ -6,9 +6,9 @@
        <tr>
          <td><span class="required"><%= invoice.label "Cliente" %></span></td>
          <td>
-           <%= text_field_tag "", @customer.name, :autocomplete => "off", :id => "customer_name_invoice", :class => "input_large" %>
+           <%= text_field_tag "", customer.name, :autocomplete => "off", :id => "customer_name_invoice", :class => "input_large" %>
 
-         <% if @customer.id.nil? %>
+         <% if customer.id.nil? %>
          - o - <%= link_to "Agregar cliente", :controller => "customers", :action => "new", :from_invoice => 1, :method => "post" %>
          <% end %>
 
@@ -20,7 +20,7 @@
        </tr>
        <tr>
          <td><span class="required"><%= invoice.label "Fecha" %></span></td>
-         <td class="date"><%= invoice.date_select :date , :order => [:day, :month, :year] %></td>
+         <td class="date"><%= invoice.text_field :date , :class => "datepicker" %></td>
        </tr>
        <tr>
          <td><span><%= invoice.label "Número" %></span></td>
@@ -36,7 +36,7 @@
        </tr>
      </tbody>
    </table>
-   <%= invoice.hidden_field :customer_id, :value => @customer.id  %>
+   <%= invoice.hidden_field :customer_id, :value => customer.id  %>
  </div>
 </fieldset>
 </div>

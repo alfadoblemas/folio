@@ -1,3 +1,5 @@
+<% customer = @customer unless @customer.nil? %>
+
 <% if params[:action].eql?("new") %>
   <div class="cancel span-4 last">
     <%= link_to "Cancelar", customers_path %>
@@ -8,14 +10,14 @@
 <% elsif params[:action].eql?("show") %>
   <div class="span-4 last">
     <div class="new newCustomer">
-      <%= link_to "Nueva Factura", new_customer_invoice_path(@customer) %>
+      <%= link_to "Nueva Factura", new_customer_invoice_path(customer) %>
     </div>
 
       <ul class="toolbox secondary">
-		<li id="edit_invoice"><%= link_to "<strong>Editar</strong> cliente", edit_customer_path(@customer) %></li>
-        <li id="add_link"><%= link_to "<strong>Agregar</strong> contacto", new_customer_contact_path(@customer) %></li>
-		<% if @customer.invoices.size == 0 %>
-		<li id="delete_invoice"><%= link_to "<strong>Borrar</strong> cliente", @customer,
+		<li id="edit_invoice"><%= link_to "<strong>Editar</strong> cliente", edit_customer_path(customer) %></li>
+        <li id="add_link"><%= link_to "<strong>Agregar</strong> contacto", new_customer_contact_path(customer) %></li>
+		<% if customer.invoices.size == 0 %>
+		<li id="delete_invoice"><%= link_to "<strong>Borrar</strong> cliente", customer,
               :confirm => "Está seguro?", :method => :delete %></li>
         <% end %>
 
@@ -27,7 +29,7 @@
 
 <% elsif params[:action].eql?("edit") %>
   <div class="cancel span-4 last">
-    <%= link_to "Cancelar", customer_path(@customer) %>
+    <%= link_to "Cancelar", customer_path(customer) %>
   </div>
 <% else %>
   <div class="new newCustomer">

@@ -13,15 +13,95 @@ class Invoice < ActiveRecord::Base
   accepts_nested_attributes_for :histories, :allow_destroy => true
 
   # Validations
-  validates_presence_of :net, :tax, :total, :customer_id, :subject
+  validates_presence_of :net, :tax, :total, :customer_id, :subject, :date, :number
   validates_uniqueness_of :number, :scope => [:taxed]
-  # Este de abajo va cuando se use la empresa
+  #TODO Este de abajo va cuando se use la empresa
   #validates_uniqueness_of :number, :scope => [:tax, :company_id]
 
   validates_numericality_of :tax, :only_integer => true
-  #validates_numericality_of :number, :only_integer => true
+  validates_numericality_of :number, :only_integer => true, :greater_than => 0
   validates_numericality_of :net, :only_integer => true, :greater_than => 0
   validates_numericality_of :total, :only_integer => true, :greater_than => 0
+
+
+  delegate :name, :state, :to => :status, :prefix => true
+  delegate :name, :to => :customer, :prefix => true
+
+
+  def active!
+    unless active?
+      update_attribute(:status_id, 2)
+      histories.build(:subject => "Activación", :comment => "Factura activada")
+      save
+    else
+      false
+    end
+  end
+
+  def active?
+    status_id == 2 ? true : false
+  end
+
+  def cancel!
+    unless cancelled?
+      update_attribute(:status_id, 4)
+      histories.build(:subject => "Anulación", :comment => "La factura fue anulada")
+      save
+    else
+      false
+    end
+  end
+
+  def cancelled?
+    status_id == 4 ? true : false
+  end
+
+  def close!
+    unless closed?
+      update_attribute(:status_id, 3)
+      update_attribute(:close_date, Date.today)
+      histories.build(:subject => "Pagada", :comment => "Factura pagada")
+      save
+    else
+      false
+    end
+  end
+
+  def closed?
+    status_id == 3 ? true : false
+  end
+  
+  def draft?
+    status_id == 1 ? true : false
+  end
+  
+  def cancellable?
+    status_id == 2 || status_id == 5 ? true : false
+  end
+  
+
+  def self.duplicate(id)
+    invoice = find(id)
+    invoice.date = Date.today
+    invoice.number = nil
+    invoice.status_id = 1
+    invoice_new = invoice.clone()
+    invoice_new.invoice_items << invoice.duplicate_items
+    invoice_new
+  end
+  
+  def duplicate_items
+     invoice_items_tmp = Array.new
+     unless invoice_items.size < 0
+        invoice_items.each_with_index do |line, index|
+           invoice_items_tmp << line.clone()
+         end
+         invoice_items_tmp
+     else
+       false
+     end
+   end
+
 
   # Virtual attributes
   def customer_name
@@ -67,7 +147,7 @@ class Invoice < ActiveRecord::Base
       end
     end
   end
-  
+
   def self.iva_total(query = nil)
     sum = 0
     if query.nil?
@@ -158,5 +238,7 @@ class Invoice < ActiveRecord::Base
   scope_procedure :all_invoices, lambda { number_gte(0) }
   scope_procedure :untaxed, lambda { taxed_equals(false) }
 
+  
+  protected
   
 end

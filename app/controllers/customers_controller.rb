@@ -1,10 +1,11 @@
 class CustomersController < ApplicationController
+  before_filter :find_customer, :only => [ :edit, :update, :destroy ]
   auto_complete_for :customers, :name
 
   def search
     unless params[:q].nil?
-      @customers = Customer.find(:all, :conditions => ['name LIKE ?',
-                                                       "%#{params[:q]}%"])
+      search = Customer.search(:name_like => params[:q])
+      @customer = search.all
     end
 
     respond_to do |format|
@@ -24,7 +25,7 @@ class CustomersController < ApplicationController
 
 
   def show
-    @customer = Customer.find(params[:id], :include => [:invoices])
+    @customer = Customer.find_show(params[:id])
     @status = params[:status].blank? ? "all" : params[:status]
     order = "#{params[:sort]} #{params[:direction]}"
     @invoices = @customer.invoices.find_by_status(@status, params[:page], order)
@@ -37,7 +38,6 @@ class CustomersController < ApplicationController
   end
 
   def edit
-    @customer = Customer.find(params[:id])
     logger.debug(request.method)
   end
 
@@ -62,7 +62,6 @@ class CustomersController < ApplicationController
   end
 
   def update
-    @customer = Customer.find(params[:id])
     respond_to do |format|
       if @customer.update_attributes(params[:customer])
         flash[:notice] = "Cambios guardados correctamente."
@@ -70,19 +69,22 @@ class CustomersController < ApplicationController
       else
         format.html { render :action => "edit" }
       end
-
     end
   end
 
   def destroy
-    @customer = Customer.find(params[:id])
     @customer.destroy
-
     respond_to do |format|
       flash[:notice] = "Cliente #{@customer.name} eliminado"
       format.html { redirect_to(customers_path) }
       format.xml  { head :ok }
     end
+  end
+
+  protected
+
+  def find_customer
+    @customer = Customer.find(params[:id])
   end
 
 end

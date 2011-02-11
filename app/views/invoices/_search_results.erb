@@ -1,7 +1,7 @@
 
 <div class="paginate last">
     <%= will_paginate invoices, :next_label => "Siguiente »", 
-		:previous_label => "« Anterior", :params => {:status => @status} %>
+		:previous_label => "« Anterior", :params => {:status => status} %>
 </div>
 
 
@@ -19,10 +19,10 @@
 	
 	<td style="width:15%;">
 		<strong><%= link_to "NUM-"+invoice.number.to_s, invoice_path(invoice.id) %></strong><br/>
-		<span class="<%= invoice.status.state %>_result"><%= invoice.status.name.downcase %></span>
+		<span class="<%= invoice.status_state %>_result"><%= invoice.status_name.downcase %></span>
 	</td>
 	<td>
-		<strong><h4><%= invoice.customer.name %></h4></strong><br/>
+		<strong><h4><%= invoice.customer_name %></h4></strong><br/>
 		<% if invoice.subject %>
 		  <%= invoice.subject %><br/>
 		<% end %>
