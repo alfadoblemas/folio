@@ -1,5 +1,5 @@
 <div id="register" class="prepend-top span-16 last">
-  <% form_for @user do |f| -%>
+  <% form_for @account do |f| -%>
 	<ul id="company-info" class="section">
 		<li class="header">
 			<span></span>
@@ -8,19 +8,20 @@
 		</li>
 		<li>
 			<span>
-				<%= label_tag "company_name", "Nombre de la Empresa" %>
-				<%= text_field_tag :user %>
+				<%= f.label "company_name", "Nombre de la Empresa" %>
+				<%= f.text_field :name %>
 				<br/>
 			</span>
 		</li>
 		<li class="url">
 			<span>
 				<%= label_tag "url", "URL de acceso" %>
-				<%= text_field_tag :user %><strong> .folio.cl</strong>
+				<%= f.text_field :subdomain %><strong> .folio.cl</strong>
 			</span>
 		</li>
 		<li class="bottom"></li>
 	</ul>
+	<% f.fields_for :users do |user_form| %>
 	<ul id="user-info" class="section">
 		<li class="header">
 			<span></span>
@@ -29,23 +30,24 @@
 		</li>
 		<li>
 			<%= label_tag "name", "Nombre" %>
-			<%= text_field_tag :user %>
+			<%= user_form.text_field :name %>
 		</li>
 		<li>
-			<%= label_tag "name", "Email" %>
-			<%= text_field_tag :user %>
+			<%= label_tag "email", "Email" %>
+			<%= user_form.text_field :email %>
 		</li>
 		<li>
-			<%= label_tag "name", "Comprobar email" %>
-			<%= text_field_tag :user %>
-		</li>
-		<li>
-			<%= label_tag "name", "Contraseña" %>
+			<%= label_tag "password", "Contraseña" %>
 			<%= password_field_tag :user %>
+		</li>
+		<li>
+			<%= label_tag "password_confirmation", "Confirmar Contraseña" %>
+			<%= password_field_tag :password_confirmation %>
 		</li>
 		<li class="bottom">
 		</li>
 	</ul>
+	<% end %>
 	<br/>
 	<%= submit_tag "Registrar", :id => "button-sign-up-now" %>
   <% end -%>

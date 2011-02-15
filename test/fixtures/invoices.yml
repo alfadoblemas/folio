@@ -13,7 +13,7 @@ invoices_072:
   subject: CONTRATO SOPORTE
   date: "2011-01-31"
   id: "74"
-  company_id: 
+  account_id: 
   net: "16108"
   status_id: "2"
   customer_id: "17"
@@ -33,7 +33,7 @@ invoices_008:
   subject: 90.286.000-2
   date: "2011-01-17"
   id: "9"
-  company_id: 
+  account_id: 
   net: "1984703"
   status_id: "2"
   customer_id: "1"
@@ -53,7 +53,7 @@ invoices_030:
   subject: "1102"
   date: "2010-12-20"
   id: "32"
-  company_id: 
+  account_id: 
   net: "529020"
   status_id: "3"
   customer_id: "22"
@@ -73,7 +73,7 @@ invoices_029:
   subject: SERVICIO DE INGENIERIA
   date: "2010-12-20"
   id: "31"
-  company_id: 
+  account_id: 
   net: "226723"
   status_id: "3"
   customer_id: "21"
@@ -93,7 +93,7 @@ invoices_051:
   subject: SERVICIOS
   date: "2011-01-25"
   id: "53"
-  company_id: 
+  account_id: 
   net: "42938"
   status_id: "2"
   customer_id: "41"
@@ -115,7 +115,7 @@ invoices_073:
   subject: SERVICIO DE SOPORTE
   date: "2011-01-31"
   id: "75"
-  company_id: 
+  account_id: 
   net: "125426"
   status_id: "2"
   customer_id: "29"
@@ -135,7 +135,7 @@ invoices_031:
   subject: SERVICIO DE INGENIERIA
   date: "2010-12-20"
   id: "33"
-  company_id: 
+  account_id: 
   net: "265941"
   status_id: "3"
   customer_id: "22"
@@ -155,7 +155,7 @@ invoices_052:
   subject: CONTRATO SOPORTE
   date: "2010-12-02"
   id: "54"
-  company_id: 
+  account_id: 
   net: "1929117"
   status_id: "2"
   customer_id: "1"
@@ -178,7 +178,7 @@ invoices_010:
   subject: SRVICIO MENSUAL DE CORREO ZIMBRA
   date: "2011-01-06"
   id: "11"
-  company_id: 
+  account_id: 
   net: "24500"
   status_id: "2"
   customer_id: "28"
@@ -200,7 +200,7 @@ invoices_074:
   subject: SERVICIOS
   date: "2011-01-31"
   id: "76"
-  company_id: 
+  account_id: 
   net: "775094"
   status_id: "2"
   customer_id: "39"
@@ -220,7 +220,7 @@ invoices_053:
   subject: CONTRATO SOPORTE
   date: "2011-01-26"
   id: "55"
-  company_id: 
+  account_id: 
   net: "1071731"
   status_id: "2"
   customer_id: "1"
@@ -242,7 +242,7 @@ invoices_011:
   subject: SERVICIO MENSUAL DE CORREO
   date: "2011-01-06"
   id: "12"
-  company_id: 
+  account_id: 
   net: "215000"
   status_id: "3"
   customer_id: "4"
@@ -264,7 +264,7 @@ invoices_009:
   subject: SERVICIO MENSUAL DE CORREO
   date: "2011-01-05"
   id: "10"
-  company_id: 
+  account_id: 
   net: "52000"
   status_id: "3"
   customer_id: "27"
@@ -284,7 +284,7 @@ invoices_032:
   subject: SERVICIOS DE INGENIERIA
   date: "2010-12-20"
   id: "34"
-  company_id: 
+  account_id: 
   net: "590769"
   status_id: "3"
   customer_id: "22"
@@ -306,7 +306,7 @@ invoices_075:
   subject: SOPORTE
   date: "2011-01-31"
   id: "77"
-  company_id: 
+  account_id: 
   net: "193293"
   status_id: "2"
   customer_id: "37"
@@ -328,7 +328,7 @@ invoices_012:
   subject: SERVICIO DE SOPORTE
   date: "2011-01-06"
   id: "13"
-  company_id: 
+  account_id: 
   net: "42905"
   status_id: "2"
   customer_id: "11"
@@ -348,7 +348,7 @@ invoices_033:
   subject: SERVICIOS DE INGENIERIA
   date: "2010-12-20"
   id: "35"
-  company_id: 
+  account_id: 
   net: "164846"
   status_id: "3"
   customer_id: "22"
@@ -368,7 +368,7 @@ invoices_054:
   subject: SOPORTE
   date: "2010-12-02"
   id: "56"
-  company_id: 
+  account_id: 
   net: "257215"
   status_id: "3"
   customer_id: "8"
@@ -389,7 +389,7 @@ invoices_076:
   subject: CONTRATO SOPORTE
   date: "2011-01-31"
   id: "78"
-  company_id: 
+  account_id: 
   net: "214770"
   status_id: "2"
   customer_id: "35"
@@ -412,7 +412,7 @@ invoices_013:
   subject: "1121"
   date: "2011-01-06"
   id: "14"
-  company_id: 
+  account_id: 
   net: "32608"
   status_id: "2"
   customer_id: "12"
@@ -434,7 +434,7 @@ invoices_034:
   subject: SERVICIOS
   date: "2010-12-14"
   id: "36"
-  company_id: 
+  account_id: 
   net: "471764"
   status_id: "3"
   customer_id: "23"
@@ -455,7 +455,7 @@ invoices_055:
   subject: CONTRATO SOPORTE
   date: "2010-12-02"
   id: "57"
-  company_id: 
+  account_id: 
   net: "142750"
   status_id: "3"
   customer_id: "30"
@@ -475,7 +475,7 @@ invoices_077:
   subject: CONTRATO SOPORTE
   date: "2011-01-31"
   id: "79"
-  company_id: 
+  account_id: 
   net: "214770"
   status_id: "2"
   customer_id: "10"
@@ -497,7 +497,7 @@ invoices_014:
   subject: SERVICIO DE SOPORTE
   date: "2011-01-06"
   id: "15"
-  company_id: 
+  account_id: 
   net: "51487"
   status_id: "2"
   customer_id: "14"
@@ -519,7 +519,7 @@ invoices_035:
   subject: SERVICIOS
   date: "2010-12-13"
   id: "37"
-  company_id: 
+  account_id: 
   net: "1286034"
   status_id: "3"
   customer_id: "24"
@@ -541,7 +541,7 @@ invoices_056:
   subject: SERVICIOS
   date: "2010-12-06"
   id: "58"
-  company_id: 
+  account_id: 
   net: "128053"
   status_id: "2"
   customer_id: "24"
@@ -561,7 +561,7 @@ invoices_078:
   subject: SERVICIOS
   date: "2011-01-31"
   id: "80"
-  company_id: 
+  account_id: 
   net: "843045"
   status_id: "2"
   customer_id: "42"
@@ -582,7 +582,7 @@ invoices_015:
   subject: SERVICIO DE SOPORTE
   date: "2011-01-06"
   id: "16"
-  company_id: 
+  account_id: 
   net: "32179"
   status_id: "2"
   customer_id: "15"
@@ -604,7 +604,7 @@ invoices_036:
   subject: LICENCIA
   date: "2010-12-09"
   id: "38"
-  company_id: 
+  account_id: 
   net: "2140167"
   status_id: "2"
   customer_id: "25"
@@ -624,7 +624,7 @@ invoices_057:
   subject: LICENCIAS
   date: "2010-12-06"
   id: "59"
-  company_id: 
+  account_id: 
   net: "45044828"
   status_id: "3"
   customer_id: "24"
@@ -644,7 +644,7 @@ invoices_080:
   subject: CONTRATO SOPORTE
   date: "2011-02-01"
   id: "82"
-  company_id: 
+  account_id: 
   net: "1932993"
   status_id: "2"
   customer_id: "1"
@@ -665,7 +665,7 @@ invoices_079:
   subject: HORAS HOMBRE
   date: "2011-01-31"
   id: "81"
-  company_id: 
+  account_id: 
   net: "42954"
   status_id: "2"
   customer_id: "43"
@@ -686,7 +686,7 @@ invoices_016:
   subject: SERVICIO DE SOPORTE
   date: "2011-01-06"
   id: "17"
-  company_id: 
+  account_id: 
   net: "48269"
   status_id: "2"
   customer_id: "16"
@@ -708,7 +708,7 @@ invoices_037:
   subject: SERVICIOS DE INGENIERIA
   date: "2010-12-09"
   id: "39"
-  company_id: 
+  account_id: 
   net: "213460"
   status_id: "3"
   customer_id: "26"
@@ -730,7 +730,7 @@ invoices_058:
   subject: CONTRATO SOPORTE
   date: "2010-12-06"
   id: "60"
-  company_id: 
+  account_id: 
   net: "125157"
   status_id: "3"
   customer_id: "29"
@@ -750,7 +750,7 @@ invoices_081:
   subject: CONTRATO SOPORTE
   date: "2011-02-01"
   id: "83"
-  company_id: 
+  account_id: 
   net: "1073885"
   status_id: "2"
   customer_id: "1"
@@ -771,7 +771,7 @@ invoices_017:
   subject: SERVICIO DE SOPORTE
   date: "2011-01-06"
   id: "18"
-  company_id: 
+  account_id: 
   net: "16089"
   status_id: "2"
   customer_id: "17"
@@ -793,7 +793,7 @@ invoices_038:
   subject: SERVICIO MENSUAL DE CORREO
   date: "2010-12-12"
   id: "40"
-  company_id: 
+  account_id: 
   net: "212500"
   status_id: "3"
   customer_id: "4"
@@ -816,7 +816,7 @@ invoices_060:
   subject: SERVICIOS
   date: "2011-01-31"
   id: "62"
-  company_id: 
+  account_id: 
   net: "197385"
   status_id: "2"
   customer_id: "5"
@@ -838,7 +838,7 @@ invoices_059:
   subject: LICENCIA
   date: "2011-01-28"
   id: "61"
-  company_id: 
+  account_id: 
   net: "786471"
   status_id: "2"
   customer_id: "39"
@@ -858,7 +858,7 @@ invoices_082:
   subject: "CONTRATO DE SOPORTE "
   date: "2011-02-01"
   id: "84"
-  company_id: 
+  account_id: 
   net: "141753"
   status_id: "2"
   customer_id: "30"
@@ -881,7 +881,7 @@ invoices_018:
   subject: SERVICIO DE SOPORTE
   date: "2011-01-06"
   id: "19"
-  company_id: 
+  account_id: 
   net: "45051"
   status_id: "2"
   customer_id: "18"
@@ -902,7 +902,7 @@ invoices_040:
   subject: SERVICIO MENSUAL DE CORREO
   date: "2010-12-07"
   id: "42"
-  company_id: 
+  account_id: 
   net: "49000"
   status_id: "3"
   customer_id: "28"
@@ -924,7 +924,7 @@ invoices_039:
   subject: SERVICIO
   date: "2010-12-07"
   id: "41"
-  company_id: 
+  account_id: 
   net: "50000"
   status_id: "3"
   customer_id: "27"
@@ -946,7 +946,7 @@ invoices_061:
   subject: SERVICIOS
   date: "2011-01-31"
   id: "63"
-  company_id: 
+  account_id: 
   net: "1073850"
   status_id: "2"
   customer_id: "9"
@@ -966,7 +966,7 @@ invoices_083:
   subject: CONTRATO SOPORTE
   date: "2011-02-01"
   id: "85"
-  company_id: 
+  account_id: 
   net: "214777"
   status_id: "2"
   customer_id: "31"
@@ -987,7 +987,7 @@ invoices_020:
   subject: SERVICIO DE INGENIERIA
   date: "2011-01-06"
   id: "21"
-  company_id: 
+  account_id: 
   net: "1072501"
   status_id: "2"
   customer_id: "9"
@@ -1010,7 +1010,7 @@ invoices_019:
   subject: "SERVICIO DE SOPORTE "
   date: "2011-01-06"
   id: "20"
-  company_id: 
+  account_id: 
   net: "35397"
   status_id: "3"
   customer_id: "19"
@@ -1032,7 +1032,7 @@ invoices_041:
   subject: SERVICIOS DE INGENIERIA
   date: "2011-01-13"
   id: "43"
-  company_id: 
+  account_id: 
   net: "42870"
   status_id: "3"
   customer_id: "36"
@@ -1054,7 +1054,7 @@ invoices_062:
   subject: SERVICIO
   date: "2011-01-31"
   id: "64"
-  company_id: 
+  account_id: 
   net: "85908"
   status_id: "2"
   customer_id: "30"
@@ -1074,7 +1074,7 @@ invoices_084:
   subject: CONTRATO SOPORTE
   date: "2011-02-01"
   id: "86"
-  company_id: 
+  account_id: 
   net: "257475"
   status_id: "2"
   customer_id: "8"
@@ -1094,7 +1094,7 @@ invoices_042:
   subject: LICENCIA
   date: "2011-01-17"
   id: "44"
-  company_id: 
+  account_id: 
   net: "16911663"
   status_id: "2"
   customer_id: "24"
@@ -1116,7 +1116,7 @@ invoices_063:
   subject: SERVICIO
   date: "2011-01-31"
   id: "65"
-  company_id: 
+  account_id: 
   net: "472494"
   status_id: "2"
   customer_id: "23"
@@ -1138,7 +1138,7 @@ invoices_021:
   subject: SERVICIO DE SOPORTE
   date: "2011-01-06"
   id: "22"
-  company_id: 
+  account_id: 
   net: "214486"
   status_id: "2"
   customer_id: "20"
@@ -1158,7 +1158,7 @@ invoices_085:
   subject: HORAS HOMBRE
   date: "2011-02-02"
   id: "87"
-  company_id: 
+  account_id: 
   net: "21478"
   status_id: "2"
   customer_id: "44"
@@ -1180,7 +1180,7 @@ invoices_064:
   subject: SERVICIOS
   date: "2011-01-31"
   id: "66"
-  company_id: 
+  account_id: 
   net: "483233"
   status_id: "2"
   customer_id: "7"
@@ -1204,7 +1204,7 @@ invoices_001:
   subject: SERVICIO DE SOPORTE
   date: "2011-01-17"
   id: "1"
-  company_id: 
+  account_id: 
   net: "1072812"
   status_id: "2"
   customer_id: "1"
@@ -1226,7 +1226,7 @@ invoices_022:
   subject: SERVICIO DE INGENIERIA
   date: "2011-01-06"
   id: "23"
-  company_id: 
+  account_id: 
   net: "175502"
   status_id: "3"
   customer_id: "21"
@@ -1250,7 +1250,7 @@ invoices_043:
   subject: "Instaci\xC3\xB3n S.O. RHEL "
   date: "2011-01-18"
   id: "45"
-  company_id: 
+  account_id: 
   net: "858680"
   status_id: "2"
   customer_id: "37"
@@ -1270,7 +1270,7 @@ invoices_086:
   subject: SERVICIO CORREO MENSUAL
   date: "2011-02-02"
   id: "88"
-  company_id: 
+  account_id: 
   net: "208500"
   status_id: "2"
   customer_id: "4"
@@ -1290,7 +1290,7 @@ invoices_002:
   subject: 
   date: "2011-01-03"
   id: "2"
-  company_id: 
+  account_id: 
   net: "42870"
   status_id: "3"
   customer_id: "2"
@@ -1310,7 +1310,7 @@ invoices_023:
   subject: SERVICIO DE INGENIERIA
   date: "2011-01-06"
   id: "24"
-  company_id: 
+  account_id: 
   net: "409504"
   status_id: "3"
   customer_id: "21"
@@ -1330,7 +1330,7 @@ invoices_044:
   subject: SERVICIOS
   date: "2011-01-18"
   id: "46"
-  company_id: 
+  account_id: 
   net: "107323"
   status_id: "2"
   customer_id: "38"
@@ -1350,7 +1350,7 @@ invoices_065:
   subject: SERVICIOS
   date: "2011-01-31"
   id: "67"
-  company_id: 
+  account_id: 
   net: "536925"
   status_id: "2"
   customer_id: "7"
@@ -1370,7 +1370,7 @@ invoices_003:
   subject: 
   date: "2011-01-04"
   id: "3"
-  company_id: 
+  account_id: 
   net: "42907"
   status_id: "2"
   customer_id: "3"
@@ -1390,7 +1390,7 @@ invoices_024:
   subject: SERVICIO DE INGENIERIA
   date: "2011-01-06"
   id: "25"
-  company_id: 
+  account_id: 
   net: "193031"
   status_id: "3"
   customer_id: "21"
@@ -1410,7 +1410,7 @@ invoices_045:
   subject: SERVICIOS
   date: "2011-01-18"
   id: "47"
-  company_id: 
+  account_id: 
   net: "2083860"
   status_id: "2"
   customer_id: "39"
@@ -1432,7 +1432,7 @@ invoices_066:
   subject: CONTRATO SOPORTE
   date: "2011-01-31"
   id: "68"
-  company_id: 
+  account_id: 
   net: "67652"
   status_id: "2"
   customer_id: "19"
@@ -1452,7 +1452,7 @@ invoices_067:
   subject: CONTRATO SOPORTE
   date: "2011-01-31"
   id: "69"
-  company_id: 
+  account_id: 
   net: "60780"
   status_id: "2"
   customer_id: "13"
@@ -1472,7 +1472,7 @@ invoices_004:
   subject: 
   date: "2011-01-04"
   id: "4"
-  company_id: 
+  account_id: 
   net: "1888271"
   status_id: "2"
   customer_id: "33"
@@ -1492,7 +1492,7 @@ invoices_025:
   subject: SERVICIO DE INGENIERIA
   date: "2011-01-07"
   id: "26"
-  company_id: 
+  account_id: 
   net: "450406"
   status_id: "3"
   customer_id: "22"
@@ -1512,7 +1512,7 @@ invoices_046:
   subject: "Reinstalaci\xC3\xB3n MV SLES11"
   date: "2011-01-19"
   id: "48"
-  company_id: 
+  account_id: 
   net: "214680"
   status_id: "1"
   customer_id: "33"
@@ -1532,7 +1532,7 @@ invoices_068:
   subject: CONTRATO SOPORTE
   date: "2011-01-31"
   id: "70"
-  company_id: 
+  account_id: 
   net: "32645"
   status_id: "2"
   customer_id: "12"
@@ -1555,7 +1555,7 @@ invoices_005:
   subject: " Instalacion de mailcleaner"
   date: "2011-01-04"
   id: "5"
-  company_id: 
+  account_id: 
   net: "535633"
   status_id: "2"
   customer_id: "34"
@@ -1575,7 +1575,7 @@ invoices_026:
   subject: SERVICIO DE INGENIERIA
   date: "2010-12-20"
   id: "28"
-  company_id: 
+  account_id: 
   net: "563652"
   status_id: "3"
   customer_id: "21"
@@ -1597,7 +1597,7 @@ invoices_047:
   subject: Asesoria Informatica
   date: "2011-01-24"
   id: "49"
-  company_id: 
+  account_id: 
   net: "85855"
   status_id: "2"
   customer_id: "11"
@@ -1617,7 +1617,7 @@ invoices_070:
   subject: CONTRATO SOPORTE
   date: "2011-01-31"
   id: "72"
-  company_id: 
+  account_id: 
   net: "48323"
   status_id: "2"
   customer_id: "16"
@@ -1637,7 +1637,7 @@ invoices_069:
   subject: CONTRATO SOPORTE
   date: "2011-01-31"
   id: "71"
-  company_id: 
+  account_id: 
   net: "51545"
   status_id: "2"
   customer_id: "14"
@@ -1660,7 +1660,7 @@ invoices_006:
   subject: SERVICIO DE SOPORTE
   date: "2011-01-04"
   id: "7"
-  company_id: 
+  account_id: 
   net: "214548"
   status_id: "2"
   customer_id: "35"
@@ -1680,7 +1680,7 @@ invoices_027:
   subject: SERVICIO DE INGENIERIA
   date: "2010-12-20"
   id: "29"
-  company_id: 
+  account_id: 
   net: "1315183"
   status_id: "3"
   customer_id: "22"
@@ -1705,7 +1705,7 @@ invoices_048:
   subject: SERVICIOS
   date: "2011-01-24"
   id: "50"
-  company_id: 
+  account_id: 
   net: "858748"
   status_id: "2"
   customer_id: "40"
@@ -1725,7 +1725,7 @@ invoices_071:
   subject: CONTRATO SOPORTE
   date: "2011-01-31"
   id: "73"
-  company_id: 
+  account_id: 
   net: "45102"
   status_id: "2"
   customer_id: "18"
@@ -1748,7 +1748,7 @@ invoices_007:
   subject: SERVICIO DE SOPORTE
   date: "2011-01-06"
   id: "8"
-  company_id: 
+  account_id: 
   net: "214555"
   status_id: "2"
   customer_id: "10"
@@ -1768,7 +1768,7 @@ invoices_028:
   subject: SERVICIO DE INGENIERIA
   date: "2010-12-20"
   id: "30"
-  company_id: 
+  account_id: 
   net: "209718"
   status_id: "3"
   customer_id: "22"
@@ -1788,7 +1788,7 @@ invoices_050:
   subject: SERVICIO
   date: "2010-12-02"
   id: "52"
-  company_id: 
+  account_id: 
   net: "214346"
   status_id: "3"
   customer_id: "31"
@@ -1810,7 +1810,7 @@ invoices_049:
   subject: SERVICIOS
   date: "2011-01-25"
   id: "51"
-  company_id: 
+  account_id: 
   net: "42944"
   status_id: "2"
   customer_id: "3"

@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>                                                                                                             
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>Facturas</title>
+
+    <!-- Framework CSS -->
+    <%= stylesheet_link_tag "blueprint/screen.css", :media => "screen, projection" %>
+    <%= stylesheet_link_tag "blueprint/print.css", :media => "print" %>
+    <!-- End Framework CSS -->
+
+    <!-- Stylesheet -->
+    <%= stylesheet_link_tag "factura", :media => "all" %>
+	<%= stylesheet_link_tag "signup", :media => "all" %>
+
+	<%= javascript_include_tag "jquery" %>
+  </head>
+	<body>
+		<div id="header">
+			<%= render "shared/header" %>
+		</div>
+		<div class="container">
+			<%= yield %>
+		</div>
+	</body>
+</html>

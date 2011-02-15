@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/controllers/invoices_controller.rb</string>
+	<string>app/views/accounts/new.html.erb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,73 +21,89 @@
 	<integer>241</integer>
 	<key>metaData</key>
 	<dict>
-		<key>app/controllers/invoices_controller.rb</key>
+		<key>app/controllers/accounts_controller.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>43</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>11</integer>
+				<integer>18</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>4</integer>
 		</dict>
-		<key>app/models/invoice.rb</key>
+		<key>app/views/accounts/new.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>11</integer>
+				<integer>6</integer>
 				<key>line</key>
-				<integer>51</integer>
+				<integer>53</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>123</integer>
+			<integer>31</integer>
 		</dict>
-		<key>app/views/invoices/_invoices_sidebar.html.erb</key>
+		<key>db/migrate/20110211154125_add_indexes02.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>69</integer>
+				<integer>65</integer>
 				<key>line</key>
-				<integer>48</integer>
+				<integer>4</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>3</integer>
+				<key>line</key>
+				<integer>4</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>65</integer>
+				<key>line</key>
+				<integer>4</integer>
+			</dict>
 		</dict>
-		<key>app/views/invoices/index.html.erb</key>
+		<key>public/stylesheets/signup.css</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>35</integer>
+				<integer>18</integer>
 				<key>line</key>
-				<integer>17</integer>
+				<integer>106</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>106</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>app/models/invoice.rb</string>
-		<string>app/views/invoices/index.html.erb</string>
-		<string>app/views/invoices/_invoices_sidebar.html.erb</string>
-		<string>app/controllers/invoices_controller.rb</string>
+		<string>app/controllers/accounts_controller.rb</string>
+		<string>app/views/accounts/new.html.erb</string>
+		<string>public/stylesheets/signup.css</string>
+		<string>db/migrate/20110211154125_add_indexes02.rb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{286, 82}, {882, 693}}</string>
+	<string>{{305, 185}, {907, 466}}</string>
 </dict>
 </plist>

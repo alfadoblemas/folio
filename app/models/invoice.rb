@@ -3,7 +3,7 @@ class Invoice < ActiveRecord::Base
   # Associations
   belongs_to :customer
   belongs_to :contact
-  belongs_to :company
+  belongs_to :account
   belongs_to :status
   has_many :invoice_items, :dependent => :destroy
   has_many :histories, :dependent => :destroy
@@ -16,7 +16,7 @@ class Invoice < ActiveRecord::Base
   validates_presence_of :net, :tax, :total, :customer_id, :subject, :date, :number
   validates_uniqueness_of :number, :scope => [:taxed]
   #TODO Este de abajo va cuando se use la empresa
-  #validates_uniqueness_of :number, :scope => [:tax, :company_id]
+  #validates_uniqueness_of :number, :scope => [:tax, :account_id]
 
   validates_numericality_of :tax, :only_integer => true
   validates_numericality_of :number, :only_integer => true, :greater_than => 0
@@ -108,7 +108,7 @@ class Invoice < ActiveRecord::Base
     customer.name if customer
   end
 
-  def self.find_by_status(status, page , order = "number asc", per_page = 10, company_id = nil, eager = true)
+  def self.find_by_status(status, page , order = "number asc", per_page = 10, account_id = nil, eager = true)
     include_models = Array.new
     unless eager
       include_models = [:status]

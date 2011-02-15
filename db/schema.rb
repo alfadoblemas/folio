@@ -9,9 +9,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110211154125) do
+ActiveRecord::Schema.define(:version => 20110214212543) do
 
-  create_table "companies", :force => true do |t|
+  create_table "accounts", :force => true do |t|
     t.string   "name"
     t.string   "rut"
     t.text     "address"
@@ -21,7 +21,11 @@ ActiveRecord::Schema.define(:version => 20110211154125) do
     t.string   "country"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "subdomain"
+    t.integer  "admin_id"
   end
+
+  add_index "accounts", ["admin_id"], :name => "accounts_admin_index"
 
   create_table "contacts", :force => true do |t|
     t.string   "first_name"
@@ -86,7 +90,7 @@ ActiveRecord::Schema.define(:version => 20110211154125) do
     t.integer  "total"
     t.integer  "customer_id"
     t.integer  "contact_id"
-    t.integer  "company_id"
+    t.integer  "account_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "taxed"
@@ -100,13 +104,14 @@ ActiveRecord::Schema.define(:version => 20110211154125) do
     t.string   "subject"
   end
 
-  add_index "invoices", ["company_id"], :name => "invoices_company_index"
-  add_index "invoices", ["contact_id"], :name => "invoices_contact_index"
-  add_index "invoices", ["currency_id"], :name => "invoices_currency_index"
-  add_index "invoices", ["customer_id"], :name => "invoices_customer_index"
-  add_index "invoices", ["history_id"], :name => "invoices_history_index"
-  add_index "invoices", ["number"], :name => "invoices_number_index"
-  add_index "invoices", ["status_id"], :name => "invoices_status_index"
+  add_index "invoices", ["account_id"], :name => "altered_invoices_company_index"
+  add_index "invoices", ["account_id"], :name => "invoices_account_index"
+  add_index "invoices", ["contact_id"], :name => "altered_invoices_contact_index"
+  add_index "invoices", ["currency_id"], :name => "altered_invoices_currency_index"
+  add_index "invoices", ["customer_id"], :name => "altered_invoices_customer_index"
+  add_index "invoices", ["history_id"], :name => "altered_invoices_history_index"
+  add_index "invoices", ["number"], :name => "altered_invoices_number_index"
+  add_index "invoices", ["status_id"], :name => "altered_invoices_status_index"
 
   create_table "products", :force => true do |t|
     t.string   "name"
@@ -126,12 +131,14 @@ ActiveRecord::Schema.define(:version => 20110211154125) do
     t.string   "email"
     t.string   "crypted_password"
     t.string   "password_salt"
-    t.string   "pesistence_token"
-    t.integer  "company_id"
+    t.string   "persistence_token"
+    t.integer  "account_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
-  add_index "users", ["company_id"], :name => "users_company_index"
+  add_index "users", ["account_id"], :name => "altered_users_account_index"
+  add_index "users", ["account_id"], :name => "altered_users_company_index"
 
 end

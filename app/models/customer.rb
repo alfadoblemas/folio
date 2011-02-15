@@ -8,6 +8,7 @@ class Customer < ActiveRecord::Base
 # Associations
   has_many :contacts, :dependent => :destroy, :order => "last_name, first_name"
   has_many :invoices
+  belongs_to :account
 
 # Validations
   validates_presence_of :name, :rut, :address, :city
