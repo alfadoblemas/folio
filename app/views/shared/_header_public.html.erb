@@ -1,0 +1,9 @@
+<div id="logo">
+ <%= link_to "nada", public_root_url, :id => "logo_link" %>
+</div>
+<div id="navBar">
+  <%= link_to "Tour", public_root_url(:subdomain => false) %>
+  <%= link_to "Precios", public_root_url(:subdomain => false) %>
+  <%= link_to "Signup", new_account_url(:subdomain => false) %>
+  <%= link_to "Login", login_path() %>
+</div>

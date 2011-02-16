@@ -52,16 +52,29 @@ float: left;
 }
 
 #header #navBar {
-position: relative;
 color: #ffffff;
   margin-left: 200px;
 padding-top: 20px;
 word-spacing: 10px;
 }
 
+#header #preferences_bar {
+	float: right;
+	margin-top: -35px;
+	padding: 5px;
+	width: 300px;
+	margin-right: 20px;
+	text-align: right;
+}
+
+#preferences_bar a {
+	text-decoration: none;
+}
+
+
 #header a, a:link {
-color: #ffffff;
-  text-decoration: none;
+	color: #ffffff;
+	text-decoration: none;
 }
 
 #header a:active {

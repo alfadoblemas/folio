@@ -4,6 +4,7 @@ class Account < ActiveRecord::Base
   after_save :add_admin, :if => :admin_null?
 
   # Associations
+  authenticates_many :user_sessions
   has_many :invoices
   has_many :users
   accepts_nested_attributes_for :users

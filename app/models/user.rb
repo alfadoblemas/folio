@@ -4,6 +4,6 @@ class User < ActiveRecord::Base
   end
   
   #Assoc
-  belongs_to :account
+  belongs_to :account  
   
 end

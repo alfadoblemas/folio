@@ -1,20 +1,23 @@
 class AccountsController < ApplicationController
   
-  layout "application", :except => [:new]
+  layout "public", :except => [:show, :edit]
   
   def new
     @account = Account.new
     @account.users.build
-    render :layout => "accounts/signup"
   end
 
   def edit
-    @user = Account.new(params[:account])
-    if @user.save
-      flash[:notice] = "Bienvenido a Folio."
-      redirect_to root_url
+    @account = Account.find(params[:id])
+  end
+  
+  def create
+    @account = Account.new(params[:account])
+    if @account.save
+      flash[:notice] = "Cuenta creada!"
+      redirect_to root_url(:subdomain => @account.subdomain)
     else
-      render :action => 'new'
+      render :action => :new
     end
   end
 

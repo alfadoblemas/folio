@@ -1,10 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
-  map.root :controller => "invoices" 
+  #map.root :controller => "invoices" 
   map.customer_search 'customers/search.:format', :controller => 'customers', :action => 'search'
   map.active_invoice 'invoices/active/:id', :controller => 'invoices', :action => 'active'
   map.cancel_invoice 'invoices/cancel/:id', :controller => 'invoices', :action => 'cancel'
   map.close_invoice 'invoices/close/:id', :controller => 'invoices', :action => 'close'
   map.search_invoice 'invoices/search', :controller => 'invoices', :action => 'search'
+  map.login 'login', :controller => 'user_sessions', :action => 'new'
+  map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
+  map.signup 'signup', :controller => 'accounts', :action => 'new'
 
 
   map.resources :customers, :has_many => [:contacts, :invoices]
@@ -13,6 +16,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :accounts, :has_many => [:users, :invoices, :customers]
   map.resources :histories
   map.resources :users
+  map.resources :user_sessions
+  map.application_root "/", :controller => "invoices", :action => "index", :conditions => {:subdomain => /.+/}
+  map.public_root "/", :controller => "public", :action => "index", :conditions => {:subdomain => nil}
 
   # The priority is based upon order of creation: first created -> highest priority.
 

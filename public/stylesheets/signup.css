@@ -9,6 +9,33 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
 }
 
+h1 {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+h2 {
+	font-size: 16px;
+}
+
+#logo #logo_link {
+	width: 150px;
+	height: 60px;
+	background: url("/images/logo.png") no-repeat scroll left top transparent;
+	display: block;
+	text-indent: -9999px;
+}
+
+#navBar {
+	float: right;
+	padding-right: 100px;
+	text-align: right;
+}
+
+.container {
+	min-height: 400px;
+}
+
 ol, ul {
     list-style: none outside none;
 	margin: 0px;
@@ -69,7 +96,7 @@ ul.section li.header {
 ul.section li.bottom {
     background-color: transparent;
     border: 0 none;
-    height: 5px;
+    min-height: 5px;
 }
 
 ul.section li.header span {
@@ -82,7 +109,7 @@ ul.section li.header span {
 }
 
 ul#company-info.section li.header span {
-    background: url("/images/	") no-repeat scroll left top transparent;
+    
 }
 
 label {
@@ -126,4 +153,39 @@ li.url strong {
     outline: 0 none;
     text-indent: -99999px;
     width: 250px;
+}
+
+.no_subdomain {
+	padding: 20px;
+	border-color: #FFD21E;
+	border-width: 10px;
+	border-style: solid;
+	background-color: #FFF68F;
+	font-size: 18px;
+}
+
+.no_subdomain .url {
+	color: #1f6799;
+	font-size: 20px;
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+
+.no_subdomain .company {
+	color: #FFF;
+	padding: 5px;
+	background-color: #69ae00;
+	border-width: 2px;
+	border-color: #000;
+	border-style: solid;
+}
+
+#login {
+	margin-left: 150px;
+	margin-right: 150px;
+	margin-top: 50px;
+}
+
+#login .bottom {
+	text-align: right;
 }

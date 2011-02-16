@@ -1,5 +1,6 @@
 <div id="register" class="prepend-top span-16 last">
   <% form_for @account do |f| -%>
+  <%= f.error_messages :class => "error" %>
 	<ul id="company-info" class="section">
 		<li class="header">
 			<span></span>
@@ -38,11 +39,11 @@
 		</li>
 		<li>
 			<%= label_tag "password", "Contraseña" %>
-			<%= password_field_tag :user %>
+			<%= user_form.password_field :password %>
 		</li>
 		<li>
 			<%= label_tag "password_confirmation", "Confirmar Contraseña" %>
-			<%= password_field_tag :password_confirmation %>
+			<%= user_form.password_field :password_confirmation %>
 		</li>
 		<li class="bottom">
 		</li>

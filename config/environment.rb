@@ -25,6 +25,7 @@ Rails::Initializer.run do |config|
   config.gem "searchlogic" 
   config.gem "mysql" 
   config.gem "will_paginate"
+  config.gem "subdomain-fu"
 
 
   # Only load the plugins named here, in the order given (default is alphabetical).

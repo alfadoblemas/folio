@@ -1,0 +1,40 @@
+<% if flash[:notice] -%>
+<div id="notice" class="notice"><%= flash[:notice] %></div>
+<% end %>
+<% if current_account.nil? %>
+
+	<div class="span-22 no_subdomain">
+		<strong>Cuando se registró en Folio, le enviamos un email con la URL de su empresa. Se parece a esto, siempre terminando en folio.cl:</strong>
+		<br/><br/>
+		<span class="url">http://<span class="company">empresa</span>.folio.cl</span>
+		<br/><br/>
+		<span>Debe dirigirse a esta dirección web para ingresar. Si no recuerda su dirección y ha perdido su correo de bienvenida, tan sólo escríbanos y lo ayudaremos a recuperar su URL. Nuestro correo es: <%= mail_to "ayuda@folio.cl" %></span>
+	</div>
+
+<% else %>
+<div id="login">
+	<% form_for @user_session do |form| %>
+	  <%= form.error_messages %>
+	  <ul id="company-info" class="section">
+	  	<li class="header">
+	  		<span></span>
+	  		<h3><%= current_account.name %></h3>
+	  		<h4>Ingrese a su información</h4>
+	  	</li>
+	  	<li>
+	  		<%= form.label :email, "Email" %>
+	  		<%= form.text_field :email %>
+	  	</li>
+	  	<li>
+	  		<%= form.label :password, "Contraseña" %>
+	  		<%= form.password_field :password %>
+	  	</li>
+	  	<li class="bottom">
+			<%= form.submit "Ingresar" %>
+		<br/>
+	  	</li>
+	  	
+	  </ul>
+	<% end %>
+</div>
+<% end %>

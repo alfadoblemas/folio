@@ -108,7 +108,7 @@ class Invoice < ActiveRecord::Base
     customer.name if customer
   end
 
-  def self.find_by_status(status, page , order = "number asc", per_page = 10, account_id = nil, eager = true)
+  def self.find_by_status(status, page , order = "number asc", account_id = nil, per_page = 10, eager = true)
     include_models = Array.new
     unless eager
       include_models = [:status]
@@ -119,7 +119,8 @@ class Invoice < ActiveRecord::Base
     self.send("#{status}").paginate(
       :page => page,
       :per_page => per_page, :order => ["#{order}"],
-      :include => include_models
+      :include => include_models,
+      :conditions => ["account_id = #{account_id}"]
     )
 
   end
@@ -131,11 +132,11 @@ class Invoice < ActiveRecord::Base
   # Metaprocreamos metodos de totales
   @statuses.each do |v|
     method_name = ("#{v[:status]}_total").to_sym
-    self.class.send(:define_method, method_name) do |*query|
+    self.class.send(:define_method, method_name) do |account, *query|
       query = *query
       sum = 0
       if query.nil?
-        invoices = self.send("#{v[:status]}").to_a
+        invoices = self.send("#{v[:status]}").find_by_account_id(account).to_a
         sum = invoices.sum(&:total) unless invoices.size < 1
         sum
       else

@@ -2,6 +2,7 @@ class InvoicesController < ApplicationController
 
   before_filter :find_invoice, :only => [ :active, :cancel, :close, :show, :edit, :destroy ]
   before_filter :sanitize_params, :only => [ :create, :update ]
+  before_filter :require_user
 
   def search
     %w(date_gte date_lte).each do |date|
@@ -55,7 +56,7 @@ class InvoicesController < ApplicationController
     @search = Invoice.search(params[:search])
     @status = params[:status].blank? ? "all_invoices" : params[:status]
     order = "#{params[:sort]} #{params[:direction]}"
-    @invoices = Invoice.find_by_status(@status, params[:page], order)
+    @invoices = Invoice.find_by_status(@status, params[:page], order ,current_account.id)
   end
 
 
