@@ -50,6 +50,13 @@ module App
           #request.subdomains
           current_subdomain #see subdomain_fu
         end
+        
+        def require_subdomain
+          unless current_subdomain
+            redirect_to public_root_url
+            return false
+          end
+        end
 
         def http_protocol( use_ssl = request.ssl? )
           (use_ssl ? "https://" : "http://")

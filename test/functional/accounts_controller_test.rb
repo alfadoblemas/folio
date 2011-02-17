@@ -14,11 +14,12 @@ class AccountsControllerTest < ActionController::TestCase
   end
   
   test 'should_create_account' do
+    subdomain = "lalala"
     assert_difference('Account.count') do
-      post :create, :account => { :name => "IT Linux", :subdomain => "lalala", 
+      post :create, :account => { :name => "IT Linux", :subdomain => subdomain, 
         'users_attributes' => { '0' => {'name' => "patricio bruna", 'email' => 'pbruna2@gmail.com', 'password' => "123456", 'password_confirmation' => '123456' }}}
     end
-    assert_redirected_to root_url()
+    assert_redirected_to application_root_url(:subdomain => subdomain)
   end
   
 end
