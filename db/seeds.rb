@@ -9,11 +9,11 @@
 # Products
 %w( horas servicio producto ).each_with_index do |name, index|
   id = index + 1
-  Product.create!(:id, :name => name.titleize)
+  Product.create!(:id => id, :name => name.titleize)
 end
 
 # Status
 %w( borrador activa paga anulada vencida ).each_with_index do |name, index|
   id = index + 1
-  Status.create!(:id, :name => name.titleize)
+  Status.create!(:id => id, :name => name.titleize)
 end
