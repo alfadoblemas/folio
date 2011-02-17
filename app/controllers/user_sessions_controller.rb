@@ -2,7 +2,11 @@ class UserSessionsController < ApplicationController
   layout 'public'
 
   def new
-    @user_session = UserSession.new
+    if current_account.nil?
+      raise ActionController::RoutingError.new('Not Found')
+    else
+      @user_session = UserSession.new
+    end
   end
 
   def create
@@ -17,8 +21,7 @@ class UserSessionsController < ApplicationController
   def destroy
     @user_session = UserSession.find
     @user_session.destroy
-    flash[:notice] = "Bye bye"
-    redirect_to public_root_url
+    redirect_to public_root_url(:subdomain => false)
   end
 
 end
