@@ -2,7 +2,9 @@ class UserSessionsController < ApplicationController
   layout 'public'
 
   def new
-    if current_account.nil?
+    if current_subdomain.nil?
+      render :action => "new"
+    elsif current_account.nil?
       raise ActionController::RoutingError.new('Not Found')
     else
       @user_session = UserSession.new
