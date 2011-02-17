@@ -3,6 +3,8 @@ class PublicController < ApplicationController
   def index
     if current_account
       redirect_to login_path
+    else
+      redirect_to 404
     end
   end
 
