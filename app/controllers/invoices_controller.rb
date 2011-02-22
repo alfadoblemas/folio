@@ -148,9 +148,6 @@ class InvoicesController < ApplicationController
 
   protected
 
-    def totals
-      @draft_total = Invoice.draft_total(current_account.id, params[:search])
-    end
 
     def find_invoice
       @invoice = Invoice.find(params[:id])
