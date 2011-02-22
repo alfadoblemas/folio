@@ -2,7 +2,6 @@ class InvoicesController < ApplicationController
 
   before_filter :find_invoice, :only => [ :active, :cancel, :close, :show, :edit, :destroy ]
   before_filter :sanitize_params, :only => [ :create, :update ]
-  before_filter :totals, :only => [ :index, :search ]
   before_filter :require_user
 
   def search
