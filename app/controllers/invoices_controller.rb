@@ -2,6 +2,7 @@ class InvoicesController < ApplicationController
 
   before_filter :find_invoice, :only => [ :active, :cancel, :close, :show, :edit, :destroy ]
   before_filter :sanitize_params, :only => [ :create, :update ]
+  before_filter :totals, :only => [ :index, :search ]
   before_filter :require_user
 
   def search
@@ -13,7 +14,7 @@ class InvoicesController < ApplicationController
     @search = Invoice.search(params[:search])
     @status = params[:status].blank? ? "all_invoices" : params[:status]
     order = "#{params[:sort]} #{params[:direction]}"
-    @invoices = @search.find_by_status(@status, params[:page], order, params[:per_page], nil, false)
+    @invoices = @search.find_by_status(@status, params[:page], order, current_account.id ,params[:per_page], false)
     render :template => "invoices/index"
   end
 
@@ -146,6 +147,10 @@ class InvoicesController < ApplicationController
   end
 
   protected
+
+    def totals
+      @draft_total = Invoice.draft_total(current_account.id, params[:search])
+    end
 
     def find_invoice
       @invoice = Invoice.find(params[:id])

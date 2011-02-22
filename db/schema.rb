@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110215175337) do
+ActiveRecord::Schema.define(:version => 20110220225217) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -53,8 +53,10 @@ ActiveRecord::Schema.define(:version => 20110215175337) do
     t.string   "url"
     t.string   "phone"
     t.string   "fax"
+    t.integer  "account_id"
   end
 
+  add_index "customers", ["account_id"], :name => "customers_account_index"
   add_index "customers", ["name"], :name => "customers_name_index"
 
   create_table "histories", :force => true do |t|
@@ -139,5 +141,6 @@ ActiveRecord::Schema.define(:version => 20110215175337) do
 
   add_index "users", ["account_id"], :name => "altered_users_account_index"
   add_index "users", ["account_id"], :name => "altered_users_company_index"
+  add_index "users", ["account_id"], :name => "users_account_index"
 
 end

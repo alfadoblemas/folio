@@ -1,10 +1,23 @@
+<% if @invoices.size < 1 %>
+    <div class="empty last">
+	
+	  	<h3>Aún no ha creado facturas.</h3>
+	<p>
+	Con Folio es más fácil facturar a sus clientes. Si comenzó su proyecto con una cotización, puede fácilmente convertirla en factura, y también puede crearlas desde cero. Luego puede agregar notas, comentarios y recibir pagos, todo desde un sólo lugar!
+</p>
+
+	  <div id="newCustomer" class="new">
+	    <%= link_to "Nueva Factura", new_invoice_path %>	
+	  </div>
+	</div>
+  <% else %>
+
 <div class="last">
 	<div class="last right" style="margin-top: -10px;">		
 		<div>
 			<span id="show_filter" class="searchLink"> <%= link_to_function "Búsqueda Avanzada", "display_invoice_filter()" %>  </span>
 		</div>
   	</div>
-
 	<% if params[:action] == "search" %>
 		<% if @invoices.size < 1 %>
 		  <h2> Sin Resultados </h2>
@@ -47,21 +60,6 @@
 <div id="invoice_filter" class="span-19 last" style="display: none;">
 	<%= render :partial => "search", :locals => {:search => @search} %>
 </div>
-
-
-  <% if @invoices.nil? %>
-    <div class="empty last">
-	
-	  	<h3>Aún no ha creado facturas.</h3>
-	<p>
-	Con Folio es más fácil facturar a sus clientes. Si comenzó su proyecto con una cotización, puede fácilmente convertirla en factura, y también puede crearlas desde cero. Luego puede agregar notas, comentarios y recibir pagos, todo desde un sólo lugar!
-</p>
-
-	  <div id="newCustomer" class="new">
-	    <%= link_to "Nueva Factura", new_invoice_path %>	
-	  </div>
-	</div>
-  <% else %>
 		
         <div class="span-19 last prepend-top">
 			<div class="last">

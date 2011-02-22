@@ -6,7 +6,7 @@ class Account < ActiveRecord::Base
   # Associations
   authenticates_many :user_sessions
   has_many :invoices
-  has_many :users
+  has_many :users, :uniq => true
   accepts_nested_attributes_for :users
   has_many :customers
   alias_attribute :user_id, :admin_id

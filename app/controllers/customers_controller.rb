@@ -17,7 +17,7 @@ class CustomersController < ApplicationController
   end
 
   def index
-    @customers = Customer.find_index
+    @customers = Customer.find_index(current_account.id)
     @customer_alphabetical = Customer.alphabetical_group(params[:letter])
     respond_to do |format|
       format.html

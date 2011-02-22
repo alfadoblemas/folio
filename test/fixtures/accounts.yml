@@ -1,0 +1,14 @@
+accounts_4:
+    name: "Gmail"
+    rut: nil
+    address: nil
+    city: nil
+    industry: nil
+    state: nil
+    country: nil
+    created_at: "2011-02-17 20:57:11"
+    updated_at: "2011-02-17 20:57:11"
+    subdomain: "gmail"
+    admin_id: 4
+
+

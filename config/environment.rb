@@ -50,6 +50,19 @@ Rails::Initializer.run do |config|
   # Mostrar páginas de error siempre
   #config.action_controller.consider_all_requests_local = false
   
+  # Observadores
+  config.active_record.observers = :user_observer
+  
 end
 
 ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS.merge!(:default => '%d/%m/%Y')
+
+ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.smtp_settings = {
+  :address        => "lou.itlinux.cl",
+  :port           => 587,
+  :user_name      => "pbruna@it-linux.cl",
+  :password       => "plum4sp0rl4s",
+  :domain         => "it-linux.cl",
+  :authentication => :plain
+}

@@ -127,21 +127,22 @@ class Invoice < ActiveRecord::Base
 
 
   # Arreglo con Tipos de Facturas
-  @statuses = Status.find(:all, :select => [:state]).map {|s| {:status => s.state} }
+  @statuses = %w( draft open close due cancel )
 
   # Metaprocreamos metodos de totales
   @statuses.each do |v|
-    method_name = ("#{v[:status]}_total").to_sym
+    method_name = ("#{v}_total").to_sym
     self.class.send(:define_method, method_name) do |account, *query|
       query = *query
       sum = 0
       if query.nil?
-        invoices = self.send("#{v[:status]}").find_by_account_id(account).to_a
+        invoices = self.send("#{v}").find_by_account_id(account).to_a
         sum = invoices.sum(&:total) unless invoices.size < 1
         sum
       else
         query.delete("status")
-        result = self.send("#{v[:status]}").search(query)
+        query[:account_id_equals] = account.to_i
+        result = self.send("#{v}").search(query)
         invoices = result.all
         sum = invoices.sum(&:total) unless invoices.size < 1
         sum
@@ -164,13 +165,14 @@ class Invoice < ActiveRecord::Base
     end
   end
 
-  def self.close_index_total(query = nil)
+  def self.close_index_total(account, query = nil)
     sum = 0
     if query.nil?
-      sum = close_index.to_a.sum(&:total) unless close_index.to_a.size < 1
+      sum = close_index.find_by_account_id(account).to_a.sum(&:total) unless close_index.to_a.size < 1
       sum
     else
       query.delete("status")
+      query[:account_id_equals] = account.to_i
       result = close.search(query)
       invoices = result.all
       sum = invoices.sum(&:total) unless invoices.size < 1
