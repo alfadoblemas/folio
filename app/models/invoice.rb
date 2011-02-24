@@ -136,7 +136,7 @@ class Invoice < ActiveRecord::Base
       query = *query
       sum = 0
       if query.nil?
-        invoices = self.send("#{v}").find_by_account_id(account).to_a
+        invoices = self.send("#{v}").search(:account_id_equals => account).all.to_a
         sum = invoices.sum(&:total) unless invoices.size < 1
         sum
       else
@@ -168,7 +168,7 @@ class Invoice < ActiveRecord::Base
   def self.close_index_total(account, query = nil)
     sum = 0
     if query.nil?
-      sum = close_index.find_by_account_id(account).to_a.sum(&:total) unless close_index.to_a.size < 1
+      sum = close_index.search(:account_id_equals => account).all.to_a.sum(&:total) unless close_index.to_a.size < 1
       sum
     else
       query.delete("status")

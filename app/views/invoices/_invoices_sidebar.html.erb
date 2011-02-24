@@ -81,7 +81,7 @@
 		<br/><hr/>
         <table class="invoice_resume">
           <tr class="draft">
-            <td><span class="draft_title">Borrador</span></td><td style="text-align: right"><%= number_to_currency(@draft_total) %></td>
+            <td><span class="draft_title">Borrador</span></td><td style="text-align: right"><%= number_to_currency(Invoice.draft_total(current_account.id, params[:search])) %></td>
           </tr>
           <tr class="due">
             <td><span class="due_title">Vencidas</span></td><td style="text-align: right"><%= number_to_currency(Invoice.due_total(current_account.id, params[:search])) %></td>
