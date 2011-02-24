@@ -20,7 +20,7 @@
 <div class="last" style="text-align: right">
   <ul class='customernav'>
     <li><%= link_to "Todos", customers_path %> </li>
-    <%- Customer.pagination_letters.each do |letter| -%>
+    <%- Customer.pagination_letters(current_account).each do |letter| -%>
       <li><%= link_to(letter, :letter => letter) %></li>
     <%- end -%>
   </ul>

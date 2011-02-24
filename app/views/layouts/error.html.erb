@@ -13,19 +13,22 @@
 
     <!-- Stylesheet -->
     <%= stylesheet_link_tag "factura", :media => "all" %>
-	<%= stylesheet_link_tag "public", :media => "all" %>
 
-	<%= javascript_include_tag "jquery" %>
+
   </head>
-	<body>
-		<div id="header">
-			<%= render "shared/header_public" %>
-		</div>
-		<div class="container">
-			<%= yield %>
-		</div>
-		<div id="footer">
-			
-		</div>
-	</body>
+  <body>
+    <div id="header">
+      <%= render "shared/header" %>
+    </div>
+
+    <div class="container" style="min-height: 400px;">
+        <%= yield %>      
+    </div>
+
+    <div id="footer">
+      <hr/>
+    </div>
+
+  </body>
 </html>
+

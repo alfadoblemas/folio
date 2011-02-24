@@ -5,8 +5,8 @@ class CustomersController < ApplicationController
 
   def search
     unless params[:q].nil?
-      search = Customer.search(:name_like => params[:q])
-      @customer = search.all
+      search = Customer.search(:name_like => params[:q], :account_id_equals => current_account.id)
+      @customers = search.all
     end
 
     respond_to do |format|
@@ -18,7 +18,7 @@ class CustomersController < ApplicationController
 
   def index
     @customers = Customer.find_index(current_account.id)
-    @customer_alphabetical = Customer.alphabetical_group(params[:letter])
+    @customer_alphabetical = Customer.alphabetical_group(current_account.id,params[:letter])
     respond_to do |format|
       format.html
     end

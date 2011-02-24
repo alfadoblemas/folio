@@ -28,13 +28,13 @@ class ApplicationController < ActionController::Base
     def render_not_found(exception)
       log_error(exception)
       @no_sidebar = true
-      render :template => "/shared/error/404.html.erb", :status => 404
+      render :template => "/shared/error/404.html.erb", :status => 404, :layout => "error"
     end
 
     def render_error(exception)
       log_error(exception)
       @no_sidebar = true
-      render :template => "/shared/error/500.html.erb", :status => 500
+      render :template => "/shared/error/500.html.erb", :status => 500, :layout => "error"
     end
 
 end
