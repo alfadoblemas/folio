@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
+  
   before_filter :find_customer, :only => [ :edit, :update, :destroy ]
-  before_filter :require_subdomain
   auto_complete_for :customers, :name
 
   def search

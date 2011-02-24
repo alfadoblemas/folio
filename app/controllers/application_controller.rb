@@ -2,6 +2,9 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  before_filter :require_user
+  
+  
   include App::Controller::Accounts
   include App::Controller::Users
   
