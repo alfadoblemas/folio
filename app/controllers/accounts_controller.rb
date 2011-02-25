@@ -18,6 +18,7 @@ class AccountsController < ApplicationController
 
   def create
     @account = Account.new(params[:account])
+    @account.subdomain.downcase!
     if @account.save
       flash[:notice] = "Cuenta creada!"
       logger.debug("aqui")
