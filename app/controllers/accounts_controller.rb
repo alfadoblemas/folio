@@ -1,5 +1,6 @@
 class AccountsController < ApplicationController
 
+  skip_before_filter :require_user
   layout "public", :except => [:show, :edit]
 
   def new
