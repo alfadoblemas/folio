@@ -26,8 +26,8 @@ class Customer < ActiveRecord::Base
     search.all(:order => "name", :include => [:contacts])
   end
   
-  def self.find_show(id)
-    find(id, :include => [:invoices])
+  def self.find_show(account, id)
+    find(id, :conditions => ["account_id = ?", account ],:include => [:invoices])
   end
   
 

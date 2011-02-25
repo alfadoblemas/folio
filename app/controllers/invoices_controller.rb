@@ -20,7 +20,7 @@ class InvoicesController < ApplicationController
   def active
     respond_to do |format|
       if @invoice.number
-        @invoice.active!
+        @invoice.active!(current_user)
         flash[:notice] = "Factura activada."
         format.html { redirect_to(invoice_path(@invoice)) }
       else
@@ -34,7 +34,7 @@ class InvoicesController < ApplicationController
 
   def cancel
     respond_to do |format|
-      @invoice.cancel!
+      @invoice.cancel!(current_user)
       flash[:notice] = "Factura Anulada"
       format.html { redirect_to(invoice_path(@invoice))}
     end
@@ -42,7 +42,7 @@ class InvoicesController < ApplicationController
 
   def close
     respond_to do |format|
-      if @invoice.close!
+      if @invoice.close!(current_user)
         flash[:notice] = "Factura pagada"
         format.html { redirect_to(invoice_path(@invoice)) }
       end
@@ -84,6 +84,7 @@ class InvoicesController < ApplicationController
 
   def create
     @invoice = Invoice.new(params[:invoice])
+    @invoice.account_id = current_account.id
     @customer = Customer.find(@invoice.customer_id) unless @invoice.customer_id.blank?
 
     #TODO: No me acuerdo que hace

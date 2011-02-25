@@ -26,7 +26,7 @@ class CustomersController < ApplicationController
 
 
   def show
-    @customer = Customer.find_show(params[:id])
+    @customer = Customer.find_show(current_account.id, params[:id])
     @status = params[:status].blank? ? "all" : params[:status]
     order = "#{params[:sort]} #{params[:direction]}"
     @invoices = @customer.invoices.find_by_status(@status, params[:page], order)
@@ -44,6 +44,7 @@ class CustomersController < ApplicationController
 
   def create
     @customer = Customer.new(params[:customer])
+    @customer.account_id = current_account.id
 
     respond_to do |format|
       if @customer.save
@@ -85,7 +86,7 @@ class CustomersController < ApplicationController
   protected
 
   def find_customer
-    @customer = Customer.find(params[:id])
+    @customer = Customer.find(params[:id], :conditions => ["account_id = ?", current_account.id ])
   end
 
 end

@@ -14,7 +14,7 @@ class Invoice < ActiveRecord::Base
 
   # Validations
   validates_presence_of :net, :tax, :total, :customer_id, :subject, :date, :number
-  validates_uniqueness_of :number, :scope => [:tax, :account_id]
+  validates_uniqueness_of :number, :scope => [:taxed, :account_id]
 
   validates_numericality_of :tax, :only_integer => true
   validates_numericality_of :number, :only_integer => true, :greater_than => 0
@@ -26,10 +26,10 @@ class Invoice < ActiveRecord::Base
   delegate :name, :to => :customer, :prefix => true
 
 
-  def active!
+  def active!(user)
     unless active?
       update_attribute(:status_id, 2)
-      histories.build(:subject => "Activación", :comment => "Factura activada")
+      histories.build(:subject => "Activación", :comment => "Factura activada", :user_id => user.id)
       save
     else
       false
@@ -40,10 +40,10 @@ class Invoice < ActiveRecord::Base
     status_id == 2 ? true : false
   end
 
-  def cancel!
+  def cancel!(user)
     unless cancelled?
       update_attribute(:status_id, 4)
-      histories.build(:subject => "Anulación", :comment => "La factura fue anulada")
+      histories.build(:subject => "Anulación", :comment => "La factura fue anulada", :user_id => user.id)
       save
     else
       false
@@ -54,11 +54,11 @@ class Invoice < ActiveRecord::Base
     status_id == 4 ? true : false
   end
 
-  def close!
+  def close!(user)
     unless closed?
       update_attribute(:status_id, 3)
       update_attribute(:close_date, Date.today)
-      histories.build(:subject => "Pagada", :comment => "Factura pagada")
+      histories.build(:subject => "Pagada", :comment => "Factura pagada", :user_id => user.id)
       save
     else
       false

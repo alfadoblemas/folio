@@ -27,7 +27,7 @@ class ContactsController < ApplicationController
   # GET /contacts/new
   # GET /contacts/new.xml
   def new
-    @customer = Customer.find(params[:customer_id])
+    @customer = Customer.find(params[:customer_id], :conditions => ["account_id = ?", current_account.id])
     @contact = Contact.new
 
     respond_to do |format|
@@ -92,7 +92,7 @@ class ContactsController < ApplicationController
   end
   
   def find_contact
-    @contact = Contact.find(params[:id])
+    @contact = Contact.find(params[:id], :conditions => ["account_id = ?", current_account.id ])
   end
   
 end

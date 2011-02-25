@@ -329,9 +329,13 @@ background-color: #EEEEEE;
   padding-top: 20px;
   margin-left: -10px;
   padding-left: 10px;
-  background-color: #E9E9E9;
+  background-color: #F0F3F6;
   border-radius: 0px 15px 15px 0px;
   -moz-border-radius: 0px 15px 15px 0px;
+}
+
+.history td {
+	vertical-align: top;
 }
 
 .status {

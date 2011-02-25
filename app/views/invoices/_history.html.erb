@@ -6,15 +6,20 @@
       <td class="date"><%= l history.created_at, :format => :short %>
         <% unless history.user_id.nil? %>
           <br/>
-          por <%= history.user_id %>
+          <strong><%= h history.user.name %></strong>
         <%end%>
       </td>
-      <td class="text"><strong><%= history.subject %></strong></td>
+      <td class="text">
+		<strong><%= history.subject %></strong>
+		<p>
+			<%= textarea_display(history.comment) %>
+		</p>
+	  </td>
     </tr>
     <tr>
       <td></td>
       <td></td>
-      <td><%= textarea_display(history.comment) %></td>
+      <td></td>
     </tr>
   </table>
 </div>

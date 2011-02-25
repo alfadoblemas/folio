@@ -2,6 +2,7 @@
   <%= label_tag "Asunto :"  %> <%= text_field_tag :subject, "", :size => 30 %><br/>
   <%= text_area_tag :comment, "", :cols => 90, :rows => 4 %>
   <%= hidden_field_tag :invoice_id,"", :value => invoice_id %>
+  <%= hidden_field_tag :user_id,"", :value => current_user.id %>
   <br/>
   <%= submit_tag "Guardar" %>
   <%= link_to "Cancelar", invoice_path(invoice_id) %>
