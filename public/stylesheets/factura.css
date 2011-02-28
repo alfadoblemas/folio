@@ -1,5 +1,13 @@
-body {
+html, body {
   background-color: #E7F1FD;
+  height: 100%;
+}
+
+#wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -100px;
 }
 
 h2 {
@@ -112,12 +120,14 @@ min-height: 400px;
 text-decoration: underline;
 }
 
+#fake_footer {
+	height: 100px;
+}
 
-#footer {
+#footer{
   background-color: #29455A;
   margin-top: 20px;
-  min-height: 100px;
-  width: 100%;
+  height: 100px;
 }
 
 /* Varios */

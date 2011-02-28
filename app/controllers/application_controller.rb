@@ -3,6 +3,7 @@
 
 class ApplicationController < ActionController::Base
   before_filter :require_user
+
   
   
   include App::Controller::Accounts
@@ -22,6 +23,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::UnknownAction,      :with => :render_not_found
 
 
+
   private
 
     # Funciones para mostrar páginas de errores
@@ -36,5 +38,6 @@ class ApplicationController < ActionController::Base
       @no_sidebar = true
       render :template => "/shared/error/500.html.erb", :status => 500, :layout => "error"
     end
+
 
 end

@@ -13,12 +13,20 @@
 
     <!-- Stylesheet -->
     <%= stylesheet_link_tag "factura", :media => "all" %>
+	<% unless defined?(current_user.id) %>
+		<%= stylesheet_link_tag "public", :media => "all" %>
+	<% end %>
+
 
 
   </head>
   <body>
     <div id="header">
+	 <% if defined?(current_user.id) %>
       <%= render "shared/header" %>
+	 <% else %>
+	  <%= render "shared/header_public" %>
+	 <% end %>
     </div>
 
     <div class="container" style="min-height: 400px;">

@@ -29,6 +29,7 @@
 
   </head>
   <body>
+	<div id="wrapper">
     <div id="header">
       <%= render "shared/header" %>
     </div>
@@ -46,14 +47,16 @@
       	<div id="sidebar" class="span-4 last">
         	<%= render "#{params[:controller]}_sidebar" %>
       	</div>
+	 <% else %>
+		<div class="span-4 last"></div>
 	 <% end %>
-
     </div>
-
+	<div id="fake_footer">
+	</div>
+	</div>
     <div id="footer">
-      <hr/>
+		<h4>Footer</h4>
     </div>
-
   </body>
 </html>
 

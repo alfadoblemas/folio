@@ -1,7 +1,8 @@
 class AccountsController < ApplicationController
 
-  skip_before_filter :require_user
+  skip_before_filter :require_user, :only => [:new]
   layout "public", :except => [:show, :edit]
+  layout "application", :only => [:show, :edit]
 
   def new
     unless current_subdomain

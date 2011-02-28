@@ -18,11 +18,14 @@
 	<%= javascript_include_tag "jquery" %>
   </head>
 	<body>
+		<div id="wrapper">
 		<div id="header">
 			<%= render "shared/header_public" %>
 		</div>
 		<div class="container">
 			<%= yield %>
+		</div>
+		<div id="fake_footer"></div>
 		</div>
 		<div id="footer">
 			
