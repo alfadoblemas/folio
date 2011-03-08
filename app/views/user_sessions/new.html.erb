@@ -14,7 +14,11 @@
 <% else %>
 <div id="login">
 	<% form_for @user_session do |form| %>
-	  <%= form.error_messages %>
+	  <% if form.error_messages.size > 0 %>
+		<div class="error">
+			<h3>Email o Contraseña incorrecta</h3>
+		</div>
+	  <% end %>
 	  <ul id="company-info" class="section">
 	  	<li class="header">
 	  		<span></span>

@@ -184,6 +184,11 @@ li.url strong {
 	margin-left: 150px;
 	margin-right: 150px;
 	margin-top: 50px;
+	width: 628px;
+}
+
+#login .error h3 {
+	margin-left: 0px;
 }
 
 #login .bottom {
