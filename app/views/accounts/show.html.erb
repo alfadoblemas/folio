@@ -1,2 +1,24 @@
-<h1>Accounts#show</h1>
-<p>Find me in app/views/accounts/show.html.erb</p>
+<h2>Información de la Empresa</h2>
+<p>
+	Esta es la información de contacto que aparece en las facturas enviadas a tus clientes.
+</p>
+<fieldset>
+	<h3><%= current_account.name unless current_account.name.blank? %></h3>
+	<% unless current_account.rut.blank? %>
+		<span><%= h current_account.rut %></span><br/>
+	<% end %>
+	<% unless current_account.address.blank? %>
+		<span><%= h current_account.address %></span><br/>
+	<% end %>
+	<% unless current_account.state.blank? %>
+		<span><%= h current_account.state  %></span><br/>
+	<% end %>
+	<% unless current_account.country.blank? %>
+		<span><%= h current_account.country  %></span><br/>
+	<% end %>
+	<br/>
+	<%= link_to "Editar información", edit_account_path %>
+</fieldset>
+<br/>
+<h3>Usuarios</h3>
+<%= render :partial => "users/index.html.erb", :locals => {:users => current_account.users } %>

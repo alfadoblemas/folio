@@ -1,2 +1,31 @@
-<h1>Accounts#edit</h1>
-<p>Find me in app/views/accounts/edit.html.erb</p>
+<h2>Actualizar <%= current_account.name %></h2>
+<% form_for @account do |f| -%>
+	<fieldset>	  
+		<table>
+			<tr>
+				<td><%= f.label "Nombre" %></td>
+				<td><%= f.text_field :name %>
+			</tr>
+			<tr>
+				<td><%= f.label :rut, "RUT" %></td>
+				<td><%= f.text_field :rut %>
+			</tr>
+			<tr>
+				<td><%= f.label :address, "Dirección" %></td>
+				<td><%= f.text_field :address %>
+			</tr>
+			<tr>
+				<td><%= f.label :state, "Comuna" %></td>
+				<td><%= f.text_field :state %>
+			</tr>
+			<tr>
+				<td><%= f.label :country, "País" %></td>
+				<td><%= f.text_field :country %>
+			</tr>
+		</table>
+	</fieldset>
+	<%= f.submit "Guardar" %>
+	<%= link_to "Cancelar", account_path(@account) %>
+<% end -%>
+
+

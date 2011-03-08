@@ -1,0 +1,24 @@
+<table class="users draft">
+	<tr>
+		<th>Email</th>
+		<th>Nombre</th>
+		<th>Administrador?</th>
+		<th>Acciones</th>
+	</tr>
+	
+	<% users.each do |user| %>
+		<tr class="user">
+			<td><%= h user.email %></td>
+			<td><%= h user.name.titleize %></td>
+			<td><%= user.id == current_account.admin_id ? "Sí" : "No" %></td>
+			<td><%= link_to "Editar", edit_user_path(user)%> |
+				<%= link_to "Eliminar", user, :confirm => "Está seguro?", :method => :delete%></td>
+		</tr>
+		<tr>
+			<% 4.times do %>
+				<td style="padding-right: 0px; padding-left: 0px;"><hr/></td>
+			<% end %>
+		</tr>
+	<% end %>
+	
+</table>

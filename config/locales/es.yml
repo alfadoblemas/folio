@@ -285,6 +285,7 @@
         invoice: "factura"
         customer: "cliente"
         contact: "contacto"
+        user: "usuario"
 
 
     attributes:
@@ -313,3 +314,7 @@
 
       invoice_item:
         quantity: "Cantidad"
+        
+      user:
+          password: "Contraseña"
+          password_confirmation: "Confirmación de Contraseña"

@@ -1,0 +1,26 @@
+<% form_for @user do |f| -%>
+<%= f.error_messages :class => "error" %>
+  
+<fieldset>
+	<table>
+		<tr>
+			<td><%= f.label :name, "Nombre" %></td>
+			<td><%= f.text_field :name, :class => "input_large" %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :email, "Email" %></td>
+			<td><%= f.text_field :email, :class => "input_large" %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :password, "Contraseña" %></td>
+			<td><%= f.password_field :password, :class => "input_large" %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :password_confirmation, "Confirmar Contraseña" %></td>
+			<td><%= f.password_field :password_confirmation, :class => "input_large" %></td>
+	</table>
+</fieldset>
+<%= f.hidden_field :account_id, :value => current_account.id %>
+<%= f.submit "Guardar" %>
+<%= link_to "Cancelar", account_path(current_account.id)%>
+<% end -%>

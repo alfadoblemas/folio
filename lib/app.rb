@@ -9,7 +9,7 @@ module App
           :account_subdomain, 
           :default_account_url,
           :default_account_subdomain,
-          :current_account_owned_by?,
+          :current_account_admin_by?,
           :subdomain? )
       end
 
@@ -84,7 +84,7 @@ module App
           :created_by_current_user?, 
           :created_by_user?,
           :current_user?,
-          :account_owner?)
+          :account_admin?)
       end
       
       protected

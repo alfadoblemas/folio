@@ -187,12 +187,13 @@ $().ready(function() {
         $("input#invoice_customer_id").val(data.id);
     });
 
-    $('#customer_rut').Rut({
+    $('input[id$="_rut"]').Rut({
         on_error: function(){
             alert('Rut incorrecto');
-            $('input#customer_rut').val("");
+            $('input[id$="_rut"]').val("");
         }
     });
+
 
     formatInvoicePrice();
 });
