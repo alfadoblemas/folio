@@ -14,5 +14,9 @@ class User < ActiveRecord::Base
     reset_perishable_token!
     UserMailer.deliver_password_reset_instructions(self)
   end
+  
+  def account_admin?
+    id == account.admin_id ? true : false
+  end
 
 end

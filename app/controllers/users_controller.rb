@@ -32,6 +32,15 @@ class UsersController < ApplicationController
   end
   
   def destroy
+    @user = User.find(params[:id])
+    account_id = @user.account_id
+    if @user.destroy
+      flash[:notice] = "Usuario eliminado"
+      redirect_to account_path(account_id)
+    else
+      flash[:notice] = "No es posible eliminar este usuario."
+      redirect_to account_path(account_id)
+    end
   end
   
   private

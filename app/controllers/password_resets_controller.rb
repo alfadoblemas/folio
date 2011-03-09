@@ -45,7 +45,7 @@ class PasswordResetsController < ApplicationController
   def load_user_using_perishable_token
     @user = User.find_using_perishable_token(params[:id])
     unless @user
-      flash[:notice] = "Lo sentimos, pero no pudimos encontrar tu cuenta."
+      flash[:notice] = "Por seguridad, el link para cambiar contraseña ha expirado."
       redirect_to application_root_url(:subdomain => current_subdomain)
     end
   end
