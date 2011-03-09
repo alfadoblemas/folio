@@ -109,7 +109,7 @@ module App
           unless current_user && current_user.id == current_account.admin_id
             store_location
             flash[:notice] = "You must be an account owner to access this page"
-            redirect_to account_url
+            redirect_to application_root_url(:subdomain => current_subdomain)
             return false
           end
         end
@@ -125,8 +125,8 @@ module App
         def require_no_user
           if current_user
             store_location
-            flash[:notice] = "You must be logged out to access this page"
-            redirect_to account_url
+            flash[:notice] = "Debes salir de la aplicación para ver está página."
+            redirect_to application_root_url(:subdomain => current_subdomain)
             return false
           end
         end

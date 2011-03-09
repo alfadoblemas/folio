@@ -1,0 +1,23 @@
+<% if flash[:notice] -%>
+  <div id="notice" class="notice"><%= flash[:notice] %></div>
+<% end %>
+<div id="login">
+	<% form_tag(:action => "create") do %>	  
+	  <ul id="company-info" class="section">
+	  	<li class="header">
+	  		<span></span>
+	  		<h3>Actualización de Contraseña</h3>
+			<h4>La información será enviada a su email</h4>
+	  	</li>
+	  	<li>
+	  		<%= label_tag "Email" %>
+	  		<%= text_field_tag :email %>
+	  	</li>
+	  	<li class="bottom">
+			<%= submit_tag "Enviar" %>
+		<br/>
+	  	</li>
+	  	
+	  </ul>
+	<% end %>
+</div>

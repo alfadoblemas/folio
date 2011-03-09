@@ -1,0 +1,27 @@
+<% if flash[:notice] -%>
+  <div id="notice" class="error"><%= flash[:notice] %></div>
+<% end %>
+<div id="login">
+	<% form_for @user, :url => password_reset_path, :method => :put do |f| -%>
+	  <ul id="company-info" class="section">
+	  	<li class="header">
+	  		<span></span>
+	  		<h3>Actualización de Contraseña</h3>
+			<h4>Ingrese su nueva contraseña</h4>
+	  	</li>
+	  	<li>
+	  		<%= f.label :password, "Contraseña" %>
+	  		<%= f.password_field :password %>
+	  	</li>
+	  	<li>
+	  		<%= f.label :password_confirmation, "Confirmar contraseña" %>
+	  		<%= f.password_field :password_confirmation %>
+	  	</li>
+	  	<li class="bottom">
+			<%= f.submit "Actualizar" %>
+		<br/>
+	  	</li>
+	  	
+	  </ul>
+	<% end %>
+</div>

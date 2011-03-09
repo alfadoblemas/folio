@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
   map.signup 'signup', :controller => 'accounts', :action => 'new'
 
-
+  map.resources :password_resets, :conditions => {:subdomain => /.+/}
   map.resources :customers, :has_many => [:contacts, :invoices]
   map.resources :contacts, :except => [:index]
   map.resources :invoices, :has_many => [:histories]

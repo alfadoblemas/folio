@@ -194,6 +194,8 @@ $().ready(function() {
         }
     });
 
+	$(".notice").fadeOut(8000);
+
 
     formatInvoicePrice();
 });

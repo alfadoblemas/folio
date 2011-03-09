@@ -22,7 +22,7 @@
 	  <ul id="company-info" class="section">
 	  	<li class="header">
 	  		<span></span>
-	  		<h3><%= current_account.name.titleize %></h3>
+	  		<h3><%= current_account.name %></h3>
 	  		<h4>Ingrese a su información</h4>
 	  	</li>
 	  	<li>
@@ -35,6 +35,8 @@
 	  	</li>
 	  	<li class="bottom">
 			<%= form.submit "Ingresar" %>
+		<br/>
+			<%= link_to "¿No recuerda su contraseña?", new_password_reset_path(:subdomain => current_subdomain) %>
 		<br/>
 	  	</li>
 	  	

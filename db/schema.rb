@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110220225217) do
+ActiveRecord::Schema.define(:version => 20110308203610) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -137,10 +137,12 @@ ActiveRecord::Schema.define(:version => 20110220225217) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.string   "perishable_token",  :default => "", :null => false
   end
 
   add_index "users", ["account_id"], :name => "altered_users_account_index"
   add_index "users", ["account_id"], :name => "altered_users_company_index"
   add_index "users", ["account_id"], :name => "users_account_index"
+  add_index "users", ["perishable_token"], :name => "users_ptoken_index"
 
 end
