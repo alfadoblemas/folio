@@ -4,7 +4,7 @@
 			<h3>Preferencias</h3>
 			<% if account_admin? %>
             	<li id="edit_invoice"><%= link_to "<strong>Editar</strong>", 	edit_account_path(current_account) %></li>
-				<li id="add_link"><%= link_to "<strong>Nuevo</strong> usuario", new_account_user_path(current_account.id) %>
+				<li class="add_user_link"><%= link_to "<strong>Nuevo</strong> usuario", new_account_user_path(current_account.id) %>
 			<% end %>
           </ul>
 

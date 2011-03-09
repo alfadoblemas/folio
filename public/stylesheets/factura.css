@@ -383,6 +383,11 @@ background:url(/images/icons/email_forward_20.png) no-repeat scroll left transpa
 background:url(/images/icons/add_16.png) no-repeat scroll left transparent;
 }
 
+.toolbox li.add_user_link a {
+background:url(/images/icons/user_add_16.png) no-repeat scroll left transparent;
+}
+
+
 .toolbox li#edit_invoice a {
 background:url(/images/icons/pencil_20.png) no-repeat scroll left transparent;
 }
@@ -409,6 +414,11 @@ background:url(/images/icons/arrow_down_16.png) no-repeat scroll left transparen
 
 .toolbox li#convert_invoice a {
 background:url(/images/icons/star_16.png) no-repeat scroll left transparent;
+}
+
+.admin_account {
+	background:url(/images/icons/star_16.png) no-repeat scroll left transparent;
+	text-indent:-9999px;
 }
 
 .toolbox li a {

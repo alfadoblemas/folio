@@ -6,7 +6,7 @@
       <td class="date"><%= l history.created_at, :format => :short %>
         <% unless history.user_id.nil? %>
           <br/>
-          <strong><%= h history.user.name %></strong>
+          <strong><%= h(history.user.nil? ? "" : history.user.name) %></strong>
         <%end%>
       </td>
       <td class="text">
