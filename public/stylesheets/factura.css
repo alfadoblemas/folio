@@ -586,14 +586,6 @@ background:url(/images/icons/star_16.png) no-repeat scroll left transparent;
   margin-bottom: 10px;
 }
 
-.new:hover, .new:hover a {
-  background-color: #326091;
-}
-
-.new a:active {
-  color: #C6D880;
-}
-
 .cancel_button a {
 	background:url(/images/buttons/cancel_button.png) no-repeat scroll left transparent;
 	border: 0 none;
