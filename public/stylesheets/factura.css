@@ -577,7 +577,9 @@ background:url(/images/icons/star_16.png) no-repeat scroll left transparent;
 }
 
 .new, .new a {
+  width: 300px;
   text-align: center;
+  font-size: 20px;
   padding-top:5px;
   color: #FFF;
   min-height: 40px;
