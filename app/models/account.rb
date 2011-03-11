@@ -9,6 +9,7 @@ class Account < ActiveRecord::Base
   has_many :users, :uniq => true
   accepts_nested_attributes_for :users
   has_many :customers
+  has_many :contacts
   alias_attribute :user_id, :admin_id
 
   # Validations

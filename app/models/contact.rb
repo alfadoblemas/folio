@@ -5,6 +5,7 @@ class Contact < ActiveRecord::Base
 
   # Associations
   belongs_to :customer
+  belongs_to :account
   has_many :invoices
 
   # Validations
