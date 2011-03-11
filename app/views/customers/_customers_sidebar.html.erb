@@ -1,7 +1,7 @@
 <% customer = @customer unless @customer.nil? %>
 
 <% if params[:action].eql?("new") %>
-  <div class="cancel span-4 last">
+  <div class="cancel_button span-4 last">
     <%= link_to "Cancelar", customers_path %>
   </div>
 
@@ -9,7 +9,7 @@
   <!--Customer#Show -->
 <% elsif params[:action].eql?("show") %>
   <div class="span-4 last">
-    <div class="new newCustomer">
+    <div class="new_invoice_button">
       <%= link_to "Nueva Factura", new_customer_invoice_path(customer) %>
     </div>
 
@@ -28,11 +28,11 @@
 
 
 <% elsif params[:action].eql?("edit") %>
-  <div class="cancel span-4 last">
+  <div class="cancel_button span-4 last">
     <%= link_to "Cancelar", customer_path(customer) %>
   </div>
 <% else %>
-  <div class="new newCustomer">
+  <div class="new_customer_button">
     <%= link_to "Nuevo Cliente", new_customer_path %>
   </div>
 <% end %>

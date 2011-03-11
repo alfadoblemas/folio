@@ -2,13 +2,13 @@
 <% search = @search %>
 
 <% if params[:action].eql?("active") %>
-  <div class="cancel span-4 last">
+  <div class="cancel_button span-4 last">
     <%= link_to "Cancelar", invoices_path %>
   </div>
   <hr/>
   <!-- Invoice#NEW -->
 <% elsif params[:action].eql?("new") %>
-  <div class="cancel span-4 last">
+  <div class="cancel_button span-4 last">
     <%= link_to "Cancelar", invoices_path %>
   </div>
   <hr/>
@@ -19,7 +19,7 @@
   <!-- Invoice#SHOW -->
 <% elsif params[:action].eql?("show") %>
   <div class="span-4 last">
-    <div class="new newCustomer">
+    <div class="new_invoice_button">
       <%= link_to "Nueva Factura", new_invoice_path %>
     </div>
 
@@ -72,7 +72,7 @@
 
       <!-- Invoice#INDEX -->
     <% else %>
-      <div id="newCustomer" class="new">
+      <div class="new_invoice_button">
         <%= link_to "Nueva Factura", new_invoice_path %>
       </div>
 	<br/>
