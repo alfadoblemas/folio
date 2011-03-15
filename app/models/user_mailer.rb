@@ -1,18 +1,27 @@
 class UserMailer < ActionMailer::Base
-  
-  def welcome_email(user, account)
+
+  def welcome_email(user, account, password = nil)
     recipients  user.email
     from        "Folio <notifications@folio.cl>"
     subject     "Bienvenido a Folio"
     sent_on     Time.now
-    body        :name => user.name, :user => user, :url => "http://#{account.subdomain}.folio.cl" 
+    body        :name => user.name, :user => user, :password => password, :url => "http://#{account.subdomain}.folio.cl"
   end
-  
+
+  def welcome_guest_email(user, account, admin_user ,password = nil)
+    recipients  user.email
+    from        "#{admin_user.name} <notifications@folio.cl>"
+    subject     "Invitación para unirte a nuestra cuenta en Folio"
+    sent_on     Time.now
+    body        :name => user.name, :user => user, :password => password,
+      :account_admin_name => admin_user.name, :account_name => account.name, :url => "http://#{account.subdomain}.folio.cl"
+  end
+
   def password_reset_instructions(user)
     subdomain = user.account.subdomain
     url = "http://#{subdomain}.folio.cl"
     default_url_options[:host] = "#{subdomain}.folio.cl"
-    
+
     recipients  user.email
     from        "Folio <ayuda@folio.cl>"
     subject     "Instrucciones para actualizar contraseña"

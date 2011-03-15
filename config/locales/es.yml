@@ -286,6 +286,7 @@
         customer: "cliente"
         contact: "contacto"
         user: "usuario"
+        account: "cuenta"
 
 
     attributes:
@@ -318,3 +319,7 @@
       user:
           password: "Contraseña"
           password_confirmation: "Confirmación de Contraseña"
+          
+      account:
+          name: "Nombre"
+          subdomain: "URL"

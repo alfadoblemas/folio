@@ -51,7 +51,7 @@ Rails::Initializer.run do |config|
   #config.action_controller.consider_all_requests_local = false
   
   # Observadores
-  config.active_record.observers = :user_observer
+  #config.active_record.observers = :user_observer
   
 end
 

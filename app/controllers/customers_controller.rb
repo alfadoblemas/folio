@@ -57,6 +57,7 @@ class CustomersController < ApplicationController
         end
 
       else
+        params[:error] = true
         format.html { render :action => "new"}
       end
     end

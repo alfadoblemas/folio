@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
 
-  skip_before_filter :require_user, :only => [:new]
+  skip_before_filter :require_user, :only => [:new, :create]
   layout :wich_layout
  
 
@@ -20,7 +20,9 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(params[:account])
     @account.subdomain.downcase!
+    password = params[:account][:user][:password]
     if @account.save
+      @account.deliver_welcome_email!(password)
       flash.now[:notice] = "Hemos enviado la información para ingresar a su email."
       redirect_to application_root_url(:subdomain => @account.subdomain)
     else

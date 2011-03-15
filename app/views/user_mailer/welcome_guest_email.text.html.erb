@@ -8,13 +8,13 @@
 
 	<body style="font-family:Helvetica, Arial, sans-serif;font-size:14px; margin-left: 20px;
 	margin-right: 20px">
-		<h2 style="margin-left: 40px">Bienvenido a Folio!</h2>
+		<h3 style="margin-left: 40px"><%= h @account_admin_name %> ha creado una cuenta para ti:</h3>
 
 		<div style="background-color: #E7F1FD; border-top: 1px solid #000; border-bottom: 1px solid #000;">
 			<p style="margin: 20px 0px 0px 40px; padding-bottom: 20px">
 				Hola <%=h @name %>,
 				<br/><br/>
-				Ya puedes comenzar a organizar tus facturas, llevar tus gastos, enviar cotizaciones y colaborar con tu equipo. Estos son los datos para ingresar:
+				En <%=h @account_name.titleize %> utilizamos <strong>Folio</strong> para enviar facturas, cotizaciones, y mantener nuestro equipo conectado. Te he creado una cuenta. Puedes ingresar con los siguientes datos:
 				<br/><br/>
 				URL: <%=h @url %>
 				<br/>
@@ -22,9 +22,9 @@
 				<br/>
 				Contraseña: <%= h @password %>
 				<br/><br/>
-				Gracias por elegir Folio.
+				Avísame si tienes alguna duda.
 				<br/><br/>
-				El Equipo de Folio.
+				<%=h @account_admin_name %>
 			</p>
 			 <%= render :partial => "footer" %>
 		</div>

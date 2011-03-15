@@ -62,7 +62,7 @@
 
       <!-- Invoice#EDIT -->
     <% elsif params[:action].eql?("edit") || (invoice && invoice.errors) %>
-      <div class="cancel span-4 last">
+      <div class="cancel_button span-4 last">
 		<% if invoice.id %>
         	<%= link_to "Cancelar", invoice_path(invoice) %>
 		<% else %>

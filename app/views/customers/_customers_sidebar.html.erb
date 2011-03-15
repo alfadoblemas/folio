@@ -32,8 +32,14 @@
     <%= link_to "Cancelar", customer_path(customer) %>
   </div>
 <% else %>
+  <% if params[:error] %>
+<div class="cancel_button span-4 last">
+    <%= link_to "Cancelar", customers_path %>
+  </div>
+  <% else %>
   <div class="new_customer_button">
     <%= link_to "Nuevo Cliente", new_customer_path %>
   </div>
+  <% end %>
 <% end %>
 

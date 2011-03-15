@@ -17,6 +17,11 @@ class Account < ActiveRecord::Base
   validates_uniqueness_of :subdomain, :case_sensitive => false
   validates_format_of :subdomain, :with => /^[\w\d]+$/, :on => :create
 
+  def deliver_welcome_email!(password = nil)
+    user = User.find(self.admin_id)
+    UserMailer.deliver_welcome_email(user, self, password)
+  end
+
   protected
 
     def admin_null?
