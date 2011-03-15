@@ -20,7 +20,6 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(params[:account])
     @account.subdomain.downcase!
-    password = params[:account][:user][:password]
     if @account.save
       @account.deliver_welcome_email!(password)
       flash.now[:notice] = "Hemos enviado la información para ingresar a su email."
