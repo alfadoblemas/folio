@@ -576,8 +576,8 @@ background:url(/images/icons/star_16.png) no-repeat scroll left transparent;
   cursor: pointer;
 }
 
-.invoice_resume tr {
-
+.invoice_resume {
+	width: 200px;
 }
 
 .new, .new a {

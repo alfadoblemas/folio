@@ -11,8 +11,8 @@ class User < ActiveRecord::Base
   end
 
   has_attached_file :avatar,
-    :url => "/images/users/avatars/:id/:style/:basename.:extension",
-    :path => ":rails_root/public/images/users/avatars/:id/:style/:basename.:extension",
+    :url => "/images/uploads/users/avatars/:id/:style/:basename.:extension",
+    :path => ":rails_root/public/images/uploads/users/avatars/:id/:style/:basename.:extension",
     :styles => {:medium => "100x100>", :thumb => "48x48"}
 
   validates_presence_of :password, :on => :create

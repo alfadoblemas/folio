@@ -20,8 +20,8 @@ class Account < ActiveRecord::Base
   validates_format_of :subdomain, :with => /^[\w\d]+$/, :on => :create
   
   has_attached_file :avatar,
-    :url => "/images/accounts/avatars/:id/:style/:basename.:extension",
-    :path => ":rails_root/public/images/accounts/avatars/:id/:style/:basename.:extension",
+    :url => "/images/uploads/accounts/avatars/:id/:style/:basename.:extension",
+    :path => ":rails_root/public/images/uploads/accounts/avatars/:id/:style/:basename.:extension",
     :styles => {:medium => "100x100>", :thumb => "48x48"}
 
   def deliver_welcome_email!(password = nil)
