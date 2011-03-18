@@ -44,6 +44,7 @@
 		<li>
 			<%= label_tag "password_confirmation", "Confirmar Contraseña" %>
 			<%= user_form.password_field :password_confirmation %>
+			<%= user_form.hidden_field :admin, :value => true %>
 		</li>
 		<li class="bottom">
 		</li>
