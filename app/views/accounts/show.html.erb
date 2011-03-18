@@ -4,7 +4,7 @@
 </p>
 <fieldset>
 	<div class="avatar">
-		<%= image_tag @account.avatar.url(:medium), :class => "avatar"  %>
+		<%= image_tag @account.avatar.url(:medium), :class => "avatar" if @account.have_logo? %>
 	</div>
 	<h3><%= current_account.name unless current_account.name.blank? %></h3>
 	<% unless current_account.rut.blank? %>

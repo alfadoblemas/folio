@@ -29,6 +29,10 @@ class Account < ActiveRecord::Base
     UserMailer.deliver_welcome_email(user, self, password)
   end
   
+  def have_logo?
+    self.avatar_file_name.blank?
+  end
+  
   def have_invoices?
     self.invoices.size > 0 ? true : false
   end
