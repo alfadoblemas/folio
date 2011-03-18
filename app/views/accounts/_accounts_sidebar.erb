@@ -9,7 +9,7 @@
           </ul>
 
       </div>
-<% elsif params[:action] == "edit" %>
+<% elsif params[:action] =~ /["edit"|"update"]/ %>
 	<div class="cancel_button span-4 last">
 	    <%= link_to "Cancelar", account_path(current_account) %>
 	 </div>

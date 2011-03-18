@@ -355,7 +355,7 @@ background-color: #EEEEEE;
   font-weight: bold;
   font-size: 20px;
   line-height: 25px;
-  width: 100%;
+  width: 180px;
 }
 
 .toolbox {
@@ -448,6 +448,10 @@ background:url(/images/icons/star_16.png) no-repeat scroll left transparent;
 
 .open {
   background-color: #77B8E2;
+}
+
+.cancel {
+	background-color: #5C0000;
 }
 
 
@@ -632,14 +636,27 @@ background:url(/images/icons/star_16.png) no-repeat scroll left transparent;
   width: 20px;
 }
 
-.comment .date {
+.comment .type {
   width: 130px;
   font-size: 13px;
 }
 
+.comment .date {
+	margin-bottom: 5px;
+} 
+
 .comment .text {
   width: 600px;
 }
+
+div.avatar {
+	float: right;
+}
+
+.comment div.body {
+	float: left;
+}
+
 
 ul.customernav {
   list-style: none;

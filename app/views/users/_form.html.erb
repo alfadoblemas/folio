@@ -2,6 +2,12 @@
 <%= f.error_messages :class => "error" %>
   
 <fieldset>
+	<% if @user.avatar_file_name %>
+	<div class="avatar"style="margin-left: 550px; margin-top: 10px; position: absolute;">
+		<%= image_tag @user.avatar.url(:medium) %>
+	</div>
+	<% end %>
+
 	<table>
 		<tr>
 			<td><%= f.label :name, "Nombre" %></td>
@@ -10,6 +16,10 @@
 		<tr>
 			<td><%= f.label :email, "Email" %></td>
 			<td><%= f.text_field :email, :class => "input_large" %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :avatar, "Foto" %></td>
+			<td><%= f.file_field :avatar %></td>
 		</tr>
 		<tr>
 			<td><%= f.label :password, "Contraseña" %></td>

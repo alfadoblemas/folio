@@ -3,6 +3,9 @@
 	Esta es la información de contacto que aparece en las facturas enviadas a tus clientes.
 </p>
 <fieldset>
+	<div class="avatar">
+		<%= image_tag @account.avatar.url(:medium), :class => "avatar"  %>
+	</div>
 	<h3><%= current_account.name unless current_account.name.blank? %></h3>
 	<% unless current_account.rut.blank? %>
 		<span><%= h current_account.rut %></span><br/>

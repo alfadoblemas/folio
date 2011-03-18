@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110314011122) do
+ActiveRecord::Schema.define(:version => 20110318001400) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -23,9 +23,13 @@ ActiveRecord::Schema.define(:version => 20110314011122) do
     t.datetime "updated_at"
     t.string   "subdomain"
     t.integer  "admin_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
-  add_index "accounts", ["admin_id"], :name => "accounts_admin_index"
+  add_index "accounts", ["admin_id"], :name => "altered_accounts_admin_index"
 
   create_table "contacts", :force => true do |t|
     t.string   "first_name"

@@ -1,4 +1,4 @@
-<% if @customers.size < 1 %>
+<% unless current_account.have_customers? %>
 
   	<div class="empty last">
 	

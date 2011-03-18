@@ -25,9 +25,10 @@ class UsersController < ApplicationController
   end
   
   def update
+    
     if @user.update_attributes(params[:user])
       flash[:notice] = "Datos actualizados."
-      redirect_to user_path(@user)
+      redirect_to edit_user_path(@user)
     else
       render :action => 'edit'
     end

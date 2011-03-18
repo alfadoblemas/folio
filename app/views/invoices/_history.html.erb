@@ -3,17 +3,23 @@
     <tr>
       <td class="deleteLink"><%= link_to "Borrar", history,
           :confirm => "Está seguro qué desea borrar el comentario?", :method => :delete %></td>
-      <td class="date"><%= l history.created_at, :format => :short %>
-        <% unless history.user_id.nil? %>
-          <br/>
-          <strong><%= h(history.user.nil? ? "" : history.user.name) %></strong>
-        <%end%>
+      <td class="type">
+		comment_type
       </td>
       <td class="text">
+		<div class="body">
 		<strong><%= history.subject %></strong>
 		<p>
 			<%= textarea_display(history.comment) %>
 		</p>
+			<% unless history.user_id.nil? %>
+				<span><%= h(history.user.nil? ? "" : history.user.name) %></span>, 
+		    <%end%>
+			<span class="date"><%= l history.created_at, :format => :short %></span>
+	  </div>
+		<div class="avatar">
+	 	<%= image_tag history.user.avatar.url(:thumb), :class => "avatar" unless history.user.nil? %>
+		</div>
 	  </td>
     </tr>
     <tr>

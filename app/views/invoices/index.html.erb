@@ -1,4 +1,4 @@
-<% if @invoices.size < 1 %>
+<% unless current_account.have_invoices? %>
     <div class="empty last">
 	
 	  	<h3>Aún no ha creado facturas.</h3>

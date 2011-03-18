@@ -4,16 +4,25 @@ class User < ActiveRecord::Base
   belongs_to :account
   has_many :histories
 
+  before_save :randomize_file_name
+
   acts_as_authentic do |c|
     c.validations_scope = :account_id
   end
-  
-  has_attached_file :avatar, :styles => {:medium => "300x300>", :thumb => "100x100>"}
 
-  validates_presence_of :password
+  has_attached_file :avatar,
+    :url => "/images/users/avatars/:id/:style/:basename.:extension",
+    :path => ":rails_root/public/images/users/avatars/:id/:style/:basename.:extension",
+    :styles => {:medium => "100x100>", :thumb => "48x48"}
+
+  validates_presence_of :password, :on => :create
 
   def before_destroy
     raise "Admin can no be deleted" if account_admin?
+  end
+
+  def has_avatar?
+    self.avatar_file_name.blank? ? false : true
   end
 
   def deliver_welcome_guest_email!(admin_user_id, password = nil)
@@ -29,5 +38,14 @@ class User < ActiveRecord::Base
   def account_admin?
     id == account.admin_id ? true : false
   end
+
+  private
+    def randomize_file_name
+      return if avatar_file_name.nil?
+      extension = File.extname(avatar_file_name).downcase
+      if avatar_file_name_changed?
+        self.avatar.instance_write(:file_name, "#{ActiveSupport::SecureRandom.hex(16)}#{extension}")
+      end
+    end
 
 end

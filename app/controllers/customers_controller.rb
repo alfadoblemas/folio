@@ -29,7 +29,7 @@ class CustomersController < ApplicationController
     @customer = Customer.find_show(current_account.id, params[:id])
     @status = params[:status].blank? ? "all" : params[:status]
     order = "#{params[:sort]} #{params[:direction]}"
-    @invoices = @customer.invoices.find_by_status(@status, params[:page], order)
+    @invoices = @customer.invoices.find_by_status(@status, params[:page], order, current_account.id)
   end
 
 
