@@ -128,7 +128,7 @@ class InvoicesController < ApplicationController
     end
   end
 
-  def update    
+  def update
     @invoice = Invoice.find(params[:id])
     @customer = Customer.find(@invoice.customer_id)
 
@@ -149,7 +149,8 @@ class InvoicesController < ApplicationController
 
 
     def find_invoice
-      @invoice = Invoice.find(params[:id], :conditions => "account_id = #{current_account.id}" )
+      @invoice = Invoice.find(params[:id], :conditions => "account_id = #{current_account.id}",
+                              :include => [:histories] )
     end
 
     def sanitize_params

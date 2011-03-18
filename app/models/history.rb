@@ -7,6 +7,7 @@ class History < ActiveRecord::Base
   belongs_to :invoice
   belongs_to :user
   belongs_to :account
+  belongs_to :history_type
   
   private
   def set_account_id

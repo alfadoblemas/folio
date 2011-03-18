@@ -7,7 +7,8 @@ class HistoriesController < ApplicationController
 
   def create
     @history = History.new(:subject => params[:subject], :comment => params[:comment],
-      :invoice_id => params[:invoice_id], :user_id => params[:user_id])
+      :invoice_id => params[:invoice_id], :user_id => params[:user_id], :account_id => current_account.id,
+      :history_type_id => 1)
     @invoice = Invoice.find(params[:invoice_id])
 
     respond_to do |format|

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110318175607) do
+ActiveRecord::Schema.define(:version => 20110318182344) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -73,11 +73,19 @@ ActiveRecord::Schema.define(:version => 20110318175607) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "account_id"
+    t.integer  "history_type_id"
   end
 
   add_index "histories", ["account_id"], :name => "histories_account_index"
+  add_index "histories", ["history_type_id"], :name => "histories_type_index"
   add_index "histories", ["invoice_id"], :name => "histories_invoice_index"
   add_index "histories", ["user_id"], :name => "histories_user_index"
+
+  create_table "history_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "invoice_items", :force => true do |t|
     t.integer  "product_id",  :limit => 255

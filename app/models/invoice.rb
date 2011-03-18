@@ -1,5 +1,6 @@
 class Invoice < ActiveRecord::Base
 
+
   # Associations
   belongs_to :customer
   belongs_to :contact
@@ -29,7 +30,8 @@ class Invoice < ActiveRecord::Base
   def active!(user)
     unless active?
       update_attribute(:status_id, 2)
-      histories.build(:subject => "Activación", :comment => "Factura activada", :user_id => user.id)
+      histories.build(:subject => "Activación", :comment => "Factura activada", :user_id => user.id,
+                      :account_id => user.account_id, :history_type_id => 7)
       save
     else
       false
@@ -43,7 +45,8 @@ class Invoice < ActiveRecord::Base
   def cancel!(user)
     unless cancelled?
       update_attribute(:status_id, 4)
-      histories.build(:subject => "Anulación", :comment => "La factura fue anulada", :user_id => user.id)
+      histories.build(:subject => "Anulación", :comment => "La factura fue anulada", :user_id => user.id,
+                      :account_id => user.account_id, :history_type_id => 7)
       save
     else
       false
@@ -58,7 +61,8 @@ class Invoice < ActiveRecord::Base
     unless closed?
       update_attribute(:status_id, 3)
       update_attribute(:close_date, Date.today)
-      histories.build(:subject => "Pagada", :comment => "Factura pagada", :user_id => user.id)
+      histories.build(:subject => "Pagada", :comment => "Factura pagada", :user_id => user.id,
+                      :account_id => user.account_id, :history_type_id => 4)
       save
     else
       false
@@ -68,15 +72,15 @@ class Invoice < ActiveRecord::Base
   def closed?
     status_id == 3 ? true : false
   end
-  
+
   def draft?
     status_id == 1 ? true : false
   end
-  
+
   def cancellable?
     status_id == 2 || status_id == 5 ? true : false
   end
-  
+
 
   def self.duplicate(id)
     invoice = find(id)
@@ -87,18 +91,18 @@ class Invoice < ActiveRecord::Base
     invoice_new.invoice_items << invoice.duplicate_items
     invoice_new
   end
-  
+
   def duplicate_items
-     invoice_items_tmp = Array.new
-     unless invoice_items.size < 0
-        invoice_items.each_with_index do |line, index|
-           invoice_items_tmp << line.clone()
-         end
-         invoice_items_tmp
-     else
-       false
-     end
-   end
+    invoice_items_tmp = Array.new
+    unless invoice_items.size < 0
+      invoice_items.each_with_index do |line, index|
+        invoice_items_tmp << line.clone()
+      end
+      invoice_items_tmp
+    else
+      false
+    end
+  end
 
 
   # Virtual attributes
@@ -240,6 +244,6 @@ class Invoice < ActiveRecord::Base
   scope_procedure :untaxed, lambda { taxed_equals(false) }
 
   
-  protected
+  private
   
 end
