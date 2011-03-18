@@ -30,7 +30,7 @@ class Account < ActiveRecord::Base
   end
   
   def have_logo?
-    self.avatar_file_name.blank?
+    !self.avatar_file_name.blank?
   end
   
   def have_invoices?
