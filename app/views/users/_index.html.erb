@@ -14,7 +14,11 @@
 			<td><%= link_to "Editar", edit_user_path(user)%>
 				<% unless user.account_admin? %>
 				  |
-				  <%= link_to "Eliminar", user, :confirm => "Está seguro?", :method => :delete%></td>
+					<% if user.active? %>
+				  		<%= link_to "Desactivar", disable_user_path(user), :confirm => "Está seguro?" %></td>
+					<% else %>
+				  		<%= link_to "Activar", enable_user_path(user), :confirm => "Está seguro?" %></td>
+					<% end %>
 				<% end %>
 		</tr>
 		<tr>

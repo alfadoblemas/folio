@@ -10,4 +10,4 @@ db/*.sqlite3
 .redcar
 rails_best_practices_output.html
 public/images/uploads
-
+db/schema.rb

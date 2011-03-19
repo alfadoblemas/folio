@@ -1,17 +1,38 @@
-class UsersController < ApplicationController  
+class UsersController < ApplicationController
   #before_filter :current_account_admin, :except => [:create, :update, :destroy]
   before_filter :find_user, :only => [:show, :edit, :update]
-  
+
   def new
     @user = User.new
   end
-  
+
   def show
   end
 
   def edit
   end
+
+  def enable
+    @user = User.find(params[:id])
+    if @user.enable!
+      flash[:notice] = "Usuario habilitado."
+    else
+      flash[:notice] = "No fue posible habilitar el usuario."
+    end
+    redirect_to account_path(current_account.id)
+  end
   
+  def disable
+    @user = User.find(params[:id])
+    if @user.disable!
+      flash[:notice] = "Usuario inhabilitado."
+    else
+      flash[:notice] = "No fue posible inhabilitar el usuario."
+    end
+    redirect_to account_path(current_account.id)
+  end
+  
+
   def create
     @user = User.new(params[:user])
     password = params[:user][:password]
@@ -23,9 +44,9 @@ class UsersController < ApplicationController
       render :action => 'new'
     end
   end
-  
+
   def update
-    
+
     if @user.update_attributes(params[:user])
       flash[:notice] = "Datos actualizados."
       redirect_to edit_user_path(@user)
@@ -33,7 +54,7 @@ class UsersController < ApplicationController
       render :action => 'edit'
     end
   end
-  
+
   def destroy
     @user = User.find(params[:id])
     account_id = @user.account_id
@@ -45,18 +66,18 @@ class UsersController < ApplicationController
       redirect_to account_path(account_id)
     end
   end
-  
+
   private
-  def current_account_admin
-    if (params[:account_id].to_i == current_account.id) && account_admin?
-      return
-    else
-      render :template => "/shared/error/404.html.erb", :status => 404, :layout => "error"
+    def current_account_admin
+      if (params[:account_id].to_i == current_account.id) && account_admin?
+        return
+      else
+        render :template => "/shared/error/404.html.erb", :status => 404, :layout => "error"
+      end
     end
-  end
-  
-  def find_user
-    @user = User.find(params[:id], :conditions => ["account_id = ?", current_account.id ])
-  end
+
+    def find_user
+      @user = User.find(params[:id], :conditions => ["account_id = ?", current_account.id ])
+    end
 
 end

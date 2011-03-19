@@ -17,6 +17,14 @@ class User < ActiveRecord::Base
 
   validates_presence_of :password, :on => :create
 
+  def enable!
+    self.update_attribute(:active, true)
+  end
+
+  def disable!
+    self.update_attribute(:active, false)
+  end
+
   def before_destroy
     raise "Admin can no be deleted" if account_admin?
   end
@@ -36,7 +44,7 @@ class User < ActiveRecord::Base
   end
 
   def account_admin?
-    id == account.admin_id ? true : false
+    self.admin ? true : false
   end
 
   private
