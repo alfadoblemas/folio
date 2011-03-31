@@ -22,7 +22,7 @@ class AccountsController < ApplicationController
     @account.subdomain.downcase!
     password = params[:account][:users_attributes]["0"]["password"]
     if @account.save
-      @account.deliver_welcome_email!(password)
+      @account.send_later(:deliver_welcome_email!, password)
       flash.now[:notice] = "Hemos enviado la información para ingresar a su email."
       redirect_to application_root_url(:subdomain => @account.subdomain)
     else

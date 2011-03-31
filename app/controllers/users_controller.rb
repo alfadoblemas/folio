@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     password = params[:user][:password]
     if @user.save
-      @user.deliver_welcome_guest_email!(current_user.id, password)
+      @user.send_later(:deliver_welcome_guest_email!, current_user.id, password)
       flash[:notice] = "Usuario creado correctamente."
       redirect_to account_path(current_account.id)
     else

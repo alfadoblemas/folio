@@ -27,6 +27,7 @@ Rails::Initializer.run do |config|
   config.gem "will_paginate"
   config.gem "subdomain-fu"
   config.gem "paperclip"
+  config.gem "delayed_job", :version => '2.0'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
@@ -62,7 +63,7 @@ ActionMailer::Base.smtp_settings = {
   :address        => "lou.itlinux.cl",
   :port           => 587,
   :user_name      => "pbruna@it-linux.cl",
-  :password       => "plum4sp0rl4s",
+  :password       => "p0rl4splum4s",
   :domain         => "it-linux.cl",
   :authentication => :plain
 }

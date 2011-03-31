@@ -1,6 +1,6 @@
 <% if params[:action].eql?("new") || params[:action].eql?("edit")%>
   <div class="cancel_button span-4 last">
-    <%= link_to "Cancelar", customer_path(params[:customer_id]) %>
+    <%= link_to "Cancelar", customer_path(@customer) %>
   </div>
 <% elsif params[:action].eql?("show") %>
   

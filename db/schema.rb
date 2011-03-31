@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110318201524) do
+ActiveRecord::Schema.define(:version => 20110331204717) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -64,6 +64,21 @@ ActiveRecord::Schema.define(:version => 20110318201524) do
 
   add_index "customers", ["account_id"], :name => "customers_account_index"
   add_index "customers", ["name"], :name => "customers_name_index"
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "histories", :force => true do |t|
     t.integer  "user_id"
@@ -159,12 +174,11 @@ ActiveRecord::Schema.define(:version => 20110318201524) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.boolean  "admin",               :default => false
-    t.boolean  "enable",              :default => true
+    t.boolean  "active",              :default => true
   end
 
   add_index "users", ["account_id"], :name => "altered_users_account_index"
   add_index "users", ["account_id"], :name => "altered_users_company_index"
-  add_index "users", ["account_id"], :name => "users_account_index"
-  add_index "users", ["perishable_token"], :name => "users_ptoken_index"
+  add_index "users", ["perishable_token"], :name => "altered_users_ptoken_index"
 
 end

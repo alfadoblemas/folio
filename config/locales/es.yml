@@ -197,8 +197,8 @@
 
     template:
       header:
-        one:   "No se pudo guardar este %{model} porque se encontró 1 error"
-        other:  "No se pudo guardar  %{model} porque se encontraron %{count} errores"
+        one:   "No se pudo guardar porque se encontró 1 error"
+        other:  "No se pudo guardar porque se encontraron %{count} errores"
       # The variable :count is also available
       body: "Se encontraron problemas con los siguientes campos:"
 
@@ -269,8 +269,8 @@
     errors:
       template:
         header:
-          one:   "No se pudo guardar este %{model} porque se encontró 1 error"
-          other: "No se pudo guardar este %{model} porque se encontraron %{count} errores"
+          one:   "No se pudo guardar porque se encontró 1 error"
+          other: "No se pudo guardar porque se encontraron %{count} errores"
         body: "Se encontraron problemas con los siguientes campos:"
 
       messages:

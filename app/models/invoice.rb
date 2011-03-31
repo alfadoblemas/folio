@@ -122,7 +122,7 @@ class Invoice < ActiveRecord::Base
       :page => page,
       :per_page => per_page, :order => ["#{order}"],
       :include => include_models,
-      :conditions => ["account_id = #{account_id}"]
+      :conditions => ["invoices.account_id = #{account_id}"]
     )
 
   end

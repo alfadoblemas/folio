@@ -18,7 +18,7 @@ class PasswordResetsController < ApplicationController
     @account = Account.find_by_subdomain(current_subdomain)
     @user = User.find_by_email(params[:email], :conditions => ["account_id = ?", @account.id])
     if @user
-      @user.deliver_password_reset_instructions!
+      @user.send_later(:deliver_password_reset_instructions!)
       flash[:notice] = "Las instrucciones para actualizar la contraseña fueron enviadas a su email."
       redirect_to application_root_url(:subdomain => @account.subdomain)
     else
