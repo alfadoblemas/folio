@@ -11,7 +11,10 @@
 			<td><%= h user.email %></td>
 			<td><%= h user.name.titleize %></td>
 			<td align="center"><%= user.account_admin? ? '<img src="/images/icons/star_16.png"/>' : "" %></td>
-			<td><%= link_to "Editar", edit_user_path(user)%>
+			<td>
+				<% if current_user.admin? %>
+				<%= link_to "Editar", edit_user_path(user)%>
+				
 				<% unless user.account_admin? %>
 				  |
 					<% if user.active? %>
@@ -19,6 +22,7 @@
 					<% else %>
 				  		<%= link_to "Activar", enable_user_path(user), :confirm => "Está seguro?" %></td>
 					<% end %>
+				<% end %>
 				<% end %>
 		</tr>
 		<tr>
