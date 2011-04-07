@@ -646,6 +646,10 @@ background:url(/images/icons/star_16.png) no-repeat scroll left transparent;
   font-size: 13px;
 }
 
+.comment td.type {
+  vertical-align: top;
+}
+
 .comment .date {
 	margin-bottom: 5px;
 } 
@@ -760,4 +764,31 @@ fieldset {
 
 #search_tags .tag {
 	background-color: #FCFFCD;
+}
+
+.history_type {
+    display: block;
+    height: 62px;
+	padding-top: -10px;
+	margin-top: -10px;
+}
+
+.type_pagada {
+	background:url(/images/bubbles/bubble_pagada.png) no-repeat scroll left transparent;
+}
+
+.type_comentario {
+	background:url(/images/bubbles/bubble_comentario.png) no-repeat scroll left transparent;
+}
+
+.type_aviso {
+	background:url(/images/bubbles/bubble_aviso.png) no-repeat scroll left transparent;
+}
+
+.type_perdida {
+	background:url(/images/bubbles/bubble_perdida.png) no-repeat scroll left transparent;
+}
+
+.type_nueva {
+	background:url(/images/bubbles/bubble_nueva.png) no-repeat scroll left transparent;
 }
