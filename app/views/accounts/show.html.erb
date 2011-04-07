@@ -20,7 +20,9 @@
 		<span><%= h current_account.country  %></span><br/>
 	<% end %>
 	<br/>
-	<%= link_to "Editar información", edit_account_path %>
+	<% if current_account.admin? %>
+		<%= link_to "Editar información", edit_account_path %>
+	<% end %>
 </fieldset>
 <br/>
 <h3>Usuarios</h3>
