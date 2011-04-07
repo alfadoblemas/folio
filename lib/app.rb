@@ -94,7 +94,7 @@ module App
         end
         
         def created_by_current_user?(object)
-          object.user_id == current_user.id.to_s
+          object.user_id == current_user.id
         end
         
         def created_by_user?(object, user)

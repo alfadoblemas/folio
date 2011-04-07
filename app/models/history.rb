@@ -13,5 +13,5 @@ class History < ActiveRecord::Base
   def set_account_id
     self.account_id ||= self.user.account.id
   end
-
+  
 end

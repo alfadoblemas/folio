@@ -12,15 +12,19 @@
     <!-- End Framework CSS -->
 
     <!-- Stylesheet -->
-    <%= stylesheet_link_tag "factura", :media => "all" %>
-	<% unless defined?(current_account) %>
-		<%= stylesheet_link_tag "public", :media => "all" %>
-	<% end %>
+	<%= stylesheet_link_tag "factura", :media => "all" %>
+	<%= stylesheet_link_tag "public", :media => "all" %>
 
 
 
   </head>
   <body>
+	<div id="header">
+	<div id="logo">
+	 <%= link_to "nada", public_root_url(:subdomain => false), :id => "logo_link" %>
+	</div>
+	</div>
+	
     <div class="container" style="min-height: 400px;">
         <%= yield %>      
     </div>

@@ -1,8 +1,15 @@
 <div class="comment">
   <table>
     <tr>
-      <td class="deleteLink"><%= link_to "Borrar", history,
-          :confirm => "Está seguro qué desea borrar el comentario?", :method => :delete %></td>
+		<% if created_by_current_user?(history)%>
+			<td class="deleteLink">
+			<%= link_to "Borrar", history,
+          		:confirm => "Está seguro qué desea borrar el comentario?", 
+					:method => :delete %>
+		<% else %>
+				<td class="deleteLink_empty">
+		<% end %>
+		</td>
       <td class="type">
 		<% if history.history_type_id %>
 			<%= history.history_type.name %>

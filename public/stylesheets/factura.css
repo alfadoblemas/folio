@@ -231,6 +231,11 @@ margin-top: 20px;
   background:url(/images/icons/close_16.png) no-repeat transparent;
 }
 
+.deleteLink_empty {
+  width: 24px;
+}
+
+
 
 
 .empty {
