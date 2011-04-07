@@ -7,8 +7,6 @@
 </div>
 <div id="preferences_bar">
 	<%= link_to "mi cuenta", edit_user_path(current_user) %> |
-	<% if account_admin? %>
-		<%= link_to "mi empresa", account_path(current_account) %> |
-	<% end %>
+	<%= link_to "mi empresa", account_path(current_account) %> |
 	<%= link_to "salir", logout_path %>
 </div>
