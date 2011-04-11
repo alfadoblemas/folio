@@ -658,6 +658,10 @@ background:url(/images/icons/star_16.png) no-repeat scroll left transparent;
   width: 600px;
 }
 
+.comment table {
+	margin-bottom: 5px;
+}
+
 div.avatar {
 	float: right;
 }
