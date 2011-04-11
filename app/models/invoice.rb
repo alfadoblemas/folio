@@ -31,7 +31,7 @@ class Invoice < ActiveRecord::Base
     unless active?
       update_attribute(:status_id, 2)
       histories.build(:subject => "Activación", :comment => "Factura activada", :user_id => user.id,
-                      :account_id => user.account_id, :history_type_id => 7)
+                      :account_id => user.account_id, :history_type_id => 7, :system => true)
       save
     else
       false
@@ -46,7 +46,7 @@ class Invoice < ActiveRecord::Base
     unless cancelled?
       update_attribute(:status_id, 4)
       histories.build(:subject => "Anulación", :comment => "La factura fue anulada", :user_id => user.id,
-                      :account_id => user.account_id, :history_type_id => 7)
+                      :account_id => user.account_id, :history_type_id => 7, :system => true)
       save
     else
       false
@@ -62,7 +62,7 @@ class Invoice < ActiveRecord::Base
       update_attribute(:status_id, 3)
       update_attribute(:close_date, Date.today)
       histories.build(:subject => "Pagada", :comment => "Factura pagada", :user_id => user.id,
-                      :account_id => user.account_id, :history_type_id => 4)
+                      :account_id => user.account_id, :history_type_id => 4, :system => true)
       save
     else
       false

@@ -10,15 +10,17 @@
       </td>
       <td class="text">
 		<div class="body">
-		<strong><%= history.subject %></strong>
-		<p>
+		<% unless history.subject.blank? %>
+			<strong><%= history.subject %></strong>
+		<br/>
+		<% end %>
 			<%= textarea_display(history.comment) %>
-		</p>
+		<br/><br/>
 			<% unless history.user_id.nil? %>
 				<span><%= h(history.user.nil? ? "" : history.user.name) %></span>, 
 		    <%end%>
 			<span class="date"> <%= distance_of_time_in_words(Time.now, history.created_at) %></span>
-			<% if created_by_current_user?(history) %>
+			<% if created_by_current_user?(history) && !history.system %>
 				<br/>
 				<span class="actions">
 					<%= link_to "Editar", edit_history_path(history) %> | 
