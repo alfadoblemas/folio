@@ -38,7 +38,7 @@
 
           <ul class="toolbox secondary">
             <li id="send_invoice"><%= link_to "<strong>Enviar</strong> factura" %></li>
-			<% unless invoice.closed? || invoice.cancelled? %>
+			<% if invoice.draft? %>
             	<li id="edit_invoice"><%= link_to "<strong>Editar</strong> factura",	edit_invoice_path(invoice) %></li>
 			<% end%>
             <li id="print_invoice"><%= link_to "<strong>Imprimir</strong> factura" %></li>
