@@ -3,13 +3,20 @@ class UsersController < ApplicationController
   before_filter :find_user, :only => [:show, :edit, :update]
 
   def new
-    @user = User.new
+    if account_admin?
+      @user = User.new
+    elsif
+      render :template => "/shared/error/404.html.erb", :status => 404, :layout => "error"
+    end
   end
 
   def show
   end
 
   def edit
+    unless account_admin? || @user.id == current_user.id
+      render :template => "/shared/error/404.html.erb", :status => 404, :layout => "error"
+    end
   end
 
   def enable

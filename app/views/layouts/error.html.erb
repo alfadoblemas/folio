@@ -21,7 +21,11 @@
   <body>
 	<div id="header">
 	<div id="logo">
-	 <%= link_to "nada", public_root_url(:subdomain => false), :id => "logo_link" %>
+		<% if current_account %>
+			<%= link_to "nada", application_root_url, :id => "logo_link" %>
+		<% else %>
+	 		<%= link_to "nada", public_root_url(:subdomain => false), :id => "logo_link" %>
+		<% end %>
 	</div>
 	</div>
 	

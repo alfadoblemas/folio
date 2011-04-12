@@ -2,7 +2,7 @@ class AccountsController < ApplicationController
 
   skip_before_filter :require_user, :only => [:new, :create]
   layout :wich_layout
- 
+
 
   def new
     unless current_subdomain
@@ -14,7 +14,11 @@ class AccountsController < ApplicationController
   end
 
   def edit
-    @account = Account.find(current_account)
+    if account_admin?
+      @account = Account.find(current_account)
+    else
+      render :template => "/shared/error/404.html.erb", :status => 404, :layout => "error"
+    end
   end
 
   def create
@@ -43,15 +47,15 @@ class AccountsController < ApplicationController
   def show
     @account = Account.find(current_account)
   end
-  
+
   private
-  
-  def wich_layout
-    if current_account
-      "application"
-    else
-      "public"
+
+    def wich_layout
+      if current_account
+        "application"
+      else
+        "public"
+      end
     end
-  end
 
 end

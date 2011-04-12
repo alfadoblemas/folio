@@ -17,7 +17,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :invoices, :has_many => [:histories]
   map.resources :accounts, :has_many => [:users, :invoices, :customers]
   map.resources :histories
-  map.resources :users
+  map.resources :users, :except => [:show]
   map.resources :user_sessions
   map.application_root "/", :controller => "invoices", :action => "index", :conditions => {:subdomain => /.+/}
   map.public_root "/", :controller => "public", :action => "index", :conditions => {:subdomain => nil}
