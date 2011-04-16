@@ -95,8 +95,8 @@
     <% end %>
     <div class="span-19 last">
 
-      <%= render :partial => "history", :collection => @invoice.histories.reverse ,
-        :as => :history, :spacer_template => "history_divider" %>
+      <%= render :partial => "histories/history", :collection => @invoice.histories.reverse ,
+        :as => :history, :spacer_template => "histories/history_divider" %>
 
     </div>
   </div>

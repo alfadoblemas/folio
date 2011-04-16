@@ -16,14 +16,19 @@ module ApplicationHelper
     end
     link_to_function(name, h("add_fields(this,\"#{association}\", \"#{escape_javascript(fields)}\")"))
   end
-  
+
   def sortable(column, title = nil, state = nil)
     title ||= column.titleize
     css_class = (column == params[:sort]) ? "current #{params[:direction]} sortLink" : "sortLink"
     direction = (column == params[:sort] && params[:direction] == "asc") ? "desc" : "asc"
     link_to title, params.merge(:sort => column, :direction => direction), {:class => css_class}
   end
-  
+
+  def link_from_comment(comment, title = nil)
+    link_to "#{comment.invoice.customer.name} - #{title}: #{comment.invoice.subject}", invoice_path(comment.invoice_id),
+      :title => "#{comment.invoice.customer.name}\n #{comment.invoice.subject}"
+  end
+
   def invoice_state_link(state, title = nil, status_id = nil)
     if params[:action] == "search"
       params[:status] == state ? "#{title} " : (link_to "#{title} ", params.merge(:status => state))
@@ -31,11 +36,11 @@ module ApplicationHelper
       params[:status] == state ? "#{title} " : (link_to "#{title} ", params.merge(:status => state))
     end
   end
-  
+
   def textarea_display(text)
     text.gsub(/\n/, "<br />")
   end
-  
+
   def title(page_title)
     content_for(:title) { page_title}
   end

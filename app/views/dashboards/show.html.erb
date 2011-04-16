@@ -1,0 +1,27 @@
+<% if @invoices.nil? %>
+
+   <div class="empty last">
+	
+	  	<h3>Este será tu centro de mando</h3>
+	<p>
+		Una vez que comiences ha trabajar con Folio podrás encontrar aquí toda la información que necesitas para atender de mejor forma tu negocio.
+</p>
+
+	</div>
+
+<% else %>
+<div id="charts">
+<h3>Gráficos (Ejemplo x ahora)</h3>
+
+<%= image_tag "chart.png", :width => "98%" %>
+
+</div>
+
+<div id="recent_activity">
+<h3>Actividad reciente</h3>
+<div class="history">
+<%= render :partial => "histories/history_dashboard", :collection => @histories ,
+    :as => :history, :spacer_template => "histories/history_divider" %>
+</div>
+</div>
+<% end %>

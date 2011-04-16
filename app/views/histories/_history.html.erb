@@ -1,0 +1,38 @@
+<div class="comment">
+  <table>
+    <tr>
+      <td class="type">
+		<% if history.history_type_id %>
+			<div class="history_type type_<%= history.history_type.name %>"/>
+		<% else %>
+			<div class="history_type type_aviso"></div>
+		<% end %>
+      </td>
+      <td class="text">
+		<div class="body">
+		<% unless history.subject.blank? %>
+			<strong><%= history.subject %></strong>
+		<br/>
+		<% end %>
+			<%= textarea_display(history.comment) %>
+		<br/><br/>
+			<% unless history.user_id.nil? %>
+				<span><%= h(history.user.nil? ? "" : history.user.name) %></span>, 
+		    <%end%>
+			<span class="date"> hace <%= distance_of_time_in_words(Time.now, history.created_at) %></span>
+			<% if created_by_current_user?(history) && !history.system %>
+				<br/>
+				<span class="actions">
+					<%= link_to "Editar", edit_history_path(history) %> | 
+					<%= link_to "Eliminar", history, :confirm => "Está seguro?", :method => :delete %>
+				</span>
+			<% end %>
+	  </div>
+		<div class="avatar">
+	 	<%= image_tag history.user.avatar.url(:thumb), :class => "avatar" unless history.user.nil? %>
+		</div>
+	  </td>
+    </tr>
+  </table>
+</div>
+

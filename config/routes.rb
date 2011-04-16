@@ -11,6 +11,7 @@ ActionController::Routing::Routes.draw do |map|
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
   map.signup 'signup', :controller => 'accounts', :action => 'new'
 
+  map.resource :dashboard, :only => [:index, :show]
   map.resources :password_resets, :conditions => {:subdomain => /.+/}
   map.resources :customers, :has_many => [:contacts, :invoices]
   map.resources :contacts, :except => [:index]
@@ -19,7 +20,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :histories
   map.resources :users, :except => [:show]
   map.resources :user_sessions
-  map.application_root "/", :controller => "invoices", :action => "index", :conditions => {:subdomain => /.+/}
+  map.application_root "/", :controller => "dashboards", :action => "show", :conditions => {:subdomain => /.+/}
   map.public_root "/", :controller => "public", :action => "index", :conditions => {:subdomain => nil}
 
   # The priority is based upon order of creation: first created -> highest priority.
