@@ -668,6 +668,7 @@ div.avatar {
 
 .comment div.body {
 	float: left;
+	width: 450px;
 }
 
 
