@@ -25,8 +25,11 @@ module ApplicationHelper
   end
 
   def link_from_comment(comment, title = nil)
-    link_to "#{comment.invoice.customer.name} - #{title}: #{comment.invoice.subject}", invoice_path(comment.invoice_id),
-      :title => "#{comment.invoice.customer.name}\n #{comment.invoice.subject}"
+    invoice = comment.invoice
+    customer = invoice.customer
+    customer_name = customer.alias.blank? ? customer.name : customer.alias
+    link_to "#{customer_name} - #{title}: #{invoice.subject}", invoice_path(comment.invoice_id),
+      :title => "#{customer_name}\n #{invoice.subject}"
   end
 
   def invoice_state_link(state, title = nil, status_id = nil)

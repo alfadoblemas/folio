@@ -6,7 +6,11 @@
 		
 			<tr>
 				<td style="width: 100px;"><span class="required"><%= customer.label "Nombre" %></span></td>
-				<td><%= customer.text_field :name, :autocomplete => "off", :class => "input_large"  , :class => "input_large" %> </td>
+				<td><%= customer.text_field :name, :autocomplete => "off", :class => "input_large" %> </td>
+			</tr>
+			<tr>
+				<td><%= customer.label "Alias"%></td>
+				<td><%= customer.text_field :alias, :class => "input_large" %> ( nombre de fantasía )</td>
 			</tr>
 			<tr>
 				<td><span class="required"><%= labelUp_tag "R.U.T."  %></span></td>
