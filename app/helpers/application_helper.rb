@@ -48,4 +48,17 @@ module ApplicationHelper
     content_for(:title) { page_title}
   end
 
+  def pageless(total_pages, url=nil, parent_container=nil, container=nil)
+    opts = {
+      :totalPages => total_pages,
+      :url        => url,
+      :loaderMsg  => 'Cargando más resultados',
+      :parent_container => parent_container,
+    }
+
+    container && opts[:container] ||= container
+
+    javascript_tag("$('#{container}').pageless(#{opts.to_json});")
+  end
+
 end
