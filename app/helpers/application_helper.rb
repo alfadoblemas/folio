@@ -54,6 +54,8 @@ module ApplicationHelper
       :url        => url,
       :loaderMsg  => 'Cargando más resultados',
       :parent_container => parent_container,
+      :distance => 20,
+      :params => params
     }
 
     container && opts[:container] ||= container

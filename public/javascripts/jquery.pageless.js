@@ -115,8 +115,8 @@
       loader = $loader;
     } else {
       loader = $(loaderHtml());
-	  // Este es el cambio
-      //$el.append(loader);
+      //$el.append(loader); <- This was the original code
+	  // Below the new code tha lets use any div#ID you want
 	  $parent_container.append(loader);
       // if we use the default loader, set the message
       if (!opts.loaderHtml) {
@@ -173,7 +173,8 @@
               , { page: settings.currentPage });
       // finally ajax query
       $.get( settings.url
-           , settings.params
+			// this way we can work with RAILS nested params
+           , $.param(settings.params)
            , function (data) {
                $.isFunction(settings.scrape) ? settings.scrape(data) : data;
                loader ? loader.before(data) : element.append(data);

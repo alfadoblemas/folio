@@ -516,8 +516,9 @@ background:url(/images/icons/star_16.png) no-repeat scroll left transparent;
   font-weight: bold;
 }
 
-.invoice_list td {
+.invoice td {
   vertical-align: top;
+  padding-top: 10px;
 }
 
 
@@ -566,8 +567,9 @@ background:url(/images/icons/star_16.png) no-repeat scroll left transparent;
   width:20px;
 }
 
-.invoice_list td hr {
+#invoice_list hr {
   margin-bottom: 0px;
+  margin-top: -10px;
 }
 
 
@@ -576,7 +578,7 @@ background:url(/images/icons/star_16.png) no-repeat scroll left transparent;
   padding-top: 8px;
 }
 
-.invoice_list .fields , .invoice_list .fields:hover td {
+.invoice .fields:hover td {
   background-color: #FCFFCD;
   cursor: pointer;
 }

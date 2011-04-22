@@ -10,6 +10,7 @@ class DashboardsController < ApplicationController
                                   :conditions => ["account_id = ?", current_account.id])
 
     if request.xhr?
+      sleep(1)
       render :partial => "histories/history_dashboard", :collection => @histories ,
          :as => :history, :locals => {:continuation => true}
     end

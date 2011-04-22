@@ -1,0 +1,38 @@
+<table class="invoice">
+<tr class="fields" onclick="location.href='/invoices/<%= invoice.id %>'" >
+	
+	<td style="width:15%;">
+		<strong><%= link_to "NUM-"+invoice.number.to_s, invoice_path(invoice.id) %></strong><br/>
+		<span class="<%= invoice.state %>_result">
+		<% if invoice.status_id == 5 %>
+			<%= "vencida" %></span>
+		<% else %>
+			<%= invoice.status_name.downcase %></span>
+		<% end %>
+		<% unless invoice.taxed? %>
+		 <br/><span class="draft_result">excenta</span>
+		<% end %>
+	</td>
+	<td style="width: 70%;">
+		<strong><h4><%= invoice.customer_name %></h4></strong><br/>
+		<% if invoice.subject %>
+		  <%= invoice.subject %><br/>
+		<% end %>
+		<br/>
+		<span class="draft_result">Fecha: </span><%= l invoice.date, :format => :short %>
+		&nbsp;&nbsp;&nbsp;
+		<% if invoice.status_id == 5 %>
+		 <span class="due_result">Atrasada: </span><%= invoice.due_days.to_s+" días" %>
+		<% elsif invoice.status_id == 3 %>
+		  <span class="draft_result">Pagada: </span><%= l invoice.close_date, :format => :short %>
+		<% else %>
+		  <span class="draft_result">Vence: </span><%= l invoice.due, :format => :short %>
+		<% end %>
+		<br/>
+	</td>
+	<td class="item-total">
+		<%= number_to_currency(invoice.total, :unit => "$", :delimiter => ".", :precision => 0) %>
+	</td>
+
+</tr>
+</table>
