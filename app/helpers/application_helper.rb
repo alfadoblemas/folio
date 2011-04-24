@@ -54,7 +54,7 @@ module ApplicationHelper
       :url        => url,
       :loaderMsg  => 'Cargando más resultados',
       :parent_container => parent_container,
-      :distance => 20,
+      :distance => 200,
       :params => params
     }
 

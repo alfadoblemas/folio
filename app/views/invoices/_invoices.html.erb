@@ -13,8 +13,6 @@
 
 <%= will_paginate(invoices)%>
 <% if params[:search] %>
-  <%= debug(params[:search].class) %>
-
  <%= pageless(invoices.total_pages, search_invoice_path, '#invoice_list')%>
 <% else %>
  <%= pageless(invoices.total_pages, invoices_path, '#invoice_list')%>

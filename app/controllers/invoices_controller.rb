@@ -15,7 +15,7 @@ class InvoicesController < ApplicationController
     @invoices = @search.find_by_status(@status, params[:page], order, current_account.id ,params[:per_page], false)
     
     if request.xhr?
-      sleep(3)
+      sleep(1)
       render :partial => "invoice", :collection => @invoices, :spacer_template => "invoice_divider"
     else
       render :template => "invoices/index"
@@ -66,7 +66,7 @@ class InvoicesController < ApplicationController
     @invoices = Invoice.find_by_status(@status, params[:page], order ,current_account.id)
     
     if request.xhr?
-      sleep(3)
+      sleep(1)
       render :partial => "invoice", :collection => @invoices, :spacer_template => "invoice_divider"
     end
     
