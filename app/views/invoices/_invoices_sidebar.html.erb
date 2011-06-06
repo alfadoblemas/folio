@@ -43,7 +43,7 @@
 			<% end%>
             <li id="print_invoice"><%= link_to "<strong>Imprimir</strong> factura" %></li>
             <% if invoice.draft? %>
-              <li id="convert_invoice"><%= link_to "<strong>Activar</strong> factura", active_invoice_path(invoice) %></li>
+              <li id="convert_invoice"><%= link_to "<strong>Activar</strong> factura", active_invoice_path(invoice), :confirm => "Está seguro que desea Activar la factura, revisó que los datos fueran correctos?" %></li>
 			<% elsif invoice.cancellable? %>
 			  <li id="receive_payment"><%= link_to "<strong>Recibir</strong> pago", close_invoice_path(invoice) %></li>
 			  <li id="delete_invoice"><%= link_to "<strong>Anular</strong> factura", cancel_invoice_path(invoice), 

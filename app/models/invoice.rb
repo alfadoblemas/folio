@@ -110,7 +110,7 @@ class Invoice < ActiveRecord::Base
     customer.name if customer
   end
 
-  def self.find_by_status(status, page , order = "number asc", account_id = nil, per_page = 10, eager = true)
+  def self.find_by_status(status, page , order = "date desc", account_id = nil, per_page = 10, eager = true)
     include_models = Array.new
     unless eager
       include_models = [:status]
@@ -223,6 +223,17 @@ class Invoice < ActiveRecord::Base
       ["2 Meses", 2.month.ago.to_date ],
       ["6 Meses", 6.month.ago.to_date ]
       ]
+  end
+  
+  def self.sorter_options(status)
+    options = [["Fecha emisión", "date"], ["Número", "number"], ["Total", "total"]]
+    sorter = case status
+      when "open" then options.push(["Estado", "status_id"],["Fecha vencimiento", "due"]).sort
+      when "due" then options.push(["Días de Atraso", "due"])
+      when "close_index" then options.push(["Fecha de Pago", "close_date"])
+      when "close" then options.push(["Fecha de Pago", "close_date"])
+      when "cancel" then options.push(["Fecha de Anulación", "close_date"])
+    end
   end
   
   def self.statuses

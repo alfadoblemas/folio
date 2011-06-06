@@ -13,15 +13,14 @@ class InvoicesController < ApplicationController
     @status = params[:status].blank? ? "all_invoices" : params[:status]
     order = "#{params[:sort]} #{params[:direction]}"
     @invoices = @search.find_by_status(@status, params[:page], order, current_account.id ,params[:per_page], false)
-    
+
     if request.xhr?
-      sleep(1)
-      render :partial => "invoice", :collection => @invoices, :spacer_template => "invoice_divider"
+      xhr_endless_page_response
     else
       render :template => "invoices/index"
     end
-    
-    
+
+
   end
 
 
@@ -64,12 +63,11 @@ class InvoicesController < ApplicationController
     @status = params[:status].blank? ? "all_invoices" : params[:status]
     order = "#{params[:sort]} #{params[:direction]}"
     @invoices = Invoice.find_by_status(@status, params[:page], order ,current_account.id)
-    
+
     if request.xhr?
-      sleep(1)
-      render :partial => "invoice", :collection => @invoices, :spacer_template => "invoice_divider"
+      xhr_endless_page_response
     end
-    
+
   end
 
 
@@ -161,6 +159,10 @@ class InvoicesController < ApplicationController
 
   protected
 
+    def xhr_endless_page_response
+      sleep(1)
+      render :partial => "invoice", :collection => @invoices, :locals => {:continuation => true}
+    end
 
     def find_invoice
       @invoice = Invoice.find(params[:id], :conditions => "account_id = #{current_account.id}",

@@ -536,6 +536,23 @@ background:url(/images/icons/star_16.png) no-repeat scroll left transparent;
   background-image:url(/images/icons/arrow_down_16.png);
 }
 
+.asc {
+  	background: url(/images/icons/arrow_up_16.png) no-repeat transparent;
+}
+
+.desc {
+  background:url(/images/icons/arrow_down_16.png) no-repeat transparent;
+}
+
+.image_link {
+	display:block;
+	height:20px;
+	outline:medium none;
+	text-indent:-9999px;
+	width:20px;	
+	text-align:left;
+}
+
 .close {
   background-color: #BCDD11;
   color: #565656;
@@ -807,4 +824,16 @@ fieldset {
 #recent_activity .history {
 	margin-top: 0px;
 	padding-top: 10px;
+}
+
+.invoice_sort div {
+	text-align: right;
+}
+
+.invoice_sort .select_title {
+	margin-right: 0px;
+}
+
+.invoice_sort .select_box {
+	margin-top: -5px;
 }

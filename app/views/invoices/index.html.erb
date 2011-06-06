@@ -62,7 +62,7 @@
 </div>
 		
         <div class="span-19 last prepend-top">
-			<div class="last">
+			<div class="invoice_status span-9">
 					<%= invoice_state_link  nil, "Todas" %> |
 					<%= invoice_state_link "due", "Vencidas", 5 %> |
 					<%= invoice_state_link "draft", "Borrador ", 1 %> |
@@ -75,6 +75,37 @@
 					<% end %>
 					<br/>
 			 </div>
+			
+			<div class="span-10 last invoice_sort">
+				<div class="span-5 select_title">
+				Ordenar por
+				</div>
+				<div class="span-4 select_box">
+					
+					<% if params[:action] == "search" %>
+						<% form_tag '', :url => {:action => "search" } do |f| -%>
+							<%= hidden_field_tag :search, params[:search]%>
+							<%= select_box_sorter() %>
+				  			<% if params[:status] %>
+				 				<%= hidden_field_tag :status, params[:status]%>
+								<%= hidden_field_tag :direction, "" %>
+				  			<% end %>
+						<% end %>
+					<% else %>
+						<% form_tag '', {:method => :get} do -%>
+				  			<%= select_box_sorter() %>
+				  			<% if params[:status] %>
+				 				<%= hidden_field_tag :status, params[:status]%>
+				  			<% end %>
+						<% end %>
+					<% end -%>
+				
+				</div>
+				<div class="span-1 last">
+					<%= sortable() %>
+				</div>
+			</div>
+			
 			<div id="reload_<%= @status %>">
             <%= render :partial => "invoices", :locals => {:status => @status, :invoices => @invoices} %>		
 	     	</div>

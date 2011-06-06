@@ -17,11 +17,11 @@ module ApplicationHelper
     link_to_function(name, h("add_fields(this,\"#{association}\", \"#{escape_javascript(fields)}\")"))
   end
 
-  def sortable(column, title = nil, state = nil)
-    title ||= column.titleize
-    css_class = (column == params[:sort]) ? "current #{params[:direction]} sortLink" : "sortLink"
-    direction = (column == params[:sort] && params[:direction] == "asc") ? "desc" : "asc"
-    link_to title, params.merge(:sort => column, :direction => direction), {:class => css_class}
+  def sortable(title = nil, state = nil)
+    if params[:sort]
+      direction = params[:direction] == "desc" ? "asc" : "desc"
+      link_to title, params.merge(:direction => direction), {:class => "#{direction} image_link"}
+    end
   end
 
   def link_from_comment(comment, title = nil)
@@ -61,6 +61,15 @@ module ApplicationHelper
     container && opts[:container] ||= container
 
     javascript_tag("$('#{container}').pageless(#{opts.to_json});")
+  end
+
+  def select_box_sorter()
+    if params[:status].nil? || params[:status] == "draft"
+      options = Invoice.sorter_options("open")
+    else
+      options = Invoice.sorter_options(params[:status])
+    end
+    select_tag(:sort, options_for_select(options.sort, params[:sort]), { :onchange => "this.form.submit();"})
   end
 
 end
