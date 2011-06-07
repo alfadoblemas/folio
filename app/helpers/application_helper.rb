@@ -33,11 +33,7 @@ module ApplicationHelper
   end
 
   def invoice_state_link(state, title = nil, status_id = nil)
-    if params[:action] == "search"
-      params[:status] == state ? "#{title} " : (link_to "#{title} ", params.merge(:status => state))
-    else
-      params[:status] == state ? "#{title} " : (link_to "#{title} ", params.merge(:status => state))
-    end
+    params[:status] == state ? "#{title} " : (link_to "#{title} ", params.merge(:status => state))
   end
 
   def textarea_display(text)
