@@ -3,7 +3,7 @@ class DashboardsController < ApplicationController
   end
 
   def show
-    last_year_sales = Invoice.year_sales()
+    last_year_sales = Invoice.year_sales(current_account)
     @months = Invoice.last_12_months.map {|d| "#{d.strftime('%b')}"}
     @invoices = Invoice.first(:conditions => ["account_id = ?", current_account.id])
 
@@ -12,7 +12,7 @@ class DashboardsController < ApplicationController
                                   :conditions => ["account_id = ?", current_account.id])
 
     @year_sales = LazyHighCharts::HighChart.new('chart') do |f|
-      f.series( :data => Invoice.year_sales.map {|s| [s[:month], s[:total]]}, :type => 'column')
+      f.series( :data => last_year_sales.map {|s| [s[:month], s[:total]]}, :type => 'column')
       
       f.options[:chart][:defaultSeriesType] = "column"
       f.options[:legend][:style] = {}

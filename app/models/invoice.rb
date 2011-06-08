@@ -244,7 +244,7 @@ class Invoice < ActiveRecord::Base
     10
   end
   
-  def self.year_sales
+  def self.year_sales(current_account)
     months = last_12_months()
     sales_by_month = Array.new
     months.each do |m|

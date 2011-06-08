@@ -3,7 +3,7 @@
                 <% high_chart ("year_sales", @year_sales)  do |c| %>
 					<%= "options.chart.width = 700" %>
 					<%= "options.chart.height = 300" %>
-					<%= "options.tooltip.formatter = function() {return this.point.name +': '+ this.y}"%>
+					<%= "options.tooltip.formatter = function() {return this.point.name +': '+ $(this)[0].y}"%>
 					<%= "options.legend.enabled = true " %>
 					<%= "options.yAxis.title.text = 'Total en pesos' "%>
 					
