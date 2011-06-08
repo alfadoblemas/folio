@@ -244,6 +244,19 @@ class Invoice < ActiveRecord::Base
     10
   end
   
+  def self.year_sales
+    months = last_12_months()
+    sales_by_month = Array.new
+    months.each do |m|
+      sales_by_month << {
+        :month => m.strftime("%b/%Y"),
+        :total => not_draft_cancel.sum(:total,
+                  :conditions => {:created_at => (m.beginning_of_month..m.end_of_month)})
+                }
+    end
+    sales_by_month
+  end
+  
   # Estado de Facturas
   scope_procedure :due, lambda { status_id_equals(2).due_lt(Date.today) }
   scope_procedure :open, lambda { status_id_equals(2).due_gte(Date.today) }
@@ -253,8 +266,17 @@ class Invoice < ActiveRecord::Base
   scope_procedure :cancel, lambda { status_id_equals(4) }
   scope_procedure :all_invoices, lambda { number_gte(0) }
   scope_procedure :untaxed, lambda { taxed_equals(false) }
+  
+  named_scope :not_draft_cancel, :conditions => ["status_id != 1 and status_id != 4"]
 
   
   private
+  def self.last_12_months
+    months = Array.new
+    (0..11).each do |m|
+      months << Date.today.months_ago(m)
+    end
+    months.reverse
+  end
   
 end
