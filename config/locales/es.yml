@@ -235,6 +235,8 @@
       # You can provide other formats here if you like!
       default: "%d/%m/%Y"
       short: "%d %b %Y"
+      month_year: "%b/%Y"
+      month_abbr: "%b"
       shorter: "%B de %Y"
       long: "%d de %B de %Y"
 

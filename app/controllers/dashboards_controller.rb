@@ -4,7 +4,7 @@ class DashboardsController < ApplicationController
 
   def show
     last_year_sales = Invoice.year_sales(current_account)
-    @months = Invoice.last_12_months.map {|d| "#{d.strftime('%b')}"}
+    @months = Invoice.last_12_months.map {|d| "#{I18n.localize(d, :format => :month_abbr)}"}
     @invoices = Invoice.first(:conditions => ["account_id = ?", current_account.id])
 
     @histories = History.paginate(:page => params[:page], :per_page => 5,
