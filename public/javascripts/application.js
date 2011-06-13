@@ -194,7 +194,7 @@ $().ready(function() {
         }
     });
 
-	$(".notice").fadeOut(8000);
+	$(".notice").fadeOut(9000);
 
 
     formatInvoicePrice();
