@@ -23,6 +23,13 @@ module ApplicationHelper
       link_to title, params.merge(:direction => direction), {:class => "#{direction} image_link"}
     end
   end
+  
+  def sortable2(title = nil, state = nil)
+     if params[:sort]
+       direction = params[:direction] == "desc" ? "asc" : "desc"
+       link_to title, params.merge(:direction => direction, :sort => params[:sort]), {:class => "#{direction} image_link"}, :method => :post
+     end
+   end
 
   def link_from_comment(comment, title = nil)
     invoice = comment.invoice
