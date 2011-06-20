@@ -83,8 +83,7 @@
 				<div class="span-4 select_box">
 					
 					<% if params[:action] == "search" %>
-						<% form_for @search, :url => {:action => "search" } do |f| -%>
-							
+						<% form_tag '', :url => {:action => "search" } do  -%>
 							<%= select_box_sorter() %>
 				  			<% if params[:status] %>
 				 				<%= hidden_field_tag :status, params[:status]%>
