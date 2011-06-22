@@ -1,8 +1,8 @@
 <div id="network_graph" class="span-19 last" >
-        <h3>Ventas últimos 12 meses</h3>
+        <h3>Desempeño últimos 12 meses</h3>
                 <% high_chart ("year_sales", @year_sales)  do |c| %>
 					<%= "options.chart.width = 700" %>
-					<%= "options.chart.height = 300" %>
+					<%= "options.chart.height = 250" %>
 					<%= "options.tooltip.formatter = function() {return this.point.name +': '+ number_to_currency(this.y)}"%>
 					<%= "options.legend.enabled = false " %>
 					<%= "options.yAxis.title.text = 'Total en pesos' "%>

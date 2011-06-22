@@ -8,6 +8,15 @@ class InvoicesController < ApplicationController
       instance_variable_set("@#{date}", (params[:search][date].blank? ? "" : localize_date(params[:search][date])))
       params[:search][date] = instance_variable_get("@#{date}")
     end
+    
+    if params[:search][:taxed] == "1" and params[:search][:untaxed] == "0"
+      params[:search].delete(:untaxed)
+    end
+    
+    if params[:search][:taxed] == params[:search][:untaxed]
+      params[:search].delete(:untaxed)
+      params[:search].delete(:taxed)
+    end
 
     @search = Invoice.search(params[:search])
     @status = params[:status].blank? ? "all_invoices" : params[:status]

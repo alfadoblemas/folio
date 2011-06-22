@@ -31,9 +31,6 @@
 				<h2><%= @invoices.total_entries %> Facturas</h2>
 				<div id="search_tags">
 					emitidas
-					<% if params[:search][:taxed].to_i == 0%>
-						<span class="tag">exentas</span>
-					<% end %>
 					<% unless params[:search][:customer_name_like].blank? %>
 						a <span class="tag"><%= params[:search][:customer_name_like] %></span>
 					<% end %>
@@ -77,11 +74,10 @@
 			 </div>
 			
 			<div class="span-10 last invoice_sort">
-				<div class="span-5 select_title">
-				Ordenar por
+				<div class="span-1 last" style="float: right;">
+					<%= sortable() %>
 				</div>
-				<div class="span-4 select_box">
-					
+				<div class="select_box" style="float: right;">
 					<% if params[:action] == "search" %>
 						<% form_for @search, {:method => :post, :action => "search"} do |f|  -%>
 							<%= select_box_sorter() %>
@@ -104,8 +100,8 @@
 						<% end %>
 					<% end -%>
 				</div>
-				<div class="span-1 last">
-					<%= sortable() %>
+				<div class="select_title" style="float: right;">
+				Ordenar por
 				</div>
 				
 			</div>

@@ -9,7 +9,8 @@
   	  <tr>
 		<td></td>
 		<td>
-			<%= f.check_box(:taxed, :checked => true)%><%= f.label "Afecta" %>
+			<%= f.check_box(:taxed, :checked => false)%><%= f.label "Afecta" %>
+			<%= f.check_box(:untaxed, :checked => false)%><%= f.label "Excenta" %>
 		</td>
 	  </tr>
 	  <tr>
