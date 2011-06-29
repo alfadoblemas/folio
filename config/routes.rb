@@ -13,6 +13,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :dashboard, :only => [:index, :show]
   map.resources :password_resets, :conditions => {:subdomain => /.+/}
+  map.resources :expenses
   map.resources :customers, :has_many => [:contacts, :invoices]
   map.resources :contacts, :except => [:index]
   map.resources :invoices, :has_many => [:histories]
