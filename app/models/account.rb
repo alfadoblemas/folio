@@ -12,6 +12,7 @@ class Account < ActiveRecord::Base
   has_many :customers
   has_many :contacts
   has_many :histories
+  has_many :expenses
   alias_attribute :user_id, :admin_id
 
   # Validations
@@ -23,7 +24,7 @@ class Account < ActiveRecord::Base
   has_attached_file :avatar,
     :url => "/images/uploads/accounts/avatars/:id/:style/:basename.:extension",
     :path => ":rails_root/public/images/uploads/accounts/avatars/:id/:style/:basename.:extension",
-    :styles => {:medium => "100x100>", :thumb => "48x48"}
+    :styles => {:normal => "180x", :medium => "100x100>", :thumb => "48x48"}
 
   def deliver_welcome_email!(password = nil)
     user = User.find(self.admin_id)
@@ -36,6 +37,10 @@ class Account < ActiveRecord::Base
   
   def have_invoices?
     self.invoices.size > 0 ? true : false
+  end
+  
+  def have_expenses?
+    self.expenses.size > 0 ? true : false
   end
   
   def have_customers?

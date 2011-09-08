@@ -6,52 +6,16 @@
 	Con Folio es más fácil facturar a sus clientes. Si comenzó su proyecto con una cotización, puede fácilmente convertirla en factura, y también puede crearlas desde cero. Luego puede agregar notas, comentarios y recibir pagos, todo desde un sólo lugar!
 </p>
 
-	  <div class="new new_invoice_button">
-	    <%= link_to "Nueva Factura", new_invoice_path %>	
+	  <div class="big_button empty_records">
+	    <%= link_to "Nueva Factura", new_invoice_path, :class => "submit_action" %>	
 	  </div>
 	</div>
   <% else %>
 
 <div class="last">
-	<div class="last right" style="margin-top: -10px;">		
-		<div>
-			<span id="show_filter" class="searchLink"> <%= link_to_function "Búsqueda Avanzada", "display_invoice_filter()" %>  </span>
-		</div>
-  	</div>
-	<% if params[:action] == "search" %>
-		<% if @invoices.size < 1 %>
-		  <h2> Sin Resultados </h2>
-		  <stron><%= link_to "Volver...", invoices_path() %></strong>
-		<% else %>
-		 <% if !params[:search][:number_equals].blank? %>
-			<h2>Resultados</h2>
-			<%= link_to "Volver...", invoices_path() %> 
-		<% else %>
-			<div class="span-19">
-				<h2><%= @invoices.total_entries %> Facturas</h2>
-				<div id="search_tags">
-					emitidas
-					<% unless params[:search][:customer_name_like].blank? %>
-						a <span class="tag"><%= params[:search][:customer_name_like] %></span>
-					<% end %>
-					<% unless @date_gte.blank? %>
-						desde el <span class="tag"><%= l @date_gte.to_date, :format => :short %></span>
-					<%end%>
-					<% unless @date_lte.blank? %>
-					  hasta el <span class="tag"><%= l @date_lte.to_date, :format => :short %></span>
-					<% end %>
-					
-					<%= link_to "... Volver", invoices_path() %>
-				</div>
-			</div>
-		<% end %>
-		
-		<% end %>
-	<% else%>
-		<div class="span-10">
-    	<h2>Todas las Facturas</h2>
-  </div>
-  <% end %>
+
+	<%= render :partial => "invoice_index_header", 
+		:locals => {:invoices => @invoices, :date_gte => @date_gte, :date_lte => @date_lte} %>
 
 </div>
 <div id="invoice_filter" class="span-19 last" style="display: none;">
@@ -59,54 +23,11 @@
 </div>
 		
         <div class="span-19 last prepend-top">
-			<div class="invoice_status span-9">
-					<%= invoice_state_link  nil, "Todas" %> |
-					<%= invoice_state_link "due", "Vencidas", 5 %> |
-					<%= invoice_state_link "draft", "Borrador ", 1 %> |
-					<%= invoice_state_link "open", "Activas ", 2 %> |
-					<% if params[:action] == "search" %>
-						<%= invoice_state_link "close", "Pagadas ", 3 %> |
-						<%= invoice_state_link "cancel", "Anuladas", 4 %>
-					<% else %>
-						<%= invoice_state_link "close_index", "Pagadas ", 3 %>
-					<% end %>
-					<br/>
-			 </div>
+			<%= render :partial => "status_menu" %>
 			
-			<div class="span-10 last invoice_sort">
-				<div class="span-1 last" style="float: right;">
-					<%= sortable() %>
-				</div>
-				<div class="select_box" style="float: right;">
-					<% if params[:action] == "search" %>
-						<% form_for @search, {:method => :post, :action => "search"} do |f|  -%>
-							<%= select_box_sorter() %>
-							
-							<% params[:search].each do |k,v| %>
-								<%= f.hidden_field k.to_sym, :value => v %>
-							<% end %>
-							
-				  			<% if params[:status] %>
-				 				<%= hidden_field_tag :status, params[:status]%>
-				  			<% end %>
-							
-						<% end %>
-					<% else %>
-						<% form_tag '', {:method => :get} do -%>
-				  			<%= select_box_sorter() %>
-				  			<% if params[:status] %>
-				 				<%= hidden_field_tag :status, params[:status]%>
-				  			<% end %>
-						<% end %>
-					<% end -%>
-				</div>
-				<div class="select_title" style="float: right;">
-				Ordenar por
-				</div>
-				
-			</div>
+			<%= render :partial => "shared/sort_combo_box" %>
 			
-			<div id="reload_<%= @status %>">
+			<div id="reload_<%= @status %>" class="last">
             <%= render :partial => "invoices", :locals => {:status => @status, :invoices => @invoices} %>		
 	     	</div>
 

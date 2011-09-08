@@ -1,0 +1,10 @@
+<div class="attachment_select">
+	Selecciona el archivo que deseas adjuntar:<br/>
+	<%= f.file_field :attachment, :onchange => "display_attachment_details_div(this.value);" %><br/>
+</div>
+
+<div class="attachment_details" style="display: none;">
+	<p style="margin-bottom: 5px" >Categoría: <%= f.select :attachment_category, options_for_select(Expense::RECEIPT_CATEGORIES)%></p>
+	Descripción opcional:<br/>
+	<%= f.text_field :attachment_subject, :size => 40 %>
+</div>

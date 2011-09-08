@@ -1,0 +1,32 @@
+<% if defined?(continuation) %>
+  <hr/>
+<% end %>
+<table class="expense">
+<tr class="fields" onclick="location.href='/expenses/<%= expense.id %>/edit'" >
+	
+	<td style="width:15%;">
+		<div class="expense_label <%= expense.payment_method_class %>">
+			<%= expense.payment_method_name if expense.payment_method %>
+		</div>
+		<% unless expense.payment_reference.blank? %>
+		  <span class="draft_result"><%= "\# #{expense.payment_reference}" %></span><br/>
+		<% end %>
+	</td>
+	<td style="width: 70%;">
+		<% if expense.subject %>
+		  <h4><%= link_to expense.subject, edit_expense_path(expense) %></h4><br/>
+		<% end %>
+		<strong><%= expense.vendor_name %></strong><br/><br/>
+		 <span class="draft_result"><%= l expense.due_date, :format => :short %></span>
+		<% if expense.has_receipt? %>
+			|
+			<%= link_to "Comprobante" %>
+		<% end %>
+		
+	</td>
+	<td class="item-total">
+		<%= number_to_currency(expense.total, :unit => "$", :delimiter => ".", :precision => 0) %>
+	</td>
+
+</tr>
+</table>

@@ -1,2 +1,30 @@
-<h1>Expenses#show</h1>
-<p>Find me in app/views/expenses/show.html.erb</p>
+<h2>Gasto #<%= @expense.id %> - <%= @expense.category_name.singularize %></h2>
+<h3 class="invoice_title"><%= @expense.subject %></h3>
+<table>
+	<tr>
+		<td>Páguese a</td>
+		<td><%= link_to "#{@expense.vendor_name}", vendor_path(@expense.vendor_id) %></td>
+	</tr>
+	<tr>
+		<td>Ingresado</td>
+		<td><%= l @expense.created_at.to_date, :format => :short %></td>
+	</tr>
+	<tr>
+		<% if @expense.due? %>
+			<td>Atrasado</td>
+			<td><%= @expense.due_days %> días</td>
+		<% elsif @expense.closed? %>
+			<td>Pagado</td>
+			<td><%= l @expense.close_date, :format => :short %></td>
+		<% else %>
+			<td>Pagar</td>
+			<td><%= l @expense.due_date, :format => :short %></td>
+		<% end %>
+	</tr>
+</table>
+
+<% unless @expense.comment.blank? %>
+	<h3>Comentarios</h3>
+	<p><%= @expense.comment %></p>
+<% end %>
+

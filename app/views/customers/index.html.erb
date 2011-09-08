@@ -8,14 +8,14 @@
 		  No podrá facturar o enviar cotizaciones sino tiene clientes, así que vamos a crear algunos ya!
 		</p>
 
-	  <div class="new new_customer_button">
-	    <%= link_to "Nuevo Cliente", new_customer_path %>	
+	  <div class="big_button empty_records">
+	    <%= link_to "Nuevo Cliente", new_customer_path, :class => "submit_action" %>	
 	  </div>
 	</div>
 
 <% else %>
 
-<h2>Clientes</h2>
+<h2>Empresas</h2>
 
 <div class="last" style="text-align: right; margin-top: -20px;">
   <ul class='customernav'>

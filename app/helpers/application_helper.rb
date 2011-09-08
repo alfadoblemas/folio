@@ -23,13 +23,6 @@ module ApplicationHelper
       link_to title, params.merge(:direction => direction), {:class => "#{direction} image_link"}
     end
   end
-  
-  def sortable2(title = nil, state = nil)
-     if params[:sort]
-       direction = params[:direction] == "desc" ? "asc" : "desc"
-       link_to title, params.merge(:direction => direction, :sort => params[:sort]), {:class => "#{direction} image_link"}, :method => :post
-     end
-   end
 
   def link_from_comment(comment, title = nil)
     invoice = comment.invoice
@@ -73,6 +66,18 @@ module ApplicationHelper
       options = Invoice.sorter_options(params[:status])
     end
     select_tag(:sort, options_for_select(options.sort, params[:sort]), { :onchange => "this.form.submit();"})
+  end
+  
+  def sidebar_big_button(action, object, title)
+    if action == "submit"
+      path = "new_#{object}_path"
+    else
+      path = "#{object.pluralize}_path"
+    end
+    url = "location.href='"+eval(path)+"'"
+    content_tag :div, :class => "big_button", :onclick => url do
+      link_to title, eval(path), :class => "#{action}_action"
+    end
   end
 
 end

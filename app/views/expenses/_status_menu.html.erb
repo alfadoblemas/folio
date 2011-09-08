@@ -1,0 +1,11 @@
+<div class="invoice_status span-9">
+	<%= invoice_state_link  nil, "Todos" %> |
+		<%= invoice_state_link "due", "Vencidos ", 5 %> |
+		<%= invoice_state_link "open", "Activos ", 2 %> |
+		<% if params[:action] == "search" %>
+			<%= invoice_state_link "close", "Pagados ", 3 %> |
+		<% else %>
+			<%= invoice_state_link "close_index", "Pagados ", 3 %>
+		<% end %>
+	<br/>	
+</div>

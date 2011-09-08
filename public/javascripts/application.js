@@ -164,7 +164,7 @@ $().ready(function() {
 				});
 			}
 	
-    $("input#customer_name_invoice, input#search_customer_name_like").autocomplete("/customers/search.json",{
+    $("input#customer_name_invoice, input#search_customer_name_like, input#vendor_name_expense").autocomplete("/customers/search.json",{
         dataType: "json",
         parse: function(data) {
             return $.map(data, function(row){
@@ -185,6 +185,11 @@ $().ready(function() {
     $("input#customer_name_invoice, input#search_customer_name_like").result(function(event, data, formatted) {
         $("#"+this.id).val(data.name);
         $("input#invoice_customer_id").val(data.id);
+    });
+
+	$("input#vendor_name_expense, input#search_vendor_name_like").result(function(event, data, formatted) {
+        $("#"+this.id).val(data.name);
+        $("input#expense_vendor_id").val(data.id);
     });
 
     $('input[id$="_rut"]').Rut({
@@ -226,4 +231,11 @@ function number_with_delimiter(number, delimiter, separator) {
   } catch(e) {
     return number
   }
+}
+
+function display_attachment_details_div(title) {
+	text = ": "+title
+	$(".attachment_select").toggle();
+	$("#attachment_title").text(text);
+	$(".attachment_details").toggle();
 }

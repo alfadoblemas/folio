@@ -1,0 +1,32 @@
+<div class="span-10 last invoice_sort">
+	<div class="span-1 last" style="float: right;">
+		<%= sortable() %>
+	</div>
+	<div class="select_box" style="float: right;">
+		<% if params[:action] == "search" %>
+			<% form_for @search, {:method => :post, :action => "search"} do |f|  -%>
+				<%= select_box_sorter() %>
+				
+				<% params[:search].each do |k,v| %>
+					<%= f.hidden_field k.to_sym, :value => v %>
+				<% end %>
+				
+	  			<% if params[:status] %>
+	 				<%= hidden_field_tag :status, params[:status]%>
+	  			<% end %>
+				
+			<% end %>
+		<% else %>
+			<% form_tag '', {:method => :get} do -%>
+	  			<%= select_box_sorter() %>
+	  			<% if params[:status] %>
+	 				<%= hidden_field_tag :status, params[:status]%>
+	  			<% end %>
+			<% end %>
+		<% end -%>
+	</div>
+	<div class="select_title" style="float: right;">
+	Ordenar por
+	</div>
+	
+</div>

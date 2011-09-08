@@ -4,11 +4,12 @@
 class ApplicationController < ActionController::Base
   before_filter :require_user
 
-  
-  
+
+
   include App::Controller::Accounts
   include App::Controller::Users
-  
+  include FolioExtraHelpers
+
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
@@ -21,7 +22,6 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::RoutingError,       :with => :render_not_found
   rescue_from ActionController::UnknownController,  :with => :render_not_found
   rescue_from ActionController::UnknownAction,      :with => :render_not_found
-
 
 
   private

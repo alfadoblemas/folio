@@ -8,11 +8,11 @@ class InvoicesController < ApplicationController
       instance_variable_set("@#{date}", (params[:search][date].blank? ? "" : localize_date(params[:search][date])))
       params[:search][date] = instance_variable_get("@#{date}")
     end
-    
+
     if params[:search][:taxed] == "1" and params[:search][:untaxed] == "0"
       params[:search].delete(:untaxed)
     end
-    
+
     if params[:search][:taxed] == params[:search][:untaxed]
       params[:search].delete(:untaxed)
       params[:search].delete(:taxed)
@@ -24,7 +24,7 @@ class InvoicesController < ApplicationController
     @invoices = @search.find_by_status(@status, params[:page], order, current_account.id ,params[:per_page], false)
 
     if request.xhr?
-      xhr_endless_page_response
+      xhr_endless_page_response({:partial => "invoice", :collection => @invoices})
     else
       render :template => "invoices/index"
     end
@@ -74,7 +74,7 @@ class InvoicesController < ApplicationController
     @invoices = Invoice.find_by_status(@status, params[:page], order ,current_account.id)
 
     if request.xhr?
-      xhr_endless_page_response
+      xhr_endless_page_response({:partial => "invoice", :collection => @invoices})
     end
 
   end
@@ -168,11 +168,6 @@ class InvoicesController < ApplicationController
 
   protected
 
-    def xhr_endless_page_response
-      sleep(1)
-      render :partial => "invoice", :collection => @invoices, :locals => {:continuation => true}
-    end
-
     def find_invoice
       @invoice = Invoice.find(params[:id], :conditions => "account_id = #{current_account.id}",
                               :include => [:histories] )
@@ -189,10 +184,6 @@ class InvoicesController < ApplicationController
       unformat_prices(params)
     end
 
-    def currency_to_number(price)
-      price.scan(/\d+/).join.to_i
-    end
-
     def unformat_prices(params)
       %w(tax total net).each do |number|
         params[:invoice][number.to_sym] = currency_to_number(params[:invoice][number.to_sym])
@@ -204,12 +195,6 @@ class InvoicesController < ApplicationController
         end
       end
       params
-    end
-
-    def localize_date(date)
-      tmp = date.split(/\/|-/)
-      date = "#{tmp[2]}-#{tmp[1]}-#{tmp[0]}"
-      date
     end
 
 end

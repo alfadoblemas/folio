@@ -1,0 +1,39 @@
+<div class="last right" style="margin-top: -10px;">		
+	<div>
+		<span id="show_filter" class="searchLink"> <%= link_to_function "Búsqueda Avanzada", "display_invoice_filter()" %>  </span>
+	</div>
+</div>
+<% if params[:action] == "search" %>
+	<% if invoices.size < 1 %>
+	  <h2> Sin Resultados </h2>
+	  <stron><%= link_to "Volver...", invoices_path() %></strong>
+	<% else %>
+	 <% if !params[:search][:number_equals].blank? %>
+		<h2>Resultados</h2>
+		<%= link_to "Volver...", invoices_path() %> 
+	<% else %>
+		<div class="span-19">
+			<h2><%= invoices.total_entries %> Facturas</h2>
+			<div id="search_tags">
+				emitidas
+				<% unless params[:search][:customer_name_like].blank? %>
+					a <span class="tag"><%= params[:search][:customer_name_like] %></span>
+				<% end %>
+				<% unless date_gte.blank? %>
+					desde el <span class="tag"><%= l date_gte.to_date, :format => :short %></span>
+				<%end%>
+				<% unless date_lte.blank? %>
+				  hasta el <span class="tag"><%= l date_lte.to_date, :format => :short %></span>
+				<% end %>
+				
+				<%= link_to "... Volver", invoices_path() %>
+			</div>
+		</div>
+	<% end %>
+	
+	<% end %>
+<% else%>
+	<div class="span-10">
+	<h2>Todas las Facturas</h2>
+</div>
+<% end %>

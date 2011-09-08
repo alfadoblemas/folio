@@ -1,0 +1,58 @@
+<% form_for expense, :html => { :multipart => true } do |f| -%>
+  <%= f.error_messages :class => "error" %>
+  <div id="invoiceFields">
+   <fieldset>
+	 <div class="span-18 last">
+	   <table>
+	       <tr>
+	         <td><span><%= f.label "Pagado a" %></span></td>
+	         <td>
+	           <%= text_field_tag "", vendor.name, :autocomplete => "off", 
+					:id => "vendor_name_expense", :class => "input_large" %>
+			   		<% unless vendor.id %>
+			         - o - <%= link_to "Agregar empresa", :controller => "customers", 
+								:action => "new", :from_invoice => 1, :method => "post" %>
+			         <% end %>
+	         </td>
+	       </tr>
+		   <tr>
+			<td><span><%= f.label "Asunto"%></span></td>
+			<td><%= f.text_field :subject, :class => "input_large" %></td>
+		   </tr>
+		   <tr>
+			<td><span><%= f.label "Fecha"%></span></td>
+			<td><%= f.text_field :due_date, :class => "datepicker input_large" %></td>
+		   </tr>
+		   <tr>
+			<td><%= f.label "Comprobante" %></td>
+			<td><%= f.file_field :attachment %></td>
+		   </tr>
+		   <tr>
+			<td><span><%= f.label "Total"%></span></td>
+			<td><%= f.text_field :total, :class => "input_large", 
+					:onchange => "$(this).formatCurrency({region: 'es-CL', roundToDecimalPlace: 0});", :value => number_to_currency(expense.total) %></td>
+		   </tr>
+		   <tr>
+			<td><%= f.label "Forma de Pago" %></td>
+			<td><%= f.select :payment_method,
+			 options_for_select(Expense.payment_methods_for_select, expense.payment_method),
+			{},:onchange => "show_payment_reference_input();" %>
+			</td>
+		   </tr>
+		</table>
+	   </div>
+	 </fieldset>
+	</div>
+	<br/>
+	<br/>
+	<div class="last">
+	    <span class="title_subsection">Comentarios</span>
+	    <hr/>
+	  <%= f.text_area :comment, :rows => 5, :cols => 90 %>
+
+	    <br/>
+	</div>
+	<br/>
+	<%= f.hidden_field :vendor_id %>
+	<%= f.submit "Guardar", :class => "button" %> | <%= link_to "Cancelar", expenses_path %>
+<% end -%>

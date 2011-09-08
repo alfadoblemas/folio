@@ -5,7 +5,7 @@ class UserMailerTest < ActionMailer::TestCase
   
   test "welcome_email" do
     
-    account = accounts(:accounts_4)
+    account = accounts(:gmail)
     user = users(:users_4)
 
     email = UserMailer.deliver_welcome_email(user, account)

@@ -1,6 +1,4 @@
 class Invoice < ActiveRecord::Base
-
-
   # Associations
   belongs_to :customer
   belongs_to :contact
@@ -25,6 +23,10 @@ class Invoice < ActiveRecord::Base
 
   delegate :name, :state, :to => :status, :prefix => true
   delegate :name, :to => :customer, :prefix => true
+  
+  # El nombre oficial es due_date, esta clase fue escrita antes
+  # que se decidiera el nombre oficial.
+  alias_attribute :due_date, :due
 
 
   def active!(user)

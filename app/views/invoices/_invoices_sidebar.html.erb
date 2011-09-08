@@ -2,15 +2,11 @@
 <% search = @search %>
 
 <% if params[:action].eql?("active") %>
-  <div class="cancel_button span-4 last">
-    <%= link_to "Cancelar", invoices_path %>
-  </div>
+  <%= sidebar_big_button("cancel", "invoice", "Cancelar") %>
   <hr/>
   <!-- Invoice#NEW -->
 <% elsif params[:action].eql?("new") %>
-  <div class="cancel_button span-4 last">
-    <%= link_to "Cancelar", invoices_path %>
-  </div>
+  <%= sidebar_big_button("cancel", "invoice", "Cancelar") %>
   <hr/>
   <div class="toolbox secondary">
 
@@ -19,10 +15,8 @@
   <!-- Invoice#SHOW -->
 <% elsif params[:action].eql?("show") %>
   <div class="span-4 last">
-    <div class="new_invoice_button">
-      <%= link_to "Nueva Factura", new_invoice_path %>
-    </div>
-
+	<%= sidebar_big_button("submit", "invoice", "Nueva Factura") %>
+	<br/>
 
     <!--- TODO: Corregir!!!! -->
      <% if invoice.status_id == 5 %>
@@ -62,19 +56,17 @@
 
       <!-- Invoice#EDIT -->
     <% elsif params[:action].eql?("edit") || (invoice && invoice.errors) %>
-      <div class="cancel_button span-4 last">
+      <div class="big_button">
 		<% if invoice.id %>
-        	<%= link_to "Cancelar", invoice_path(invoice) %>
+        	<%= link_to "Cancelar", invoice_path(invoice), :class => "cancel_action" %>
 		<% else %>
-			<%= link_to "Cancelar", invoices_path() %>
+			<%= link_to "Cancelar", invoices_path(), :class => "cancel_action" %>
 		<% end %>
       </div>
 
       <!-- Invoice#INDEX -->
     <% else %>
-      <div class="new_invoice_button">
-        <%= link_to "Nueva Factura", new_invoice_path %>
-      </div>
+	  <%= sidebar_big_button("submit", "invoice", "Nueva Factura") %>
 	<br/>
 	<div>
 		<h4>Totales</h4>
@@ -93,11 +85,7 @@
           <tr  class="close" onclick="location.href=location.href+'?status=close_index'">-->
 	      <tr  class="close">	
             <td><span class="close_title">
-		  <% if params[:action] == "index" %>
 				Pagadas
-		   <% else %>
-				Pagadas
-		   <% end %>
 				</span></td><td style="text-align: right"><%= number_to_currency(Invoice.close_index_total(current_account.id, params[:search])) %></td>
 			</tr>
         </table>

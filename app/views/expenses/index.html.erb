@@ -1,2 +1,21 @@
-<h1>Expenses#index</h1>
-<p>Find me in app/views/expenses/index.html.erb</p>
+<% unless current_account.have_expenses? %>
+    <div class="empty last">
+	
+	  	<h3>Aún no ha ingresado gastos.</h3>
+	<p>
+	Con Folio es más fácil tener control sobre sus gastos. Presentamos sus gastos con la información necesario y hacemos que ingresarlos sea sencillo. Los gastos como Electricidad o Hosting, pueden ser configurardos para que se agreguen de forma automática cada vez que corresponda.
+</p>
+
+	  <div class="big_button empty_records">
+	    <%= link_to "Nuevo Gasto", new_expense_path, :class => "submit_action" %>	
+	  </div>
+	</div>
+  <% else %>
+
+	<h2>Todos los Gastos</h2>
+	<%= render :partial => "status_menu" %>
+	<%= render :partial => "shared/sort_combo_box" %>
+	<%= render :partial => "expenses", :locals => {:expenses => @expenses} %>
+
+
+<% end %>

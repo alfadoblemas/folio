@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
   has_attached_file :avatar,
     :url => "/images/uploads/users/avatars/:id/:style/:basename.:extension",
     :path => ":rails_root/public/images/uploads/users/avatars/:id/:style/:basename.:extension",
-    :styles => {:medium => "100x100>", :thumb => "48x48"}
+    :styles => {:medium => "100x100>", :thumb => "48x48"},
+    :default_url => "/images/missing.png"
 
   validates_presence_of :password, :on => :create
 

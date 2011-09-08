@@ -11,3 +11,5 @@ db/*.sqlite3
 rails_best_practices_output.html
 public/images/uploads
 db/schema.rb
+assets/*
+public/images/uploads/*

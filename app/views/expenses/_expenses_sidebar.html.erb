@@ -1,1 +1,20 @@
-sidebar
+<% if params[:action] == "index" %>
+	<%= sidebar_big_button("submit", "expense", "Nuevo Gasto") %>
+
+	
+	<h4 class="sidebar_title">Filtrar</h4>
+	<hr/>
+	<% form_tag  "", {:method => :get} do %>
+	  	<%= select_tag :payment_method, 
+			options_for_select([["",nil]]+Expense.payment_methods_for_select, params[:payment_method].to_i ), 
+			:onchange => "this.form.submit();"
+		%> 
+		<br/>
+		<strong><%= link_to "Cancelar", expenses_path %></strong>
+	<% end -%>
+	
+	
+<% elsif params[:action] == "new" %>
+	<%= sidebar_big_button("cancel", "expense", "Cancelar") %>
+
+<% end %>

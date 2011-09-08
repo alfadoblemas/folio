@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   #map.root :controller => "invoices" 
+
   map.enable_user 'users/enable/:id', :controller => 'users', :action => 'enable'
   map.disable_user 'users/disable/:id', :controller => 'users', :action => 'disable'
   map.customer_search 'customers/search.:format', :controller => 'customers', :action => 'search'
@@ -13,8 +14,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :dashboard, :only => [:index, :show]
   map.resources :password_resets, :conditions => {:subdomain => /.+/}
-  map.resources :expenses
+  map.resources :expenses, :member => {:attachment => :get}
   map.resources :customers, :has_many => [:contacts, :invoices]
+  map.resources :vendors, :controller => 'customers'
   map.resources :contacts, :except => [:index]
   map.resources :invoices, :has_many => [:histories]
   map.resources :accounts, :has_many => [:users, :invoices, :customers]

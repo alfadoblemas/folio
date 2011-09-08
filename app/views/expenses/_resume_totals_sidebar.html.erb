@@ -1,0 +1,33 @@
+<div>
+	<h4>Totales</h4>
+	<br/>
+	<hr/>
+	<table class="invoice_resume">
+		<tr class="due">
+			<td>
+				<span class="due_title">Vencidos</span>
+			</td>
+			<td style="text-align: right">
+				<%= number_to_currency(Expense.due_total(current_account.id, params[:search])) %>
+			</td>
+		</tr>
+		<tr class="open">
+			<td>
+				<span class="open_title">Activos</span>
+			</td>
+			<td style="text-align: right">
+				<%= number_to_currency(Expense.open_total(current_account.id, params[:search])) %>
+			</td>
+		</tr>
+	  	<!-- Todo:: Solo por documentacion
+     	<tr  class="close" onclick="location.href=location.href+'?status=close_index'">-->
+      	<tr class="close">
+			<td>
+				<span class="close_title">Pagados</span>
+			</td>
+			<td style="text-align: right">
+				<%= number_to_currency(Expense.close_total(current_account.id, params[:search])) %>
+			</td>
+		</tr>
+   </table>
+</div>

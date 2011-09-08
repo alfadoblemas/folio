@@ -1,0 +1,20 @@
+<br/>
+<table class="expenses_list draft">
+	<tr>
+		<th class="unitHeader" style="width:15%;">Forma</th>
+    	<th class="descriptionHeader">Detalles</th>
+    	<th class="totalHeader" style="width:30%;">Total</th>
+	</tr>
+</table>
+
+<div id="expenses_list">
+	<%= render :partial => "expense", :collection => expenses, :spacer_template => 
+		"invoices/invoice_divider" %>
+</div>
+
+<%= will_paginate(expenses)%>
+<% if params[:search] %>
+ <%= pageless(expenses.total_pages, expenses_path, '#expenses_list')%>
+<% else %>
+ <%= pageless(expenses.total_pages, expenses_path, '#expenses_list')%>
+<% end %>
