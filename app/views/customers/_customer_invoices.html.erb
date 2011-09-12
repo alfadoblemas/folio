@@ -1,0 +1,19 @@
+<br/>
+<table class="invoice_list draft">
+<tr>
+	<th class="unitHeader" style="width:15%;">Número</th>
+    <th class="descriptionHeader">Detalles</th>
+    <th class="totalHeader" style="width:30%;">Total</th>
+</tr>
+</table>
+
+<div id="invoice_list">
+<%= render :partial => "invoices/invoice", :collection => invoices, :spacer_template => "invoices/invoice_divider" %>
+</div>
+
+<%= will_paginate(invoices)%>
+<% if params[:search] %>
+ <%= pageless(invoices.total_pages, search_invoice_path, '#invoice_list')%>
+<% else %>
+ <%= pageless(invoices.total_pages, customer_invoices_path, '#invoice_list')%>
+<% end %>

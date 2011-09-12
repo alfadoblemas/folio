@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   #map.root :controller => "invoices" 
+  map.customer_invoices 'customers/:id/invoices', :controller => 'customers', :action => 'invoices'
   map.enable_user 'users/enable/:id', :controller => 'users', :action => 'enable'
   map.disable_user 'users/disable/:id', :controller => 'users', :action => 'disable'
   map.customer_search 'customers/search.:format', :controller => 'customers', :action => 'search'

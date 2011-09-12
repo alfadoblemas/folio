@@ -22,6 +22,11 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::UnknownController,  :with => :render_not_found
   rescue_from ActionController::UnknownAction,      :with => :render_not_found
 
+  
+  def xhr_endless_page_response(partial, collection)
+    sleep(1)
+    render :partial => partial, :collection => collection, :locals => {:continuation => true}
+  end
 
 
   private

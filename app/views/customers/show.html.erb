@@ -19,8 +19,7 @@
 				<br/>
 		 </div>
 	<div id="reload_draft">
-	 <% params[:search] = {:customer_id => @customer.id }%>
-     <%= render :partial => "invoices/invoices", :locals => {:status => "draft", :invoices => @invoices, :params => params } %>
+     <%= render :partial => "customer_invoices", :locals => {:status => "draft", :invoices => @invoices} %>
 	</div>
   <% end %>
 </div>
