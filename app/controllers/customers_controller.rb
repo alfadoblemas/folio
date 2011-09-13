@@ -13,7 +13,20 @@ class CustomersController < ApplicationController
       format.xml { render :xml => @customers}
       format.json { render :json => @customers}
     end
-
+  end
+  
+  def invoices
+    customer_invoices = Invoice.for_customer(params[:id])
+    @status = params[:status].blank? ? "all" : params[:status]
+    order = "#{params[:sort]} #{params[:direction]}"
+    @invoices = customer_invoices.find_by_status(@status, params[:page], order, current_account.id)
+    
+    if request.xhr?
+      xhr_endless_page_response("invoices/invoice", @invoices)
+    else
+      @invoices
+    end
+    
   end
 
   def index
@@ -27,9 +40,7 @@ class CustomersController < ApplicationController
 
   def show
     @customer = Customer.find_show(current_account.id, params[:id])
-    @status = params[:status].blank? ? "all" : params[:status]
-    order = "#{params[:sort]} #{params[:direction]}"
-    @invoices = @customer.invoices.find_by_status(@status, params[:page], order, current_account.id)
+    @invoices = self.invoices
   end
 
 

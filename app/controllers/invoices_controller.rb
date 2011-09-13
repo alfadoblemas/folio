@@ -24,7 +24,7 @@ class InvoicesController < ApplicationController
     @invoices = @search.find_by_status(@status, params[:page], order, current_account.id ,params[:per_page], false)
 
     if request.xhr?
-      xhr_endless_page_response
+      xhr_endless_page_response("invoice", @invoices)
     else
       render :template => "invoices/index"
     end
@@ -74,7 +74,7 @@ class InvoicesController < ApplicationController
     @invoices = Invoice.find_by_status(@status, params[:page], order ,current_account.id)
 
     if request.xhr?
-      xhr_endless_page_response
+      xhr_endless_page_response("invoice", @invoices)
     end
 
   end
@@ -167,11 +167,6 @@ class InvoicesController < ApplicationController
   end
 
   protected
-
-    def xhr_endless_page_response
-      sleep(1)
-      render :partial => "invoice", :collection => @invoices, :locals => {:continuation => true}
-    end
 
     def find_invoice
       @invoice = Invoice.find(params[:id], :conditions => "account_id = #{current_account.id}",

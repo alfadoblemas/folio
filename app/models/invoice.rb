@@ -268,6 +268,7 @@ class Invoice < ActiveRecord::Base
   scope_procedure :untaxed, lambda { taxed_equals(false) }
   
   named_scope :not_draft_cancel, :conditions => ["status_id != 1 and status_id != 4"]
+  named_scope :for_customer, lambda {|customer_id| {:conditions => ["customer_id = ?", customer_id]} }
 
   
   private
