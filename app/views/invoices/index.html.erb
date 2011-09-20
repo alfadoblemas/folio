@@ -50,6 +50,12 @@
 	<% else%>
 		<div class="span-10">
     	<h2>Todas las Facturas</h2>
+		<% unless params[:tagged_with].blank? %>
+			<div style="margin-top: -20px; margin-left: 0px">
+				<strong>Con los siguientes Tags:</strong> <%= params[:tagged_with].to_s %> 
+				| <%= link_to "Cancelar", invoices_path %>
+			</div>
+		<% end %>
   </div>
   <% end %>
 

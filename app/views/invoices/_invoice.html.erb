@@ -21,17 +21,22 @@
 		<% if invoice.subject %>
 		  <%= invoice.subject %><br/>
 		<% end %>
-		<br/>
-		<span class="draft_result">Fecha: </span><%= l invoice.date, :format => :short %>
-		&nbsp;&nbsp;&nbsp;
-		<% if invoice.status_id == 5 %>
-		 <span class="due_result">Atrasada: </span><%= invoice.due_days.to_s+" días" %>
-		<% elsif invoice.status_id == 3 %>
-		  <span class="draft_result">Pagada: </span><%= l invoice.close_date, :format => :short %>
-		<% else %>
-		  <span class="draft_result">Vence: </span><%= l invoice.due, :format => :short %>
-		<% end %>
-		<br/>
+		<div style="margin-top: 10px">
+			<% if invoice.has_tags? %>
+				<span class="tags"><strong>Tags: </strong><%= invoice.print_tag_list %></span>
+				<br/>
+			<% end %>
+			<span class="draft_result">Fecha: </span><%= l invoice.date, :format => :short %>
+			&nbsp;&nbsp;&nbsp;
+			<% if invoice.status_id == 5 %>
+			 <span class="due_result">Atrasada: </span><%= invoice.due_days.to_s+" días" %>
+			<% elsif invoice.status_id == 3 %>
+			  <span class="draft_result">Pagada: </span><%= l invoice.close_date, :format => :short %>
+			<% else %>
+			  <span class="draft_result">Vence: </span><%= l invoice.due, :format => :short %>
+			<% end %>
+			<br/>
+		</div>
 	</td>
 	<td class="item-total">
 		<%= number_to_currency(invoice.total, :unit => "$", :delimiter => ".", :precision => 0) %>

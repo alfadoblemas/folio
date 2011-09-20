@@ -29,6 +29,7 @@ Rails::Initializer.run do |config|
   config.gem "paperclip"
   config.gem "delayed_job", :version => '2.0'
   config.gem "lazy_high_charts"
+  config.gem "acts-as-taggable-on", :source => "http://gemcutter.org", :version => '2.1.0' 
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named

@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   #map.root :controller => "invoices" 
+  map.account_invoice_tags 'accounts/:id/invoice_tags', :controller => 'accounts', :action => 'invoice_tags'
   map.customer_invoices 'customers/:id/invoices', :controller => 'customers', :action => 'invoices'
   map.enable_user 'users/enable/:id', :controller => 'users', :action => 'enable'
   map.disable_user 'users/disable/:id', :controller => 'users', :action => 'disable'

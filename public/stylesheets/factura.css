@@ -769,7 +769,7 @@ ul.customernav li:before {
 
 .input_large {
 	font-size: 14px;
-	width: 250px;
+	width: 300px;
 	padding: 10px;
 }
 
@@ -844,4 +844,18 @@ fieldset {
 
 .invoice_sort .select_box {
 	margin-top: -5px;
+}
+
+.invoice_title h2 {
+	margin-bottom: 0px;
+}
+
+.tagit {
+	margin-top: 10px;
+	width: 310px;
+}
+
+ul.tagit {
+	border: 1px solid #BBB;
+	padding: 5px 5px;
 }

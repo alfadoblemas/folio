@@ -71,7 +71,12 @@ class InvoicesController < ApplicationController
     @search = Invoice.search(params[:search])
     @status = params[:status].blank? ? "all_invoices" : params[:status]
     order = "#{params[:sort]} #{params[:direction]}"
-    @invoices = Invoice.find_by_status(@status, params[:page], order ,current_account.id)
+    
+    if params[:tagged_with]
+      @invoices = Invoice.tagged_with(params[:tagged_with]).find_by_status(@status, params[:page], order ,current_account.id)
+    elsif
+      @invoices = Invoice.find_by_status(@status, params[:page], order ,current_account.id)
+    end
 
     if request.xhr?
       xhr_endless_page_response("invoice", @invoices)

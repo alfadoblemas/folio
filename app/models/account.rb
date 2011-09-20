@@ -1,4 +1,6 @@
 class Account < ActiveRecord::Base
+  acts_as_tagger
+  
   # Filters
   before_validation :downcase_subdomain
   after_save :add_admin, :if => :admin_null?
@@ -40,6 +42,14 @@ class Account < ActiveRecord::Base
   
   def have_customers?
     self.customers.size > 0 ? true : false
+  end
+  
+  def invoice_tags
+    invoices.tag_counts.map {|t| t.name}.sort
+  end
+  
+  def has_invoice_tags?
+    invoice_tags.size > 0
   end
 
   private

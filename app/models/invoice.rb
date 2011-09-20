@@ -1,5 +1,5 @@
 class Invoice < ActiveRecord::Base
-
+  acts_as_taggable
 
   # Associations
   belongs_to :customer
@@ -26,6 +26,14 @@ class Invoice < ActiveRecord::Base
   delegate :name, :state, :to => :status, :prefix => true
   delegate :name, :to => :customer, :prefix => true
 
+
+  def has_tags?
+    tag_list.size > 0
+  end
+  
+  def print_tag_list
+    tag_list.sort.to_s
+  end
 
   def active!(user)
     unless active?

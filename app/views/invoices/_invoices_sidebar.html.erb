@@ -103,20 +103,18 @@
         </table>
 		</div>
 		<br/>
-		<div id="filter">
-		<h4>Filtrar Facturas</h4>
-		<br/>
-		<hr/>
-			<% form_for search, :url => {:action => "search" } do |f| -%>
-  				<%= f.select :date_gte, Invoice.date_filter,{:prompt => "Emitida hace...", 
-					:include_blank => true}, {:style => "width: 160px"} %>
-				<br/>
-				<%= f.check_box(:taxed, :checked => true)%><%= f.label "Afecta" %>
-				<br/><br/>
-				<%= f.submit "Buscar" %> <%= link_to "Cancelar", invoices_path() %>
-			<% end %>
+		<% if current_account.has_invoice_tags? %>
+			<div id="filter">
+			<h4>Filtrar Tags</h4>
 			<br/>
-	  </div>
+			<hr/>
+				<% form_for "", :url => {:action => "index"}, :html => {:method => :get } do |f| -%>
+	  				<%= f.select :tagged_with, current_account.invoice_tags,{ 
+						:include_blank => true}, {:style => "width: 160px", :onchange => "this.form.submit()"} %>
+				<% end %>
+				<br/>
+		   </div>
+	   <% end %>
 	  <br/>
 		<div>
 		<h4>Búsqueda Rápida</h4>

@@ -164,7 +164,7 @@ $().ready(function() {
 				});
 			}
 	
-    $("input#customer_name_invoice, input#search_customer_name_like").autocomplete("/customers/search.json",{
+    $("input#customer_name_invoice, input#search_customer_name_like").autocomplete_for_customer("/customers/search.json",{
         dataType: "json",
         parse: function(data) {
             return $.map(data, function(row){
@@ -198,6 +198,7 @@ $().ready(function() {
 
 
     formatInvoicePrice();
+
 });
 
 function number_to_currency(number, options) {

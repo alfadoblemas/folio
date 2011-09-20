@@ -1,7 +1,12 @@
-<h2>Factura <%= @invoice.number %> </h2>
-<div class="span-14 last">
-  <h3 class="invoice_title"><%= @invoice.subject %></h3>
+<div class="invoice_title">
+<h2>Factura <%= @invoice.number %> - 
+	<span class="invoice_title"><%= @invoice.subject %></span>
+</h2>
+<% if @invoice.has_tags? %>
+	<span class="tags"><strong>Tags: </strong><%= @invoice.print_tag_list %></span>
+<% end %>
 </div>
+
 <div class="span-19 last">
 
   <div class="span-8 customer_info">
@@ -10,24 +15,12 @@
     <%= customer.address %><br/>
     <%= customer.state.titleize %>, <%= customer.city.titleize %> <br/>
     <%= customer.country.titleize %> <br/>
-    <% unless customer.phone.empty? %>
-      <strong>Teléfono:</strong> <%= number_to_phone(customer.phone)  %><br/>
-    <% end %>
-    <% unless customer.fax.empty? %>
-      Fax: <%= customer.fax  %><br/>
-    <% end %>
-    <% unless customer.url.empty? %>
-      <%= link_to customer.url, "http://"+customer.url  %><br/>
-    <% end %>
-
   </div>
   <div class="invoice_info last">
-
-    <%= l  @invoice.date, :format => :long %><br/>
-    <% if @invoice.due? %> <br/>
+    Emitida <%= l @invoice.date, :format => :long %>
+    <% if @invoice.due? %><br/>
       Vence <%= l @invoice.due, :format => :long %>
     <% end %>
-
   </div>
 
   <div class="span-19 prepend-top last">
