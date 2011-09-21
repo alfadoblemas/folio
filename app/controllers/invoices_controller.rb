@@ -2,26 +2,29 @@ class InvoicesController < ApplicationController
 
   before_filter :find_invoice, :only => [ :active, :cancel, :close, :show, :edit, :destroy ]
   before_filter :sanitize_params, :only => [ :create, :update ]
+  before_filter :get_invoices_for_account, :only => [:index, :search]
 
   def search
     %w(date_gte date_lte).each do |date|
       instance_variable_set("@#{date}", (params[:search][date].blank? ? "" : localize_date(params[:search][date])))
       params[:search][date] = instance_variable_get("@#{date}")
     end
-    
+
     if params[:search][:taxed] == "1" and params[:search][:untaxed] == "0"
       params[:search].delete(:untaxed)
     end
-    
+
     if params[:search][:taxed] == params[:search][:untaxed]
       params[:search].delete(:untaxed)
       params[:search].delete(:taxed)
     end
-
-    @search = Invoice.search(params[:search])
-    @status = params[:status].blank? ? "all_invoices" : params[:status]
-    order = "#{params[:sort]} #{params[:direction]}"
-    @invoices = @search.find_by_status(@status, params[:page], order, current_account.id ,params[:per_page], false)
+    
+    
+    @all_invoices = @account_invoices.search(params[:search]).find_by_status(@status)
+    @invoices= @all_invoices.paginate(
+      :page => params[:page],
+      :per_page => 10, :order => @order
+    )
 
     if request.xhr?
       xhr_endless_page_response("invoice", @invoices)
@@ -68,16 +71,13 @@ class InvoicesController < ApplicationController
 
 
   def index
-    @search = Invoice.search(params[:search])
-    @status = params[:status].blank? ? "all_invoices" : params[:status]
-    order = "#{params[:sort]} #{params[:direction]}"
+    # Metodo protegido al final
+    @all_invoices = @account_invoices.find_by_status(@status)
+    @invoices= @all_invoices.paginate(
+      :page => params[:page],
+      :per_page => 10, :order => @order
+    )
     
-    if params[:tagged_with]
-      @invoices = Invoice.tagged_with(params[:tagged_with]).find_by_status(@status, params[:page], order ,current_account.id)
-    elsif
-      @invoices = Invoice.find_by_status(@status, params[:page], order ,current_account.id)
-    end
-
     if request.xhr?
       xhr_endless_page_response("invoice", @invoices)
     end
@@ -172,6 +172,20 @@ class InvoicesController < ApplicationController
   end
 
   protected
+
+    def get_invoices_for_account
+      @account_invoices = Invoice.for_account(current_account.id)
+
+      if params[:tagged_with]
+        @account_invoices = @account_invoices.tagged_with(params[:tagged_with])
+      end
+      
+      @search = Invoice.search(params[:search])
+      @status = params[:status].blank? ? "all_invoices" : params[:status]
+      order = "#{params[:sort]} #{params[:direction]}"
+      @order = order.blank? ? "date desc" : order
+
+    end
 
     def find_invoice
       @invoice = Invoice.find(params[:id], :conditions => "account_id = #{current_account.id}",

@@ -31,8 +31,8 @@ class Invoice < ActiveRecord::Base
     tags.map {|t| t.name}.size > 0
   end
   
-  def print_tag_list
-    tags.map {|t| t.name}.sort.to_s
+  def ordered_tag_list
+    tags.map {|t| t.name}.sort
   end
 
   def active!(user)
@@ -89,7 +89,6 @@ class Invoice < ActiveRecord::Base
     status_id == 2 || status_id == 5 ? true : false
   end
 
-
   def self.duplicate(id)
     invoice = find(id)
     invoice.date = Date.today
@@ -118,21 +117,14 @@ class Invoice < ActiveRecord::Base
     customer.name if customer
   end
 
-  def self.find_by_status(status, page , order = "date desc", account_id = nil, per_page = 10, eager = true)
+  def self.find_by_status(status, eager = true)
     include_models = Array.new
     unless eager
       include_models = [:status]
     else
       include_models = [:status, :customer, :tags]
     end
-    order = order.blank? ? "date desc" : order
-    self.send("#{status}").paginate(
-      :page => page,
-      :per_page => per_page, :order => ["#{order}"],
-      :include => include_models,
-      :conditions => ["invoices.account_id = #{account_id}"]
-    )
-
+    self.send("#{status}").scoped(:include => include_models)
   end
 
   # Arreglo con Tipos de Facturas
@@ -157,6 +149,13 @@ class Invoice < ActiveRecord::Base
         sum
       end
     end
+  end
+  
+  
+  def self.totals(invoices)
+    sum = 0
+    sum = invoices.to_a.sum(&:total) unless invoices.size < 1
+    sum
   end
 
   def self.iva_total(query = nil)
@@ -273,10 +272,11 @@ class Invoice < ActiveRecord::Base
   scope_procedure :cancel, lambda { status_id_equals(4) }
   scope_procedure :all_invoices, lambda { number_gte(0) }
   scope_procedure :untaxed, lambda { taxed_equals(false) }
+  scope_procedure :for_account, lambda {|account_id| account_id_equals(account_id) }
   
   named_scope :not_draft_cancel, :conditions => ["status_id != 1 and status_id != 4"]
   named_scope :for_customer, lambda {|customer_id| {:conditions => ["customer_id = ?", customer_id]} }
-  scope_procedure :for_account, lambda {|account_id| account_id_equals(account_id) }
+  
 
   
   private

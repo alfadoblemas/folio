@@ -28,7 +28,6 @@ class ApplicationController < ActionController::Base
     render :partial => partial, :collection => collection, :locals => {:continuation => true}
   end
 
-
   private
 
     # Funciones para mostrar páginas de errores

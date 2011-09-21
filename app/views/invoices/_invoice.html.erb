@@ -23,7 +23,7 @@
 		<% end %>
 		<div style="margin-top: 10px">
 			<% if invoice.has_tags? %>
-				<span class="tags"><strong>Tags: </strong><%= invoice.print_tag_list %></span>
+				<span class="tags"><strong>Tags: </strong><%= print_tag_list(invoice) %></span>
 				<br/>
 			<% end %>
 			<span class="draft_result">Fecha: </span><%= l invoice.date, :format => :short %>

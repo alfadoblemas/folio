@@ -58,7 +58,7 @@
       </div>
 	<br/>
 	<div>
-		<%= render :partial => "resume_totals" %>
+		<%= render :partial => "resume_totals", :locals => {:invoices => @all_invoices} %>
 	</div>
 		<br/>
 		<% if current_account.has_invoice_tags? %>
