@@ -17,9 +17,14 @@ class CustomersController < ApplicationController
   
   def invoices
     customer_invoices = Invoice.for_customer(params[:id])
-    @status = params[:status].blank? ? "all" : params[:status]
+    @status = params[:status].blank? ? "all_invoices" : params[:status]
     order = "#{params[:sort]} #{params[:direction]}"
-    @invoices = customer_invoices.find_by_status(@status, params[:page], order, current_account.id)
+    @order = order.blank? ? "date desc" : order
+    
+    @invoices = customer_invoices.find_by_status(@status).paginate(
+      :page => params[:page],
+      :per_page => 10, :order => @order
+    )
     
     if request.xhr?
       xhr_endless_page_response("invoices/invoice", @invoices)
