@@ -20,11 +20,15 @@
        </tr>
        <tr>
          <td><span class="required"><%= invoice.label "Fecha" %></span></td>
-         <td class="date"><%= invoice.text_field :date , :class => "datepicker" %></td>
+         <td class="date"><%= invoice.text_field :date , :class => "datepicker input_large" %></td>
        </tr>
        <tr>
          <td><span><%= invoice.label "Número" %></span></td>
          <td><%= invoice.text_field :number, :class => "input_large" %></td>
+       </tr>
+		<tr>
+         <td><span><%= invoice.label "Tags" %></span></td>
+         <td><%= invoice.text_field :tag_list %></td>
        </tr>
        <tr>
          <td><span><%= labelUp_tag "I.V.A." %></span></td>
@@ -37,6 +41,8 @@
      </tbody>
    </table>
    <%= invoice.hidden_field :customer_id, :value => customer.id  %>
+   <!-- El account_id es usado por invoice_form.js para rellenar los tags -->
+   <%= invoice.hidden_field :account_id, :value => current_account.id  %>
  </div>
 </fieldset>
 </div>

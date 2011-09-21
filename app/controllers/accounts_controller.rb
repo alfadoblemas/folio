@@ -3,6 +3,11 @@ class AccountsController < ApplicationController
   skip_before_filter :require_user, :only => [:new, :create]
   layout :wich_layout
 
+  def invoice_tags
+    account = Account.find(current_account)
+    @invoice_tags = account.invoice_tags
+    render :json => @invoice_tags.to_json
+  end
 
   def new
     unless current_subdomain

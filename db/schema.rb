@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110416193339) do
+ActiveRecord::Schema.define(:version => 20110913192042) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -80,6 +80,37 @@ ActiveRecord::Schema.define(:version => 20110416193339) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "expenses", :force => true do |t|
+    t.integer  "account_id"
+    t.integer  "user_id"
+    t.integer  "vendor_id"
+    t.integer  "category"
+    t.integer  "total"
+    t.integer  "attachment_category"
+    t.integer  "receipt"
+    t.string   "attachment_subject"
+    t.string   "subject"
+    t.text     "comment"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.datetime "attachment_updated_at"
+    t.integer  "attachment_file_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "due_date"
+    t.integer  "status_id",               :default => 2
+    t.date     "close_date"
+    t.integer  "payment_method",          :default => 1
+    t.string   "payment_reference"
+  end
+
+  add_index "expenses", ["account_id"], :name => "altered_expenses_account_index"
+  add_index "expenses", ["category"], :name => "altered_expenses_category_index"
+  add_index "expenses", ["receipt"], :name => "altered_expenses_receipt_index"
+  add_index "expenses", ["status_id"], :name => "expenses_status"
+  add_index "expenses", ["user_id"], :name => "altered_expenses_user_index"
+  add_index "expenses", ["vendor_id"], :name => "altered_expenses_vendor_index"
 
   create_table "histories", :force => true do |t|
     t.integer  "user_id"
@@ -159,6 +190,23 @@ ActiveRecord::Schema.define(:version => 20110416193339) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "state"
+  end
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "taggable_type"
+    t.string   "context"
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
   end
 
   create_table "users", :force => true do |t|
