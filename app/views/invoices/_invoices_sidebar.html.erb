@@ -36,26 +36,7 @@
 	<% end %>
           </div>
 
-          <ul class="toolbox secondary">
-            <li id="send_invoice"><%= link_to "<strong>Enviar</strong> factura" %></li>
-			<% if invoice.draft? %>
-            	<li id="edit_invoice"><%= link_to "<strong>Editar</strong> factura",	edit_invoice_path(invoice) %></li>
-			<% end%>
-            <li id="print_invoice"><%= link_to "<strong>Imprimir</strong> factura" %></li>
-            <% if invoice.draft? %>
-              <li id="convert_invoice"><%= link_to "<strong>Activar</strong> factura", active_invoice_path(invoice), :confirm => "Está seguro que desea Activar la factura, revisó que los datos fueran correctos?" %></li>
-			<% elsif invoice.cancellable? %>
-			  <li id="receive_payment"><%= link_to "<strong>Recibir</strong> pago", close_invoice_path(invoice) %></li>
-			  <li id="delete_invoice"><%= link_to "<strong>Anular</strong> factura", cancel_invoice_path(invoice), 
-			:confirm => "Está seguro que desea Anular la factura?" %></li>
-            <% end %>
-            <li id="duplicate_invoice"><%= link_to "<strong>Duplicar</strong> Factura", new_invoice_path(:id => invoice.id, :duplicate => true) %></li>
-            <% if invoice.draft? %>
-              <li id="delete_invoice"><%= link_to "<strong>Borrar</strong> factura", invoice,
-                  :confirm => "Está seguro?", :method => :delete %></li>
-            <% end %>
-            <li id="download_invoice"><%= link_to "<strong>Bajar</strong> como PDF" %></li>
-          </ul>
+         <%= render :partial => "invoice_menu", :locals => {:invoice => invoice } %>
 
         </div>
       </div>
@@ -77,31 +58,8 @@
       </div>
 	<br/>
 	<div>
-		<h4>Totales</h4>
-		<br/><hr/>
-        <table class="invoice_resume">
-          <tr class="draft">
-            <td><span class="draft_title">Borrador</span></td><td style="text-align: right"><%= number_to_currency(Invoice.draft_total(current_account.id, params[:search])) %></td>
-          </tr>
-          <tr class="due">
-            <td><span class="due_title">Vencidas</span></td><td style="text-align: right"><%= number_to_currency(Invoice.due_total(current_account.id, params[:search])) %></td>
-          </tr>
-          <tr  class="open">
-            <td><span class="open_title">Activas</span></td><td style="text-align: right"><%= number_to_currency(Invoice.open_total(current_account.id, params[:search])) %></td>
-          </tr>
-		  <!-- Todo:: Solo por documentacion
-          <tr  class="close" onclick="location.href=location.href+'?status=close_index'">-->
-	      <tr  class="close">	
-            <td><span class="close_title">
-		  <% if params[:action] == "index" %>
-				Pagadas
-		   <% else %>
-				Pagadas
-		   <% end %>
-				</span></td><td style="text-align: right"><%= number_to_currency(Invoice.close_index_total(current_account.id, params[:search])) %></td>
-			</tr>
-        </table>
-		</div>
+		<%= render :partial => "resume_totals" %>
+	</div>
 		<br/>
 		<% if current_account.has_invoice_tags? %>
 			<div id="filter">

@@ -28,11 +28,11 @@ class Invoice < ActiveRecord::Base
 
 
   def has_tags?
-    tag_list.size > 0
+    tags.map {|t| t.name}.size > 0
   end
   
   def print_tag_list
-    tag_list.sort.to_s
+    tags.map {|t| t.name}.sort.to_s
   end
 
   def active!(user)
@@ -121,9 +121,9 @@ class Invoice < ActiveRecord::Base
   def self.find_by_status(status, page , order = "date desc", account_id = nil, per_page = 10, eager = true)
     include_models = Array.new
     unless eager
-      include_models = [:status]
+      include_models = [:status, :tags]
     else
-      include_models = [:status, :customer]
+      include_models = [:status, :customer, :tags]
     end
     order = order.blank? ? "date desc" : order
     self.send("#{status}").paginate(
@@ -134,7 +134,6 @@ class Invoice < ActiveRecord::Base
     )
 
   end
-
 
   # Arreglo con Tipos de Facturas
   @statuses = %w( draft open close due cancel )
@@ -277,6 +276,7 @@ class Invoice < ActiveRecord::Base
   
   named_scope :not_draft_cancel, :conditions => ["status_id != 1 and status_id != 4"]
   named_scope :for_customer, lambda {|customer_id| {:conditions => ["customer_id = ?", customer_id]} }
+  scope_procedure :for_account, lambda {|account_id| account_id_equals(account_id) }
 
   
   private

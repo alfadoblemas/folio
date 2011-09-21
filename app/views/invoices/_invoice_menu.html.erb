@@ -1,0 +1,20 @@
+<ul class="toolbox secondary">
+    <li id="send_invoice"><%= link_to "<strong>Enviar</strong> factura" %></li>
+	<% if invoice.draft? %>
+    	<li id="edit_invoice"><%= link_to "<strong>Editar</strong> factura",	edit_invoice_path(invoice) %></li>
+	<% end%>
+    <li id="print_invoice"><%= link_to "<strong>Imprimir</strong> factura" %></li>
+    <% if invoice.draft? %>
+      <li id="convert_invoice"><%= link_to "<strong>Activar</strong> factura", active_invoice_path(invoice), :confirm => "Está seguro que desea Activar la factura, revisó que los datos fueran correctos?" %></li>
+	<% elsif invoice.cancellable? %>
+	  <li id="receive_payment"><%= link_to "<strong>Recibir</strong> pago", close_invoice_path(invoice) %></li>
+	  <li id="delete_invoice"><%= link_to "<strong>Anular</strong> factura", cancel_invoice_path(invoice), 
+	:confirm => "Está seguro que desea Anular la factura?" %></li>
+    <% end %>
+    <li id="duplicate_invoice"><%= link_to "<strong>Duplicar</strong> Factura", new_invoice_path(:id => invoice.id, :duplicate => true) %></li>
+    <% if invoice.draft? %>
+      <li id="delete_invoice"><%= link_to "<strong>Borrar</strong> factura", invoice,
+          :confirm => "Está seguro?", :method => :delete %></li>
+    <% end %>
+    <li id="download_invoice"><%= link_to "<strong>Bajar</strong> como PDF" %></li>
+</ul>
