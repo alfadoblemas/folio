@@ -121,7 +121,7 @@ class Invoice < ActiveRecord::Base
   def self.find_by_status(status, page , order = "date desc", account_id = nil, per_page = 10, eager = true)
     include_models = Array.new
     unless eager
-      include_models = [:status, :tags]
+      include_models = [:status]
     else
       include_models = [:status, :customer, :tags]
     end
