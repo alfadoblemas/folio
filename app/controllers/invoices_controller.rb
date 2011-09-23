@@ -20,7 +20,7 @@ class InvoicesController < ApplicationController
     end
     
     
-    @all_invoices = @account_invoices.search(params[:search]).find_by_status(@status)
+    @all_invoices = @account_invoices.search(params[:search]).find_by_status(@status, false)
     @invoices= @all_invoices.paginate(
       :page => params[:page],
       :per_page => 10, :order => @order
