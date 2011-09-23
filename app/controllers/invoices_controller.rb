@@ -19,7 +19,7 @@ class InvoicesController < ApplicationController
       params[:search].delete(:taxed)
     end
     
-    params[:search].delete :customer_name_like
+    params[:search].delete :customer_name_like unless params[:search][:customer_id_equals].blank?
     
     @all_invoices = @account_invoices.search(params[:search]).find_by_status(@status)
     @invoices= @all_invoices.paginate(
