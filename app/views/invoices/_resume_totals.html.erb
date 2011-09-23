@@ -14,11 +14,11 @@
   <tr  class="close" onclick="location.href=location.href+'?status=close_index'">-->
   <tr  class="close">	
     <td><span class="close_title">
-  <% if params[:action] == "index" %>
-		Pagadas
+	Pagadas: 
+  <% if params[:action] == "search" %>
+		</span></td><td style="text-align: right"><%= number_to_currency(Invoice.totals(@all_invoices.close)) %></td>
    <% else %>
-		Pagadas
-   <% end %>
 		</span></td><td style="text-align: right"><%= number_to_currency(Invoice.totals(@all_invoices.close_index)) %></td>
+   <% end %>
 	</tr>
 </table>
