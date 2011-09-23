@@ -2,10 +2,10 @@
 <br/><hr/>
 <table class="invoice_resume">
   <tr class="draft">
-    <td><span class="draft_title">Borrador</span></td><td style="text-align: right"><%= number_to_currency(Invoice.totals(@account_invoices.draft)) %></td>
+    <td><span class="draft_title">Borrador</span></td><td style="text-align: right"><%= number_to_currency(Invoice.totals(@all_invoices.draft)) %></td>
   </tr>
   <tr class="due">
-    <td><span class="due_title">Vencidas</span></td><td style="text-align: right"><%= number_to_currency(Invoice.totals(@account_invoices.due)) %></td>
+    <td><span class="due_title">Vencidas</span></td><td style="text-align: right"><%= number_to_currency(Invoice.totals(@all_invoices.due)) %></td>
   </tr>
   <tr  class="open">
     <td><span class="open_title">Activas</span></td><td style="text-align: right"><%= number_to_currency(Invoice.totals(@account_invoices.open)) %></td>
@@ -19,6 +19,6 @@
    <% else %>
 		Pagadas
    <% end %>
-		</span></td><td style="text-align: right"><%= number_to_currency(Invoice.totals(@account_invoices.close_index)) %></td>
+		</span></td><td style="text-align: right"><%= number_to_currency(Invoice.totals(@all_invoices.close_index)) %></td>
 	</tr>
 </table>
