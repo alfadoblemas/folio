@@ -68,7 +68,7 @@ module ApplicationHelper
 
   def select_box_sorter()
     if params[:status].nil? || params[:status] == "draft"
-      options = Invoice.sorter_options("open")
+      options = Invoice.sorter_options("active")
     else
       options = Invoice.sorter_options(params[:status])
     end

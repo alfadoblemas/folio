@@ -128,7 +128,7 @@ class Invoice < ActiveRecord::Base
   end
 
   # Arreglo con Tipos de Facturas
-  @statuses = %w( draft open close due cancel )
+  @statuses = %w( draft active close due cancel )
 
   # Metaprocreamos metodos de totales
   @statuses.each do |v|
@@ -234,7 +234,7 @@ class Invoice < ActiveRecord::Base
   def self.sorter_options(status)
     options = [["Fecha emisión", "date"], ["Número", "number"], ["Total", "total"]]
     sorter = case status
-      when "open" then options.push(["Estado", "status_id"],["Fecha vencimiento", "due"]).sort
+      when "active" then options.push(["Estado", "status_id"],["Fecha vencimiento", "due"]).sort
       when "due" then options.push(["Días de Atraso", "due"])
       when "close_index" then options.push(["Fecha de Pago", "close_date"])
       when "close" then options.push(["Fecha de Pago", "close_date"])
@@ -265,7 +265,7 @@ class Invoice < ActiveRecord::Base
   
   # Estado de Facturas
   scope_procedure :due, lambda { status_id_equals(2).due_lt(Date.today) }
-  scope_procedure :open, lambda { status_id_equals(2).due_gte(Date.today) }
+  scope_procedure :active, lambda { status_id_equals(2).due_gte(Date.today) }
   scope_procedure :close, lambda { status_id_equals(3) }
   scope_procedure :close_index, lambda { status_id_equals(3).close_date_gte(1.month.ago.to_date) }
   scope_procedure :draft, lambda { status_id_equals(1) }

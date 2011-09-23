@@ -8,7 +8,7 @@
     <td><span class="due_title">Vencidas</span></td><td style="text-align: right"><%= number_to_currency(Invoice.totals(@all_invoices.due)) %></td>
   </tr>
   <tr  class="open">
-    <td><span class="open_title">Activas</span></td><td style="text-align: right"><%= number_to_currency(Invoice.totals(@account_invoices.open)) %></td>
+    <td><span class="open_title">Activas</span></td><td style="text-align: right"><%= number_to_currency(Invoice.totals(@all_invoices.active)) %></td>
   </tr>
   <!-- Todo:: Solo por documentacion
   <tr  class="close" onclick="location.href=location.href+'?status=close_index'">-->
