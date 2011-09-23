@@ -184,7 +184,7 @@ $().ready(function() {
 
     $("input#customer_name_invoice, input#search_customer_name_like").result(function(event, data, formatted) {
         $("#"+this.id).val(data.name);
-        $("input#invoice_customer_id").val(data.id);
+        $("input#invoice_customer_id,input#search_customer_id_equals").val(data.id);
     });
 
     $('input[id$="_rut"]').Rut({

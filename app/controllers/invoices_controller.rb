@@ -19,8 +19,9 @@ class InvoicesController < ApplicationController
       params[:search].delete(:taxed)
     end
     
+    params[:search].delete :customer_name_like
     
-    @all_invoices = @account_invoices.search(params[:search]).find_by_status(@status, false)
+    @all_invoices = @account_invoices.search(params[:search]).find_by_status(@status)
     @invoices= @all_invoices.paginate(
       :page => params[:page],
       :per_page => 10, :order => @order
