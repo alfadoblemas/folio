@@ -1,4 +1,6 @@
 class Invoice < ActiveRecord::Base
+  before_create :set_as_draft
+  
   acts_as_taggable
 
   # Associations
@@ -278,8 +280,6 @@ class Invoice < ActiveRecord::Base
   named_scope :not_draft_cancel, :conditions => ["status_id != 1 and status_id != 4"]
   
   
-
-  
   private
   def self.last_12_months
     months = Array.new
@@ -287,6 +287,10 @@ class Invoice < ActiveRecord::Base
       months << Date.today.months_ago(m)
     end
     months.reverse
+  end
+  
+  def set_as_draft
+    self.status_id = 1
   end
   
 end

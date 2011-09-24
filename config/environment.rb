@@ -62,10 +62,6 @@ ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS.merge!(:default =
 
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
-  :address        => "lou.itlinux.cl",
-  :port           => 587,
-  :user_name      => "pbruna@it-linux.cl",
-  :password       => "p0rl4splum4s",
-  :domain         => "it-linux.cl",
-  :authentication => :plain
+  :address        => "lisa.itlinux.cl",
+  :port           => 25,
 }
