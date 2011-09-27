@@ -166,6 +166,7 @@ $().ready(function() {
 	
     $("input#customer_name_invoice, input#search_customer_name_like").autocomplete_for_customer("/customers/search.json",{
         dataType: "json",
+		width: 400,
         parse: function(data) {
             return $.map(data, function(row){
                 
