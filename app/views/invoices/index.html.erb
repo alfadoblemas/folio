@@ -49,7 +49,11 @@
 		<% end %>
 	<% else%>
 		<div class="span-10">
-    	<h2>Todas las Facturas</h2>
+    	<h2>Todas las Facturas
+			<% unless params[:status].blank? %>
+				<%= Status.name_by_state(params[:status]) %>
+			<% end %>
+		</h2>
 		<% unless params[:tagged_with].blank? %>
 			<div id="search_tags" >
 				Con Tag <span class="tag" style="padding: 5px;"><%= params[:tagged_with].to_s %></span>
