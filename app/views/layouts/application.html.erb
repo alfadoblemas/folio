@@ -16,9 +16,10 @@
 	<%= stylesheet_link_tag "jquery-ui-1.8.9.custom" %>
 	<%= stylesheet_link_tag "jquery.tagit" %>
 	<%= stylesheet_link_tag "factura", :media => "all" %>
+	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
 
     <%= javascript_include_tag "jquery" %>
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+	<%= javascript_include_tag "jquery-ui.min" %>
 	<%= javascript_include_tag "tag-it"%>
     <%= javascript_include_tag "application" %>
     <%= javascript_include_tag "jquery.formatCurrency-1.4.0.min" %>
@@ -30,6 +31,7 @@
     <%= javascript_include_tag "pagination.js "%>
     <%= javascript_include_tag "jquery.pageless"%>
     <%= javascript_include_tag "highcharts"%>
+	<%= javascript_include_tag "invoices/invoice_form"%>
 
 
   </head>

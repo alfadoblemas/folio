@@ -9,6 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   map.cancel_invoice 'invoices/cancel/:id', :controller => 'invoices', :action => 'cancel'
   map.close_invoice 'invoices/close/:id', :controller => 'invoices', :action => 'close'
   map.search_invoice 'invoices/search', :controller => 'invoices', :action => 'search'
+  map.edit_tags 'invoices/:id/update_tags', :controller => 'invoices', :action => 'update_tags'
   map.login 'login', :controller => 'user_sessions', :action => 'new'
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
   map.signup 'signup', :controller => 'accounts', :action => 'new'

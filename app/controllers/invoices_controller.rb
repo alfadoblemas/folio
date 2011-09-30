@@ -1,6 +1,6 @@
 class InvoicesController < ApplicationController
 
-  before_filter :find_invoice, :only => [ :active, :cancel, :close, :show, :edit, :destroy ]
+  before_filter :find_invoice, :only => [ :active, :cancel, :close, :show, :edit, :destroy, :update_tags ]
   before_filter :sanitize_params, :only => [ :create, :update ]
   before_filter :get_invoices_for_account, :only => [:index, :search]
 
@@ -18,9 +18,9 @@ class InvoicesController < ApplicationController
       params[:search].delete(:untaxed)
       params[:search].delete(:taxed)
     end
-    
+
     params[:search].delete :customer_name_like unless params[:search][:customer_id_equals].blank?
-    
+
     @all_invoices = @account_invoices.search(params[:search]).find_by_status(@status)
     @invoices= @all_invoices.paginate(
       :page => params[:page],
@@ -36,6 +36,11 @@ class InvoicesController < ApplicationController
 
   end
 
+  def update_tags
+    @invoice.tag_list = params[:invoice][:tag_list].to_s
+    @invoice.save
+    redirect_to invoice_path(@invoice)
+  end
 
   def active
     respond_to do |format|
@@ -78,7 +83,7 @@ class InvoicesController < ApplicationController
       :page => params[:page],
       :per_page => 10, :order => @order
     )
-    
+
     if request.xhr?
       xhr_endless_page_response("invoice", @invoices)
     end
@@ -139,10 +144,13 @@ class InvoicesController < ApplicationController
   end
 
   def edit
-    due_days = ((@invoice.due.to_time - @invoice.date.to_time)/3600/24).to_i
-    @invoice.due = due_days
-    @customer = Customer.find(@invoice.customer_id)
-    @products = Product.all
+    if @invoice.status_id == 1 #Draft
+      @invoice.due = @invoice.due_date_to_days
+      @customer = Customer.find(@invoice.customer_id)
+      @products = Product.all
+    else
+      redirect_to invoice_path(@invoice)
+    end
   end
 
   def destroy
@@ -180,7 +188,7 @@ class InvoicesController < ApplicationController
       if params[:tagged_with]
         @account_invoices = @account_invoices.tagged_with(params[:tagged_with])
       end
-      
+
       @search = Invoice.search(params[:search])
       @status = params[:status].blank? ? "all_invoices" : params[:status]
       order = "#{params[:sort]} #{params[:direction]}"

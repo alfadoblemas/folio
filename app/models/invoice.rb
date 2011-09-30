@@ -36,6 +36,10 @@ class Invoice < ActiveRecord::Base
   def ordered_tag_list
     tags.map {|t| t.name}.sort
   end
+  
+  def due_date_to_days
+    ((due.to_time - date.to_time)/3600/24).to_i
+  end
 
   def active!(user)
     unless active?
@@ -97,6 +101,7 @@ class Invoice < ActiveRecord::Base
     invoice.number = nil
     invoice.status_id = 1
     invoice_new = invoice.clone()
+    invoice_new.tag_list = invoice.tag_list
     invoice_new.invoice_items << invoice.duplicate_items
     invoice_new
   end

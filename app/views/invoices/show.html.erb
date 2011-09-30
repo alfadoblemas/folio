@@ -1,10 +1,9 @@
 <div class="invoice_title">
 <h2>Factura <%= @invoice.number %> - 
 	<span class="invoice_title"><%= @invoice.subject %></span>
-</h2>
-<% if @invoice.has_tags? %>
-	<span class="tags"><strong>Tags: </strong><%= print_tag_list(@invoice) %></span>
-<% end %>
+</h2>	
+		<%= render :partial => "edit_invoice_tags", :locals => {:invoice => @invoice} %>
+		
 </div>
 
 <div class="span-19 last">
@@ -64,12 +63,14 @@
     </table>
   </div>
 
-  <div class="span-19 prepend-top last">
-    <h3>Comentarios</h3>
-    <hr/>
-    <%= textarea_display(@invoice.comment) %>
+	<% unless @invoice.comment.blank? %>
+  		<div class="span-19  last">
+    		<h3>Comentarios</h3>
+    		<hr/>
+    		<%= textarea_display(@invoice.comment) %>
+  		</div>
+	<% end %>
 
-  </div>
   <br/>
   <div class="span-19 prepend-top  history last">
     <div class="span-10">

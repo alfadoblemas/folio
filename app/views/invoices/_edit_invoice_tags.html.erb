@@ -1,0 +1,20 @@
+<ul class="tags">
+		<li>
+			<strong>Tags: </strong>
+			<% if invoice.has_tags? %>
+				<%= print_tag_list(invoice) %>
+			<% end %>
+		</li>
+		<li>
+			<%= link_to_function image_tag("icons/add_16.png", :class => "edit_tags_link"),"edit_invoice_tags(#{invoice.id})", :title => "Editar Tags" %>
+		</li>
+</ul>
+
+<div id="edit_invoice_tags" style="display: none">
+	<div id="edit_invoice_tags_form">
+		<% form_for invoice, :url => {:action => "update_tags" } do |f| %>
+	  		<%= f.text_field :tag_list %>
+			<%= f.submit "Aceptar" %>
+		<% end -%>
+	</div>
+</div>

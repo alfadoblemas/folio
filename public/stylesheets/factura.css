@@ -859,3 +859,56 @@ ul.tagit {
 	border: 1px solid #BBB;
 	padding: 5px 5px;
 }
+
+.add_link{
+	background:url(/images/icons/add_16.png) no-repeat;
+}
+
+
+ul.tags {
+	padding: 0px;
+	list-style: none;
+}
+
+ul.tags li{
+	display: inline;
+	list-style-type: none;
+	padding-right: 5px;
+}
+
+ul.tags .edit_tags_link {
+	vertical-align: top;
+}
+
+#edit_invoice_tags {
+	display: block;
+	background-color: rgba(131, 183, 226, .75);
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+	position: fixed;
+	right: 0;
+	top: 0;
+	border-color: black;
+	border-width: 1px;
+	border-style: solid;
+	width: 450px;
+	height: 80px;
+	z-index: 101;
+}
+
+#edit_invoice_tags #edit_invoice_tags_form {
+	padding-left: 5px;
+}
+
+#edit_invoice_tags_form ul.tagit {
+	height: 30px;
+	width: 430px;
+	padding: 2px 2px;
+	margin-bottom: 10px;
+}
+
+#edit_invoice_tags_form input[type="submit"] {
+	float: right;
+	margin-right: 10px;
+}

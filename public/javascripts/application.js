@@ -229,3 +229,24 @@ function number_with_delimiter(number, delimiter, separator) {
     return number
   }
 }
+
+function edit_invoice_tags(invoice_id) {
+	
+	var separation_from_position = 20;
+	var position = $(".edit_tags_link").position();
+	$("#edit_invoice_tags").css({ position: "absolute",
+	            marginLeft: 0, marginTop: 0,
+	            top: position.top + separation_from_position, 
+				left: position.left + separation_from_position});
+	
+	$("#invoice_tag_list").tagit({
+			
+	});
+	
+	$("#edit_invoice_tags").toggle();
+	$(document).keyup(function(e) {
+	  if (e.keyCode == 27) { 
+			$("#edit_invoice_tags").hide();
+		}
+	});
+}
