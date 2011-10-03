@@ -100,6 +100,10 @@
 				 				<%= hidden_field_tag :status, params[:status]%>
 				  			<% end %>
 							
+							<% if params[:tagged_with] %>
+								<%= hidden_field_tag :tagged_with, params[:tagged_with] %>
+							<% end %>
+							
 						<% end %>
 					<% else %>
 						<% form_tag '', {:method => :get} do -%>
@@ -107,6 +111,9 @@
 				  			<% if params[:status] %>
 				 				<%= hidden_field_tag :status, params[:status]%>
 				  			<% end %>
+							<% if params[:tagged_with] %>
+								<%= hidden_field_tag :tagged_with, params[:tagged_with] %>
+							<% end %>
 						<% end %>
 					<% end -%>
 				</div>
