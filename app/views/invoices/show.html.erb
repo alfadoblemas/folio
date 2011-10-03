@@ -11,6 +11,7 @@
   <div class="span-8 customer_info">
     <% customer = @invoice.customer %>
     <span class="customer_name"><%= link_to customer.name, customer_path(customer) %></span><br/>
+	<%= customer.rut %><br/>
     <%= customer.address %><br/>
     <%= customer.state.titleize %>, <%= customer.city.titleize %> <br/>
     <%= customer.country.titleize %> <br/>
