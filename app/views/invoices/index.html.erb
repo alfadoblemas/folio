@@ -40,6 +40,9 @@
 					<% unless @date_lte.blank? %>
 					  hasta el <span class="tag"><%= l @date_lte.to_date, :format => :short %></span>
 					<% end %>
+					<% unless params[:tagged_with].blank? %>
+						con tags <span class="tag"><%= params[:tagged_with] %></span>
+					<% end %>
 					
 					<%= link_to "... Volver", invoices_path() %>
 				</div>

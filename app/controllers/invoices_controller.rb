@@ -185,7 +185,7 @@ class InvoicesController < ApplicationController
     def get_invoices_for_account
       @account_invoices = Invoice.for_account(current_account.id)
 
-      if params[:tagged_with]
+      if params[:tagged_with] and !(params[:tagged_with].blank?)
         @account_invoices = @account_invoices.tagged_with(params[:tagged_with])
       end
 

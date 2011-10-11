@@ -4,22 +4,21 @@
   <table class="search">
 	  <tr>
 	  	<td><%= f.label :customer_name_like, "Cliente" %></td>
-	  	<td><%= f.text_field :customer_name_like, :size => 75 %></td>
+	  	<td><%= f.text_field :customer_name_like, :class => "larger", :style => "width: 400px" %></td>
 		<%= f.hidden_field :customer_id_equals %>
 	  </tr>
   	  <tr>
 		<td><%= f.label :tags, "Tags" %> </td>
-		<td><%= text_field_tag :tag_list,'', :size => 75 %></td>
+		<td><%= text_field_tag :tagged_with, params[:tagged_with], :style => "width: 300px" %></td>
 	  </tr>
 	  <tr>
 		<td>
-			<%= f.label "Fechas" %>
+			<%= f.label "Fecha Emisión" %>
 		</td>
 	  	<td>
-			<%= select_tag "tipo_fecha",  options_for_select([["Emitida",1],["Pagada",2]]) %>
-			<%= f.text_field :date_gte, :class => "datepicker from_search_date", :style => "margin-left: 10px; width: 132px; margin-right: 10px;" %>
+			<%= f.text_field :date_gte, :class => "datepicker from_search_date", :style => "margin-right: 10px;" %>
 			<%= f.label :date_lte, "-" %>
-			<%= f.text_field :date_lte, :class => "datepicker until_search_date", :style => "width: 135px; margin-left: 10px;" %>
+			<%= f.text_field :date_lte, :class => "datepicker until_search_date", :style => "margin-left: 10px;" %>
 		</td>
 	  </tr>
 	  <tr>
@@ -31,5 +30,7 @@
 	  </tr>
   </table>
   <%= f.submit "Buscar" %>
+
 <% end -%>
+
 </fieldset>
