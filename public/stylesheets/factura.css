@@ -912,3 +912,14 @@ ul.tags .edit_tags_link {
 	float: right;
 	margin-right: 10px;
 }
+
+.from_search_date {
+	margin-left: 10px;
+	width: 130px;
+	margin-right: 10px;
+}
+
+.until_search_date {
+	width: 135px;
+	margin-left: 10px;
+}

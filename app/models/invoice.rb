@@ -120,6 +120,7 @@ class Invoice < ActiveRecord::Base
 
 
   # Virtual attributes
+  
   def customer_name
     customer.name if customer
   end

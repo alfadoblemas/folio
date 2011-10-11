@@ -8,19 +8,26 @@
 		<%= f.hidden_field :customer_id_equals %>
 	  </tr>
   	  <tr>
-		<td></td>
+		<td><%= f.label :tags, "Tags" %> </td>
+		<td><%= text_field_tag :tag_list,'', :size => 75 %></td>
+	  </tr>
+	  <tr>
 		<td>
-			<%= f.check_box(:taxed, :checked => false)%><%= f.label "Afecta" %>
-			<%= f.check_box(:untaxed, :checked => false)%><%= f.label "Excenta" %>
+			<%= f.label "Fechas" %>
+		</td>
+	  	<td>
+			<%= select_tag "tipo_fecha",  options_for_select([["Emitida",1],["Pagada",2]]) %>
+			<%= f.text_field :date_gte, :class => "datepicker from_search_date", :style => "margin-left: 10px; width: 132px; margin-right: 10px;" %>
+			<%= f.label :date_lte, "-" %>
+			<%= f.text_field :date_lte, :class => "datepicker until_search_date", :style => "width: 135px; margin-left: 10px;" %>
 		</td>
 	  </tr>
 	  <tr>
-		<td><%= f.label :date_gte, "Desde" %></td>
-		<td><%= f.text_field :date_gte, :class => "datepicker" %>
-	  </tr>
-	  <tr>
-	  	<td><%= f.label :date_lte, "Hasta" %></td>
-		<td><%= f.text_field :date_lte, :class => "datepicker" %>
+		<td><%= f.label "Con IVA?" %></td>
+		<td>
+			<span style="margin-right:10px; font-weight: bold">Sí</span><%= f.check_box(:taxed, :checked => false)%>
+			<span style="margin-right:10px; margin-left: 10px;font-weight: bold">No</span><%= f.check_box(:untaxed, :checked => false)%>
+		</td>
 	  </tr>
   </table>
   <%= f.submit "Buscar" %>
