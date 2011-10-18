@@ -1,17 +1,15 @@
 <% customer = @customer unless @customer.nil? %>
 
 <% if params[:action].eql?("new") %>
-  <div class="cancel_button span-4 last">
-    <%= link_to "Cancelar", customers_path %>
-  </div>
+  <%= sidebar_big_button("cancel", "customer", "Cancelar") %>
+  
 
 
   <!--Customer#Show -->
 <% elsif params[:action].eql?("show") %>
   <div class="span-4 last">
-    <div class="new_invoice_button">
-      <%= link_to "Nueva Factura", new_customer_invoice_path(customer) %>
-    </div>
+      <%= sidebar_big_button("submit", "customer", "Nuevo Cliente") %>
+	
 
       <ul class="toolbox secondary">
 		<li id="edit_invoice"><%= link_to "<strong>Editar</strong> cliente", edit_customer_path(customer) %></li>
@@ -28,18 +26,13 @@
 
 
 <% elsif params[:action].eql?("edit") %>
-  <div class="cancel_button span-4 last">
-    <%= link_to "Cancelar", customer_path(customer) %>
-  </div>
+  <%= sidebar_big_button("cancel", "customer", "Cancelar") %>
+  
 <% else %>
   <% if params[:error] %>
-<div class="cancel_button span-4 last">
-    <%= link_to "Cancelar", customers_path %>
-  </div>
+	<%= sidebar_big_button("cancel", "customer", "Cancelar") %>
   <% else %>
-  <div class="new_customer_button">
-    <%= link_to "Nuevo Cliente", new_customer_path %>
-  </div>
+    <%= sidebar_big_button("submit", "customer", "Nuevo Cliente") %>
   <% end %>
 <% end %>
 

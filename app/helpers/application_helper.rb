@@ -76,3 +76,15 @@ module ApplicationHelper
   end
 
 end
+
+def sidebar_big_button(action, object, title)
+  if action == "submit"
+    path = "new_#{object}_path"
+  else
+    path = "#{object.pluralize}_path"
+  end
+  url = "location.href='"+eval(path)+"'"
+  content_tag :div, :class => "big_button", :onclick => url do
+    link_to title, eval(path), :class => "#{action}_action"
+  end
+end

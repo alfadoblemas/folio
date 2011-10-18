@@ -27,8 +27,12 @@ h4 {
 	margin-bottom: -20px;
 	padding-bottom: 0px;
 	font-weight: bold;
-	font-family: Helvetica;
-	
+	font-family: Helvetica;	
+}
+
+h4.sidebar_title {
+	margin-top: 20px;
+	margin-bottom: 0px;
 }
 
 hr {
@@ -368,7 +372,7 @@ background-color: #EEEEEE;
   font-weight: bold;
   font-size: 20px;
   line-height: 25px;
-  width: 180px;
+  width: 155px;
 }
 
 .toolbox {
@@ -603,13 +607,17 @@ background:url(/images/icons/star_16.png) no-repeat scroll left transparent;
   padding-top: 8px;
 }
 
+.invoce_list {
+	margin-bottom: 0px;
+}
+
 .invoice .fields:hover td {
   background-color: #FCFFCD;
   cursor: pointer;
 }
 
 .invoice_resume {
-	width: 200px;
+	width: 175px;
 }
 
 .new, .new a {
@@ -778,7 +786,7 @@ fieldset {
 }
 
 .invoice_title {
-	margin-top: -10px;
+	margin-top: -20px;
 	margin-bottom: 20px;
 }
 
@@ -938,3 +946,63 @@ ul.tags .edit_tags_link {
 	margin-left: 30px;
 	height: 22px;
 }
+
+select {
+	min-width: 100px;
+}
+
+.big_button {
+	/* Disables default styling */
+	border: none;
+	background: #E6E5DF;
+	color: #eee;
+	min-width: 150px;
+	max-width: 300px;
+	
+
+	/* You need to set font, font size and cursor for buttons */
+	font-size: 15px;
+	cursor: pointer;
+	padding: 8px 13px;
+	font-weight: bold;
+	border-radius: 0px;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.15);
+    box-shadow:
+        0 0 0 1px #000 inset, /* Outer bevel */
+        0 0 0 1px #000 inset, /* Inner bevel */
+        0 30px 20px -18px rgba(255,255,255,0.65) inset, /* Inner gradient */
+        1px 1px 3px rgba(0,0,0,0.2) /* Drop shadow */
+    ;
+
+    -webkit-border-radius: 0px;
+    -webkit-text-shadow: 0 -1px 0 rgba(0,0,0,0.15);
+    -webkit-box-shadow:
+        0 0 0 1px #000 inset, /* Outer bevel */
+        0 0 0 1px #000 inset, /* Inner bevel */
+        0 30px 20px -18px rgba(255,255,255,0.65) inset, /* Inner gradient */
+        1px 1px 3px rgba(0,0,0,0.2) /* Drop shadow */
+    ;
+	
+}
+
+.big_button .submit_action{
+		color: #6F6F80;
+		margin-left: -1	0px;
+		padding-left: 30px;
+		background: url('/images/icons/add_16.png') no-repeat transparent;
+		background-position: left;
+}
+
+.big_button .cancel_action {
+	color: #6F6F80;
+	margin-left: -1	0px;
+	padding-left: 30px;
+	background: url('/images/icons/close_16.png') no-repeat transparent;
+	background-position: left;
+}
+
+.big_button:hover {
+	text-shadow: 1px 2px 1px rgba(0,0,0,0.15);
+	background: #fff;
+}
+
