@@ -282,6 +282,7 @@ class Invoice < ActiveRecord::Base
   scope_procedure :untaxed, lambda { taxed_equals(false) }
   scope_procedure :for_account, lambda {|account_id| account_id_equals(account_id) }
   scope_procedure :for_customer, lambda {|customer_id| customer_id_equals(customer_id) }
+  scope_procedure :due_this_week, lambda {status_id_equals(2).due_gte(Date.today.beginning_of_week).due_lte(Date.today.end_of_week)}
   
   named_scope :not_draft_cancel, :conditions => ["status_id != 1 and status_id != 4"]
   

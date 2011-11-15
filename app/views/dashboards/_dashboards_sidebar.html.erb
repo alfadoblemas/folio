@@ -1,1 +1,31 @@
-<h3>Filtrar información</h3>
+<table class="dashboard_box">
+	<tr>
+		<th>Indicadores</th>
+		<th></th>
+	</tr>
+	<% %w(uf dolar euro utm).each do |i| %>
+		<tr>
+			<td><%= i.upcase %></td>
+			<td><%= number_to_chilean_currency(@indicadores.send(i)) %></td>
+		</tr>
+	<% end %>
+</table>
+
+<div class="dashboard_box">
+		<header><strong>Facturas por vencer</strong></header>
+		<table>
+	<% @account.invoices_due_this_week[0..5].each do |invoice| %>
+		<tr>
+			<td>
+				<strong><%= number_to_currency(invoice.total, :unit => "$", :delimiter => ".", :precision => 0) %></strong>
+				<br/>
+				<span class="draft_result"><%= l invoice.due, :format => :default  %></span>
+			</td>
+			<td style="padding-right: 5px;">
+				<%= link_to "#{invoice.subject}", invoice_path(invoice)  %><br/>
+			</td>
+		</tr>
+	<% end %>
+	</table>
+	<div style="text-align: center; margin-top: -5px"><%= link_to_invoices_due_this_week %></div>
+</div>

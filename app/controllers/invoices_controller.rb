@@ -9,6 +9,9 @@ class InvoicesController < ApplicationController
       instance_variable_set("@#{date}", (params[:search][date].blank? ? "" : localize_date(params[:search][date])))
       params[:search][date] = instance_variable_get("@#{date}")
     end
+    
+    params[:search][:due_gte] = localize_date(params[:search][:due_gte]) if params[:search][:due_gte]
+    params[:search][:due_lte] = localize_date(params[:search][:due_lte]) if params[:search][:due_lte]
 
     if params[:search][:taxed] == "1" and params[:search][:untaxed] == "0"
       params[:search].delete(:untaxed)
@@ -38,8 +41,13 @@ class InvoicesController < ApplicationController
 
   def update_tags
     @invoice.tag_list = params[:invoice][:tag_list].to_s
-    @invoice.save
-    redirect_to invoice_path(@invoice)
+    if @invoice.update_attributes(@invoice)
+      flash.now[:notice] = "La factura no tiene Asunto"
+      redirect_to invoice_path(@invoice)
+    else
+      flash.now[:notice] = "La factura no tiene Asunto"
+      format.html { redirect_to(invoice_path(@invoice)) }
+    end
   end
 
   def active

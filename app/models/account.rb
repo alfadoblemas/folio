@@ -51,6 +51,14 @@ class Account < ActiveRecord::Base
   def has_invoice_tags?
     invoice_tags.size > 0
   end
+  
+  def has_invoices?
+    invoices.for_account(self.id).size > 0
+  end
+  
+  def invoices_due_this_week
+    invoices.due_this_week.to_a
+  end
 
   private
   def randomize_file_name

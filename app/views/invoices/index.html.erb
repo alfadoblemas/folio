@@ -30,6 +30,9 @@
 			<div class="span-19">
 				<h2><%= @invoices.total_entries %> Facturas</h2>
 				<div id="search_tags">
+					<% if params[:search][:due_gte] %>
+						<span class="tag">por vencer esta semana</span>
+					<% else %>
 					emitidas
 					<% unless params[:search][:customer_name_like].blank? %>
 						a <span class="tag"><%= params[:search][:customer_name_like] %></span>
@@ -42,6 +45,7 @@
 					<% end %>
 					<% unless params[:tagged_with].blank? %>
 						con tags <span class="tag"><%= params[:tagged_with] %></span>
+					<% end %>
 					<% end %>
 					
 					<%= link_to "... Volver", invoices_path() %>

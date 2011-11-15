@@ -88,3 +88,13 @@ def sidebar_big_button(action, object, title)
     link_to title, eval(path), :class => "#{action}_action"
   end
 end
+
+def number_to_chilean_currency(number)
+  number_to_currency(number, :unit => "$", :delimiter => ".", :precision => 2)
+end
+
+def link_to_invoices_due_this_week
+    link_to "Ver más", search_invoice_path({:search => 
+      {:due_gte => Date.today.beginning_of_week, :due_lte => Date.today.end_of_week}
+      })
+end

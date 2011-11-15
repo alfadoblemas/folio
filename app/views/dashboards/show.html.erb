@@ -1,4 +1,4 @@
-<% if @invoices.nil? %>
+<% unless @account.has_invoices? %>
 
    <div class="empty last">
 	
