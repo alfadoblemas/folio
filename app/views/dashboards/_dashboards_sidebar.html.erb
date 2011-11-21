@@ -17,15 +17,20 @@
 	<% @account.invoices_due_this_week[0..5].each do |invoice| %>
 		<tr>
 			<td>
-				<strong><%= number_to_currency(invoice.total, :unit => "$", :delimiter => ".", :precision => 0) %></strong>
+				<strong><%= number_to_chilean_currency(invoice.total) %></strong>
 				<br/>
 				<span class="draft_result"><%= l invoice.due, :format => :default  %></span>
 			</td>
 			<td style="padding-right: 5px;">
-				<%= link_to "#{invoice.subject}", invoice_path(invoice)  %><br/>
+				<%= link_to "#{invoice.subject}", invoice_path(invoice)  %> <br/>
+				<% if invoice.has_tags? %>
+					<span class="draft_result tags">(<%= print_tag_list(invoice) %>)</span>
+				<% end %>
 			</td>
 		</tr>
 	<% end %>
 	</table>
-	<div style="text-align: center; margin-top: -5px"><%= link_to_invoices_due_this_week %></div>
+	<div style="text-align: center; margin-top: -5px">
+		<%= link_to_invoices_due_this_week %>
+	</div>
 </div>

@@ -200,6 +200,9 @@ $().ready(function() {
 
     formatInvoicePrice();
 
+
+	
+
 });
 
 function number_to_currency(number, options) {
