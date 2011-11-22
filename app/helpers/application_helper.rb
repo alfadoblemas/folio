@@ -94,7 +94,7 @@ def number_to_chilean_currency(number)
 end
 
 def link_to_invoices_due_this_week
-    link_to "Ver más", search_invoice_path({:search => 
+    link_to "Ver más", search_invoice_path({:sort => "due", :search => 
       {:due_gte => Date.today.beginning_of_week, :due_lte => Date.today.end_of_week, :status_id => 2}
       })
 end
