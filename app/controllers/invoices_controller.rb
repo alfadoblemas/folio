@@ -41,7 +41,7 @@ class InvoicesController < ApplicationController
 
   def update_tags
     @invoice.tag_list = params[:invoice][:tag_list].to_s
-    if @invoice.update_attributes(@invoice)
+    if @invoice.update_attributes(@invoice.attributes)
       flash.now[:notice] = "La factura no tiene Asunto"
       redirect_to invoice_path(@invoice)
     else

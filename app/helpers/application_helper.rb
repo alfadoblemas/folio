@@ -90,7 +90,7 @@ def sidebar_big_button(action, object, title)
 end
 
 def number_to_chilean_currency(number)
-  number_to_currency(number, :unit => "$", :delimiter => ".", :precision => 2)
+  number_to_currency(number, :unit => "$", :delimiter => ".", :precision => 0)
 end
 
 def link_to_invoices_due_this_week
