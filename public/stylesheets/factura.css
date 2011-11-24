@@ -351,7 +351,7 @@ background-color: #EEEEEE;
   font-size: 14px;
 }
 
-.history {
+.comment {
   margin-top: 20px;
   padding-top: 20px;
   margin-left: -10px;
@@ -362,7 +362,7 @@ background-color: #EEEEEE;
   -moz-border-radius: 0px 15px 15px 0px;
 }
 
-.history td {
+.comment td {
 	vertical-align: top;
 }
 
@@ -807,7 +807,7 @@ fieldset {
 	background-color: #FCFFCD;
 }
 
-.history_type {
+.comment_type {
     display: block;
     height: 62px;
 	padding-top: -10px;
@@ -838,7 +838,7 @@ fieldset {
 	
 }
 
-#recent_activity .history {
+#recent_activity .comment {
 	margin-top: 0px;
 	padding-top: 10px;
 }

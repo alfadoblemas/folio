@@ -13,7 +13,7 @@ class Account < ActiveRecord::Base
   accepts_nested_attributes_for :users
   has_many :customers
   has_many :contacts
-  has_many :histories
+  has_many :comments
   alias_attribute :user_id, :admin_id
 
   # Validations

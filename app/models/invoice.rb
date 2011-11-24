@@ -9,11 +9,11 @@ class Invoice < ActiveRecord::Base
   belongs_to :account
   belongs_to :status
   has_many :invoice_items, :dependent => :destroy
-  has_many :histories, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
 
   # Extras
   accepts_nested_attributes_for :invoice_items, :allow_destroy => true
-  accepts_nested_attributes_for :histories, :allow_destroy => true
+  accepts_nested_attributes_for :comments, :allow_destroy => true
 
   # Validations
   validates_presence_of :net, :tax, :total, :customer_id, :subject, :date, :number
@@ -44,8 +44,8 @@ class Invoice < ActiveRecord::Base
   def active!(user)
     unless active?
       update_attribute(:status_id, 2)
-      histories.build(:subject => "Activación", :comment => "Factura activada", :user_id => user.id,
-                      :account_id => user.account_id, :history_type_id => 7, :system => true)
+      comments.build(:subject => "Activación", :body => "Factura activada", :user_id => user.id,
+                      :account_id => user.account_id, :comment_type_id => 7, :system => true)
       save
     else
       false
@@ -59,8 +59,8 @@ class Invoice < ActiveRecord::Base
   def cancel!(user)
     unless cancelled?
       update_attribute(:status_id, 4)
-      histories.build(:subject => "Anulación", :comment => "La factura fue anulada", :user_id => user.id,
-                      :account_id => user.account_id, :history_type_id => 7, :system => true)
+      comments.build(:subject => "Anulación", :body => "La factura fue anulada", :user_id => user.id,
+                      :account_id => user.account_id, :comment_type_id => 7, :system => true)
       save
     else
       false
@@ -75,8 +75,8 @@ class Invoice < ActiveRecord::Base
     unless closed?
       update_attribute(:status_id, 3)
       update_attribute(:close_date, Date.today)
-      histories.build(:subject => "Pagada", :comment => "Factura pagada", :user_id => user.id,
-                      :account_id => user.account_id, :history_type_id => 4, :system => true)
+      comments.build(:subject => "Pagada", :body => "Factura pagada", :user_id => user.id,
+                      :account_id => user.account_id, :comment_type_id => 4, :system => true)
       save
     else
       false

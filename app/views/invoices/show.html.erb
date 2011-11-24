@@ -73,7 +73,7 @@
 	<% end %>
 
   <br/>
-  <div class="span-19 prepend-top  history last">
+  <div class="span-19 prepend-top  comment last">
     <div class="span-10">
       <h3>Historial y Notas</h3>
     </div>
@@ -82,16 +82,16 @@
     </div>
     <hr />
     <div id="add_comment" style="display: none;" class="span-19 last">
-      <%= render :partial => "histories/new_history", :locals => {:invoice_id => @invoice.id} %>
+      <%= render :partial => "comments/new_comment", :locals => {:invoice_id => @invoice.id} %>
       <hr/>
     </div>
-    <% if @invoice.histories.size < 1 %>
+    <% if @invoice.comments.size < 1 %>
       <br/>
     <% end %>
     <div class="span-19 last">
 
-      <%= render :partial => "histories/history", :collection => @invoice.histories.reverse ,
-        :as => :history, :spacer_template => "histories/history_divider" %>
+      <%= render :partial => "comments/comment", :collection => @invoice.comments.reverse ,
+        :as => :comment, :spacer_template => "comments/comment_divider" %>
 
     </div>
   </div>

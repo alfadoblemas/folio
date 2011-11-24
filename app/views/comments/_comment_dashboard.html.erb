@@ -1,0 +1,39 @@
+<% if defined?(continuation) %>
+  <hr/>
+<% end %>
+<div class="comment">
+  <table>
+    <tr>
+      <td class="type">
+		<% if comment.comment_type_id %>
+			<div class="comment_type type_<%= comment.comment_type.name %>"></div>
+		<% else %>
+			<div class="comment_type type_aviso"></div>
+		<% end %>
+      </td>
+      <td class="text">
+		<div class="body">
+			<strong><%= link_from_comment(comment, "Factura") %></strong><br/>
+			<%= textarea_display(comment.body) %>
+		<br/><br/>
+			<% unless comment.user_id.nil? %>
+				<span><%= h(comment.user.nil? ? "" : comment.user.name) %></span>, 
+		    <%end%>
+			<span class="date"><%= distance_of_time_in_words(Time.now, comment.created_at) %></span>
+			<% if created_by_current_user?(comment) && !comment.system %>
+				<br/>
+				<span class="actions">
+					<%= link_to "Editar", edit_comment_path(comment) %> | 
+					<%= link_to "Eliminar", comment, :confirm => "Está seguro?", :method => :delete %>
+				</span>
+			<% end %>
+	  </div>
+		<div class="avatar">
+	 	<%= image_tag comment.user.avatar.url(:thumb), :class => "avatar" unless comment.user.nil? %>
+		</div>
+	  </td>
+    </tr>
+  </table>
+</div>
+
+

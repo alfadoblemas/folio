@@ -1,0 +1,7 @@
+<h2>Nueva Nota para Factura <%= @invoice.number %>  </h2>
+
+<% invoice_id = params[:invoice_id] unless params[:invoice_id].nil? %>
+
+<%= render :partial => "new_comment", :locals => {:invoice_id => invoice_id} %>
+
+

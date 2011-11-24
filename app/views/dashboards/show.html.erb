@@ -18,11 +18,11 @@
 
 <div id="recent_activity">
 <h3>Actividad reciente</h3>
-<div id="comments" class="history">
-<%= render :partial => "histories/history_dashboard", :collection => @histories ,
-    :as => :history, :spacer_template => "histories/history_divider" %>
+<div id="comments" class="comment">
+<%= render :partial => "comments/comment_dashboard", :collection => @comments ,
+    :as => :comment, :spacer_template => "comments/comment_divider" %>
 </div>
 </div>
-<%= will_paginate(@histories)%>
-<%= pageless(@histories.total_pages, dashboard_path, '#comments')%>
+<%= will_paginate(@comments)%>
+<%= pageless(@comments.total_pages, dashboard_path, '#comments')%>
 <% end %>

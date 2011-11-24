@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111121144632) do
+ActiveRecord::Schema.define(:version => 20111124203525) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -30,6 +30,29 @@ ActiveRecord::Schema.define(:version => 20111121144632) do
   end
 
   add_index "accounts", ["admin_id"], :name => "altered_accounts_admin_index"
+
+  create_table "comment_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "subject"
+    t.text     "body"
+    t.integer  "invoice_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "account_id"
+    t.integer  "comment_type_id"
+    t.boolean  "system",          :default => false
+  end
+
+  add_index "comments", ["account_id"], :name => "histories_account_index"
+  add_index "comments", ["comment_type_id"], :name => "histories_type_index"
+  add_index "comments", ["invoice_id"], :name => "histories_invoice_index"
+  add_index "comments", ["user_id"], :name => "histories_user_index"
 
   create_table "contacts", :force => true do |t|
     t.string   "first_name"
@@ -111,29 +134,6 @@ ActiveRecord::Schema.define(:version => 20111121144632) do
   add_index "expenses", ["status_id"], :name => "expenses_status"
   add_index "expenses", ["user_id"], :name => "altered_expenses_user_index"
   add_index "expenses", ["vendor_id"], :name => "altered_expenses_vendor_index"
-
-  create_table "histories", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "subject"
-    t.text     "comment"
-    t.integer  "invoice_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "account_id"
-    t.integer  "history_type_id"
-    t.boolean  "system",          :default => false
-  end
-
-  add_index "histories", ["account_id"], :name => "histories_account_index"
-  add_index "histories", ["history_type_id"], :name => "histories_type_index"
-  add_index "histories", ["invoice_id"], :name => "histories_invoice_index"
-  add_index "histories", ["user_id"], :name => "histories_user_index"
-
-  create_table "history_types", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "indicadores_economicos", :force => true do |t|
     t.date     "date"

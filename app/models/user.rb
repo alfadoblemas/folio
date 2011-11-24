@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   #Assoc
   belongs_to :account
-  has_many :histories
+  has_many :comments
 
   before_save :randomize_file_name
 

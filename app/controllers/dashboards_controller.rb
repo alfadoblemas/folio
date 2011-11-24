@@ -8,7 +8,7 @@ class DashboardsController < ApplicationController
     last_year_sales = Invoice.year_sales(current_account)
     @months = Invoice.last_12_months.map {|d| "#{I18n.localize(d, :format => :month_abbr)}"}
 
-    @histories = History.paginate(:page => params[:page], :per_page => 5,
+    @comments = Comment.paginate(:page => params[:page], :per_page => 5,
                                   :order => "created_at desc" ,
                                   :conditions => ["account_id = ?", current_account.id])
 
@@ -24,8 +24,8 @@ class DashboardsController < ApplicationController
 
     if request.xhr?
       sleep(1)
-      render :partial => "histories/history_dashboard", :collection => @histories ,
-        :as => :history, :locals => {:continuation => true}
+      render :partial => "comments/comment_dashboard", :collection => @comments ,
+        :as => :comment, :locals => {:continuation => true}
     end
   end
 
