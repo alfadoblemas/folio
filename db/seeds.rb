@@ -26,7 +26,7 @@ end
   Status.find_or_create_by_name(status)
 end
 
-# History Types
+# Comment Types
 [
   { :id => 1, :name => "comentario" },
   { :id => 2, :name => "enviada" },
@@ -36,5 +36,5 @@ end
   { :id => 6, :name => "ganada" },
   { :id => 7, :name => "aviso" }
 ].each do |type|
-  HistoryType.find_or_create_by_name(type)
+  CommentType.find_or_create_by_name(type)
 end
