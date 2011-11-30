@@ -1,10 +1,35 @@
-<% form_tag :action => "create", :controller => "comments" do %>
+<div class="comment">
+	<div class="float_liner">
+		<%= image_tag current_user.avatar_thumb_url, :class => "avatar" %>
+		<div class="indented">
+			<div class="comment_header">
+				<h4><strong>Comentar...</strong></h4>
+			</div>
+			<div class="comment_body">
+				<% form_tag :action => "create", :controller => "comments" do %>
 
-  <%= text_area_tag :body, "", :cols => 90, :rows => 4 %>
-  <%= hidden_field_tag :invoice_id,"", :value => invoice_id %>
-  <%= hidden_field_tag :user_id,"", :value => current_user.id %>
-  <br/>
-  <%= submit_tag "Guardar" %>
-  <%= link_to "Cancelar", invoice_path(invoice_id) %>
-<% end %>
-  <br/>
+				  <%= text_area_tag :body, "", :cols => 60, :rows => 10 %>
+				  <%= hidden_field_tag :invoice_id,"", :value => invoice_id %>
+				  <%= hidden_field_tag :user_id,"", :value => current_user.id %>
+				  
+				  <div class="comment_subscription">
+					<h4><strong>Suscribir personas para que reciban notificaciones por e-mail</strong></h4>
+					<p>
+						Las personas que selecciones recibirán un email cuando publiques este comentario.</br>
+						También recibirán notificaciones por e-mail cada vez que se añada un nuevo comentario.
+					</p>	
+					
+					<% current_account.active_users.each do |user| %>
+						<%= user.name %></br>
+					<% end %>
+					
+				  </div>
+				
+				  <%= submit_tag "Agregar comentario" %>
+				  <%= link_to "Cancelar", invoice_path(invoice_id) %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+

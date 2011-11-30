@@ -59,6 +59,10 @@ class Account < ActiveRecord::Base
   def invoices_due_this_week
     invoices.due_this_week.to_a
   end
+  
+  def active_users
+    users.active
+  end
 
   private
   def randomize_file_name

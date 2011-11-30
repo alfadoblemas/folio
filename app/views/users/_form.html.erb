@@ -2,11 +2,9 @@
 <%= f.error_messages :class => "error" %>
   
 <fieldset>
-	<% if @user.avatar_file_name %>
 	<div class="avatar"style="margin-left: 550px; margin-top: 10px; position: absolute;">
 		<%= image_tag @user.avatar.url(:medium) %>
 	</div>
-	<% end %>
 
 	<table>
 		<tr>

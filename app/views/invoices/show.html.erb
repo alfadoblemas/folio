@@ -66,34 +66,27 @@
 
 	<% unless @invoice.comment.blank? %>
   		<div class="span-19  last">
-    		<h3>Comentarios</h3>
+    		<h3>Información</h3>
     		<hr/>
     		<%= textarea_display(@invoice.comment) %>
   		</div>
 	<% end %>
 
   <br/>
-  <div class="span-19 prepend-top  comment last">
-    <div class="span-10">
-      <h3>Historial y Notas</h3>
+  <div class="comments span-19 prepend-top last">
+    <div class="comments_header">
+      <h3>Comentarios</h3>
     </div>
-    <div id="add_comment_link" class="span-8" style="text-align: right;">
-      <span class="addLink"> <%= link_to_function "Agregar Nota", "display_add_comment()" %>  </span>
-    </div>
-    <hr />
-    <div id="add_comment" style="display: none;" class="span-19 last">
-      <%= render :partial => "comments/new_comment", :locals => {:invoice_id => @invoice.id} %>
-      <hr/>
-    </div>
-    <% if @invoice.comments.size < 1 %>
-      <br/>
-    <% end %>
-    <div class="span-19 last">
-
-      <%= render :partial => "comments/comment", :collection => @invoice.comments.reverse ,
+    
+	<div class="comments_body">
+      <%= render :partial => "comments/comment", :collection => @invoice.comments ,
         :as => :comment, :spacer_template => "comments/comment_divider" %>
 
+	<div id="add_comment"  class="span-19 last">
+      <%= render :partial => "comments/new_comment", :locals => {:invoice_id => @invoice.id} %>
     </div>
+	</div>
+	
   </div>
 
 </div>

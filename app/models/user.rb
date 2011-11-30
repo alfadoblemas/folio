@@ -46,6 +46,12 @@ class User < ActiveRecord::Base
   def account_admin?
     self.admin ? true : false
   end
+  
+  def avatar_thumb_url
+    avatar.url(:thumb)
+  end
+  
+  named_scope :active, :conditions => ["active == ?", true]
 
   private
     def randomize_file_name
