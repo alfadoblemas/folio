@@ -1,6 +1,6 @@
 class Invoice < ActiveRecord::Base
   before_create :set_as_draft
-  
+
   acts_as_taggable
 
   # Associations
@@ -32,11 +32,11 @@ class Invoice < ActiveRecord::Base
   def has_tags?
     tags.map {|t| t.name}.size > 0
   end
-  
+
   def ordered_tag_list
     tags.map {|t| t.name}.sort
   end
-  
+
   def due_date_to_days
     ((due.to_time - date.to_time)/3600/24).to_i
   end
@@ -45,7 +45,7 @@ class Invoice < ActiveRecord::Base
     unless active?
       update_attribute(:status_id, 2)
       comments.build(:subject => "Activación", :body => "Factura activada", :user_id => user.id,
-                      :account_id => user.account_id, :comment_type_id => 7, :system => true)
+                     :account_id => user.account_id, :comment_type_id => 7, :system => true)
       save
     else
       false
@@ -59,8 +59,10 @@ class Invoice < ActiveRecord::Base
   def cancel!(user)
     unless cancelled?
       update_attribute(:status_id, 4)
+      notify_users = last_comment_suscriptions[:users].keys.join(",")
       comments.build(:subject => "Anulación", :body => "La factura fue anulada", :user_id => user.id,
-                      :account_id => user.account_id, :comment_type_id => 7, :system => true)
+                     :account_id => user.account_id, :comment_type_id => 7, :system => true,
+                     :notify_account_users => notify_users)
       save
     else
       false
@@ -76,7 +78,7 @@ class Invoice < ActiveRecord::Base
       update_attribute(:status_id, 3)
       update_attribute(:close_date, Date.today)
       comments.build(:subject => "Pagada", :body => "Factura pagada", :user_id => user.id,
-                      :account_id => user.account_id, :comment_type_id => 4, :system => true)
+                     :account_id => user.account_id, :comment_type_id => 4, :system => true)
       save
     else
       false
@@ -120,7 +122,7 @@ class Invoice < ActiveRecord::Base
 
 
   # Virtual attributes
-  
+
   def customer_name
     customer.name if customer
   end
@@ -158,8 +160,19 @@ class Invoice < ActiveRecord::Base
       end
     end
   end
-  
-  
+
+  def last_comment_suscriptions
+    suscriptions = {:users => {}, :all_users => false}
+    unless comments.last.notify_account_users.nil?
+      comments.last.notify_account_users.split(",").each do |id|
+        suscriptions[:users][id.to_i] = true
+      end
+    end
+    suscriptions[:all_users] = comments.last.notify_all_account_users
+    suscriptions
+  end
+
+
   def self.totals(invoices)
     sum = 0
     sum = invoices.to_a.sum(&:total) unless invoices.size < 1

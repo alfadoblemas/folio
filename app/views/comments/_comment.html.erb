@@ -6,7 +6,7 @@
 				<h4><strong><%= comment.user_name%></strong>, <%= l comment.created_at, :format => :short %></h4>
 			</div>
 			<div class="comment_body">
-				<%= comment.body %>
+				<%= textarea_display comment.body %>
 			</div>
 		</div>
 	</div>

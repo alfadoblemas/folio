@@ -28,6 +28,10 @@ class Comment < ActiveRecord::Base
     def set_account_id
       self.account_id ||= self.user.account.id
     end
+    
+    def convert_user_ids_to_i
+      self.notify_account_users.map! {|id| id.to_i}
+    end
 
     def system_comment
       !self.system

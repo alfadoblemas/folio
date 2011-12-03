@@ -44,7 +44,7 @@ module ApplicationHelper
   end
 
   def textarea_display(text)
-    text.gsub(/\n/, "<br />")
+    text.gsub(/\n/, "<br/>")
   end
 
   def title(page_title)

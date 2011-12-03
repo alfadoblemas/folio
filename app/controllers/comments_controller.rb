@@ -1,15 +1,11 @@
 class CommentsController < ApplicationController
 
-  def new
-    @invoice = Invoice.find(params[:invoice_id])
-    @comment = Comment.new()
-  end
-
   def create
-    @comment = Comment.new(:subject => params[:subject], :body => params[:body],
-                           :invoice_id => params[:invoice_id], :user_id => params[:user_id], :account_id => current_account.id,
-                           :comment_type_id => 1)
-    @invoice = Invoice.find(params[:invoice_id])
+    params[:comment][:notify_account_users] = params[:comment][:notify_account_users].keys.join(",")
+    @comment = Comment.new(params[:comment])
+    @comment.account_id = current_account.id
+    @comment.comment_type_id = 1
+    @invoice = Invoice.find(@comment.invoice_id)
 
     respond_to do |format|
       if @comment.save

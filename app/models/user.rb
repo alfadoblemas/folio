@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
     avatar.url(:thumb)
   end
   
-  named_scope :active, :conditions => ["active == ?", true]
+  named_scope :active, :conditions => ["active == ?", true], :order => 'name'
 
   private
     def randomize_file_name

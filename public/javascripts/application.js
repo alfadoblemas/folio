@@ -253,3 +253,14 @@ function edit_invoice_tags(invoice_id) {
 		}
 	});
 }
+
+function toggleSuscriptions(caller,recipient) {
+	var checked = $('#'+caller).prop("checked");
+	if (!checked) {
+		$('#'+recipient+' :checkbox').prop("checked", false);
+	}
+	else {
+		$('#'+recipient+' :checkbox').prop("checked", true);
+	}
+	
+}

@@ -6,26 +6,15 @@
 				<h4><strong>Comentar...</strong></h4>
 			</div>
 			<div class="comment_body">
-				<% form_tag :action => "create", :controller => "comments" do %>
+				<% form_for @comment, :url =>{:controller => 'comments'} do |f|%>
 
-				  <%= text_area_tag :body, "", :cols => 60, :rows => 10 %>
-				  <%= hidden_field_tag :invoice_id,"", :value => invoice_id %>
-				  <%= hidden_field_tag :user_id,"", :value => current_user.id %>
+				  <%= f.text_area :body, :cols => 60, :rows => 10 %>
+				  <%= f.hidden_field :invoice_id, :value => invoice_id %>
+				  <%= f.hidden_field :user_id, :value => current_user.id %>
 				  
-				  <div class="comment_subscription">
-					<h4><strong>Suscribir personas para que reciban notificaciones por e-mail</strong></h4>
-					<p>
-						Las personas que selecciones recibirán un email cuando publiques este comentario.</br>
-						También recibirán notificaciones por e-mail cada vez que se añada un nuevo comentario.
-					</p>	
-					
-					<% current_account.active_users.each do |user| %>
-						<%= user.name %></br>
-					<% end %>
-					
-				  </div>
+				  <%= render :partial => 'comments/suscribe_users', :locals => {:comment => @comment} %>	
 				
-				  <%= submit_tag "Agregar comentario" %>
+				  <%= f.submit "Agregar comentario" %>
 				  <%= link_to "Cancelar", invoice_path(invoice_id) %>
 				<% end %>
 			</div>

@@ -9,7 +9,7 @@ class InvoicesController < ApplicationController
       instance_variable_set("@#{date}", (params[:search][date].blank? ? "" : localize_date(params[:search][date])))
       params[:search][date] = instance_variable_get("@#{date}")
     end
-    
+
     params[:search][:due_gte] = localize_date(params[:search][:due_gte]) if params[:search][:due_gte]
     params[:search][:due_lte] = localize_date(params[:search][:due_lte]) if params[:search][:due_lte]
 
@@ -149,6 +149,9 @@ class InvoicesController < ApplicationController
   end
 
   def show
+    @comment = Comment.new()
+    @comment.notify_account_users = @invoice.last_comment_suscriptions[:users]
+    @comment.notify_all_account_users = @invoice.last_comment_suscriptions[:all_users]
   end
 
   def edit

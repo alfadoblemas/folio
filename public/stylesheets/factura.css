@@ -410,6 +410,23 @@ background-color: #EEEEEE;
 	vertical-align: top;
 }
 
+.comment_body br {
+	padding: 0px;
+}
+
+.comment_suscriptions {
+	margin: 10px 10px 20px 0px;
+}
+
+table#suscriptions {
+	width: 500px;
+}
+
+.account_suscriptions td {
+	vertical-align: top;
+	min-width: 150px;
+}
+
 .status {
   margin-left: -10px;
   padding: 10px 0px 10px 30px;

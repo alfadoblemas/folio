@@ -1,0 +1,19 @@
+<div class="comment_suscriptions">
+	<h4><strong>Suscribir personas para que reciban notificaciones por e-mail</strong></h4>
+	<p>
+		Las personas que selecciones recibirán un email cuando publiques este comentario.</br>
+		También recibirán notificaciones por e-mail cada vez que se añada un nuevo comentario.
+	</p>
+	<table id="suscriptions">
+		<tr>
+			<td colspan="3" style="padding-bottom: 0px;">
+				<%= check_box_tag "comment[notify_all_account_users]", 1, comment.notify_all_account_users, :onclick => "toggleSuscriptions(this.id, 'notification_block_#{current_account.id}')"  %>
+					<strong>Todas las personas de <%= current_account.name %></strong>
+			</td>
+		</tr>
+		<tbody class="account_suscriptions" id="notification_block_<%= current_account.id%>">
+			<%= suscribe_users(current_account.active_users, comment)%>
+		</tbody>
+	</table>
+
+</div>
