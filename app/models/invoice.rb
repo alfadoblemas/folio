@@ -165,12 +165,12 @@ class Invoice < ActiveRecord::Base
 
   def last_comment_suscriptions
     suscriptions = {:users => {}, :all_users => false}
-    unless comments.last.notify_account_users.nil?
+    unless comments.last.nil?
       comments.last.notify_account_users.split(",").each do |id|
         suscriptions[:users][id.to_i] = true
       end
+      suscriptions[:all_users] = comments.last.notify_all_account_users
     end
-    suscriptions[:all_users] = comments.last.notify_all_account_users
     suscriptions
   end
 
