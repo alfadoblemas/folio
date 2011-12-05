@@ -18,7 +18,7 @@ class UserMailer < ActionMailer::Base
   end
 
   def password_reset_instructions(user)
-    subdomain = user.account.subdomain
+    subdomain = user.subdomain
     url = "http://#{subdomain}.folio.cl"
     default_url_options[:host] = "#{subdomain}.folio.cl"
 
@@ -27,6 +27,22 @@ class UserMailer < ActionMailer::Base
     subject     "Instrucciones para actualizar contraseña"
     sent_on     Time.now
     body        :edit_password_reset_url => edit_password_reset_url(user.perishable_token), :name => user.name
+  end
+
+  def comment_notification(user, comment, users_subscribed)
+    subdomain = user.subdomain
+    url = "http://#{subdomain}.folio.com"
+    default_url_options[:host] = "#{subdomain}.folio.com"
+    invoice = Invoice.find(comment.invoice_id)
+    customer = Customer.find(invoice.customer_id)
+    users = users_subscribed.map {|user| user.name}.join(", ")
+
+    recipients  user.email
+    from        "Folio <notifications@folio.cl>"
+    subject     "[Nuevo Comentario] Factura #{invoice.number} - #{invoice.subject}"
+    sent_on     Time.now
+    body        :comment => comment, :users => users, :user => user, :url => url,
+      :invoice => invoice, :customer => customer
   end
 
 end

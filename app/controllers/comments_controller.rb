@@ -3,8 +3,6 @@ class CommentsController < ApplicationController
   def create
     params[:comment][:notify_account_users] = params[:comment][:notify_account_users].keys.join(",")
     @comment = Comment.new(params[:comment])
-    @comment.account_id = current_account.id
-    @comment.comment_type_id = 1
     @invoice = Invoice.find(@comment.invoice_id)
 
     respond_to do |format|

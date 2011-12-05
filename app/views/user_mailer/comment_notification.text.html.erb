@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>                                                                                                             
+	<head>
+    	<meta charset="UTF-8" />
+  	</head>
+
+	<%= render :partial => "style" %>
+
+	<body>
+	<div id="header">
+		<table >
+			<tr>
+				<td class="margin-right">Factura: </td>
+				<td style="color: black">
+					<%= link_to "#{@invoice.subject} (#{@invoice.number})", invoice_url(@invoice)%>
+				</td>
+			</tr>
+			<tr>
+				<td class="margin-right">Empresa: </td>
+				<td style="color: black"><%= @customer.name %></td>
+			</tr>
+		</table>
+	</div>
+	
+	<hr/>
+	
+	<div id="main">
+		
+		<div id="avatar" style="float: left;">
+			<%= image_tag "#{@url}/#{@user.avatar_thumb_url}" %>
+		</div>
+		
+		<div id="content">
+			<h4><span class="username"><%= @user.name %></span> hizo el siguiente comentario:</h4>
+			<p>
+				<%=h @comment.body %>
+			</p>
+		</div>
+			<br/><br/><br/>
+	</div>
+	
+
+	<hr/>
+	<div id="footer">
+		<p>Este comentario fue enviado a <%= @users %>.</p>
+		Enviado por <a href="http://www.folio.cl">Folio</a>
+	</div>
+	<br/>
+	
+		<%= render :partial => "footer" %>
+	
+	</body>
+</html>

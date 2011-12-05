@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
   def has_avatar?
     self.avatar_file_name.blank? ? false : true
   end
+  
+  def subdomain
+    account.subdomain
+  end
 
   def deliver_welcome_guest_email!(admin_user_id, password = nil)
     admin_user = User.find(admin_user_id)
@@ -41,6 +45,11 @@ class User < ActiveRecord::Base
   def deliver_password_reset_instructions!
     reset_perishable_token!
     UserMailer.deliver_password_reset_instructions(self)
+  end
+  
+  def deliver_comment_notification_email!(comment_id, users)
+    comment = Comment.find(comment_id)
+    UserMailer.deliver_comment_notification(self, comment, users)
   end
 
   def account_admin?

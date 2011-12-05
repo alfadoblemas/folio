@@ -77,8 +77,10 @@ class Invoice < ActiveRecord::Base
     unless closed?
       update_attribute(:status_id, 3)
       update_attribute(:close_date, Date.today)
+      notify_users = last_comment_suscriptions[:users].keys.join(",")
       comments.build(:subject => "Pagada", :body => "Factura pagada", :user_id => user.id,
-                     :account_id => user.account_id, :comment_type_id => 4, :system => true)
+                     :account_id => user.account_id, :comment_type_id => 4, :system => true,
+                     :notify_account_users => notify_users)
       save
     else
       false

@@ -1,7 +1,8 @@
 class Comment < ActiveRecord::Base
 
-  before_create :set_account_id
+  before_create :set_account_id, :set_default_comment_type
   before_destroy :system_comment
+  after_create :enqueue_notification_email
 
   validates_presence_of :body, :invoice_id
 
@@ -23,10 +24,24 @@ class Comment < ActiveRecord::Base
   def user_name
     user.name
   end
+  
+  def enqueue_notification_email
+    users_ids = notify_account_users.split(/,/)
+    users = {}
+    User.find(users_ids).each {|user| users[user.id] = user}
+    users_ids.each do |user_id|
+      user = users[user_id.to_i]
+      user.send_later(:deliver_comment_notification_email!, id, users.values)
+    end
+  end
 
   private
     def set_account_id
       self.account_id ||= self.user.account.id
+    end
+    
+    def set_default_comment_type
+      self.comment_type_id ||= 1
     end
     
     def convert_user_ids_to_i
