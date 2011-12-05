@@ -29,19 +29,20 @@ class UserMailer < ActionMailer::Base
     body        :edit_password_reset_url => edit_password_reset_url(user.perishable_token), :name => user.name
   end
 
-  def comment_notification(user, comment, users_subscribed)
-    subdomain = user.subdomain
-    url = "http://#{subdomain}.folio.com"
-    default_url_options[:host] = "#{subdomain}.folio.com"
+  def comment_notification(recipient, comment, users_subscribed)
+    comment_user = comment.user
+    subdomain = comment_user.subdomain
+    url = "http://#{subdomain}.folio.cl"
+    default_url_options[:host] = "#{subdomain}.folio.cl"
     invoice = Invoice.find(comment.invoice_id)
     customer = Customer.find(invoice.customer_id)
-    users = users_subscribed.map {|user| user.name}.join(", ")
+    users = users_subscribed.map {|u| u.name}.join(", ")
 
-    recipients  user.email
+    recipients  recipient.email
     from        "Folio <notifications@folio.cl>"
     subject     "[Nuevo Comentario] Factura #{invoice.number} - #{invoice.subject}"
     sent_on     Time.now
-    body        :comment => comment, :users => users, :user => user, :url => url,
+    body        :comment => comment, :users => users, :user => comment_user, :url => url,
       :invoice => invoice, :customer => customer
   end
 

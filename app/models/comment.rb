@@ -28,10 +28,12 @@ class Comment < ActiveRecord::Base
   def enqueue_notification_email
     users_ids = notify_account_users.split(/,/)
     users = {}
-    User.find(users_ids).each {|user| users[user.id] = user}
+    User.find(users_ids).each do |user| 
+      users[user.id] = user
+    end
     users_ids.each do |user_id|
       user = users[user_id.to_i]
-      user.send_later(:deliver_comment_notification_email!, id, users.values)
+      user.send_later(:deliver_comment_notification_email!, self.id, users.values)
     end
   end
 
