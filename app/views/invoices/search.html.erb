@@ -6,13 +6,13 @@
     <span id="show_filter" class="searchLink"> <%= link_to_function "Filtrar Facturas", "display_invoice_filter()" %>  </span>
   </div>
 </div>
-<div id="invoice_filter" class="span-19 last" style="display: none;">
+<div id="invoice_filter" class="span-18 last" style="display: none;">
 	<%= render :partial => "search", :locals => {:search => @search} %>
 </div>
 
 
 <% if params[:search] && !params[:search].blank? %>
-  <div class="span-19 last prepend-top">
+  <div class="span-18 last prepend-top">
     <% if @invoices.size < 1 %>
       <h3>No se encontraron resultados. <%= link_to " Volver...", invoices_path() %></h3>
     <% else %>

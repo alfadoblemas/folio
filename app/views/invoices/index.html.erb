@@ -27,7 +27,7 @@
 			<h2>Resultados</h2>
 			<%= link_to "Volver...", invoices_path() %> 
 		<% else %>
-			<div class="span-19">
+			<div class="span-18">
 				<h2><%= @invoices.total_entries %> Facturas</h2>
 				<div id="search_tags">
 					<% if params[:search][:due_gte] %>
@@ -71,12 +71,12 @@
   <% end %>
 
 </div>
-<div id="invoice_filter" class="span-19 last" style="display: none;">
+<div id="invoice_filter" class="last" style="display: none;">
 	<%= render :partial => "search", :locals => {:search => @search} %>
 </div>
 		
-        <div class="span-19 last prepend-top">
-			<div class="invoice_status span-9">
+        <div class="span-18 last prepend-top">
+			<div class="invoice_status span-8">
 					<%= invoice_state_link  nil, "Todas" %> |
 					<%= invoice_state_link "due", "Vencidas", 5 %> |
 					<%= invoice_state_link "draft", "Borrador ", 1 %> |

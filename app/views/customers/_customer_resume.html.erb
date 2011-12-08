@@ -1,10 +1,10 @@
-<div class="customer span-19 last">
-  <div class="customerHeader span-19">
+<div class="customer span-18 last">
+  <div class="customerHeader">
     <% if params[:action].eql?("index") %>
 	  <br/>
       <div class="customerName span-9 last"><%= link_to "#{customer.name}", customer %></div>
     <% elsif params[:action].eql?("show") %>
-      <div class="customerName span-18 last"><h2><%= customer.name %></h2></div>
+      <div class="customerName last"><h2><%= customer.name %></h2></div>
     <% end %>
 	<% unless params[:action] == "show" %>
 	    <div class="customerActions span-18 last">
@@ -35,7 +35,7 @@
     <% end %>
   </div>
   <% if customer.contacts.size > 0 %>
-    <div class="customerContacts span-13 last">
+    <div class="customerContacts span-12 last">
       <% n = 1 %>
       <table>
 
@@ -53,7 +53,7 @@
       </table>
     </div>
   <% else %>
-  <div class="span-13 last empty" style="margin-top: -10px;">
+  <div class="span-12 last empty" style="margin-top: -10px;">
       <p>Cliente sin contactos<br/>
         <%= link_to "Agregue uno ahora", new_customer_contact_path(customer) %>
       </p>

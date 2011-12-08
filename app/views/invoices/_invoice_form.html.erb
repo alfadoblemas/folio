@@ -23,8 +23,8 @@
     <span class="addLink"><%= link_to_add_fields "Agregar línea" ,f, :invoice_items, :products => products %></span>
  </div>
 
-  <div class="span-10 prepend-9 last">
-    <table class="totals">
+  <div class="last span-18">
+    <table id="totals">
       <tr>
         <td class="netLabel">Neto</td>
         <td class="readonly"><%= f.text_field :net,
@@ -33,7 +33,7 @@
       <tr>
         <td class="taxLabel">IVA</td>
         <td class="readonly"><%= f.text_field :tax,
-            :class => "taxPrice" %></td>
+            :class => " taxPrice", :readonly => "readonly" %></td>
       </tr>
       <tr>
         <td class="totalLabel">Total</td>
@@ -44,9 +44,9 @@
   </div>
 
   <div class="last">
-    <strong>Comentarios</strong> (agregue detalles extra a continuación)
+    <strong>Más Información</strong> (agregue detalles extra a continuación)
     <hr/>
-  <%= f.text_area :comment, :rows => 5, :cols => 90 %>
+  <%= f.text_area :comment, :rows => 5, :cols => 98 %>
 
     <br/>
 
