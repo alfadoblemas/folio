@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111203001919) do
+ActiveRecord::Schema.define(:version => 20111210020635) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -149,7 +149,7 @@ ActiveRecord::Schema.define(:version => 20111203001919) do
     t.integer  "quantity"
     t.text     "description"
     t.integer  "price"
-    t.integer  "total"
+    t.integer  "total",                      :default => 0
     t.integer  "invoice_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -160,9 +160,9 @@ ActiveRecord::Schema.define(:version => 20111203001919) do
 
   create_table "invoices", :force => true do |t|
     t.integer  "number"
-    t.integer  "tax"
-    t.integer  "net"
-    t.integer  "total"
+    t.integer  "tax",         :default => 0
+    t.integer  "net",         :default => 0
+    t.integer  "total",       :default => 0
     t.integer  "customer_id"
     t.integer  "contact_id"
     t.integer  "account_id"
@@ -179,8 +179,8 @@ ActiveRecord::Schema.define(:version => 20111203001919) do
     t.string   "subject"
   end
 
+  add_index "invoices", ["account_id"], :name => "altered_invoices_account_index"
   add_index "invoices", ["account_id"], :name => "altered_invoices_company_index"
-  add_index "invoices", ["account_id"], :name => "invoices_account_index"
   add_index "invoices", ["contact_id"], :name => "altered_invoices_contact_index"
   add_index "invoices", ["currency_id"], :name => "altered_invoices_currency_index"
   add_index "invoices", ["customer_id"], :name => "altered_invoices_customer_index"

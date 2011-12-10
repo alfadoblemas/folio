@@ -1,5 +1,6 @@
 class Invoice < ActiveRecord::Base
   before_create :set_as_draft
+  before_save :calculate_tax
 
   acts_as_taggable
 
@@ -97,6 +98,10 @@ class Invoice < ActiveRecord::Base
 
   def cancellable?
     status_id == 2 || status_id == 5 ? true : false
+  end
+
+  def self.new_with_default_values
+    self.new(:total => 0, :tax => 0, :net => 0)
   end
 
   def self.duplicate(id)
@@ -317,6 +322,13 @@ class Invoice < ActiveRecord::Base
   
   def set_as_draft
     self.status_id = 1
+  end
+  
+  def calculate_tax
+    if self.taxed
+      self.tax = (self.net * 1.19).round - self.net
+      self.total = self.net + self.tax
+    end
   end
   
 end

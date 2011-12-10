@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
   has_attached_file :avatar,
     :url => "/images/uploads/users/avatars/:id/:style/:basename.:extension",
     :path => ":rails_root/public/images/uploads/users/avatars/:id/:style/:basename.:extension",
-    :styles => {:medium => "100x100>", :thumb => "48x48"}
+    :styles => {:medium => "100x100>", :thumb => "48x48"},
+    :default => "/images/missing_avatar.gif"
 
   validates_presence_of :password, :on => :create
 
@@ -32,7 +33,7 @@ class User < ActiveRecord::Base
   def has_avatar?
     self.avatar_file_name.blank? ? false : true
   end
-  
+
   def subdomain
     account.subdomain
   end
@@ -46,7 +47,7 @@ class User < ActiveRecord::Base
     reset_perishable_token!
     UserMailer.deliver_password_reset_instructions(self)
   end
-  
+
   def deliver_comment_notification_email!(comment_id, users)
     comment = Comment.find(comment_id)
     UserMailer.deliver_comment_notification(self, comment, users)
@@ -55,11 +56,11 @@ class User < ActiveRecord::Base
   def account_admin?
     self.admin ? true : false
   end
-  
+
   def avatar_thumb_url
     avatar.url(:thumb)
   end
-  
+
   named_scope :active, :conditions => ["active = ?", true], :order => 'name'
 
   private
