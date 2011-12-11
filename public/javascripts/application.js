@@ -75,10 +75,10 @@ function calcIva() {
     var netPrice = parseInt($(".netPrice").toNumber({
         region: 'es-CL'
     }).val());
-    if($("#invoice_taxed").attr('checked')){
+    if($("#invoice_taxed").prop("checked")){
         iva =  Math.round(netPrice * 1.19) - netPrice;
     }
-    $(".taxPrice").val(iva)
+    $("#invoice_tax").val(iva)
 }
 
 function updatePrices() {
