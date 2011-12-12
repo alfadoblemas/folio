@@ -16,24 +16,26 @@ class Comment < ActiveRecord::Base
              :order => "created_at desc" ,
              :conditions => ["account_id = ?", params_hash[:account].id])
   end
-  
+
   def user_avatar
     user.avatar_thumb_url
   end
-  
+
   def user_name
     user.name
   end
-  
+
   def enqueue_notification_email
-    users_ids = notify_account_users.split(/,/)
-    users = {}
-    User.find(users_ids).each do |user| 
-      users[user.id] = user
-    end
-    users_ids.each do |user_id|
-      user = users[user_id.to_i]
-      user.send_later(:deliver_comment_notification_email!, self.id, users.values)
+    unless self.system
+      users_ids = notify_account_users.split(/,/)
+      users = {}
+      User.find(users_ids).each do |user|
+        users[user.id] = user
+      end
+      users_ids.each do |user_id|
+        user = users[user_id.to_i]
+        user.send_later(:deliver_comment_notification_email!, self.id, users.values)
+      end
     end
   end
 
@@ -41,11 +43,11 @@ class Comment < ActiveRecord::Base
     def set_account_id
       self.account_id ||= self.user.account.id
     end
-    
+
     def set_default_comment_type
       self.comment_type_id ||= 1
     end
-    
+
     def convert_user_ids_to_i
       self.notify_account_users.map! {|id| id.to_i}
     end
