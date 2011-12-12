@@ -3,7 +3,12 @@
 		<th>Indicadores</th>
 		<th></th>
 	</tr>
-	
+	 <% %w(uf dolar euro utm).each do |i| %>   	
+	  <tr>
+	    <td><%= i.upcase %></td>
+	    <td><%= number_to_chilean_currency(@indicadores.send(i)) %></td>
+	  </tr>
+	<% end %>
 </table>
 
 <div class="dashboard_box">

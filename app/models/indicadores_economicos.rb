@@ -14,12 +14,8 @@ class IndicadoresEconomicos < ActiveRecord::Base
       end
       indicadores.save
       indicadores.missing_values.each do |missing|
-        indicadores_yesterday = find_by_date(Date.yesterday)
-        if indicadores_yesterday.send(missing).nil?
-          indicadores.send("#{missing}=", 0)
-        else
-          indicadores.send("#{missing}=",indicadores_yesterday.send(missing))
-        end
+        last_indicadores = last(:conditions => "#{missing} is not null")
+        indicadores.send("#{missing}=",last_indicadores.send(missing))
       end
     end
     indicadores
