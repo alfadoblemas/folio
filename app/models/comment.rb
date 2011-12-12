@@ -26,7 +26,7 @@ class Comment < ActiveRecord::Base
   end
 
   def enqueue_notification_email
-    unless self.system
+    unless self.system || notify_account_users.nil?
       users_ids = notify_account_users.split(/,/)
       users = {}
       User.find(users_ids).each do |user|

@@ -16,13 +16,15 @@
 
 </div>
 
-<div id="recent_activity">
-<h3>Actividad reciente</h3>
-<div id="comments" class="comment">
-<%= render :partial => "comments/comment_dashboard", :collection => @comments ,
-    :as => :comment, :spacer_template => "comments/comment_divider" %>
-</div>
-</div>
-<%= will_paginate(@comments)%>
-<%= pageless(@comments.total_pages, dashboard_path, '#comments')%>
+<% unless @comments.size < 1 %>
+	<div id="recent_activity">
+		<h3>Actividad reciente</h3>
+		<div id="comments" class="comment">
+			<%= render :partial => "comments/comment_dashboard", :collection => @comments ,
+    		:as => :comment, :spacer_template => "comments/comment_divider" %>
+		</div>
+	</div>
+	<%= will_paginate(@comments)%>
+		<%= pageless(@comments.total_pages, dashboard_path, '#comments')%>
+	<% end %>
 <% end %>

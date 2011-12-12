@@ -1,7 +1,9 @@
 class CommentsController < ApplicationController
 
   def create
-    params[:comment][:notify_account_users] = params[:comment][:notify_account_users].keys.join(",")
+    if params[:comment][:notify_account_users]
+      params[:comment][:notify_account_users] = params[:comment][:notify_account_users].keys.join(",")
+    end
     @comment = Comment.new(params[:comment])
     @invoice = Invoice.find(@comment.invoice_id)
 
