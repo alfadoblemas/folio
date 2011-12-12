@@ -259,6 +259,10 @@ margin-top: 20px;
   border-left:#d12f19 solid;
 }
 
+table#newInvoiceItems {
+	margin-bottom: 4px;
+}
+
 #newInvoiceItems td {
 vertical-align: top;
 }
@@ -303,9 +307,7 @@ background-color: #EEEEEE;
 
 table#totals {
 	float: right;
-	margin-bottom: 1.4em;
-	width: 200px;
-	margin-right: 5px;
+	width: 0px;
 }
 
 #totals .price_value {
@@ -357,9 +359,6 @@ table#totals {
   width: 0px;
 }
 
-.totals .label td {
-	width: 100px;
-}
 
 .totalHeader {
   text-align: right;
@@ -378,7 +377,7 @@ table#totals {
 }
 
 .invoice_info {
-  margin-right: 10px;
+  margin-right: 5px;
   text-align: right;
   font-size: 14px;
 }
@@ -846,7 +845,7 @@ ul.customernav li:before {
 }
 
 .descriptionHeader {
-  width: 130px;
+  width: 40%;
 }
 
 .titleHeader {
