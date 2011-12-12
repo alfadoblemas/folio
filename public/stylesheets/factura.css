@@ -349,6 +349,10 @@ table#totals {
   font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;
 }
 
+#totals td {
+	padding-bottom: 0px;
+}
+
 .totals td {
   padding-bottom: 0px;
   padding-top: 0px;
