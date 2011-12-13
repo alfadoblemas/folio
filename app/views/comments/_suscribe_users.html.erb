@@ -7,7 +7,7 @@
 	<table id="suscriptions">
 		<tr>
 			<td colspan="3" style="padding-bottom: 0px;">
-				<%= check_box_tag "comment[notify_all_account_users]", 1, comment.notify_all_account_users, :onclick => "toggleSuscriptions(this.id, 'notification_block_#{current_account.id}')"  %>
+				<%= check_box_tag "comment[notify_all_account_users]", 1, comment.notify_all_account_users, :onclick => "toggleSuscriptions(this.id, 'notification_block_#{current_account.id}')" %>
 					<strong>Todas las personas de <%= current_account.name %></strong>
 			</td>
 		</tr>

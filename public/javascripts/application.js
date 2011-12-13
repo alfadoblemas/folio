@@ -201,7 +201,11 @@ $().ready(function() {
     formatInvoicePrice();
 
 
-	
+	$(".account_suscriptions :checkbox").bind('click', function(){
+		if($("#comment_notify_all_account_users").prop("checked")) {
+			$("#comment_notify_all_account_users").prop("checked", false)
+		}
+	});
 
 });
 
