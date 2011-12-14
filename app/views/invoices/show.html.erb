@@ -62,7 +62,7 @@
   </div>
 
 	<% unless @invoice.comment.blank? %>
-  		<div class="span-18 last invoice_extra_info">
+  		<div id="invoice_information" class="span-18 last">
     		<h3>Información</h3>
     		<hr/>
     		<%= textarea_display(@invoice.comment) %>
@@ -70,21 +70,28 @@
 	<% end %>
 
   <br/>
-  <div class="comments span-18 prepend-top last">
-    <div class="span-18 comments_header">
-      <h3>Comentarios</h3>
-    </div>
+
+
+  <div id="invoice_extra_info" class="span-18 prepend-top">
+	<ul>
+      <li><a href="#tabs-1">Comentarios</a></li>
+	  <li><a href="#tabs-2">Archivos</a></li>
+    </ul>
     
-	<div class="span-18 comments_body">
-      <%= render :partial => "comments/comment", :collection => @invoice.comments ,
-        :as => :comment, :spacer_template => "comments/comment_divider" %>
-	
-	<hr/>
-	<div id="add_comment"  class="span-18 last">
-      <%= render :partial => "comments/new_comment", :locals => {:invoice_id => @invoice.id} %>
-    </div>
+	<div id="tabs-1" class="span-18 comments_body">
+      	<%= render :partial => "comments/comment", :collection => @invoice.comments ,
+	        :as => :comment, :spacer_template => "comments/comment_divider" %>
+
+			<%unless @invoice.comments.size < 1%><hr/><% end %>
+			<div id="add_comment"  class="span-18 last">
+	      		<%= render :partial => "comments/new_comment", :locals => {:invoice_id => @invoice.id} %>
+	    	</div>
+	</div>
+	<div id="tabs-2">
+		<%= render :partial => "attachments" %>
 	</div>
 	
   </div>
+
 
 </div>

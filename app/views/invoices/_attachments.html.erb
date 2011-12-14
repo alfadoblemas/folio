@@ -1,0 +1,13 @@
+<div id="invoice_attachments" style="min-height: 300px">
+	<div style="float: right">
+		<span class="addLink">Subir un archivo</span>
+	</div>
+
+	<div id="attachment_upload_dialog">
+		<h3>Selecciona el archivo que deseas subir</h3>
+		<% form_for @invoice do |f| -%>
+		  <%= f.file_field :tax %>
+		<% end -%>
+	</div>
+
+</div>

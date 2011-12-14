@@ -20,5 +20,7 @@ $(document).ready(function() {
 	$("input[type='text']#tagged_with").tagit({
 		availableTags: tags
 	})
+	
+	$("#invoice_extra_info").tabs();
 
 });
