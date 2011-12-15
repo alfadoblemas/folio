@@ -1,0 +1,15 @@
+<div class="comment_suscriptions" style="margin-top:20px">
+	<span style="font-size: 14px; color: black"><strong>Notificar por e-mail</strong></span>
+	<table id="suscriptions">
+		<tr>
+			<td colspan="3" style="padding-bottom: 0px;">
+				<%= check_box_tag "comment[notify_all_account_users]", 1, invoice.comments.last.notify_all_account_users, :onclick => "toggleSuscriptions(this.id, 'notification_block_#{current_account.id}')" %>
+					<strong>Todas las personas de <%= current_account.name %></strong>
+			</td>
+		</tr>
+		<tbody class="account_suscriptions" id="notification_block_<%= current_account.id%>">
+			<%= suscribe_users(current_account.active_users, invoice.comments.last)%>
+		</tbody>
+	</table>
+
+</div>

@@ -1,13 +1,27 @@
-<div id="invoice_attachments" style="min-height: 300px">
-	<div style="float: right">
-		<span class="addLink">Subir un archivo</span>
+<div id="invoice_attachments" class="comment" style="min-height: 300px">
+	<div class="float_liner">
+		<%= image_tag current_user.avatar_thumb_url, :class => "avatar" %>
+		<div class="indented">
+			<% form_for @invoice do |f| -%>
+				<div id="attachment_upload_dialog_step1" style="margin-left: -7px">
+					<h3><strong>Subir un archivo</strong></h3>
+			  		<%= file_field_tag "invoice_attachment" %>
+				</div>	
+			
+				<div id="attachment_upload_dialog_step2" style="display: none">
+					<span id="attachment_file_name" style="font-size: 16px; color: black; font-weight: bold"></span>
+					<p>
+						<strong>Descripción opcional</strong></br>
+						<%= f.text_field :subject %>
+					</p>
+				</div>
+			
+			   <%= render :partial => 'attachments/suscribe_users', :locals => {:invoice => @invoice} %>	
+			
+			  <%= f.submit "Subir archivo" %>
+			  <%= link_to "Cancelar", invoice_path(@invoice) %>
+			
+			<% end %>
+		</div>
 	</div>
-
-	<div id="attachment_upload_dialog">
-		<h3>Selecciona el archivo que deseas subir</h3>
-		<% form_for @invoice do |f| -%>
-		  <%= f.file_field :tax %>
-		<% end -%>
-	</div>
-
 </div>

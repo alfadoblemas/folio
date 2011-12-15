@@ -388,6 +388,7 @@ table#totals {
 
 #invoice_extra_info {
 	margin-left: -10px;
+	margin-top: 50px;
 	border: 0;
 	padding: 0;
 	width: 730px;
@@ -439,7 +440,7 @@ table#totals {
 	float: left;
 }
 
-.comment .indented {
+#invoice_extra_info .indented {
 	margin-left: 70px;
 }
 
