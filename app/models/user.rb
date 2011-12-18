@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
 
   #Assoc
   belongs_to :account
-  has_many :comments
+  has_many :comments, :dependent => :destroy
+  has_many :documents
 
   before_save :randomize_file_name
 

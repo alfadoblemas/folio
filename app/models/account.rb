@@ -8,12 +8,13 @@ class Account < ActiveRecord::Base
 
   # Associations
   authenticates_many :user_sessions
-  has_many :invoices
-  has_many :users, :uniq => true
+  has_many :invoices, :dependent => :destroy
+  has_many :users, :uniq => true, :dependent => :destroy
   accepts_nested_attributes_for :users
-  has_many :customers
-  has_many :contacts
-  has_many :comments
+  has_many :customers, :dependent => :destroy
+  has_many :contacts, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
+  has_many :documents, :dependent => :destroy
   alias_attribute :user_id, :admin_id
 
   # Validations

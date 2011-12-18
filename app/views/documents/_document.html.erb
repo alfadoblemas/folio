@@ -1,0 +1,24 @@
+<div class="document span-18 last">
+	<div class="document_date">
+		<span><%= l document.created_at, :format => :document %></span>
+	</div>
+	
+	<div class="document_image">
+		<%= document_icon_tag document.attachment_extension %>
+	</div>
+	
+	<div class="document_info span-14 last">
+		<span class="file_name">
+			<%= link_to document.attachment_file_name, document.attachment.url() %>
+		</span>
+		<p class="document_description"><%= document.description %></p>
+		<p class="document_metadata">
+			subido por <%= document.user_name %>, 
+			<%= number_to_human_size document.attachment_file_size %> - 
+			<%= link_to "Eliminar", document, 
+			:confirm => "¿Desea realmente eliminar este archivo?", :method => :delete %>
+		</p>
+	</div>
+	
+</div>
+

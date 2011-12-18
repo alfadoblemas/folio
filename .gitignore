@@ -13,3 +13,5 @@ public/images/uploads
 db/schema.rb
 assets/*
 db/schema.rb
+app/views/documents/uploads/*
+uploads/*

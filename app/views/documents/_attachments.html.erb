@@ -1,0 +1,7 @@
+<div id="invoice_attachments" class="comment span-18">
+	<%= render :partial => 'documents/attachments_form', 
+	:locals => {:document => document, :invoice => invoice} %>
+
+	<%= render :partial => "documents/document", :collection => @invoice.documents_reverse ,
+        :as => :document %>
+</div>

@@ -11,6 +11,7 @@ class Invoice < ActiveRecord::Base
   belongs_to :status
   has_many :invoice_items, :dependent => :destroy
   has_many :comments, :dependent => :destroy
+  has_many :documents, :dependent => :destroy
 
   # Extras
   accepts_nested_attributes_for :invoice_items, :allow_destroy => true
@@ -40,6 +41,10 @@ class Invoice < ActiveRecord::Base
 
   def due_date_to_days
     ((due.to_time - date.to_time)/3600/24).to_i
+  end
+  
+  def documents_reverse
+    documents.reverse
   end
 
   def active!(user)

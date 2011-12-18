@@ -88,7 +88,7 @@
 	    	</div>
 	</div>
 	<div id="tabs-2">
-		<%= render :partial => "attachments" %>
+		<%= render :partial => "documents/attachments", :locals => {:invoice => @invoice, :document => @document} %>
 	</div>
 	
   </div>

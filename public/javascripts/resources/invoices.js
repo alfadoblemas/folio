@@ -23,12 +23,19 @@ $(document).ready(function() {
 	
 	$("#invoice_extra_info").tabs();
 	
-	$("#invoice_attachment").bind("change", function() {
+	$("#document_attachment").bind("change", function() {
 		var filename=$(this).val();
 		$("#attachment_upload_dialog_step1").hide()
 		
 		$("#attachment_file_name").append(filename);
+		$("#new_document :submit").prop("disabled", false)
 		$("#attachment_upload_dialog_step2").show();
 	});
+	
+	$("#show_attachment_form").bind("click", function() {
+		$(this).hide();
+		$("#new_document :submit").prop("disabled", true)
+		$("#attachment_upload_dialog").show();
+	})
 
 });

@@ -150,6 +150,7 @@ class InvoicesController < ApplicationController
 
   def show
     @comment = Comment.new()
+    @document = Document.new()
     @comment.notify_account_users = @invoice.last_comment_suscriptions[:users]
     @comment.notify_all_account_users = @invoice.last_comment_suscriptions[:all_users]
   end

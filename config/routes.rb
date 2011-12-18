@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   #map.root :controller => "invoices" 
+  map.connect 'documents/:id/:filename.:extension', :controller => 'documents', :action => 'download', :conditions => { :method => :get }
   map.account_invoice_tags 'accounts/:id/invoice_tags', :controller => 'accounts', :action => 'invoice_tags'
   map.customer_invoices 'customers/:id/invoices', :controller => 'customers', :action => 'invoices'
   map.enable_user 'users/enable/:id', :controller => 'users', :action => 'enable'
@@ -21,6 +22,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :invoices, :has_many => [:comments]
   map.resources :accounts, :has_many => [:users, :invoices, :customers]
   map.resources :comments
+  map.resources :documents
   map.resources :users, :except => [:show]
   map.resources :user_sessions
   map.application_root "/", :controller => "dashboards", :action => "show", :conditions => {:subdomain => /.+/}
