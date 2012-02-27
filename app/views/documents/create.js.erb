@@ -1,0 +1,5 @@
+$("#invoice_attachments").append("<%= escape_javascript(render(:partial => 'documents/document', :locals => {:document => @document})) %>");
+$("#invoice_attachments").append("<hr/>");
+$("#document_<%= @document.id %>").effect("highlight", null, 1500);
+$("#new_document")[0].reset();
+$("#new_document").before("<%= escape_javascript(flash.delete(:notice)) %>");

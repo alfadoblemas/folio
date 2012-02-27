@@ -27,6 +27,7 @@ class DocumentsController < ApplicationController
       if @document.save
         flash[:notice] = "Archivo agregado"
         format.html {redirect_to(invoice_path(@document.invoice_id))}
+        format.js
       else
         flash[:notice] = "No fue posible agregar el archivo"
         format.html {redirect_to(invoice_path(@document.invoice_id))}

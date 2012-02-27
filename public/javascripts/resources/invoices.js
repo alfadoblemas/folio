@@ -15,6 +15,8 @@ $(document).ready(function() {
 
 	// Overwrite the submit of the new_comment form
 	$("#new_comment").submitWithAjax();
+	// This not working at the momment
+	//$("#new_document").submitWithAjax();
 
 	var tags = [];
 	
