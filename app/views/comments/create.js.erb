@@ -1,0 +1,5 @@
+$("#comments").append("<%= escape_javascript(render(:partial => 'comments/comment', :locals => {:comment => @comment})) %>");
+$("#comments").append("<hr/>");
+$("#comment_<%= @comment.id %>").effect("highlight", null, 1500);
+$("#new_comment")[0].reset();
+$("#new_comment").before("<%= escape_javascript(flash.delete(:notice)) %>");

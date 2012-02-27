@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
       if @comment.save
         flash[:notice] = "Comentario agregado."
         format.html { redirect_to(@invoice)}
+        format.js
       else
         format.html { redirect_to(@invoice)}
       end

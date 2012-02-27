@@ -79,10 +79,12 @@
     </ul>
     
 	<div id="tabs-1" class="span-18 comments_body">
+	 <div id="comments">
       	<%= render :partial => "comments/comment", :collection => @invoice.comments ,
 	        :as => :comment, :spacer_template => "comments/comment_divider" %>
 
 			<%unless @invoice.comments.size < 1%><hr/><% end %>
+	  </div>
 			<div id="add_comment"  class="span-18 last">
 	      		<%= render :partial => "comments/new_comment", :locals => {:invoice_id => @invoice.id} %>
 	    	</div>
