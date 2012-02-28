@@ -43,6 +43,7 @@
   <div class="prepend-12 span-6 last">
 
     <table id="totals">
+	
       <tr>
         <td class="netLabel label">Neto</td>
         <td class="netPrice price_value "><%= number_to_currency(@invoice.net, :unit => "$",
@@ -53,6 +54,7 @@
           <td class="price_value"><%= number_to_currency(@invoice.tax, :unit => "$",
               :delimiter => ".", :precision => 0) %></td>
         </tr>
+
       <tr>
         <td class="totalLabel label">Total</td>
         <td class="price_value totalPrice"><%= number_to_currency(@invoice.total, :unit => "$",
@@ -89,7 +91,7 @@
 	      		<%= render :partial => "comments/new_comment", :locals => {:invoice_id => @invoice.id} %>
 	    	</div>
 	</div>
-	<div id="tabs-2">
+	<div id="tabs-2" data-selected="<%= flash[:select_file_tab] unless flash[:select_file_tab].nil? %>">
 		<%= render :partial => "documents/attachments", :locals => {:invoice => @invoice, :document => @document} %>
 	</div>
 	

@@ -26,8 +26,8 @@ class DocumentsController < ApplicationController
     respond_to do |format|
       if @document.save
         flash[:notice] = "Archivo agregado"
-        format.html {redirect_to(invoice_path(@document.invoice_id))}
-        format.js
+        # :anchor is for selecting the files tab after saving the file
+        format.html {redirect_to(invoice_path(@document.invoice_id, :anchor => "tabs-2"))}
       else
         flash[:notice] = "No fue posible agregar el archivo"
         format.html {redirect_to(invoice_path(@document.invoice_id))}
