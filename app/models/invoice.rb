@@ -288,7 +288,7 @@ class Invoice < ActiveRecord::Base
   end
   
   def self.year_sales(current_account)
-    months = last_12_months()
+    months = last_13_months()
     sales_by_month = Array.new
     months.each do |m|
       sales_by_month << {
@@ -317,9 +317,9 @@ class Invoice < ActiveRecord::Base
   
   
   private
-  def self.last_12_months
+  def self.last_13_months
     months = Array.new
-    (0..11).each do |m|
+    (0..12).each do |m|
       months << Date.today.months_ago(m)
     end
     months.reverse
