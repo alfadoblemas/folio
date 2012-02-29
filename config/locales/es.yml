@@ -257,6 +257,7 @@
     formats:
       default: "%A, %d de %B de %Y %H:%M:%S %z"
       short: "%d de %b %H:%M"
+      day_month: "%b %d"
       long: "%d de %B de %Y %H:%M"
       document: "%A, %d de %B de %Y"
     am: "am"

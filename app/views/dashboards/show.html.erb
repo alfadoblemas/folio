@@ -18,7 +18,9 @@
 
 <% unless @comments.size < 1 %>
 	<div id="recent_activity">
-		<h3>Actividad reciente</h3>
+		<div class="header">
+			<h3>Actividad reciente</h3>
+		</div>
 		<div id="comments" class="comment">
 			<%= render :partial => "comments/comment_dashboard", :collection => @comments ,
     		:as => :comment, :spacer_template => "comments/comment_divider" %>

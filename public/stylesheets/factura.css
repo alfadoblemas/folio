@@ -424,9 +424,9 @@ table#totals {
 .comment {
 	clear: left;
 	color: #333;
-	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-top: 0px;
 	padding-left: 5px;
+	margin-bottom: 5px;
 }
 
 .comment h4 {
@@ -447,6 +447,12 @@ table#totals {
 
 .comment td {
 	vertical-align: top;
+}
+
+.comment_text {
+	margin: 5px 0px 5px 0px;
+	font-family: "Lucida Grande",verdana,arial;
+	
 }
 
 .comment_body br {
@@ -778,8 +784,9 @@ background:url(/images/icons/star_16.png) no-repeat scroll left transparent;
 }
 
 .comment .type {
-  width: 130px;
+  width: 100px;
   font-size: 13px;
+  font-family: "Lucida Grande",verdana,arial;
 }
 
 .comment td.type {
@@ -791,11 +798,12 @@ background:url(/images/icons/star_16.png) no-repeat scroll left transparent;
 } 
 
 .comment .text {
-  width: 600px;
+  width: 550px;
+  padding-left: 10px;
 }
 
 .comment table {
-	margin-bottom: 5px;
+	margin-bottom: 0px;
 }
 
 div.avatar {
@@ -804,7 +812,7 @@ div.avatar {
 
 .comment div.body {
 	float: left;
-	width: 450px;
+	width: 500px;
 }
 
 
@@ -919,38 +927,59 @@ fieldset {
 
 .comment_type {
     display: block;
-    height: 62px;
-	padding-top: -10px;
-	margin-top: -10px;
+	padding: 0px 5px 0px 0px;
+	color: white;
+	text-align: right;
+}
+
+.comment_title {
+	font-size: 14px;
+	font-weight: bold;
+	margin-top: -3px;
+	line-height: 16px;
+	margin-bottom: 0px;
+}
+
+.comment_customer_name {
+	color: #888;
+	font-family: "Lucida Grande",verdana,arial;
+	font-size: 10px;
+	font-weight: normal;
+}
+
+.comment .comment_details {
+	color: #888;
+	font-size: 10px;
 }
 
 .type_pagada {
-	background:url(/images/bubbles/bubble_pagada.png) no-repeat scroll left transparent;
+	background-color: #8fc400;
 }
 
 .type_comentario {
-	background:url(/images/bubbles/bubble_comentario.png) no-repeat scroll left transparent;
+	background-color: #334E7D;
 }
 
 .type_aviso {
-	background:url(/images/bubbles/bubble_aviso.png) no-repeat scroll left transparent;
+	background-color: #C87800;
 }
 
 .type_perdida {
-	background:url(/images/bubbles/bubble_perdida.png) no-repeat scroll left transparent;
+	background-color: #7A4A77;
 }
 
 .type_nueva {
-	background:url(/images/bubbles/bubble_nueva.png) no-repeat scroll left transparent;
+	background-color: ;
 }
 #recent_activity {
-	margin-top: 30px;
+	margin-top: 20px;
+	margin-bottom: 10px;
 	
 }
 
 #recent_activity .comment {
 	margin-top: 0px;
-	padding-top: 10px;
+	padding-top: 0px;
 }
 
 .invoice_sort div {
@@ -1148,6 +1177,16 @@ text-decoration: underline;
 	border-bottom: 1px solid #A9B1BF;
 	padding: 10px;
 	vertical-align: top;
+}
+
+#recent_activity .header {
+	background-color: #EEE;
+	padding: 10px 5px 10px 10px;
+	margin-bottom: 10px;
+}
+
+.header h3 {
+	margin: 0px;
 }
 
 #attachment_upload_dialog {

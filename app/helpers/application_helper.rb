@@ -35,7 +35,7 @@ module ApplicationHelper
     invoice = comment.invoice
     customer = invoice.customer
     customer_name = customer.alias.blank? ? customer.name : customer.alias
-    link_to "#{customer_name} - #{title} #{invoice.number}: #{invoice.subject}", invoice_path(comment.invoice_id),
+    link_to "##{invoice.number}: #{invoice.subject}", invoice_path(comment.invoice_id),
       :title => "#{customer_name}\n #{invoice.subject}"
   end
 
