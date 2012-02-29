@@ -292,7 +292,7 @@ class Invoice < ActiveRecord::Base
     sales_by_month = Array.new
     months.each do |m|
       sales_by_month << {
-        :month => I18n.localize(m, :format => :month_year),
+        :month => m,
         :total => for_account(current_account).not_draft_cancel.sum(:total,
                   :conditions => {:date => (m.beginning_of_month..m.end_of_month)})
                 }

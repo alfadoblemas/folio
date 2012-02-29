@@ -18,6 +18,7 @@ class DashboardsController < ApplicationController
       f.options[:legend][:style] = {}
       f.options[:xAxis] = {:categories => @months }
       f.options[:title] = ""
+      f.options[:plotOptions][:column] = {:events => {:click => ""}}
 
     end
 
