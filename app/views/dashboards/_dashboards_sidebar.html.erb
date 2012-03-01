@@ -1,15 +1,13 @@
-<table class="dashboard_box">
-	<tr>
-		<th>Indicadores</th>
-		<th></th>
-	</tr>
-	 <% %w(uf dolar euro utm).each do |i| %>   	
-	  <tr>
-	    <td><%= i.upcase %></td>
-	    <td><%= number_to_chilean_currency(@indicadores.send(i)) %></td>
-	  </tr>
-	<% end %>
-</table>
+<div id="total_income">
+	<span class="title">A la fecha</span>
+	<div class="income this_year">
+		<%= number_to_currency(current_account.total_this_year, :unit => "$", :delimiter => ".", :precision => 0) %>
+	</div>
+	<span class="title">El año pasado</span>
+	<div class="income last_year">
+		<%= number_to_currency(current_account.total_last_year, :unit => "$", :delimiter => ".", :precision => 0) %>
+	</div>
+</div>
 
 <div class="dashboard_box">
 		<header><strong>Facturas por vencer</strong></header>

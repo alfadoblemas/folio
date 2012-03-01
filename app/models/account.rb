@@ -65,6 +65,16 @@ class Account < ActiveRecord::Base
     invoices.due_this_week.to_a
   end
   
+  def total_this_year
+    sales = invoices.not_draft_cancel.date_in_between(Date.parse("01/01/#{Date.today.year}"),Date.today)
+    sum_invoices(sales.to_a)
+  end
+  
+  def total_last_year
+    sales = invoices.not_draft_cancel.date_in_between(Date.parse("01/01/#{Date.today.year-1}"),Date.today.years_ago(1))
+    sum_invoices(sales.to_a)
+  end
+  
   def active_users
     users.active
   end
@@ -79,6 +89,12 @@ class Account < ActiveRecord::Base
   end
 
   protected
+
+    def sum_invoices(array)
+      sum = 0
+      sum = array.sum(&:total) unless array.size < 1
+      sum
+    end
 
     def admin_null?
       true if self.admin_id.nil?

@@ -5,7 +5,7 @@ class DashboardsController < ApplicationController
   def show
 
     @account = Account.find(current_account)
-    @indicadores = IndicadoresEconomicos.for_today unless request.xhr?
+    #@indicadores = IndicadoresEconomicos.for_today unless request.xhr?
     last_year_sales = Invoice.year_sales(current_account)
     @months = Invoice.last_13_months.map {|d| "#{I18n.localize(d, :format => :month_abbr)}"}
 
