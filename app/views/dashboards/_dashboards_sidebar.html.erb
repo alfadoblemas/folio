@@ -9,6 +9,7 @@
 	</div>
 </div>
 
+<% unless @account.invoices_due_this_week.size < 1 %>
 <div class="dashboard_box">
 		<header><strong>Facturas por vencer</strong></header>
 		<table>
@@ -32,3 +33,4 @@
 		<%= link_to_invoices_due_this_week %>
 	</div>
 </div>
+<% end %>

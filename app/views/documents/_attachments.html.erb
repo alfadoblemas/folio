@@ -1,4 +1,4 @@
-<div id="invoice_attachments" class="comment span-18">
+<div id="invoice_attachments" class="comment span-18" data-attachment_qty="<%= invoice.documents.size %>">
 	<%= render :partial => 'documents/attachments_form', 
 	:locals => {:document => document, :invoice => invoice} %>
 

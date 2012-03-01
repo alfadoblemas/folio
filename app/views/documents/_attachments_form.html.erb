@@ -22,3 +22,11 @@
 				<%= link_to "Cancelar", invoice_path(@invoice) %>
 	<% end %>
 </div>
+<% if invoice.documents.size < 1%>
+	<script>
+		$(document).ready(function() {
+			$("#show_attachment_form").hide();
+			$("#attachment_upload_dialog").show();
+		});
+	</script>
+<% end %>

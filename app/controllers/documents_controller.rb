@@ -9,7 +9,7 @@ class DocumentsController < ApplicationController
     path = document.attachment.path()
     head(:bad_request) and return unless File.exist?(path)
 
-    send_file_options = { :type => document.attachment.content_type }
+    send_file_options = { :type => document.attachment.content_type, :filename => document.original_file_name }
 
     #case SEND_FILE_METHOD
     #when :apache then send_file_options[:x_sendfile] = true

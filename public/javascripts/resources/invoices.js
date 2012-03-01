@@ -42,6 +42,7 @@ $(document).ready(function() {
 	
 	$("#invoice_extra_info").tabs();
 	
+	
 	$("#document_attachment").bind("change", function() {
 		var filename=$(this).val();
 		$("#attachment_upload_dialog_step1").hide()

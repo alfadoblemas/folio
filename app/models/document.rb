@@ -1,4 +1,5 @@
 class Document < ActiveRecord::Base
+  before_save :randomize_file_name
   belongs_to :invoice
   belongs_to :user
   belongs_to :account
@@ -18,6 +19,24 @@ class Document < ActiveRecord::Base
   
   def attachment_extension
     File.extname(attachment_file_name)
+  end
+  
+  def attachment_url
+    "/documents/#{id}/#{original_file_name}"
+  end
+  
+  def original_file_name
+    read_attribute("original_file_name").nil? ? attachment_file_name : read_attribute("original_file_name")
+  end
+  
+  private
+  def randomize_file_name
+    return if attachment_file_name.nil?
+    extension = File.extname(attachment_file_name).downcase
+    if attachment_file_name_changed?
+      self.original_file_name = attachment_file_name
+      self.attachment.instance_write(:file_name, "#{ActiveSupport::SecureRandom.hex(16)}#{extension}")
+    end
   end
 
 end
