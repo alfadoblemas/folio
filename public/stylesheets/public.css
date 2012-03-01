@@ -1,5 +1,5 @@
 body {
-  background-color: #E7F1FD;
+  background-color: #E5E5E5;
   margin: 0px;
   padding: 0px;
 }
@@ -34,6 +34,7 @@ h2 {
 
 .container {
 	min-height: 400px;
+	background-color: #E5E5E5;
 }
 
 ol, ul {
@@ -112,7 +113,7 @@ ul#company-info.section li.header span {
     
 }
 
-label {
+#register label {
     color: #29384C;
     display: block;
     float: left;
@@ -125,7 +126,7 @@ label {
 	padding-top: 9px;
 }
 
-input[type="text"], input[type="password"] {
+#register input {
     -moz-border-radius: 1px 1px 1px 1px;
     border: 1px solid #8D9095;
     color: #29384C;
@@ -181,10 +182,27 @@ li.url strong {
 }
 
 #login {
-	margin-left: 150px;
-	margin-right: 150px;
-	margin-top: 50px;
-	width: 628px;
+	padding: 25px 28px;
+	background: white;
+	text-align: left;
+	width: 410px;
+	margin: 50px auto;
+	font-family: lucida grande,verdana;
+	font-size: 12px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-moz-box-shadow: 0 0 6px #999;
+	-webkit-box-shadow: 0 0 6px #999;
+	box-shadow: 0 0 6px #999;
+	border: 1px solid #AAA;
+}
+
+#login h2 {
+	color: black;
+	font-size: 14px;
+	margin: 0 0 2px 0;
+	padding: 0;
 }
 
 #login .error h3 {
@@ -193,4 +211,29 @@ li.url strong {
 
 #login .bottom {
 	text-align: right;
+}
+
+#login input {
+	margin-top: 0px;
+	width: 275px;
+	font-size: 14px;
+	padding: 3px;
+	margin-bottom: 10px;
+}
+
+#login input.button {
+	width: auto;
+	font-size: 14px;
+	padding: 3px;
+	margin: 10px 0 0 0;
+}
+
+#login .extras {
+	border-top: 1px dashed #CCC;
+	padding-top: 10px;
+	margin-top: 15px;
+}
+
+#login a {
+	text-decoration: underline;
 }

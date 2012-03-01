@@ -103,6 +103,12 @@ color: #C6D880;
 
 /* Main Container */
 
+#login {
+	color: black;
+	background-color: #E5E5E5;
+	padding: 55px 0;
+}
+
 .container {
   margin-top: 10px;
   padding-top: 20px;

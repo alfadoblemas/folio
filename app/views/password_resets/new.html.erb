@@ -2,22 +2,26 @@
   <div id="notice" class="notice"><%= flash[:notice] %></div>
 <% end %>
 <div id="login">
-	<% form_tag(:action => "create") do %>	  
-	  <ul id="company-info" class="section">
-	  	<li class="header">
-	  		<span></span>
-	  		<h3>Actualización de Contraseña</h3>
-			<h4>La información será enviada a su email</h4>
-	  	</li>
-	  	<li>
-	  		<%= label_tag "Email" %>
-	  		<%= text_field_tag :email %>
-	  	</li>
-	  	<li class="bottom">
-			<%= submit_tag "Enviar" %>
-		<br/>
-	  	</li>
-	  	
-	  </ul>
+	
+	<h1><%= current_account.name %></h1>
+	<br/>
+	<div id="login_dialog" class="login_dialog">
+		<p>
+			<strong>¿No puedes ingresar u Olvidaste tu contraseña?</strong>
+			<br/>
+			Ingresa tu dirección de email y te enviaremos las instrucciones para
+			actualizar tu contraseña
+		</p>
+		<% form_tag(:action => "create") do %>	  
+			<h2><%= label_tag "Ingresa tu dirección de e-mail" %></h2>
+			<%= text_field_tag :email %>
+			<br>
+			<%= submit_tag "Enviar instrucciones", :class => "button" %>
+	 </div>
 	<% end %>
 </div>
+<script type="text/javascript">
+	//<![CDATA[
+		$("#email").focus()
+	//]]>
+</script>
