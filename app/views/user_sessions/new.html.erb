@@ -21,7 +21,11 @@
 			</div>
 	  	<% end %>
 	
-	<h1><%= current_account.name %></h1>
+	<% if current_account.have_logo? %>
+		<%= image_tag current_account.logo_url, :title => current_account.name, :class => "logo" %>
+	<% else %>
+		<h1><%= current_account.name %></h1>
+	<% end %>
 	<br/>
 	<div id="login_dialog" class="login_dialog">	  
 		

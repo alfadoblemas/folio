@@ -37,6 +37,10 @@ class Account < ActiveRecord::Base
     !self.avatar_file_name.blank?
   end
   
+  def logo_url
+    avatar.url
+  end
+  
   def have_invoices?
     self.invoices.size > 0 ? true : false
   end

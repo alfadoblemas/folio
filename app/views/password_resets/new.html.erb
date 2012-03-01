@@ -3,14 +3,18 @@
 <% end %>
 <div id="login">
 	
-	<h1><%= current_account.name %></h1>
+	<% if current_account.have_logo? %>
+		<%= image_tag current_account.logo_url, :title => current_account.name, :class => "logo" %>
+	<% else %>
+		<h1><%= current_account.name %></h1>
+	<% end %>
 	<br/>
 	<div id="login_dialog" class="login_dialog">
 		<p>
-			<strong>¿No puedes ingresar u Olvidaste tu contraseña?</strong>
+			<strong>¿No puedes ingresar, olvidaste la contraseña?</strong>
 			<br/>
 			Ingresa tu dirección de email y te enviaremos las instrucciones para
-			actualizar tu contraseña
+			actualizar la contraseña.
 		</p>
 		<% form_tag(:action => "create") do %>	  
 			<h2><%= label_tag "Ingresa tu dirección de e-mail" %></h2>
@@ -18,7 +22,7 @@
 			<br>
 			<%= submit_tag "Enviar instrucciones", :class => "button" %>
 		<div class="extras">
-			<%= link_to "Volver a intentar", login_url %>
+			No importa, <%= link_to "Volver a intentar", login_url %>
 	 </div>
 	<% end %>
 </div>

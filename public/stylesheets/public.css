@@ -237,3 +237,9 @@ li.url strong {
 #login a {
 	text-decoration: underline;
 }
+
+#login .logo {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
