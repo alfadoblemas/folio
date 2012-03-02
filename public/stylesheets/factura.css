@@ -64,19 +64,23 @@ float: left;
 }
 
 #header #navBar {
-color: #ffffff;
-  margin-left: 200px;
-padding-top: 20px;
-word-spacing: 10px;
+	color: #ffffff;
+  	margin-left: 200px;
+	padding-top: 20px;
+	word-spacing: 10px;
+	font-family: "Lucida Grande",verdana,arial;
+	font-size: 20px;
 }
 
 #header #preferences_bar {
 	float: right;
-	margin-top: -35px;
+	margin-top: -25px;
 	padding: 5px;
 	width: 300px;
 	margin-right: 20px;
 	text-align: right;
+	font-family: "Lucida Grande",verdana,arial;
+	font-size: 12px;
 }
 
 #preferences_bar a {
