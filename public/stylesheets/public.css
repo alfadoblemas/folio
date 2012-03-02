@@ -243,3 +243,34 @@ li.url strong {
 	margin-right: auto;
 	display: block;
 }
+
+.page_error {
+	padding: 25px 28px;
+	background: white;
+	text-align: left;
+	width: 410px;
+	margin: 50px auto;
+	font-family: lucida grande,verdana;
+	font-size: 12px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-moz-box-shadow: 0 0 6px #999;
+	-webkit-box-shadow: 0 0 6px #999;
+	box-shadow: 0 0 6px #999;
+	border: 1px solid #AAA;
+	text-align: center;
+	font-size: 14px;
+}
+
+.page_error h2 {
+	color: red;
+	margin-top: -5px;
+	font-weight: bold;
+}
+
+.page_error .extras {
+	border-top: 1px dashed #CCC;
+	padding-top: 10px;
+	margin-top: 15px;
+}
