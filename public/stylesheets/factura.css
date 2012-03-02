@@ -448,6 +448,7 @@ table#totals {
 
 .comment .avatar {
 	float: left;
+	margin-bottom: 8px;
 }
 
 #invoice_extra_info .indented {
