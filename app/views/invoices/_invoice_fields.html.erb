@@ -6,21 +6,21 @@
        <tr>
          <td><span class="required"><%= invoice.label "Cliente" %></span></td>
          <td class="input_column">
-           <%= text_field_tag "", customer.name, :autocomplete => "off", :id => "customer_name_invoice", :class => "input_large" %>
+           <%= text_field_tag "", customer.name, :autocomplete => "off", :id => "customer_name_invoice", :class => "input_large", :placeholder => "Escriba el nombre..." %>
 
          </td>
        </tr>
 	   <tr>
          <td><span class="required"><%= invoice.label "Asunto" %></span></td>
-         <td class="input_column"><%= invoice.text_field :subject, :class => "input_large" %></td>
+         <td class="input_column"><%= invoice.text_field :subject, :class => "input_large", :required => :required %></td>
        </tr>
        <tr>
          <td><span class="required"><%= invoice.label "Fecha" %></span></td>
-         <td class="input_column date"><%= invoice.text_field :date, :value => @invoice.date.to_s, :class => "datepicker input_large" %></td>
+         <td class="input_column date"><%= invoice.date_field :date, :value => @invoice.date.to_s, :class => "datepicker input_large", :required => :required %></td>
        </tr>
        <tr>
          <td><span><%= invoice.label "Número" %></span></td>
-         <td class="input_column"><%= invoice.text_field :number, :class => "input_large" %></td>
+         <td class="input_column"><%= invoice.number_field :number, :class => "input_large" %></td>
        </tr>
      </tbody>
    </table>

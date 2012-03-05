@@ -10,16 +10,21 @@ html, body {
 	margin: 0 auto -100px;
 }
 
+h1 {
+	font-family: "Lucida Grande",arial,sans-serif;
+}
+
 h2 {
   margin-bottom: 20px;
   font-size: 24px;
+  font-family: Helvetica,arial,sans-serif;
 }
 
 h3 {
   font-size: 16px;
   margin-bottom: 10px;
   font-weight: bold;
-  font-family: Helvetica;
+  font-family:"Lucida Grande",arial,sans-serif;
 }
 
 h4 {
@@ -27,7 +32,7 @@ h4 {
 	margin-bottom: -20px;
 	padding-bottom: 0px;
 	font-weight: bold;
-	font-family: Helvetica;	
+	font-family: Helvetica,arial,sans-serif;	
 }
 
 h4.sidebar_title {
@@ -956,6 +961,10 @@ fieldset {
 	font-family: "Lucida Grande",verdana,arial;
 	font-size: 10px;
 	font-weight: normal;
+}
+
+.comment_customer_name a {
+	color: #888;
 }
 
 .comment .comment_details {

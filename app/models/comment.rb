@@ -38,6 +38,10 @@ class Comment < ActiveRecord::Base
       end
     end
   end
+  
+  def invoice_customer
+    invoice.customer
+  end
 
   private
     def set_account_id

@@ -144,17 +144,7 @@ $().ready(function() {
 	
 	$.datepicker.setDefaults($.datepicker.regional['es']);
 	$( ".datepicker" ).datepicker();
-	
-	if($("input#customer_name_invoice").val() == ""){
-		$("input#customer_name_invoice").val("Escriba el nombre...");
-		var disable_input = true;
-		$("input#customer_name_invoice").focus(function(){
-			if(disable_input){
-		  		$("input#customer_name_invoice").val("")
-				disable_input = false;
-			}
-		});
-	}
+
 	
 	if($("input#search_number_equals").val() == ""){
 				$("input#search_number_equals").val("Número de factura...");

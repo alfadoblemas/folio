@@ -19,7 +19,10 @@
       </td>
       <td class="text">
 		<div class="body">	
-			<div class="comment_title"><%= link_from_comment(comment, "Fact.") %> <span class="comment_customer_name"> - <%= comment.invoice.customer.name %></span></div>
+			<div class="comment_title"><%= link_from_comment(comment, "Fact.") %> 
+				<span class="comment_customer_name"> - 
+					<%= link_to comment.invoice_customer.name, customer_path(comment.invoice_customer.id)%>
+				</span></div>
 			
 			<div class="comment_text">
 				<%= textarea_display(comment.body) %>
