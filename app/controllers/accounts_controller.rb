@@ -43,7 +43,7 @@ class AccountsController < ApplicationController
     @account = Account.find(current_account)
     if @account.update_attributes(params[:account])
       flash[:notice] = "Información actualizada correctamente."
-      redirect_to account_path(@account)
+      redirect_to account_url(@account, :subdomain => @account.subdomain)
     else
       render :action => "edit"
     end
