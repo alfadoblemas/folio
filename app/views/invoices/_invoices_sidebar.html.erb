@@ -7,10 +7,7 @@
   <!-- Invoice#NEW -->
 <% elsif params[:action].eql?("new") %>
   <%= sidebar_big_button("cancel", "invoice", "Cancelar") %>
-  <hr/>
-  <div class="toolbox secondary">
 
-  </div>
 
   <!-- Invoice#SHOW -->
 <% elsif params[:action].eql?("show") %>
@@ -44,11 +41,12 @@
     <% else %>
       <%= sidebar_big_button("submit", "invoice", "Nueva Factura") %>
 	<br/>
-	<div>
+	<div id="total_income">
 		<%= render :partial => "resume_totals", :locals => {:invoices => @all_invoices} %>
 	</div>
-		<br/>
+		<div class="dashboard_box">
 		<% if current_account.has_invoice_tags? %>
+		<!--
 			<div id="filter">
 			<h4>Filtrar Tags</h4>
 			<br/>
@@ -59,20 +57,19 @@
 				<% end %>
 				<br/>
 		   </div>
+		-->
 	   <% end %>
-	  <br/>
-		<div>
+
 		<h4>Búsqueda Rápida</h4>
-		<br/>
-		<hr/>
+		<br/><hr/>
 			<div id="number_search">
 				<% form_for search, :url => {:action => "search" } do |f| -%>
-	  				<%= f.text_field :number_equals, :style =>"width: 150px" %>
+	  				<%= f.number_field :number_equals, :style =>"width: 150px", :placeholder => "Número Factura"  %>
 					<%= f.submit "Buscar" %> <%= link_to "Cancelar", invoices_path() %>
 				<% end %>
 			</div>
-		<br/>
+
 		<br/>
 		</div>
-      
+      </div>
     <% end %>

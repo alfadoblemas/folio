@@ -144,15 +144,6 @@ $().ready(function() {
 	
 	$.datepicker.setDefaults($.datepicker.regional['es']);
 	$( ".datepicker" ).datepicker();
-
-	
-	if($("input#search_number_equals").val() == ""){
-				$("input#search_number_equals").val("Número de factura...");
-				
-				$("input#search_number_equals").focus(function(){
-				  		$("input#search_number_equals").val("")
-				});
-			}
 	
     $("input#customer_name_invoice, input#search_customer_name_like").autocomplete_for_customer("/customers/search.json",{
         dataType: "json",

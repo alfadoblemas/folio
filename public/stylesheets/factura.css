@@ -185,6 +185,10 @@ text-decoration: underline;
   float: left;
 }
 
+.customerName h2 {
+	margin-bottom: 0px;
+}
+
 .customerName a{
 	font-size: 14px;
 }
@@ -195,14 +199,13 @@ text-decoration: underline;
 }
 
 .customer .customerDetails {
-  margin-top: -10px;
   margin-left: 10px;
   font-size: 13px;
   float: left;
 }
 
 .customer .customerContacts {
-  margin-top: -19px;
+  margin-top: -5px;
   font-size: 13px;
 
 
@@ -1114,6 +1117,7 @@ select {
 .big_button {
 	/* Disables default styling */
 	border: none;
+	margin-left: 13px;
 	background: #E6E5DF;
 	color: #eee;
 	min-width: 150px;
@@ -1146,8 +1150,8 @@ select {
 }
 
 .big_button .submit_action{
-		color: #6F6F80;
-		margin-left: -1	0px;
+		color: #000;
+		margin-left: -1 0px;
 		padding-left: 30px;
 		background: url('/images/icons/add_16.png') no-repeat transparent;
 		background-position: left;
@@ -1155,7 +1159,7 @@ select {
 
 .big_button .cancel_action {
 	color: #6F6F80;
-	margin-left: -1	0px;
+	margin-left: -1 0px;
 	padding-left: 30px;
 	background: url('/images/icons/close_16.png') no-repeat transparent;
 	background-position: left;
@@ -1291,7 +1295,7 @@ input#document_description  {
 	padding: 10px 10px 0px 10px;
 	background: white;
 	text-align: left;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	font-family: lucida grande,verdana;
 	font-size: 12px;
 	-webkit-border-radius: 10px;
