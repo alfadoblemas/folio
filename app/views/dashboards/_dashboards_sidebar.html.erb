@@ -1,9 +1,9 @@
 <div id="total_income">
-	<span class="title">A la fecha</span>
+	<span>Llevamos</span>
 	<div class="income this_year">
 		<%= number_to_currency(current_account.total_this_year, :unit => "$", :delimiter => ".", :precision => 0) %>
 	</div>
-	<span class="title">El año pasado</span>
+	<span>El año pasado</span>
 	<div class="income last_year">
 		<%= number_to_currency(current_account.total_last_year, :unit => "$", :delimiter => ".", :precision => 0) %>
 	</div>

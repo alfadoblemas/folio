@@ -7,10 +7,24 @@
 
   <!--Customer#Show -->
 <% elsif params[:action].eql?("show") %>
-  <div class="span-4 last">
-      <%= sidebar_big_button("submit", "customer", "Nuevo Cliente") %>
-	
-
+  <div id="total_income">
+	<div class="title">
+		Ventas
+	</div>
+	<table class="customer_sales">
+		<tr>
+			<th>Este año</th>
+			<td class="this_year"><%= number_to_currency(customer.total_this_year, :unit => "$", :delimiter => ".", :precision => 0) %></td>
+		</tr>
+		<tr>
+			<th>Histórico</th>
+			<td class="last_year"><%= number_to_currency(customer.total_all_time, :unit => "$", :delimiter => ".", :precision => 0) %></td>
+		</tr>
+	</table>
+  </div>
+  
+  
+<div class="span-4 last">
       <ul class="toolbox secondary">
 		<li id="edit_invoice"><%= link_to "<strong>Editar</strong> cliente", edit_customer_path(customer) %></li>
         <li id="add_link"><%= link_to "<strong>Agregar</strong> contacto", new_customer_contact_path(customer) %></li>
@@ -21,7 +35,8 @@
 
       </ul>
 
-    </div>
+  </div>
+
 
 
 

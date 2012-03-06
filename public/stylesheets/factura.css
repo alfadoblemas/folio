@@ -1291,7 +1291,7 @@ input#document_description  {
 	padding: 10px 10px 0px 10px;
 	background: white;
 	text-align: left;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	font-family: lucida grande,verdana;
 	font-size: 12px;
 	-webkit-border-radius: 10px;
@@ -1304,9 +1304,10 @@ input#document_description  {
 	width: 180px;
 }
 
-#total_income .title {
-	color: #AAA;
-	font-weight: bold;
+#total_income .title, .dashboard_box .title {
+	border-bottom: #BDBDBD solid 1px;
+	font-size: 16px;
+	
 }
 
 #total_income .income {
@@ -1322,4 +1323,29 @@ input#document_description  {
 
 #total_income .last_year {
 	color: #504A4B;
+}
+
+.dashboard_box .nota {
+	font-size: 36px;
+	text-align: center;
+	padding: 10px;
+}
+
+.customer_sales {
+	margin-bottom: 10px;
+	margin-top: 5px;
+}
+
+.customer_sales th {
+	border: none;
+	padding: 2px;
+	vertical-align: bottom;
+}
+
+.customer_sales td {
+	border: none;
+	text-align: right;
+	padding: 2px;
+	font-size: 14px;
+	vertical-align: bottom;
 }

@@ -30,5 +30,22 @@ class Customer < ActiveRecord::Base
     find(id, :conditions => ["account_id = ?", account ],:include => [:invoices, :contacts])
   end
   
+  def total_this_year
+    sales = invoices.not_draft_cancel.date_in_between(Date.parse("01/01/#{Date.today.year}"),Date.today)
+    sum_invoices(sales.to_a)
+  end
+  
+  def total_all_time
+    sales = invoices.not_draft_cancel
+    sum_invoices(sales.to_a)
+  end
+  
+  private
+  def sum_invoices(array)
+    sum = 0
+    sum = array.sum(&:total) unless array.size < 1
+    sum
+  end
+  
 
 end
