@@ -156,13 +156,9 @@ class InvoicesController < ApplicationController
   end
 
   def edit
-    if @invoice.status_id == 1 #Draft
-      @invoice.due = @invoice.due_date_to_days
-      @customer = Customer.find(@invoice.customer_id)
-      @products = Product.all
-    else
-      redirect_to invoice_path(@invoice)
-    end
+    @invoice.due = @invoice.due_date_to_days
+    @customer = Customer.find(@invoice.customer_id)
+    @products = Product.all
   end
 
   def destroy
