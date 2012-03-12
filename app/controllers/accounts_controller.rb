@@ -50,6 +50,7 @@ class AccountsController < ApplicationController
   end
 
   def show
+    @tax = Tax.new
     @account = Account.find(current_account)
   end
 

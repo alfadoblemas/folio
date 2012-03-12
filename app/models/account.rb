@@ -15,6 +15,7 @@ class Account < ActiveRecord::Base
   has_many :contacts, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :documents, :dependent => :destroy
+  has_many :taxes, :dependent => :destroy
   alias_attribute :user_id, :admin_id
 
   # Validations
@@ -59,6 +60,10 @@ class Account < ActiveRecord::Base
   
   def has_invoices?
     invoices.for_account(self.id).size > 0
+  end
+  
+  def has_taxes?
+    taxes.size > 0
   end
   
   def invoices_due_this_week

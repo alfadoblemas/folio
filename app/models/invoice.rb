@@ -9,6 +9,7 @@ class Invoice < ActiveRecord::Base
   belongs_to :contact
   belongs_to :account
   belongs_to :status
+  belongs_to :tax
   has_many :invoice_items, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :documents, :dependent => :destroy

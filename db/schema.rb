@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120301203551) do
+ActiveRecord::Schema.define(:version => 20120309160241) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -195,6 +195,7 @@ ActiveRecord::Schema.define(:version => 20120301203551) do
     t.date     "date"
     t.date     "close_date"
     t.string   "subject"
+    t.integer  "tax_id"
   end
 
   add_index "invoices", ["account_id"], :name => "altered_invoices_account_index"
@@ -205,6 +206,7 @@ ActiveRecord::Schema.define(:version => 20120301203551) do
   add_index "invoices", ["history_id"], :name => "altered_invoices_history_index"
   add_index "invoices", ["number"], :name => "altered_invoices_number_index"
   add_index "invoices", ["status_id"], :name => "altered_invoices_status_index"
+  add_index "invoices", ["tax_id"], :name => "index_invoices_on_tax_id"
 
   create_table "products", :force => true do |t|
     t.string   "name"
@@ -235,6 +237,16 @@ ActiveRecord::Schema.define(:version => 20120301203551) do
   create_table "tags", :force => true do |t|
     t.string "name"
   end
+
+  create_table "taxes", :force => true do |t|
+    t.string   "name"
+    t.float    "value",      :default => 0.0
+    t.integer  "account_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "taxes", ["account_id"], :name => "index_taxes_on_account_id"
 
   create_table "users", :force => true do |t|
     t.string   "email"

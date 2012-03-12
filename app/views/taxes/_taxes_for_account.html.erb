@@ -1,0 +1,28 @@
+<fieldset>
+	<div id="taxes">
+		<%= render :partial => "taxes/tax", :collection => account.taxes %>
+	</div>
+</fieldset>
+<fieldset>
+	<div>
+		<h4>Agregar nuevo impuesto</h4>
+		<br/>
+		<% form_for @tax do |f| -%>
+		<%= f.error_messages :class => "error" %>
+		<table>
+			<tr>
+				<td>
+		  			<%= f.label "Nombre" %><br/>
+		  			<%= f.text_field :name, :placeholder => "Impuesto...", :required => 'required' %>
+				</td>
+				<td>
+					<%= f.label "Gravamen" %><br/>
+					<%= f.text_field :value %>
+				</td>
+			</tr>
+		</table>
+		<%= f.hidden_field :account_id, :value => current_account.id %>
+		<%= f.submit "Agregar" %>
+		<% end -%>
+	</div>
+</fieldset>

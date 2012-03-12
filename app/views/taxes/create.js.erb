@@ -1,0 +1,8 @@
+<% if @tax.errors.any? %>
+	alert("Errores");
+<% else %>
+	$("#taxes").append("<%= escape_javascript(render(:partial => 'taxes/tax', :locals => {:tax => @tax})) %>");
+	$("#tax_<%= @tax.id %>").effect("highlight", null, 1500);
+	$("#new_tax")[0].reset();
+	$("#new_tax").before("<%= escape_javascript(flash.delete(:notice)) %>");
+<% end %>

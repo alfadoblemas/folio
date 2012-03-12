@@ -1,0 +1,9 @@
+<div id="tax_<%= tax.id %>">
+	<div style="float: left;">
+	<li><%= tax.name %> (<%= tax.value%>%)</li>
+	</div>
+	<div>
+	<%= link_to image_tag ("icons/trashcan_10.gif", :alt => "Elminar" ), tax, :class => "delete_tax", :'data-id' => tax.id %>
+	</div>
+
+</div>

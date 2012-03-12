@@ -1,0 +1,5 @@
+$("#tax_<%= @tax.id %>").slideUp('slow');
+$("#taxes").remove("#tax_<%= @tax.id %>");
+$("#new_tax")[0].reset()
+$("#taxes").before("<%= escape_javascript(flash.delete(:notice)) %>");
+

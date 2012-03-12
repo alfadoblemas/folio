@@ -20,9 +20,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :customers, :has_many => [:contacts, :invoices]
   map.resources :contacts, :except => [:index]
   map.resources :invoices, :has_many => [:comments]
-  map.resources :accounts, :has_many => [:users, :invoices, :customers]
+  map.resources :accounts, :has_many => [:users, :invoices, :customers, :taxes]
   map.resources :comments
   map.resources :documents
+  map.resources :taxes
   map.resources :users, :except => [:show]
   map.resources :user_sessions
   map.application_root "/", :controller => "dashboards", :action => "show", :conditions => {:subdomain => /.+/}
