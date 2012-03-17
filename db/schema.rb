@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120309160241) do
+ActiveRecord::Schema.define(:version => 20120316194445) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -27,9 +27,11 @@ ActiveRecord::Schema.define(:version => 20120309160241) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "default_tax_id"
   end
 
   add_index "accounts", ["admin_id"], :name => "altered_accounts_admin_index"
+  add_index "accounts", ["default_tax_id"], :name => "index_accounts_on_default_tax_id"
 
   create_table "comment_types", :force => true do |t|
     t.string   "name"

@@ -5,10 +5,9 @@
 	<p>
 	Con Folio es más fácil facturar a sus clientes. Si comenzó su proyecto con una cotización, puede fácilmente convertirla en factura, y también puede crearlas desde cero. Luego puede agregar notas, comentarios y recibir pagos, todo desde un sólo lugar!
 </p>
-
-	  <div class="new new_invoice_button">
-	    <%= link_to "Nueva Factura", new_invoice_path %>	
-	  </div>
+		<div style="width: 200px; margin: 0 auto 0 auto; padding-bottom: 20px;">
+	  		<%= sidebar_big_button("submit", "invoice", "Nueva Factura") %>
+		</div>
 	</div>
   <% else %>
 

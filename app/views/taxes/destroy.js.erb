@@ -1,5 +1,5 @@
 $("#tax_<%= @tax.id %>").slideUp('slow');
 $("#taxes").remove("#tax_<%= @tax.id %>");
+$("#set_default_tax form").replaceWith("<%= escape_javascript(render(:partial => 'taxes/default_tax')) %>")
 $("#new_tax")[0].reset()
-$("#taxes").before("<%= escape_javascript(flash.delete(:notice)) %>");
 

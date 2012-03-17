@@ -1,5 +1,4 @@
 class Tax < ActiveRecord::Base
-  has_many :invoices
   belongs_to :account
   
   validates_presence_of :name, :on => :create, :message => "can't be blank"

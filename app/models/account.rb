@@ -66,6 +66,10 @@ class Account < ActiveRecord::Base
     taxes.size > 0
   end
   
+  def default_tax_id
+    read_attribute("default_tax_id") || 0
+  end
+  
   def invoices_due_this_week
     invoices.due_this_week.to_a
   end

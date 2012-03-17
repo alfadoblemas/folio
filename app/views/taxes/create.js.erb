@@ -1,8 +1,17 @@
 <% if @tax.errors.any? %>
-	alert("Errores");
+	<% @tax.errors.each do |e,msg| %>
+		$("#tax_<%= e %>").attr("style","color: red;")
+		$("#tax_<%= e %>").effect("highlight", null, 1500);
+		$("#tax_<%= e %>").val("<%= msg %>")
+		$("#tax_<%= e %>").focus(function(){
+				$(this).val("");
+				$(this).attr("style","color: black;")
+			});
+	<% end %>
+	
 <% else %>
 	$("#taxes").append("<%= escape_javascript(render(:partial => 'taxes/tax', :locals => {:tax => @tax})) %>");
-	$("#tax_<%= @tax.id %>").effect("highlight", null, 1500);
+	$("#tax_<%= @tax.id %> li").effect("highlight", null, 1500);
+	$("#set_default_tax form").replaceWith("<%= escape_javascript(render(:partial => 'taxes/default_tax')) %>")
 	$("#new_tax")[0].reset();
-	$("#new_tax").before("<%= escape_javascript(flash.delete(:notice)) %>");
 <% end %>

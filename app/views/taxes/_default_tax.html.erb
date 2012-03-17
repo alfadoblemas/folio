@@ -1,0 +1,4 @@
+<% form_for current_account do |f| -%>
+  		<%= f.label "Por defecto" %> <%= f.select :default_tax_id, options_from_collection_for_select(current_account.taxes, :id, :name, current_account.default_tax_id), {:include_blank => true} %>
+<% end -%>
+

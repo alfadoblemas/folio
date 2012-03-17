@@ -1,3 +1,5 @@
+<%= javascript_include_tag "resources/accounts"%>
+
 <h2>Mi Empresa</h2>
 <fieldset>
 	<div class="avatar">
@@ -24,5 +26,6 @@
 <br/>
 <h3>Impuestos</h3>
 <%= render :partial => "taxes/taxes_for_account.html.erb", :locals => {:account => current_account} %>
+<br/>
 <h3>Usuarios</h3>
 <%= render :partial => "users/index.html.erb", :locals => {:users => current_account.users } %>

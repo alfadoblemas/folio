@@ -1,28 +1,33 @@
 <fieldset>
-	<div id="taxes">
-		<%= render :partial => "taxes/tax", :collection => account.taxes %>
-	</div>
-</fieldset>
-<fieldset>
-	<div>
-		<h4>Agregar nuevo impuesto</h4>
-		<br/>
+	<div style="width: 300px; border-right: 1px solid #CCC; float: left;margin-right: 20px;">
 		<% form_for @tax do |f| -%>
 		<%= f.error_messages :class => "error" %>
 		<table>
 			<tr>
-				<td>
-		  			<%= f.label "Nombre" %><br/>
-		  			<%= f.text_field :name, :placeholder => "Impuesto...", :required => 'required' %>
-				</td>
-				<td>
-					<%= f.label "Gravamen" %><br/>
-					<%= f.text_field :value %>
+				<td><%= f.label "Nombre" %></td>
+				<td><%= f.text_field :name, :placeholder => "Impuesto...", :required => 'required' %></td>
+			</tr>
+			<tr>
+				<td><%= f.label "Gravamen" %></td>
+				<td><%= f.text_field :value %></td>
+			</tr>
+			<tr>
+				<td/>
+				<td style="float: right; margin-right: 20px;">
+					<%= f.hidden_field :account_id, :value => current_account.id %>
+					<%= f.submit "Guardar" %>
 				</td>
 			</tr>
 		</table>
-		<%= f.hidden_field :account_id, :value => current_account.id %>
-		<%= f.submit "Agregar" %>
 		<% end -%>
 	</div>
+	<div style="padding-top: 5px">
+		<div id="set_default_tax">
+			<%= render :partial => 'taxes/default_tax' %>
+		</div>
+		<div id="taxes" style="padding-top: 10px">
+			<%= render :partial => "taxes/tax", :collection => account.taxes %>
+		</div>
+	</div>
+
 </fieldset>
