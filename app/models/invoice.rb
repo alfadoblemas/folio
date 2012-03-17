@@ -18,13 +18,12 @@ class Invoice < ActiveRecord::Base
   accepts_nested_attributes_for :comments, :allow_destroy => true
 
   # Validations
-  validates_presence_of :net, :tax, :total, :customer_id, :subject, :date, :number
+  validates_presence_of :net, :total, :customer_id, :subject, :date, :number
   validates_uniqueness_of :number, :scope => [:taxed, :account_id]
 
-  validates_numericality_of :tax, :only_integer => true
   validates_numericality_of :number, :only_integer => true, :greater_than => 0
-  validates_numericality_of :net, :only_integer => true, :greater_than => 0
-  validates_numericality_of :total, :only_integer => true, :greater_than => 0
+  validates_numericality_of :net, :greater_than => 0
+  validates_numericality_of :total, :greater_than => 0
 
 
   delegate :name, :state, :to => :status, :prefix => true
@@ -41,7 +40,7 @@ class Invoice < ActiveRecord::Base
   def due_date_to_days
     ((due.to_time - date.to_time)/3600/24).to_i
   end
-  
+
   def documents_reverse
     documents.reverse
   end
@@ -73,6 +72,7 @@ class Invoice < ActiveRecord::Base
       false
     end
   end
+
 
   def cancelled?
     status_id == 4 ? true : false
@@ -133,6 +133,22 @@ class Invoice < ActiveRecord::Base
 
 
   # Virtual attributes
+
+  def tax_name
+    if new_record?
+      read_attribute("tax_name") || account.default_tax.name
+    else
+      read_attribute("tax_name") || "Impuesto"
+    end
+  end
+
+  def select_box_tax_id
+    if new_record? || taxed?
+      tax_id || account.default_tax_id
+    else
+      nil
+    end
+  end
 
   def customer_name
     customer.name if customer
@@ -330,10 +346,16 @@ class Invoice < ActiveRecord::Base
   end
   
   def calculate_tax
-    if self.taxed
-      self.tax = (self.net * 1.19).round - self.net
-      self.total = self.net + self.tax
+    if self.taxed?
+      tax = Tax.find(tax_id)
+      self.tax = (self.net * tax.value/100)
+    self.total = self.net + self.tax
+    self.tax_name = tax.name
+    self.tax_rate = tax.value
+    else
+      self.total = self.net
+      self.tax = 0
     end
   end
-  
+
 end

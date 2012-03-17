@@ -67,7 +67,15 @@ class Account < ActiveRecord::Base
   end
   
   def default_tax_id
-    read_attribute("default_tax_id") || 0
+    read_attribute("default_tax_id") || nil
+  end
+  
+  def default_tax
+    begin
+      tax = Tax.find(self.default_tax_id)
+    rescue Exception => e
+      Tax.new(:name => "", :value => 0)
+    end
   end
   
   def invoices_due_this_week

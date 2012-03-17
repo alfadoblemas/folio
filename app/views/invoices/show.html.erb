@@ -49,11 +49,13 @@
         <td class="netPrice price_value "><%= number_to_currency(@invoice.net, :unit => "$",
               :delimiter => ".", :precision => 0) %> </td>
       </tr>
-        <tr>
-          <td class="taxLabel label">IVA</td>
-          <td class="price_value"><%= number_to_currency(@invoice.tax, :unit => "$",
-              :delimiter => ".", :precision => 0) %></td>
-        </tr>
+		<% if @invoice.taxed? %>
+        	<tr>
+          		<td class="taxLabel label"><%= @invoice.tax_name %></td>
+          		<td class="price_value"><%= number_to_currency(@invoice.tax, :unit => "$",
+              	:delimiter => ".", :precision => 0) %></td>
+        	</tr>
+		<% end %>
 
       <tr>
         <td class="totalLabel label">Total</td>

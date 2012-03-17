@@ -32,7 +32,10 @@
 		<table>
 		<tr>
 	         <td><span><%= label_tag "Impuesto" %></span></td>
-	         <td class="input_column"><%= invoice.check_box :taxed, :onclick => "enableIVA()" %></td>
+	         <td class="input_column">
+				<%= invoice.select :tax_id, options_from_collection_for_select(current_account.taxes, 
+						:id, :name, @invoice.select_box_tax_id), {:include_blank => true} %>
+			</td>
 	       </tr>
 	       <tr>
 	         <td><%= label_tag "Vence"%></td>

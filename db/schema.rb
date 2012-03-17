@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120316194445) do
+ActiveRecord::Schema.define(:version => 20120317131855) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -180,9 +180,9 @@ ActiveRecord::Schema.define(:version => 20120316194445) do
 
   create_table "invoices", :force => true do |t|
     t.integer  "number"
-    t.integer  "tax",         :default => 0
-    t.integer  "net",         :default => 0
-    t.integer  "total",       :default => 0
+    t.float    "tax",         :default => 0.0
+    t.float    "net",         :default => 0.0
+    t.float    "total",       :default => 0.0
     t.integer  "customer_id"
     t.integer  "contact_id"
     t.integer  "account_id"
@@ -198,6 +198,8 @@ ActiveRecord::Schema.define(:version => 20120316194445) do
     t.date     "close_date"
     t.string   "subject"
     t.integer  "tax_id"
+    t.string   "tax_name"
+    t.float    "tax_rate"
   end
 
   add_index "invoices", ["account_id"], :name => "altered_invoices_account_index"

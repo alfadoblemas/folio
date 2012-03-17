@@ -107,7 +107,7 @@ class InvoicesController < ApplicationController
     if params[:id] && params[:duplicate]
       @invoice = Invoice.duplicate(params[:id])
     else
-      @invoice = Invoice.new
+      @invoice = Invoice.new(:account_id => current_account.id)
       @invoice.invoice_items.build
     end
 
@@ -124,6 +124,7 @@ class InvoicesController < ApplicationController
 
   def create
     @invoice = Invoice.new(params[:invoice])
+    @invoice.taxed = !@invoice.tax_id.nil?
     @invoice.account_id = current_account.id
     @customer = Customer.find(@invoice.customer_id) unless @invoice.customer_id.blank?
 
@@ -173,6 +174,7 @@ class InvoicesController < ApplicationController
 
   def update
     @invoice = Invoice.find(params[:id])
+    @invoice.taxed = !params[:invoice][:tax_id].blank?
     @customer = Customer.find(@invoice.customer_id)
 
     respond_to do |format|
@@ -225,7 +227,7 @@ class InvoicesController < ApplicationController
     end
 
     def unformat_prices(params)
-      %w(tax total net).each do |number|
+      %w(total net).each do |number|
         params[:invoice][number.to_sym] = currency_to_number(params[:invoice][number.to_sym])
       end
 
