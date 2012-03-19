@@ -84,14 +84,12 @@ function sumTotalPrice(){
     $(".totalPrice").val(sum);
 }
 
-function calcIva() {
-    var iva = 0;
+function calcIva(tax_value) {
+	var tax_rate = $("#tax_rate").val();
     var netPrice = parseInt($(".netPrice").toNumber({
         region: 'es-CL'
     }).val());
-    if($("#invoice_taxed").prop("checked")){
-        iva =  Math.round(netPrice * 1.19) - netPrice;
-    }
+    iva =  Math.round(netPrice * tax_rate/100);
     $("#invoice_tax").val(iva)
 }
 

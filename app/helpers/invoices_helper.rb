@@ -8,4 +8,8 @@ module InvoicesHelper
     [["Emición", "date"], ["Vencimiento", "due"], ["Pago", "close_date"]]
   end
   
+  def sets_visibility_of_element(flag)
+    return "display:none;" unless flag
+  end
+  
 end

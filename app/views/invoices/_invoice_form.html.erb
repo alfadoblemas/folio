@@ -30,13 +30,9 @@
         <td class="readonly"><%= f.text_field :net,
                :readonly => "readonly", :class => "netPrice"  %></td>
       </tr>
-	  <% if @invoice.select_box_tax_id %>
-	      <tr>
-	        <td class="taxLabel"><%= @invoice.tax_name %></td>
-	        <td class="readonly"><%= f.text_field :tax,
-	            :class => " taxPrice", :readonly => "readonly" %></td>
-	      </tr>
-	  <% end %>
+	  <tr id="tax_info" style="<%= sets_visibility_of_element(@invoice.select_box_tax_id) %>">
+			<%= render :partial => 'taxes/tax_for_invoice_form', :locals => { :f => f } %>
+	  </tr>
       <tr>
         <td class="totalLabel">Total</td>
         <td class="readonly"><%= f.text_field :total,

@@ -1,6 +1,6 @@
 class Invoice < ActiveRecord::Base
   before_create :set_as_draft
-  before_save :calculate_tax
+  after_validation :calculate_invoice_totals
 
   acts_as_taggable
 
@@ -141,9 +141,19 @@ class Invoice < ActiveRecord::Base
       read_attribute("tax_name") || "Impuesto"
     end
   end
+  
+  def tax_rate
+    if new_record?
+      read_attribute("tax_rate") || account.default_tax.value
+    end
+  end
 
   def select_box_tax_id
-    if new_record? || taxed?
+    if new_record? && status_id == 1 && errors.size > 0# Check if duplicated
+      return nil unless Tax.exists?(tax_id)
+      tax_id
+    elsif new_record? || taxed?
+      return nil if tax_id.nil?
       tax_id || account.default_tax_id
     else
       nil
@@ -345,16 +355,19 @@ class Invoice < ActiveRecord::Base
     self.status_id = 1
   end
   
-  def calculate_tax
+  def calculate_invoice_totals
     if self.taxed?
       tax = Tax.find(tax_id)
       self.tax = (self.net * tax.value/100)
-    self.total = self.net + self.tax
-    self.tax_name = tax.name
-    self.tax_rate = tax.value
+      self.total = self.net + self.tax
+      self.tax_name = tax.name
+      self.tax_rate = tax.value
     else
       self.total = self.net
-      self.tax = 0
+      self.tax = nil
+      self.tax_name = nil
+      self.tax_rate = 0
+      self.tax_id = nil
     end
   end
 

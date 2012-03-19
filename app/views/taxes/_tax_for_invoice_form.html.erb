@@ -1,0 +1,5 @@
+
+      <td class="taxLabel"><span id="tax_name"><%= @invoice.tax_name %></span></td>
+      <td class="readonly"><%= f.text_field :tax, :class => " taxPrice", :readonly => "readonly" %></td>
+	  <%= hidden_field_tag :tax_rate, @invoice.tax_rate %>
+

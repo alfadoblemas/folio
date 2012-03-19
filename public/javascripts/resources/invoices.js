@@ -6,7 +6,27 @@ $(document).ready(function() {
 	tags_for_invoice(); //
 	attachments_for_invoice_form(); // Enable or disable the attch. forms
 	
-	
+	$("#invoice_tax_id").live("change", function(){
+		var tax_id = $(this).val();
+		if(tax_id == "") {
+			$("#invoice_tax").val("0");
+			$("#tax_rate").val(0);
+			$("#tax_info").hide();
+			updatePrices();
+		} else {
+			$.getJSON('/taxes/'+tax_id, function(data){
+				$.each(data, function(key, val){
+					$("#tax_rate").val(val.value);
+					$("#tax_name").html(val.name);
+					calcIva();
+					updatePrices();
+					if(!$("#tax_info").is(":visible")){
+						$("#tax_info").show();
+					}
+				});
+			});
+		}
+	});
 	
 
 });
