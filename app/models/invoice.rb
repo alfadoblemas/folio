@@ -152,8 +152,10 @@ class Invoice < ActiveRecord::Base
     if new_record? && status_id == 1 && errors.size > 0# Check if duplicated
       return nil unless Tax.exists?(tax_id)
       tax_id
-    elsif new_record? || taxed?
+    elsif self.errors.size > 0
       return nil if tax_id.nil?
+      tax_id
+    elsif new_record? || taxed?
       tax_id || account.default_tax_id
     else
       nil
