@@ -8,7 +8,7 @@ class TaxesController < ApplicationController
   end
   
   def show
-    @tax = Tax.find(params[:id], :conditions => "account_id == #{current_account.id}")
+    @tax = Tax.find(params[:id], :conditions => "account_id = #{current_account.id}")
     respond_to do |format|
       format.js {render :json => @tax.to_json}
     end
