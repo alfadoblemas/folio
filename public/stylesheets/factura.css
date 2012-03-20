@@ -15,7 +15,7 @@ h1 {
 }
 
 h2 {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-size: 24px;
   font-family: Helvetica,arial,sans-serif;
 }
@@ -1368,4 +1368,14 @@ input#document_description  {
 	padding: 2px;
 	font-size: 14px;
 	vertical-align: bottom;
+}
+
+.users {
+	border-top: solid 1px #CCC;
+	border-right: solid 1px #CCC;
+	border-left: solid 1px #CCC;
+}
+
+.users td, .users th {
+	border-bottom: solid 1px #CCC;
 }
