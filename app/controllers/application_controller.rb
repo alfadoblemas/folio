@@ -24,7 +24,6 @@ class ApplicationController < ActionController::Base
 
   
   def xhr_endless_page_response(partial, collection)
-    sleep(1)
     render :partial => partial, :collection => collection, :locals => {:continuation => true}
   end
 
