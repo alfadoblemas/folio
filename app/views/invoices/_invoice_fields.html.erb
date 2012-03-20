@@ -1,26 +1,42 @@
 <div id="invoiceFields">
-<fieldset>
+<fieldset style="padding-bottom: 5px">
  <div class="span-8">
    <table class="fields">
      <tbody>
        <tr>
-         <td><span class="required"><%= invoice.label "Cliente" %></span></td>
-         <td class="input_column">
+         <td>
+			<span class="required"><%= invoice.label "Nombre de Cliente" %> 
+				- o - <%= link_to "Agregar Cliente", new_customer_path() %>
+			</span> 
+			<br/>
            <%= text_field_tag "", customer.name, :autocomplete => "off", :id => "customer_name_invoice", :class => "input_large", :placeholder => "Escriba el nombre..." %>
-
          </td>
        </tr>
 	   <tr>
-         <td><span class="required"><%= invoice.label "Asunto" %></span></td>
-         <td class="input_column"><%= invoice.text_field :subject, :class => "input_large", :required => :required %></td>
+         <td>
+			<span class="required"><%= invoice.label "Asunto" %></span>
+         	<br/>
+			<%= invoice.text_field :subject, :class => "input_large", :required => :required %>
+		</td>
        </tr>
        <tr>
-         <td><span class="required"><%= invoice.label "Fecha" %></span></td>
-         <td class="input_column date"><%= invoice.date_field :date, :value => @invoice.date.to_s, :class => "datepicker input_large", :required => :required %></td>
+         <td>
+			<div style="float: left; margin-right: 10px">
+				<span class="required"><%= invoice.label "Fecha" %></span>
+				<br/>
+         		<%= invoice.date_field :date, :value => @invoice.date.to_s, :class => "datepicker invoice_small_input", :required => :required, :width => "125px" %>
+			</div>
+			<div>
+					<span><%= invoice.label "Número" %></span>
+					<br/>
+		         	<%= invoice.number_field :number, :class => "invoice_small_input" %>
+			</div>
+		</td>
        </tr>
        <tr>
-         <td><span><%= invoice.label "Número" %></span></td>
-         <td class="input_column"><%= invoice.number_field :number, :class => "input_large" %></td>
+         <td>
+			
+		</td>
        </tr>
      </tbody>
    </table>
@@ -28,21 +44,24 @@
    <!-- El account_id es usado por invoice_form.js para rellenar los tags -->
    <%= invoice.hidden_field :account_id, :value => current_account.id  %>
  </div>
-	<div class="span-6 prepend-2 last">
+	<div class="span-7 prepend-1 last">
 		<table>
 		<tr>
-	         <td><span><%= label_tag "Impuesto" %></span></td>
-	         <td class="input_column">
-				<%= invoice.select :tax_id, options_from_collection_for_select(current_account.taxes, 
-						:id, :name, @invoice.select_box_tax_id), {:include_blank => true} %>
+	         <td>
+				<div style="float: left; margin-right: 50px">
+					<span><%= label_tag "Impuesto" %></span><br/>
+					<%= invoice.select :tax_id, options_from_collection_for_select(current_account.taxes, 
+							:id, :name, @invoice.select_box_tax_id), {:include_blank => true} %>
+				</div>
+				<div>
+					<%= label_tag "Vence"%><br/>
+					<%= invoice.collection_select :due, Invoice.due_dates, :value, :text %>
+				</div>
+		
 			</td>
-	       </tr>
-	       <tr>
-	         <td><%= label_tag "Vence"%></td>
-	         <td class="input_column"><%= invoice.collection_select :due, Invoice.due_dates, :value, :text %></td>
 	    </tr>
 		<tr>
-			<td>
+			<td style="padding-top: 12px">
 		<span><%= invoice.label "Tags" %></span>
 		</td>
 		</tr>
