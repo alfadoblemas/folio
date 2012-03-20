@@ -5,7 +5,12 @@ $(document).ready(function() {
 	
 	tags_for_invoice(); //
 	attachments_for_invoice_form(); // Enable or disable the attch. forms
-	
+	select_tax_and_apply_to_invoice_form();
+	$("#invoice_extra_info").tabs();
+
+});
+
+function select_tax_and_apply_to_invoice_form() {
 	$("#invoice_tax_id").live("change", function(){
 		var tax_id = $(this).val();
 		if(tax_id == "") {
@@ -27,9 +32,7 @@ $(document).ready(function() {
 			});
 		}
 	});
-	
-
-});
+}
 
 function attachments_for_invoice_form() {
 	$("#document_attachment").bind("change", function() {
@@ -49,25 +52,18 @@ function attachments_for_invoice_form() {
 }
 
 function tags_for_invoice(){
-	/** TODO: Obtenemos los tags de forma sincronica,
-		para usar la función de autocompletado de tags que viene
-		en la librería. Debemos pensar si es mejor cambiarla
-		**/
-	var tags = [];
 	$.ajax({
 		url: "/accounts/"+$("#invoice_account_id").val()+"/invoice_tags",
 		dataType: "json",
-		success: function(data){ tags = data},
-		async: false
-	})		
-	
-    $("#invoice_tag_list").tagit({
-		availableTags: tags
-	});
-	
-	$("input[type='text']#tagged_with").tagit({
-		availableTags: tags
-	})
-	
-	$("#invoice_extra_info").tabs();
+		success: function(data){ 
+			$("#invoice_tag_list").tagit({
+				availableTags: data
+			});
+
+			$("input[type='text']#tagged_with").tagit({
+				availableTags: data
+			})
+		},
+		//async: false
+	});		
 }

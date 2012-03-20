@@ -18,7 +18,6 @@ class TaxesController < ApplicationController
     @tax = Tax.new(params[:tax])
     respond_to do |format|
       if @tax.save
-        flash[:notice] = "Impuesto agregado."
         format.html { redirect_to(@tax.account)}
         format.js
       else
