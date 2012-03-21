@@ -1,4 +1,5 @@
 module InvoicesHelper
+  include ActsAsTaggableOn::TagsHelper
   
   def print_tag_list(invoice)
     invoice.ordered_tag_list.join(", ")

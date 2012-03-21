@@ -87,6 +87,10 @@ class InvoicesController < ApplicationController
   def index
     # Metodo protegido al final
     @all_invoices = @account_invoices.find_by_status(@status)
+    
+    # Get the Tags for the sidebar
+    @tags = Invoice.for_account(current_account.id).tag_counts_on(:tags)
+    
     @invoices= @all_invoices.paginate(
       :page => params[:page],
       :per_page => 10, :order => @order

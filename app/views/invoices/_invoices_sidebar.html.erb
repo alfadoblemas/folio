@@ -42,32 +42,27 @@
 	<div id="total_income">
 		<%= render :partial => "resume_totals", :locals => {:invoices => @all_invoices} %>
 	</div>
-		<div class="dashboard_box">
-		<% if current_account.has_invoice_tags? %>
-		<!--
-			<div id="filter">
-			<h4>Filtrar Tags</h4>
-			<br/>
-			<hr/>
-				<% form_for "", :url => {:action => "index"}, :html => {:method => :get } do |f| -%>
-	  				<%= f.select :tagged_with, current_account.invoice_tags,{ 
-						:include_blank => true}, {:style => "width: 160px", :onchange => "this.form.submit()"} %>
-				<% end %>
-				<br/>
-		   </div>
-		-->
-	   <% end %>
-
-		<h4>Búsqueda Rápida</h4>
-		<br/><hr/>
+		<div class="dashboard_box" id="tag_cloud">
+			<h4>Búsqueda Rápida</h4>
+			<br/><hr/>
 			<div id="number_search">
 				<% form_for search, :url => {:action => "search" } do |f| -%>
 	  				<%= f.number_field :number_equals, :style =>"width: 150px", :placeholder => "Número Factura"  %>
 					<%= f.submit "Buscar" %> <%= link_to "Cancelar", invoices_path() %>
 				<% end %>
 			</div>
-
-		<br/>
+			<br/>
 		</div>
+		<% if current_account.has_invoice_tags? %>
+			<div class="dashboard_box">
+				<h4>Tags</h4>
+				<br><hr/>
+					<% tag_cloud(@tags, %w(tag1 tag2 tag3 tag4)) do |tag, css_class| %>
+						<%= link_to tag.name, invoices_path(:tagged_with => tag.name), :class => css_class %>
+					<% end %>
+				<br/>
+				<br/>
+			</div>
+		<% end %>
       </div>
     <% end %>

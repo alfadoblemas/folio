@@ -15,7 +15,7 @@ h1 {
 }
 
 h2 {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   font-size: 24px;
   font-family: Helvetica,arial,sans-serif;
 }
@@ -1378,4 +1378,20 @@ input#document_description  {
 
 .users td, .users th {
 	border-bottom: solid 1px #CCC;
+}
+
+.tag1 {
+	font-size: 1.0em;
+}
+
+.tag2 {
+	font-size: 1.2em;
+}
+
+.tag3 {
+	font-size: 1.4em;
+}
+
+.tag4 {
+	font-size: 1.6em;
 }
