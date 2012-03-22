@@ -87,10 +87,6 @@ class InvoicesController < ApplicationController
   def index
     # Metodo protegido al final
     @all_invoices = @account_invoices.find_by_status(@status)
-    
-    # Get the Tags for the sidebar
-    @tags = Invoice.for_account(current_account.id).tag_counts_on(:tags)
-    
     @invoices= @all_invoices.paginate(
       :page => params[:page],
       :per_page => 10, :order => @order
@@ -131,6 +127,10 @@ class InvoicesController < ApplicationController
     @invoice.taxed = !@invoice.tax_id.nil?
     @invoice.account_id = current_account.id
     @customer = Customer.find(@invoice.customer_id) unless @invoice.customer_id.blank?
+    
+    @invoice.invoice_items.each do |item|
+      logger.debug("++++++#{item.price}") if item.marked_for_destruction?
+    end
 
     #TODO: No me acuerdo que hace
     params[:invoice][:invoice_items_attributes].each_key do |key|
@@ -180,7 +180,7 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.find(params[:id])
     @invoice.taxed = !params[:invoice][:tax_id].blank?
     @customer = Customer.find(@invoice.customer_id)
-
+    
     respond_to do |format|
       if @invoice.update_attributes(params[:invoice])
         flash[:notice] = 'Factura actualizada.'
@@ -207,6 +207,7 @@ class InvoicesController < ApplicationController
       @status = params[:status].blank? ? "all_invoices" : params[:status]
       order = "#{params[:sort]} #{params[:direction]}"
       @order = order.blank? ? "date desc" : order
+      @tags = Invoice.for_account(current_account.id).tag_counts_on(:tags)
 
     end
 

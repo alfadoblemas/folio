@@ -1,4 +1,6 @@
 class InvoiceItem < ActiveRecord::Base
+  after_save :update_invoice_price
+  after_destroy :update_invoice_price
 
 # Associations
   belongs_to :invoice
@@ -10,5 +12,12 @@ class InvoiceItem < ActiveRecord::Base
   validates_numericality_of :price, :only_integer => true
   validates_numericality_of :quantity, :only_integer => true
   validates_numericality_of :total, :only_integer => true, :greater_than => 0
+
+
+
+  private
+  def update_invoice_price
+    invoice.set_totals
+  end
 
 end

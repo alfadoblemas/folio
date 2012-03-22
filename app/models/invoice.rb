@@ -1,8 +1,7 @@
 class Invoice < ActiveRecord::Base
-  before_create :set_as_draft
-  after_validation :calculate_invoice_totals
-
   acts_as_taggable
+  before_create :set_as_draft
+  before_save :set_tax_info
 
   # Associations
   belongs_to :customer
@@ -15,7 +14,7 @@ class Invoice < ActiveRecord::Base
 
   # Extras
   accepts_nested_attributes_for :invoice_items, :allow_destroy => true
-  accepts_nested_attributes_for :comments, :allow_destroy => true
+  #accepts_nested_attributes_for :comments, :allow_destroy => true
 
   # Validations
   validates_presence_of :net, :total, :customer_id, :subject, :date, :number
@@ -141,10 +140,12 @@ class Invoice < ActiveRecord::Base
       read_attribute("tax_name") || "Impuesto"
     end
   end
-  
+
   def tax_rate
     if new_record?
       read_attribute("tax_rate") || account.default_tax.value
+    else
+      read_attribute("tax_rate")
     end
   end
 
@@ -213,6 +214,17 @@ class Invoice < ActiveRecord::Base
       end
     end
     suscriptions
+  end
+  
+  def set_totals
+    self.net = invoice_items.reject(&:marked_for_destruction?).sum(&:total)
+    if self.taxed?
+      self.tax = (self.net * self.tax_rate/100)
+      self.total = self.net + self.tax
+    else
+      self.total = self.net
+    end
+    save
   end
 
 
@@ -357,16 +369,17 @@ class Invoice < ActiveRecord::Base
     self.status_id = 1
   end
   
-  def calculate_invoice_totals
+  def calculate_total
+    self.net = invoice_items.reject(&:marked_for_destruction?).sum(&:total)
+  end
+  
+  def set_tax_info
     if self.taxed?
-      tax = Tax.find(tax_id)
-      self.tax = (self.net * tax.value/100)
-      self.total = self.net + self.tax
-      self.tax_name = tax.name
-      self.tax_rate = tax.value
+        tax = Tax.find(tax_id)
+        self.tax_name = tax.name
+        self.tax_rate = tax.value
     else
-      self.total = self.net
-      self.tax = nil
+      self.tax = 0
       self.tax_name = nil
       self.tax_rate = 0
       self.tax_id = nil
