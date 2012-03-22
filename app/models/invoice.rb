@@ -374,6 +374,8 @@ class Invoice < ActiveRecord::Base
   end
   
   def set_tax_info
+    return if (status_id == 3 || status_id == 4)
+    return if tax_id.nil?
     if self.taxed?
         tax = Tax.find(tax_id)
         self.tax_name = tax.name

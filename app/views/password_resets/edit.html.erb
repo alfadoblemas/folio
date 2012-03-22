@@ -2,26 +2,22 @@
   <div id="notice" class="error"><%= flash[:notice] %></div>
 <% end %>
 <div id="login">
+<div id="login_dialog" class="login_dialog">
 	<% form_for @user, :url => password_reset_path, :method => :put do |f| -%>
-	  <ul id="company-info" class="section">
-	  	<li class="header">
-	  		<span></span>
-	  		<h3>Actualización de Contraseña</h3>
-			<h4>Ingrese su nueva contraseña</h4>
-	  	</li>
-	  	<li>
-	  		<%= f.label :password, "Contraseña" %>
+	 
+	  		<h1>Modificar Contraseña</h1>
+			<h2>Ingrese su nueva contraseña</h2>
 	  		<%= f.password_field :password %>
-	  	</li>
-	  	<li>
-	  		<%= f.label :password_confirmation, "Confirmar contraseña" %>
+			<br/>
+			<h2>Confirme su contrañesa</h2>
 	  		<%= f.password_field :password_confirmation %>
-	  	</li>
-	  	<li class="bottom">
-			<%= f.submit "Actualizar" %>
-		<br/>
-	  	</li>
-	  	
-	  </ul>
+			<br/>
+	 		<%= f.submit "Modificar Contraseña", :class => "button" %>
+	
 	<% end %>
+</div>
+<div class="extras">
+	<strong>Ayuda: </strong>
+	Si no desea modificar su contraseña, cierre esta página.
+</div>
 </div>
