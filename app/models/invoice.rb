@@ -326,17 +326,17 @@ class Invoice < ActiveRecord::Base
     10
   end
   
-  def self.year_sales(current_account)
-    months = last_13_months()
-    sales_by_month = Array.new
+  def self.monthly_sales(options = {})
+    months = Tools::last_months_from_today(options[:months])
+    results = Array.new
     months.each do |m|
-      sales_by_month << {
+      results << {
         :month => m,
-        :total => for_account(current_account).not_draft_cancel.sum(:total,
+        :total => for_account(options[:account]).not_draft_cancel.sum(:total,
                   :conditions => {:date => (m.beginning_of_month..m.end_of_month)})
                 }
     end
-    sales_by_month
+    results
   end
   
   # Estado de Facturas
@@ -357,13 +357,6 @@ class Invoice < ActiveRecord::Base
   
   
   private
-  def self.last_13_months
-    months = Array.new
-    (0..12).each do |m|
-      months << Date.today.months_ago(m)
-    end
-    months.reverse
-  end
   
   def set_as_draft
     self.status_id = 1

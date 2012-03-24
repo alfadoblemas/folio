@@ -6,8 +6,8 @@ class DashboardsController < ApplicationController
 
     @account = Account.find(current_account)
     #@indicadores = IndicadoresEconomicos.for_today unless request.xhr?
-    last_year_sales = Invoice.year_sales(current_account)
-    @months = Invoice.last_13_months.map {|d| "#{I18n.localize(d, :format => :month_abbr)}"}
+    last_year_sales = Invoice.monthly_sales(:account => current_account, :months => 12)
+    @months = Tools::last_months_from_today(12).map {|d| "#{I18n.localize(d, :format => :month_abbr)}"}
 
     @comments = Comment.find_for_dashboard(:account => current_account, :page => params[:page])
 
