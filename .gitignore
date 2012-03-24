@@ -16,3 +16,5 @@ db/schema.rb
 app/views/documents/uploads/*
 uploads/*
 config/smtp_config.rb
+public/images/accounts/avatars/
+public/images/users/avatars/
