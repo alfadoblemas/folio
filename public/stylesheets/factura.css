@@ -1395,3 +1395,45 @@ input#document_description  {
 .tag4 {
 	font-size: 1.6em;
 }
+
+#new_customer_from_invoice {
+	/* Display it on the layer with index 1001.
+       Make sure this is the highest z-index value
+       used by layers on that page */
+    z-index:1000;
+
+    /* make it cover the whole screen */
+    position: absolute; 
+    top: 0%; 
+    left: 0%; 
+    width: 100%; 
+    height: 100%; 
+
+    /* make it white but fully transparent */
+    background-color: black; 
+    opacity:0.8; 
+    filter: alpha(opacity=80);
+}
+
+.floating_dialog {
+	z-index:1001;
+	display: none;
+	position: absolute;
+	width: 500px;
+	border: solid 4px #CCC;
+	top: 90px;
+	left: 25%;
+}
+
+.floating_dialog fieldset {
+	margin: 0px;
+	padding: 10px 20px 30px 20px;
+}
+
+
+
+
+
+
+
+

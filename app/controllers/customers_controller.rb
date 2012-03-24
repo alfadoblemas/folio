@@ -70,11 +70,13 @@ class CustomersController < ApplicationController
         else
           flash[:notice] = "Cliente creado correctamente"
           format.html { redirect_to(@customer)}
+          format.js
         end
 
       else
         params[:error] = true
         format.html { render :action => "new"}
+        format.js
       end
     end
 

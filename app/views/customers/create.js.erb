@@ -1,0 +1,23 @@
+<% if @customer.errors.any? %>
+	<% @customer.errors.each do |e,msg| %>
+		$("#customer_<%= e %>").attr("style","color: red;")
+		$("#customer_<%= e %>").effect("highlight", null, 1500);
+		$("#customer_<%= e %>").val("<%= msg %>")
+		$("#customer_<%= e %>").focus(function(){
+				$(this).val("");
+				$(this).attr("style","color: black;")
+			});
+	<% end %>
+	
+<% else %>
+	$("#new_customer_from_invoice").hide();
+	$(".floating_dialog").hide();
+	$("#new_customer").each(function(){
+		this.reset();
+	});
+	$("#customer_name_invoice").val("<%= @customer.name %>");
+	$("#customer_name_invoice").effect("highlight", null, 1500);
+	$("#invoice_customer_id").val("<%= @customer.id %>")
+	return false;
+	
+<% end %>

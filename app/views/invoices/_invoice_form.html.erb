@@ -1,6 +1,6 @@
+<%= render :partial => "customers/new_ajax_dialog", :locals => {:customer => customer} %>
 <% form_for invoice do |f| %>
   <%= f.error_messages :class => "error" %>
-
   <%= render :partial => "invoice_fields", :locals => {:invoice => f, :customer => customer} %>
 
   <table id="newInvoiceItems">

@@ -1,0 +1,27 @@
+<div id="new_customer_from_invoice" style="display: none;">
+</div>
+<div class="floating_dialog">
+<% form_for customer do |f| -%>
+<fieldset >
+	<h2>Agregar Empresa</h2>
+	<table class="fields">
+     <tbody>
+       <tr>
+         <td>
+			<span><%= f.label "Nombre de Cliente" %></span> 
+			<br/>
+           <%= f.text_field :name, :class => "input_large", :placeholder => "Escriba el nombre..." %>
+         </td>
+       </tr>
+	   <tr>
+         <td>
+			<span><%= labelUp_tag "R.U.T."  %></span>
+         	<br/>
+			<%= f.text_field :rut, :class => "input_large", :required => :required %>
+		</td>
+       </tr>
+	</table>
+	<%= f.submit "Agregar", :class => "button" %> <%= link_to "Cancelar", new_invoice_path(), :id => "hide_ajax_dialog" %>
+</fieldset>
+<%end%>
+</div>

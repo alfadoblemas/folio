@@ -2,11 +2,28 @@ $(document).ready(function() {
 
 	// Overwrite the submit of the new_comment form
 	$("#new_comment").submitWithAjax();
+	$("#new_customer").submitWithAjax();
 	
 	tags_for_invoice(); //
 	attachments_for_invoice_form(); // Enable or disable the attch. forms
 	select_tax_and_apply_to_invoice_form();
 	$("#invoice_extra_info").tabs();
+	
+	$("#new_customer_ajax_dialog").click(function(){
+		$("#new_customer_from_invoice").show();
+		$(".floating_dialog").show();
+		return false;
+	});
+	
+	$("#hide_ajax_dialog").click(function(){
+		$("#new_customer_from_invoice").hide();
+		$(".floating_dialog").hide();
+		$("#new_customer").each(function(){
+			this.reset();
+		});
+		return false;
+	});
+	
 
 });
 

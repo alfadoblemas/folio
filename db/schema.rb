@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120317131855) do
+ActiveRecord::Schema.define(:version => 20120324180715) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -71,22 +71,22 @@ ActiveRecord::Schema.define(:version => 20120317131855) do
   create_table "customers", :force => true do |t|
     t.string   "name"
     t.string   "rut"
-    t.text     "address"
-    t.string   "city"
-    t.string   "industry"
-    t.string   "state"
-    t.string   "country"
+    t.text     "address",    :default => ""
+    t.string   "city",       :default => ""
+    t.string   "industry",   :default => ""
+    t.string   "state",      :default => ""
+    t.string   "country",    :default => ""
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "url"
-    t.string   "phone"
-    t.string   "fax"
+    t.string   "url",        :default => ""
+    t.string   "phone",      :default => ""
+    t.string   "fax",        :default => ""
     t.integer  "account_id"
     t.string   "alias",      :default => ""
   end
 
-  add_index "customers", ["account_id"], :name => "customers_account_index"
-  add_index "customers", ["name"], :name => "customers_name_index"
+  add_index "customers", ["account_id"], :name => "altered_customers_account_index"
+  add_index "customers", ["name"], :name => "altered_customers_name_index"
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0

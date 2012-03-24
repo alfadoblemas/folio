@@ -20,9 +20,9 @@
   <hr/>
   <div class="customerDetails span-5">
 	<%= customer.rut %><br/>
-    <%= customer.address %><br/>
-    <%= customer.state.titleize %>, <%= customer.city.titleize %> <br/>
-    <%= customer.country.titleize %> <br/>
+    <%= customer.address unless customer.address.blank? %><br/>
+    <%= customer.state.titleize unless customer.state.blank? %> <%= customer.city.titleize unless customer.city.blank? %> <br/>
+    <%= customer.country.titleize unless customer.country.blank? %> <br/>
     <% unless customer.phone.empty? %>
       <strong>Teléfono:</strong> <%= number_to_phone(customer.phone)  %><br/>
     <% end %>
