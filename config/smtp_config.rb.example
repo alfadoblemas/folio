@@ -1,0 +1,7 @@
+ActionMailer::Base.smtp_settings = {
+  :address        => "mail.example.com",
+  :port           => 587,
+  :domain	  => "example.com",
+  :user_name	  => "pbruna@example.com",
+  :password	  => "super pass"
+}

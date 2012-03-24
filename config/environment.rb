@@ -63,10 +63,3 @@ end
 ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS.merge!(:default => '%d/%m/%Y')
 
 ActionMailer::Base.delivery_method = :smtp
-ActionMailer::Base.smtp_settings = {
-  :address        => "lisa.itlinux.cl",
-  :port           => 587,
-  :domain	  => "folio.cl",
-  :user_name	  => "pbruna@it-linux.cl",
-  :password	  => "p0rl4splum4s"
-}

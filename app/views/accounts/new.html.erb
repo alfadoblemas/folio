@@ -1,6 +1,7 @@
 <div id="register" class="prepend-top span-16 last">
   <% form_for @account do |f| -%>
   <%= f.error_messages :class => "error" %>
+
 	<ul id="company-info" class="section">
 		<li class="header">
 			<span></span>
@@ -22,6 +23,8 @@
 		</li>
 		<li class="bottom"></li>
 	</ul>
+	
+	
 	<% f.fields_for :users do |user_form| %>
 	<ul id="user-info" class="section">
 		<li class="header">
