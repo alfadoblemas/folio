@@ -249,6 +249,7 @@ class InvoicesController < ApplicationController
     end
 
     def localize_date(date)
+      return "" if date.blank?
       tmp = date.split(/\/|-/)
       "#{tmp[1]}/#{tmp[0]}/#{tmp[2]}"
     end
