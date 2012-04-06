@@ -66,6 +66,16 @@ function attachments_for_invoice_form() {
 		$("#new_document :submit").prop("disabled", true)
 		$("#attachment_upload_dialog").show();
 	});
+	
+	// $("#cancel_invoice_attachment").live("click", function(){
+	// 	$("#attachment_upload_dialog").hide();
+	// 	$("#show_attachment_form").show();
+	// 	$("#new_document").each(function(){
+	// 		this.reset();
+	// 	});
+	// 	return false;
+	// });
+	
 }
 
 function tags_for_invoice(){

@@ -5,25 +5,6 @@ class InvoicesController < ApplicationController
   before_filter :get_invoices_for_account, :only => [:index, :search]
 
   def search
-    %w(date_gte date_lte).each do |date|
-      instance_variable_set("@#{date}", (params[:search][date].blank? ? "" : localize_date(params[:search][date])))
-      params[:search][date] = instance_variable_get("@#{date}")
-    end
-
-    params[:search][:due_gte] = localize_date(params[:search][:due_gte]) if params[:search][:due_gte]
-    params[:search][:due_lte] = localize_date(params[:search][:due_lte]) if params[:search][:due_lte]
-
-    if params[:search][:taxed] == "1" and params[:search][:untaxed] == "0"
-      params[:search].delete(:untaxed)
-    end
-
-    if params[:search][:taxed] == params[:search][:untaxed]
-      params[:search].delete(:untaxed)
-      params[:search].delete(:taxed)
-    end
-
-    params[:search].delete :customer_name_like unless params[:search][:customer_id_equals].blank?
-
     @all_invoices = @account_invoices.search(params[:search]).find_by_status(@status)
     @invoices= @all_invoices.paginate(
       :page => params[:page],
@@ -127,7 +108,7 @@ class InvoicesController < ApplicationController
     @invoice.taxed = !@invoice.tax_id.nil?
     @invoice.account_id = current_account.id
     @customer = Customer.find(@invoice.customer_id) unless @invoice.customer_id.blank?
-    
+
     @invoice.invoice_items.each do |item|
       logger.debug("++++++#{item.price}") if item.marked_for_destruction?
     end
@@ -180,7 +161,7 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.find(params[:id])
     @invoice.taxed = !params[:invoice][:tax_id].blank?
     @customer = Customer.find(@invoice.customer_id)
-    
+
     respond_to do |format|
       if @invoice.update_attributes(params[:invoice])
         flash[:notice] = 'Factura actualizada.'
@@ -197,11 +178,30 @@ class InvoicesController < ApplicationController
   protected
 
     def get_invoices_for_account
+      unless params[:search].nil?
+        %w(date_gte date_lte).each do |date|
+          instance_variable_set("@#{date}", (params[:search][date].blank? ? "" : localize_date(params[:search][date])))
+          params[:search][date] = instance_variable_get("@#{date}")
+        end
+
+
+        if params[:search][:taxed] == "1" and params[:search][:untaxed] == "0"
+          params[:search].delete(:untaxed)
+        end
+
+        if params[:search][:taxed] == params[:search][:untaxed]
+          params[:search].delete(:untaxed)
+          params[:search].delete(:taxed)
+        end
+
+        params[:search].delete :customer_name_like unless params[:search][:customer_id_equals].blank?
+      end
       @account_invoices = Invoice.for_account(current_account.id)
 
       if params[:tagged_with] and !(params[:tagged_with].blank?)
         @account_invoices = @account_invoices.tagged_with(params[:tagged_with])
       end
+
 
       @search = Invoice.search(params[:search])
       @status = params[:status].blank? ? "all_invoices" : params[:status]
@@ -246,8 +246,7 @@ class InvoicesController < ApplicationController
 
     def localize_date(date)
       tmp = date.split(/\/|-/)
-      date = "#{tmp[2]}-#{tmp[1]}-#{tmp[0]}"
-      date
+      "#{tmp[1]}/#{tmp[0]}/#{tmp[2]}"
     end
 
 end

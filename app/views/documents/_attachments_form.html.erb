@@ -19,7 +19,7 @@
 					  
 				</div>
 				<%= f.submit "Subir archivo" %>
-				<%= link_to "Cancelar", invoice_path(@invoice) %>
+				<%= link_to "Cancelar", invoice_path(@invoice), :id => "cancel_invoice_attachment" %>
 	<% end %>
 </div>
 <% if invoice.documents.size < 1%>
