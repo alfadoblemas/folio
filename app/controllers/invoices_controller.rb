@@ -5,7 +5,7 @@ class InvoicesController < ApplicationController
   before_filter :get_invoices_for_account, :only => [:index, :search]
 
   def search
-    @all_invoices = @account_invoices.search(@search).find_by_status(@status)
+    @all_invoices = @search.find_by_status(@status)
     @invoices= @all_invoices.paginate(
       :page => params[:page],
       :per_page => 10, :order => @order
@@ -186,7 +186,6 @@ class InvoicesController < ApplicationController
           params[:search][date] = instance_variable_get("@#{date}")
         end
 
-
         if params[:search][:taxed] == "1" and params[:search][:untaxed] == "0"
           params[:search].delete(:untaxed)
         end
@@ -197,7 +196,8 @@ class InvoicesController < ApplicationController
         end
 
         params[:search].delete :customer_name_like unless params[:search][:customer_id_equals].blank?
-        @search = Invoice.search(params[:search])
+        @search = current_account.invoices.search(params[:search])
+        
         params[:search][:date_gte] = localize_date(params[:search][:date_gte]) # reverse for params sake
         params[:search][:date_lte] = localize_date(params[:search][:date_lte]) # reverse for params sake
       end
