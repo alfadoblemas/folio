@@ -5,7 +5,7 @@ class InvoicesController < ApplicationController
   before_filter :get_invoices_for_account, :only => [:index, :search]
 
   def search
-    @all_invoices = @account_invoices.search(params[:search]).find_by_status(@status)
+    @all_invoices = @account_invoices.search(@search).find_by_status(@status)
     @invoices= @all_invoices.paginate(
       :page => params[:page],
       :per_page => 10, :order => @order
@@ -196,6 +196,7 @@ class InvoicesController < ApplicationController
 
         params[:search].delete :customer_name_like unless params[:search][:customer_id_equals].blank?
       end
+     
       @account_invoices = Invoice.for_account(current_account.id)
 
       if params[:tagged_with] and !(params[:tagged_with].blank?)
