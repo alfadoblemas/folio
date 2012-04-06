@@ -178,7 +178,9 @@ class InvoicesController < ApplicationController
   protected
 
     def get_invoices_for_account
-      unless params[:search].nil?
+      if params[:search].nil?
+        @search = Invoice.search()
+      else
         %w(date_gte date_lte).each do |date|
           instance_variable_set("@#{date}", (params[:search][date].blank? ? "" : localize_date(params[:search][date])))
           params[:search][date] = instance_variable_get("@#{date}")
@@ -195,16 +197,17 @@ class InvoicesController < ApplicationController
         end
 
         params[:search].delete :customer_name_like unless params[:search][:customer_id_equals].blank?
+        @search = Invoice.search(params[:search])
+        params[:search][:date_gte] = localize_date(params[:search][:date_gte]) # reverse for params sake
+        params[:search][:date_lte] = localize_date(params[:search][:date_lte]) # reverse for params sake
       end
-     
-      @account_invoices = Invoice.for_account(current_account.id)
+
+      @account_invoices = current_account.invoices
 
       if params[:tagged_with] and !(params[:tagged_with].blank?)
         @account_invoices = @account_invoices.tagged_with(params[:tagged_with])
       end
 
-
-      @search = Invoice.search(params[:search])
       @status = params[:status].blank? ? "all_invoices" : params[:status]
       order = "#{params[:sort]} #{params[:direction]}"
       @order = order.blank? ? "date desc" : order
