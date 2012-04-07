@@ -42,7 +42,7 @@ class DocumentsController < ApplicationController
     respond_to do |format|
       if @document.destroy
         flash[:notice] = "Archivo eliminado correctamente"
-        format.html {redirect_to(invoice_path(invoice))}
+        format.html {redirect_to(invoice_path(invoice, :anchor => "tabs-2"))}
       else
         flash[:notice] = "No fue posible eliminar el archivo"
         format.html {redirect_to(invoice_path(invoice))}

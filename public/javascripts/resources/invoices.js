@@ -9,12 +9,16 @@ $(document).ready(function() {
 	select_tax_and_apply_to_invoice_form();
 	$("#invoice_extra_info").tabs();
 	
+	// This show the floating dialog for 
+	// adding a new customer in the Invoice Form
 	$("#new_customer_ajax_dialog").click(function(){
 		$("#new_customer_from_invoice").show();
 		$(".floating_dialog").show();
 		return false;
 	});
 	
+	// This hide the floating dialog for 
+	// adding a new customer in the Invoice Form
 	$("#hide_ajax_dialog").click(function(){
 		$("#new_customer_from_invoice").hide();
 		$(".floating_dialog").hide();
@@ -56,7 +60,7 @@ function attachments_for_invoice_form() {
 		var filename=$(this).val();
 		$("#attachment_upload_dialog_step1").hide()
 		
-		$("#attachment_file_name").append(filename);
+		$("#attachment_file_name").text(filename);
 		$("#new_document :submit").prop("disabled", false)
 		$("#attachment_upload_dialog_step2").show();
 	});
@@ -67,14 +71,18 @@ function attachments_for_invoice_form() {
 		$("#attachment_upload_dialog").show();
 	});
 	
-	// $("#cancel_invoice_attachment").live("click", function(){
-	// 	$("#attachment_upload_dialog").hide();
-	// 	$("#show_attachment_form").show();
-	// 	$("#new_document").each(function(){
-	// 		this.reset();
-	// 	});
-	// 	return false;
-	// });
+	$("#cancel_invoice_attachment").bind("click", function(){
+		if($("#attachment_upload_dialog").is(":visible")) {
+			$("#attachment_upload_dialog").hide();
+			$("#show_attachment_form").show();
+			$("#attachment_upload_dialog_step2").hide();
+			$("#attachment_upload_dialog_step1").show()
+			$("#new_document").each(function(){
+				this.reset();
+			});
+			return false;
+		}		
+	});
 	
 }
 
