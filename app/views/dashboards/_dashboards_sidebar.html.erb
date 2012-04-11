@@ -17,12 +17,12 @@
 			<td>
 				<strong><%= number_to_chilean_currency(invoice.total) %></strong>
 				<br/>
-				<span class="draft_result"><%= l invoice.due, :format => :default  %></span>
+				<span class="draft_text"><%= l invoice.due, :format => :default  %></span>
 			</td>
 			<td style="padding-right: 5px;">
 				<%= link_to "#{invoice.subject}", invoice_path(invoice)  %> <br/>
 				<% if invoice.has_tags? %>
-					<span class="draft_result tags">(<%= print_tag_list(invoice) %>)</span>
+					<span class="draft_text tags">(<%= print_tag_list(invoice) %>)</span>
 				<% end %>
 			</td>
 		</tr>
