@@ -196,15 +196,21 @@ class InvoicesController < ApplicationController
         end
 
         params[:search].delete :customer_name_like unless params[:search][:customer_id_equals].blank?
-        @search = current_account.invoices.search(params[:search])
-        
+
+        unless (params[:tagged_with].blank?)
+          @search = current_account.invoices.tagged_with(params[:tagged_with]).search(params[:search])
+          #@account_invoices = @account_invoices.tagged_with(params[:tagged_with])
+        else
+          @search = current_account.invoices.search(params[:search])
+        end
+
         params[:search][:date_gte] = localize_date(params[:search][:date_gte]) # reverse for params sake
         params[:search][:date_lte] = localize_date(params[:search][:date_lte]) # reverse for params sake
       end
 
       @account_invoices = current_account.invoices
 
-      if params[:tagged_with] and !(params[:tagged_with].blank?)
+      unless (params[:tagged_with].blank?)
         @account_invoices = @account_invoices.tagged_with(params[:tagged_with])
       end
 
