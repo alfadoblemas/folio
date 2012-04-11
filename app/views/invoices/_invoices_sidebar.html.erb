@@ -47,7 +47,7 @@
 			<br/><hr/>
 			<div id="number_search">
 				<% form_for search, :url => {:action => "search" } do |f| -%>
-	  				<%= f.number_field :number_equals, :style =>"width: 150px", :placeholder => "Número Factura"  %>
+	  				<%= f.number_field :number_equals, :style =>"width: 150px; margin-bottom:10px;", :placeholder => "Número Factura"  %><br/>
 					<%= f.submit "Buscar" %> <%= link_to "Cancelar", invoices_path() %>
 				<% end %>
 			</div>

@@ -279,6 +279,7 @@ margin-top: 20px;
 
 table#newInvoiceItems {
 	margin-bottom: 4px;
+	width: 710px;
 }
 
 #newInvoiceItems td {
@@ -321,6 +322,11 @@ background-color: #EEEEEE;
 	width: 80px;
 	float: right;
 	border-width: 0px;
+}
+
+#invoice_comment {
+	 width: 705px;
+	 height: 100px;
 }
 
 table#totals {
