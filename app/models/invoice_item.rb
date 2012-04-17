@@ -1,6 +1,6 @@
 class InvoiceItem < ActiveRecord::Base
   after_save :update_invoice_price
-  after_save :set_total_amount
+  before_save :set_total_amount
   after_destroy :update_invoice_price
 
 # Associations

@@ -4,7 +4,7 @@
 	  <tr>
 	  	<td><%= f.label :customer_name_like, "Cliente" %></td>
 	  	<td><%= f.text_field :customer_name_like, :class => "larger", :style => "width: 400px" %></td>
-		<%= f.hidden_field :customer_id_equals %>
+		<%= f.hidden_field :customer_id_equals, :value => "" %>
 	  </tr>
   	  <tr>
 		<td><%= f.label :tags, "Tags" %> </td>

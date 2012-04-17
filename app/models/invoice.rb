@@ -1,7 +1,7 @@
 class Invoice < ActiveRecord::Base
   acts_as_taggable
   before_create :set_as_draft
-  before_save :set_tax_info
+  before_save :calculate_tax
 
   # Associations
   belongs_to :customer
@@ -366,13 +366,15 @@ class Invoice < ActiveRecord::Base
     self.net = invoice_items.reject(&:marked_for_destruction?).sum(&:total)
   end
   
-  def set_tax_info
+  def calculate_tax
     return if (status_id == 3 || status_id == 4)
     return if tax_id.nil?
     if self.taxed?
-        tax = Tax.find(tax_id)
-        self.tax_name = tax.name
-        self.tax_rate = tax.value
+        tax_object = Tax.find(tax_id)
+        self.tax_name = tax_object.name
+        self.tax_rate = tax_object.value
+        self.tax = (self.net * self.tax_rate/100)
+        self.total = self.net + self.tax
     else
       self.tax = 0
       self.tax_name = nil
