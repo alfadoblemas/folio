@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120324180715) do
+ActiveRecord::Schema.define(:version => 20120417194213) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -180,9 +180,9 @@ ActiveRecord::Schema.define(:version => 20120324180715) do
 
   create_table "invoices", :force => true do |t|
     t.integer  "number"
-    t.float    "tax",         :default => 0.0
-    t.float    "net",         :default => 0.0
-    t.float    "total",       :default => 0.0
+    t.decimal  "tax",         :default => 0.0
+    t.decimal  "net",         :default => 0.0
+    t.decimal  "total",       :default => 0.0
     t.integer  "customer_id"
     t.integer  "contact_id"
     t.integer  "account_id"

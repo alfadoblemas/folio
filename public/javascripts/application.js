@@ -113,14 +113,14 @@ function formatInvoicePrice() {
         region: 'es-CL',
         roundToDecimalPlace: 0
     });
-    // $('.netPrice').formatCurrency({
-    //        region: 'es-CL',
-    //        roundToDecimalPlace: 0
-    //    });
-    //    $('.totalPrice').formatCurrency({
-    //        region: 'es-CL',
-    //        roundToDecimalPlace: 0
-    //    });
+    $('.netPrice').formatCurrency({
+               region: 'es-CL',
+               roundToDecimalPlace: 0
+           });
+    $('.totalPrice').formatCurrency({
+            region: 'es-CL',
+            roundToDecimalPlace: 0
+        });
     $('.taxPrice').formatCurrency({
         region: 'es-CL',
         roundToDecimalPlace: 0
