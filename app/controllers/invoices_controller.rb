@@ -181,7 +181,7 @@ class InvoicesController < ApplicationController
       if params[:search].nil?
         @search = Invoice.search()
       else
-        %w(date_gte date_lte).each do |date|
+        %w(date_gte date_lte due_gte due_lte).each do |date|
           instance_variable_set("@#{date}", (params[:search][date].blank? ? "" : localize_date(params[:search][date])))
           params[:search][date] = instance_variable_get("@#{date}")
         end
