@@ -233,6 +233,14 @@ class Invoice < ActiveRecord::Base
     sum = invoices.to_a.sum(&:total) unless invoices.size < 1
     sum
   end
+  
+  def self.total_per_invoice_status
+    totals = Hash.new
+    @statuses.each do |status|
+      totals[status] = send(status).to_a.sum(&:total).to_i
+    end
+    totals
+  end
 
   def self.iva_total(query = nil)
     sum = 0

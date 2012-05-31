@@ -20,13 +20,15 @@ class DashboardsController < ApplicationController
       f.options[:title] = ""
       f.options[:plotOptions][:column] = {:events => {:click => ""}}
 
-    end
 
     if request.xhr?
       sleep(1)
       render :partial => "comments/comment_dashboard", :collection => @comments ,
         :as => :comment, :locals => {:continuation => true}
     end
+      
+    end
+    
   end
 
 end

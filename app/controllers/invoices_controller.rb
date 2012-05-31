@@ -3,6 +3,13 @@ class InvoicesController < ApplicationController
   before_filter :find_invoice, :only => [ :active, :cancel, :close, :show, :edit, :destroy, :update_tags ]
   before_filter :sanitize_params, :only => [ :create, :update ]
   before_filter :get_invoices_for_account, :only => [:index, :search]
+  
+  def totals
+    @invoices_totals = current_account.invoices.total_per_invoice_status
+    respond_to do |format|
+      format.json {render :json => @invoices_totals}
+    end
+  end
 
   def search
     @all_invoices = @search.find_by_status(@status)
@@ -75,6 +82,11 @@ class InvoicesController < ApplicationController
 
     if request.xhr?
       xhr_endless_page_response("invoice", @invoices)
+    end
+    
+    respond_to do |format|
+      format.html
+      format.json {render :json => @invoices.to_json}
     end
 
   end
