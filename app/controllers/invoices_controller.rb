@@ -86,7 +86,6 @@ class InvoicesController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.json {render :json => @invoices.to_json}
     end
 
   end
