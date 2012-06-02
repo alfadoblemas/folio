@@ -84,10 +84,6 @@ class InvoicesController < ApplicationController
       xhr_endless_page_response("invoice", @invoices)
     end
     
-    respond_to do |format|
-      format.html
-    end
-
   end
 
 
