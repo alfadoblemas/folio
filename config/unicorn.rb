@@ -11,7 +11,7 @@ timeout 30
 
 # This is where we specify the socket.
 # We will point the upstream Nginx module to this socket later on
-listen "/home/folio/APP/folio/tmp/sockets/unicorn.sock", :backlog => 64
+listen "/tmp/unicorn.folio.sock", :backlog => 64
 
 pid "/home/folio/APP/folio/tmp/pids/unicorn.pid"
 
