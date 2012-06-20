@@ -1,4 +1,11 @@
-#!/bin/sh
+#!/bin/bash
+# folio 
+#
+# Author:       Patricio Bruna <pbruna@itlinux.cl> 
+#
+# chkconfig: - 98 02
+#
+
 set -e
 # Example init script, this can be used with nginx, too,
 # since nginx and unicorn accept the same signals
@@ -8,7 +15,7 @@ TIMEOUT=${TIMEOUT-60}
 APP_ROOT=/home/folio/APP/folio
 APP_USER="folio"
 PID=$APP_ROOT/tmp/pids/unicorn.pid
-CMD="/usr/bin/unicorn_rails -D -c $APP_ROOT/config/unicorn.rb -E development"
+CMD="/usr/bin/unicorn_rails -D -c $APP_ROOT/config/unicorn.rb -E production"
 action="$1"
 set -u
 
