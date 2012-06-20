@@ -32,6 +32,8 @@ Rails::Initializer.run do |config|
   config.gem "acts-as-taggable-on", :source => "http://gemcutter.org", :version => '2.1.0'
   config.gem "json"
   config.gem "sbif"
+  config.gem "unicorn"
+  config.gem "rack", :version => '1.0.1'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
