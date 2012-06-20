@@ -16,7 +16,7 @@ APP_ROOT=/home/folio/APP/folio
 APP_USER="folio"
 PID=$APP_ROOT/tmp/pids/unicorn.pid
 CMD="/usr/bin/unicorn_rails -D -c $APP_ROOT/config/unicorn.rb -E production"
-DELAJED_JOB="RAILS_ENV=production $APP_ROOT/script/delayed_job"
+DELAYED_JOB="RAILS_ENV=production $APP_ROOT/script/delayed_job"
 action="$1"
 set -u
 
