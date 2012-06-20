@@ -34,7 +34,6 @@ Rails::Initializer.run do |config|
   config.gem "sbif"
   config.gem "unicorn"
   config.gem "rack", :version => '1.0.1'
-  config.gem "daemon-spawn"
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
