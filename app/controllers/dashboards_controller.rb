@@ -5,7 +5,6 @@ class DashboardsController < ApplicationController
   def show
 
     @account = Account.find(current_account)
-    #@indicadores = IndicadoresEconomicos.for_today unless request.xhr?
     last_year_sales = Invoice.monthly_sales(:account => current_account, :months => 12)
     @months = Tools::last_months_from_today(12).map {|d| "#{I18n.localize(d, :format => :month_abbr)}"}
 
@@ -22,7 +21,6 @@ class DashboardsController < ApplicationController
 
 
     if request.xhr?
-      sleep(1)
       render :partial => "comments/comment_dashboard", :collection => @comments ,
         :as => :comment, :locals => {:continuation => true}
     end
