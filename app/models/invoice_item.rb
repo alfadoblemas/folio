@@ -6,6 +6,7 @@ class InvoiceItem < ActiveRecord::Base
 # Associations
   belongs_to :invoice
   belongs_to :product
+  delegate :account, :to => :invoice
 
 # Validations
   validates_presence_of :product_id, :price, :total, :quantity
@@ -14,7 +15,9 @@ class InvoiceItem < ActiveRecord::Base
   validates_numericality_of :quantity, :only_integer => true
   validates_numericality_of :total, :only_integer => true, :greater_than => 0
 
-  
+# scopes
+  named_scope :commodity, :conditions => ["product_id = ?", 3]
+  named_scope :service, :conditions => ["product_id != ?", 3]
 
   private
   def set_total_amount

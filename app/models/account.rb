@@ -16,6 +16,7 @@ class Account < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :documents, :dependent => :destroy
   has_many :taxes, :dependent => :destroy
+  has_many :open_invoice_items, :source => :invoice_items ,:through => :invoices, :conditions => ["status_id = ?", 2]
   alias_attribute :user_id, :admin_id
 
   # Validations
@@ -94,6 +95,14 @@ class Account < ActiveRecord::Base
   
   def active_users
     users.active
+  end
+  
+  def total_amount_off_commodity_for_open_invoices
+    open_invoice_items.commodity.sum(:total)
+  end
+  
+  def total_amount_off_service_for_open_invoices
+    open_invoice_items.service.sum(:total)
   end
 
   private

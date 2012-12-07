@@ -1,5 +1,5 @@
 body {
-  background-color: #fff;
+  background-color: #eee;
   margin: 0px;
   padding: 0px;
 }
@@ -34,7 +34,7 @@ h2 {
 
 .container {
 	min-height: 400px;
-	background-color: #fff;
+	background-color: #eee;
 }
 
 ol, ul {
