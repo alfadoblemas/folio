@@ -18,6 +18,14 @@ class InvoiceItem < ActiveRecord::Base
 # scopes
   named_scope :commodity, :conditions => ["product_id = ?", 3]
   named_scope :service, :conditions => ["product_id != ?", 3]
+  
+  def commodity?
+    return product_id == 3
+  end
+  
+  def service?
+    return product_id != 3
+  end
 
   private
   def set_total_amount

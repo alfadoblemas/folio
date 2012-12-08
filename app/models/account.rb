@@ -17,6 +17,7 @@ class Account < ActiveRecord::Base
   has_many :documents, :dependent => :destroy
   has_many :taxes, :dependent => :destroy
   has_many :open_invoice_items, :source => :invoice_items ,:through => :invoices, :conditions => ["status_id = ?", 2]
+  has_many :invoice_items, :through => :invoices, :conditions => ["status_id != ?", 4]
   alias_attribute :user_id, :admin_id
 
   # Validations
@@ -107,7 +108,17 @@ class Account < ActiveRecord::Base
   def total_amount_of_service_for_open_invoices
     open_invoice_items.service.sum(:total)
   end
-
+  
+  def total_of_services_between_dates(date_start = Date.today.at_beginning_of_year, date_end = Date.today.at_end_of_year)
+    sales = invoices.not_draft_cancel.date_in_between(date_start, date_end)
+    sales.map {|i| i.invoice_items}.flatten.reject {|item| item.commodity?}.map{|i| i.total}.sum()
+  end
+  
+  def total_of_commodities_between_dates(date_start = Date.today.at_beginning_of_year, date_end = Date.today.at_end_of_year)
+    sales = invoices.not_draft_cancel.date_in_between(date_start, date_end)
+    sales.map {|i| i.invoice_items}.flatten.reject {|item| item.service?}.map{|i| i.total}.sum()
+  end
+ 
   private
   def randomize_file_name
     return if avatar_file_name.nil?
