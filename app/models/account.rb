@@ -84,8 +84,11 @@ class Account < ActiveRecord::Base
   end
   
   def total_this_year
-    sales = invoices.not_draft_cancel.date_in_between(Date.parse("01/01/#{Date.today.year}"),Date.today)
     sum_invoices(sales.to_a)
+  end
+  
+  def sales
+    invoices.not_draft_cancel.date_in_between(Date.parse("01/01/#{Date.today.year}"),Date.today)
   end
   
   def total_last_year
@@ -97,11 +100,11 @@ class Account < ActiveRecord::Base
     users.active
   end
   
-  def total_amount_off_commodity_for_open_invoices
+  def total_amount_of_commodity_for_open_invoices
     open_invoice_items.commodity.sum(:total)
   end
   
-  def total_amount_off_service_for_open_invoices
+  def total_amount_of_service_for_open_invoices
     open_invoice_items.service.sum(:total)
   end
 
