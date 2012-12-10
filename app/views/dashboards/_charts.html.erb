@@ -15,13 +15,17 @@
 						var header = $.datepicker.formatDate('M/yy', date) +': '+total;
 						link = '/invoices/search?'+date_search_string;
 						return header; }" %>
-					<%= "options.legend.enabled = false " %>
+					<%= "options.legend.layout = 'horizontal' " %>
+					<%= "options.legend.borderWidth = 0 " %>
 					<%= "options.yAxis.title.text = 'Total en pesos' "%>
 					<%= "options.plotOptions.column.events.click = function(){
 							window.location.href = link;
 					} " %>
-					<%= "options.plotOptions.column.color = '#4572a7'" %>
+
 					<%= "options.plotOptions.column.borderColor = '#000000'" %>
+					<%= "Highcharts.setOptions({
+					            colors: ['#4572a7', '#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572',     '#FF9655',              '#FFF263', '#6AF9C4']
+					          });" %>
 					
 				<% end %>
 </div>

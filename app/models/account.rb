@@ -101,6 +101,31 @@ class Account < ActiveRecord::Base
     users.active
   end
   
+  def monthly_sales_agregate(months_ago = 12)
+    months = Tools::last_months_from_today(months_ago)
+    results = Array.new
+    months.each do |m|
+      start_date = m.beginning_of_month
+      end_date = m.end_of_month
+      commodity_sales = total_of_commodities_between_dates(start_date, end_date)
+      service_sales = total_of_services_between_dates(start_date, end_date)
+      month_sales = invoices.not_draft_cancel.sum(:total, :conditions => {:date => (start_date..end_date)})
+      tax_difference = month_sales - (commodity_sales + service_sales)
+      results << {
+        :month => m,
+        :month_sales => month_sales,
+        :commodity_sales => commodity_sales,
+        :service_sales => service_sales,
+        :tax_difference => tax_difference
+                }
+    end
+    results
+  end
+  
+  def segregate_totals
+    
+  end
+  
   def total_amount_of_commodity_for_open_invoices
     open_invoice_items.commodity.sum(:total)
   end

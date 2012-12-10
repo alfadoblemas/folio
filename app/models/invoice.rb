@@ -334,19 +334,6 @@ class Invoice < ActiveRecord::Base
     10
   end
   
-  def self.monthly_sales(options = {})
-    months = Tools::last_months_from_today(options[:months])
-    results = Array.new
-    months.each do |m|
-      results << {
-        :month => m,
-        :total => for_account(options[:account]).not_draft_cancel.sum(:total,
-                  :conditions => {:date => (m.beginning_of_month..m.end_of_month)})
-                }
-    end
-    results
-  end
-  
   # Estado de Facturas
   scope_procedure :due, lambda { status_id_equals(2).due_lt(Date.today) }
   scope_procedure :active, lambda { status_id_equals(2).due_gte(Date.today) }
