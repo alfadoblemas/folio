@@ -347,6 +347,7 @@ class Invoice < ActiveRecord::Base
   scope_procedure :for_customer, lambda {|customer_id| customer_id_equals(customer_id) }
   scope_procedure :due_this_week, lambda {status_id_equals(2).due_gte(Date.today.beginning_of_week).due_lte(Date.today.end_of_week)}
   scope_procedure :date_in_between, lambda {|start_date,end_date| date_gte(start_date).date_lte(end_date)}
+  scope_procedure :total_in_between, lambda {|total| total_gte(total.to_i - 1).total_lte(total.to_i + 1)}
   
   named_scope :not_draft_cancel, :conditions => ["status_id != 1 and status_id != 4"]
   
