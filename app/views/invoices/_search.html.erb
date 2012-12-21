@@ -21,6 +21,10 @@
 		</td>
 	  </tr>
 	  <tr>
+		<td><%= f.label "Total" %></td>
+		<td><%= f.text_field :total_equals %></td>
+	  </tr>
+	  <tr>
 		<td><%= f.label "Con IVA?" %></td>
 		<td>
 			<span style="margin-right:10px; font-weight: bold">Sí</span><%= f.check_box(:taxed, :checked => false)%>
