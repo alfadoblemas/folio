@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   #map.root :controller => "invoices" 
   map.invoices_totals 'invoices/totals.:format', :controller => 'invoices', :action => 'totals'
   map.account_sales_totals 'accounts/sales_totals.:format', :controller => 'accounts', :action => 'sales_totals'
+  map.account_open_invoices_totals 'accounts/open_invoices_totals.:format', :controller => 'accounts', :action => 'open_invoices_totals'
   map.connect 'documents/:id/:filename.:extension', :controller => 'documents', :action => 'download', :conditions => { :method => :get }
   map.account_invoice_tags 'accounts/:id/invoice_tags', :controller => 'accounts', :action => 'invoice_tags'
   map.customer_invoices 'customers/:id/invoices', :controller => 'customers', :action => 'invoices'

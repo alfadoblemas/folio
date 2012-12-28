@@ -13,7 +13,17 @@ class AccountsController < ApplicationController
       format.json {render :json => sales}
     end
   end
-  
+
+  def open_invoices_totals
+    services_invoices = current_account.total_amount_of_service_for_open_invoices
+    commodities_invoices = current_account.total_amount_of_commodity_for_open_invoices
+    total = services_invoices + commodities_invoices
+    sales = {:total => total, :services => services_invoices, :commodities => commodities_invoices }
+    respond_to do |format|
+      format.json {render :json => sales}
+    end
+  end
+
 
   def invoice_tags
     account = Account.find(current_account)
