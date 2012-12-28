@@ -3,6 +3,18 @@ class AccountsController < ApplicationController
   skip_before_filter :require_user, :only => [:new, :create]
   layout :wich_layout
 
+
+  def sales_totals
+    services_sales = current_account.total_of_services_between_dates
+    commodities_sales = current_account.total_of_commodities_between_dates
+    total = services_sales + commodities_sales
+    sales = {:total => total, :services => services_sales, :commodities => commodities_sales }
+    respond_to do |format|
+      format.json {render :json => sales}
+    end
+  end
+  
+
   def invoice_tags
     account = Account.find(current_account)
     @invoice_tags = account.invoice_tags
