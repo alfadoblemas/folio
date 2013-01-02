@@ -5,8 +5,10 @@ class AccountsController < ApplicationController
 
 
   def sales_totals
-    services_sales = current_account.total_of_services_between_dates
-    commodities_sales = current_account.total_of_commodities_between_dates
+    start_date = begin Date.parse(params[:start_date]) rescue Date.today.at_beginning_of_year end
+    end_date = begin Date.parse(params[:end_date]) rescue Date.today.at_end_of_year end
+    services_sales = current_account.total_of_services_between_dates(start_date, end_date)
+    commodities_sales = current_account.total_of_commodities_between_dates(start_date, end_date)
     total = services_sales + commodities_sales
     sales = {:total => total, :services => services_sales, :commodities => commodities_sales }
     respond_to do |format|
