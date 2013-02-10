@@ -24,7 +24,7 @@
 			<div style="float: left; margin-right: 10px">
 				<span class="required"><%= invoice.label "Fecha" %></span>
 				<br/>
-         		<%= invoice.date_field :date, :value => @invoice.date.to_s, :class => "datepicker invoice_small_input", :required => :required, :width => "125px" %>
+         		<%= invoice.text_field :date, :value => @invoice.date.to_s, :class => "datepicker invoice_small_input", :required => :required, :width => "125px" %>
 			</div>
 			<div>
 					<span><%= invoice.label "Número" %></span>
