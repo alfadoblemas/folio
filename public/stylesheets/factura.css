@@ -64,17 +64,49 @@ input {
 }
 
 #header #logo {
-margin-left: 20px;
+margin-left: 5px;
 float: left;
 }
 
 #header #navBar {
 	color: #ffffff;
-  	margin-left: 200px;
+  	margin-left: 150px;
 	padding-top: 20px;
 	word-spacing: 10px;
-	font-family: "Lucida Grande",verdana,arial;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 20px;
+}
+
+#navBar ul {
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	padding-left: 0;
+}
+
+#navBar ul li {
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	float: left;
+}
+
+#navBar ul li a {
+	padding: 20px 15px 15px;
+}
+
+#navBar ul li a:hover {
+	background-color: rgb(21, 66, 116);
+	-o-transition: .2s background;
+	-ms-transition: .2s background;
+	-moz-transition: .2s background;
+	-webkit-transition: .2s background;
+	transition: .2s background;
+	text-decoration: underline;
+}
+
+#navBar ul li.active a {
+	background-color: #031c3f;
 }
 
 #header #preferences_bar {
@@ -504,7 +536,6 @@ table#suscriptions {
   border-top: 1px solid #AAA;
   border-right: 1px solid #AAA;
   border-bottom: 1px solid #AAA;
-  font-weight: bold;
   font-size: 20px;
   line-height: 25px;
   width: 155px;
@@ -583,7 +614,7 @@ background:url(/images/icons/star_16.png) no-repeat scroll left transparent;
 }
 
 .draft {
-  background-color: #BDBDBD;
+  background-color: rgb(121, 118, 118);
 }
 
 .draft_title {
@@ -706,8 +737,8 @@ background:url(/images/icons/star_16.png) no-repeat scroll left transparent;
 }
 
 .close {
-  background-color: #BCDD11;
-  color: #565656;
+  background-color: #8fc400;
+  color: white;
 }
 
 .close_title {
@@ -951,7 +982,7 @@ fieldset {
 }
 
 .invoice_title {
-	margin-top: -20px;
+	margin-top: -0px;
 	margin-bottom: 20px;
 }
 
@@ -1232,7 +1263,7 @@ text-decoration: underline;
 	vertical-align: top;
 }
 
-#recent_activity .header {
+.header {
 	background-color: #EEE;
 	padding: 10px 5px 10px 10px;
 	margin-bottom: 10px;

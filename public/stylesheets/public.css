@@ -1,12 +1,14 @@
-body {
-  background-color: #eee;
+html, body {
+  background-color: white;
   margin: 0px;
   padding: 0px;
+  font-family: 'Lato', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-size: 100%;
     font-weight: normal;
+	font-family: 'Lato', sans-serif;
 }
 
 h1 {
@@ -18,12 +20,13 @@ h2 {
 	font-size: 16px;
 }
 
-#logo #logo_link {
-	width: 150px;
-	height: 60px;
-	background: url("/images/logo.png") no-repeat scroll left top transparent;
-	display: block;
-	text-indent: -9999px;
+.container {
+	min-width: 1200px;
+}
+
+.span4 {
+	width: 370px;
+	margin-left: 30px;
 }
 
 #navBar {
@@ -32,10 +35,6 @@ h2 {
 	text-align: right;
 }
 
-.container {
-	min-height: 400px;
-	background-color: #eee;
-}
 
 ol, ul {
     list-style: none outside none;
@@ -45,7 +44,6 @@ ol, ul {
 
 h3 {
     color: #0350A6;
-    font-family: "Helvetica Neue",helvetica,Arial,sans-serif;
     font-size: 18px;
     font-weight: bold;
     margin-left: 82px;
@@ -54,7 +52,6 @@ h3 {
 
 h4 {
     color: #011934;
-    font-family: "Helvetica Neue",helvetica,Arial,sans-serif;
     font-size: 12px;
     margin-left: 82px;
     margin-top: -5px;
@@ -188,7 +185,6 @@ li.url strong {
 	text-align: left;
 	width: 410px;
 	margin: 50px auto;
-	font-family: lucida grande,verdana;
 	font-size: 12px;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
@@ -274,4 +270,233 @@ li.url strong {
 	border-top: 1px dashed #CCC;
 	padding-top: 10px;
 	margin-top: 15px;
+}
+
+.navbar-inner {
+	padding-left: 50px;
+	padding-right: 50px;
+	background: #3f4c6b; /* Old browsers */
+	background: -moz-radial-gradient(center, ellipse cover,  #3f4c6b 0%, #3f4c6b 100%); /* FF3.6+ */
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#3f4c6b), color-stop(100%,#3f4c6b)); /* Chrome,Safari4+ */
+	background: -webkit-radial-gradient(center, ellipse cover,  #3f4c6b 0%,#3f4c6b 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-radial-gradient(center, ellipse cover,  #3f4c6b 0%,#3f4c6b 100%); /* Opera 12+ */
+	background: -ms-radial-gradient(center, ellipse cover,  #3f4c6b 0%,#3f4c6b 100%); /* IE10+ */
+	background: radial-gradient(ellipse at center,  #3f4c6b 0%,#3f4c6b 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f4c6b', endColorstr='#3f4c6b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.navbar .brand {
+	padding: 0px 0px 0px;
+	margin-top: 5px;
+}
+
+.navbar ul.nav {
+	margin-top: 15px;
+}
+
+.navbar .nav > li {
+	margin-right: 10px;
+}
+
+.navbar .nav > li > a {
+	float: none;
+	padding: 10px 15px 10px;
+	font-weight: bold;
+	color: white;
+	text-decoration: none;
+	text-shadow: none;
+}
+
+.navbar .nav > li > a:hover {
+	float: none;
+	padding: 10px 15px 10px;
+	color: #ccc;
+	font-weight: bold;
+	text-decoration: none;
+	text-shadow: none;
+}
+
+#hero {
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+
+#hero h1 {
+	font-size: 48px;
+	font-weight: normal;
+	letter-spacing: -1px;
+	text-align: left;
+	line-height: 48px;
+	text-rendering: optimizelegibility;
+	text-shadow: rgba(0, 0, 0, 0.4) 0px 1px 3px, rgba(0, 0, 0, 0.0745098) 0px 0px 30px;
+}
+
+.hero-img {
+
+}
+
+#hero h2 {
+	font-size: 18px;
+	font-weight: normal;
+	line-height: 1.4em;
+	text-align: left;
+	color: rgb(83, 83, 83);
+}
+
+#hero a:visited {
+	color: white;
+}
+
+.features {
+	padding-top:20px;
+	padding-bottom: 30px;
+}
+
+.features > h1 {
+	letter-spacing: 0px;
+	margin-bottom: 30px;
+	font-size: 36px;
+}
+
+
+
+.feature-box {
+	font-family: 'Lato', sans-serif;
+}
+
+.feature-box > .feature-img {
+	padding: 5px;
+	border-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
+	border: 1px solid #bbb;
+	background: white;
+	width: 85%;
+	height: 220px;
+	margin-bottom: 20px;
+}
+
+.feature-box > p {
+	text-align: left;
+	margin-left: 30px;
+	color: #44474d;
+	font-size: 14px;
+	margin-top: -5px;
+}
+
+.feature-box > h2 {
+	margin-left: 30px;
+	font-size: 18px;
+	line-height: 1.5;
+	font-weight: bold;
+	text-align: left;
+	text-shadow: rgba(250, 245, 245, 0.4) 10px 10px 30px, rgba(12, 12, 12, 0.0745098) 0px 0px 30px;
+	margin-bottom: 10px;
+}
+
+
+
+#customers {
+	
+}
+
+
+
+.price-button {
+	padding-top: 30px;
+	padding-bottom: 10px;
+	padding-left: 60px;
+	padding-right: 60px;
+}
+
+.price-button > h1 {
+	
+	font-size: 48px;
+}
+
+.price-button > h2 {
+	
+	font-size: 26px;
+}
+
+.price-features > h1 {
+	margin-top: 40px;
+	color: rgb(100, 98, 98);
+	margin-bottom: 10px;
+	font-size: 32px;
+	font-weight: bold;
+}
+
+.price-features > p {
+	font-size: 18px;
+	color: rgb(100, 98, 98);
+	line-height: 24px;
+
+}
+
+.description {
+	background: #dddce2 url(/images/website/content_bg.jpg) repeat left top;
+}
+
+.footer {
+	padding-left: 50px;
+	padding-right: 50px;
+	background: #3f4c6b; /* Old browsers */
+	background: -moz-radial-gradient(center, ellipse cover,  #3f4c6b 0%, #3f4c6b 100%); /* FF3.6+ */
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#3f4c6b), color-stop(100%,#3f4c6b)); /* Chrome,Safari4+ */
+	background: -webkit-radial-gradient(center, ellipse cover,  #3f4c6b 0%,#3f4c6b 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-radial-gradient(center, ellipse cover,  #3f4c6b 0%,#3f4c6b 100%); /* Opera 12+ */
+	background: -ms-radial-gradient(center, ellipse cover,  #3f4c6b 0%,#3f4c6b 100%); /* IE10+ */
+	background: radial-gradient(ellipse at center,  #3f4c6b 0%,#3f4c6b 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f4c6b', endColorstr='#3f4c6b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	min-height: 200px;
+}
+
+.main-feature{
+	border-bottom: 1px solid #d1d2d4;
+	box-shadow: 0 3px 8px 0 #e7e7e7;
+	padding-top: 80px;
+}
+
+.section_header {
+	text-align: center;
+	font-weight: bolder;
+	color: #252b34;
+	margin-top: 30px;
+	position: relative;
+	margin-bottom: 30px;
+}
+
+.section_header span {
+	width: 27%;
+	display: block;
+	margin: 0 auto;
+	font-family: 'Lato', sans-serif;
+}
+
+.section_header hr {
+	border-top: 1px solid #bec0c3;
+	border-bottom: 2px solid white;
+	width: 30%;
+	height: 0px;
+	position: absolute;
+}
+
+.section_header hr.right {
+	right: 0;
+	top: 0;
+	margin-right: 50px;
+}
+
+.section_header hr.left {
+	margin-left: 60px;
+}
+
+.btn-huge {
+	font-size: 25px;
+	line-height: 25px;
+	padding: 9px 40px;
+}
+
+.btn-huge small {
+	font-size: 14px;
 }

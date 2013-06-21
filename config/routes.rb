@@ -27,6 +27,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :comments
   map.resources :documents
   map.resources :taxes
+  map.resources :banks
   map.resources :users, :except => [:show]
   map.resources :user_sessions
   map.application_root "/", :controller => "dashboards", :action => "show", :conditions => {:subdomain => /.+/}

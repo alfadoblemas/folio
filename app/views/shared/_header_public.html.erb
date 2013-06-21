@@ -1,9 +1,12 @@
-<div id="logo">
- <%= link_to "nada", public_root_url(:subdomain => false), :id => "logo_link" %>
-</div>
-<div id="navBar">
-  <%= link_to "Tour", public_root_url(:subdomain => false) %>
-  <%= link_to "Precios", public_root_url(:subdomain => false) %>
-  <%= link_to "Signup", new_account_url(:subdomain => false) %>
-  <%= link_to "Login", login_path() %>
+<div class="navbar navbar-fixed-top scroll">
+  <div class="navbar-inner">
+    <a class="brand" href="<%= public_root_url() %>"><%= image_tag "logo.png", :title => "Folio Logo", :class => "class", :id => "logo_link", :style=>"margin-left: 40px" %></a>
+    <ul class="nav pull-right">
+	    <li><a href="#features">CARACTERISTICAS</a></li>
+	    <li><a href="#faq">FAQ</a></li>
+		<li><a href="#price">PRECIO</a></li>
+		<li><a href="#">CONTACTO</a></li>		
+	    <li><button href="button" class="btn btn-inverse" style="margin-left: 20px;">Ingresar</button></li>
+    </ul>
+  </div>
 </div>

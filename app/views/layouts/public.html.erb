@@ -7,9 +7,11 @@
     <!-- Framework CSS -->
     <%= stylesheet_link_tag "blueprint/screen.css", :media => "screen, projection" %>
     <%= stylesheet_link_tag "blueprint/print.css", :media => "print" %>
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <!-- End Framework CSS -->
 
     <!-- Stylesheet -->
+	<%= stylesheet_link_tag "bootstrap.min", :media => "all" %>
     <%= stylesheet_link_tag "factura", :media => "all" %>
 	<%= stylesheet_link_tag "public", :media => "all" %>
 
@@ -17,18 +19,8 @@
   </head>
 	<body>
 		<div id="wrapper">
-		<div id="header">
-			<%= render "shared/header_public" %>
+		<%= render "shared/header_public" %>
+		<%= yield %>
 		</div>
-		<div class="container">
-			<%= yield %>
-		</div>
-		<!--
-		<div id="fake_footer"></div>
-		</div>
-		<div id="footer">
-			
-		</div>
-		-->
 	</body>
 </html>

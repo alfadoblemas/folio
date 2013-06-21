@@ -2,9 +2,14 @@
   <img src="/images/logo.png" alt="Logo" />
 </div>
 <div id="navBar">
-  <%= link_to "Dashboard", dashboard_path %>
-  <%= link_to "Facturas", invoices_path %>
-  <%= link_to "Clientes", customers_path %>
+  <ul>
+	  <li class="<%= 'active' if params[:controller] == 'dashboards' %>"><%= link_to "Dashboard", dashboard_path %></li>
+	  <li class="<%= 'active' if params[:controller] == 'invoices' %>"><%= link_to "Facturas", invoices_path %></li>
+	  <!-- <li class="<%= 'active' if params[:controller] == 'invoices' %>"><%= link_to "Pagos", invoices_path %></li>
+	 	  <li class="<%= 'active' if params[:controller] == 'banks' %>"><%= link_to "Bancos", banks_path %></li>
+	 -->
+	<li class="<%= 'active' if params[:controller] == 'customers' %>"><%= link_to "Empresas", customers_path %></li>
+  </ul>
 </div>
 <div id="preferences_bar">
 	<%= link_to "mi cuenta", edit_user_path(current_user) %> |
