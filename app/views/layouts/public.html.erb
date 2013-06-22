@@ -12,15 +12,14 @@
 
     <!-- Stylesheet -->
 	<%= stylesheet_link_tag "bootstrap.min", :media => "all" %>
+	<%= stylesheet_link_tag "bootstrap-responsive.min", :media => "all" %>
     <%= stylesheet_link_tag "factura", :media => "all" %>
 	<%= stylesheet_link_tag "public", :media => "all" %>
 
 	<%= javascript_include_tag "jquery" %>
   </head>
-	<body>
-		<div id="wrapper">
+	<body style="zoom: 1;">
 		<%= render "shared/header_public" %>
 		<%= yield %>
-		</div>
 	</body>
 </html>

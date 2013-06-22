@@ -2,7 +2,9 @@ html, body {
   background-color: white;
   margin: 0px;
   padding: 0px;
+  padding-top: 25px;
   font-family: 'Lato', sans-serif;
+  background: #dddce2 url(/images/website/content_bg.jpg) repeat left top;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -20,13 +22,9 @@ h2 {
 	font-size: 16px;
 }
 
-.container {
-	min-width: 1200px;
-}
 
 .span4 {
-	width: 370px;
-	margin-left: 30px;
+
 }
 
 #navBar {
@@ -433,10 +431,6 @@ li.url strong {
 
 }
 
-.description {
-	background: #dddce2 url(/images/website/content_bg.jpg) repeat left top;
-}
-
 .footer {
 	padding-left: 50px;
 	padding-right: 50px;
@@ -453,8 +447,9 @@ li.url strong {
 
 .main-feature{
 	border-bottom: 1px solid #d1d2d4;
-	box-shadow: 0 3px 8px 0 #e7e7e7;
-	padding-top: 80px;
+	padding-top: 40px;
+	background: white;
+	position: relative;
 }
 
 .section_header {
@@ -499,4 +494,9 @@ li.url strong {
 
 .btn-huge small {
 	font-size: 14px;
+}
+
+.container-box {
+	margin-right: auto;
+	margin-left: auto;
 }
