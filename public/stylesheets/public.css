@@ -360,6 +360,7 @@ li.url strong {
 
 .feature-box {
 	font-family: 'Lato', sans-serif;
+	margin-bottom: 40px;
 }
 
 .feature-box > .feature-img {
@@ -369,8 +370,11 @@ li.url strong {
 	border: 1px solid #bbb;
 	background: white;
 	width: 85%;
-	height: 220px;
 	margin-bottom: 20px;
+}
+
+.feature-img > img {
+	max-height: 200px;
 }
 
 .feature-box > p {
